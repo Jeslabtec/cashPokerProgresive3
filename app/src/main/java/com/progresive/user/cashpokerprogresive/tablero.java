@@ -109,13 +109,13 @@ public class tablero extends AppCompatActivity {
 
         // definiciones de las variables del tablero
         //1. Variables de los tv de los jugadores
-        TextView jugador1= (TextView) findViewById(R.id.tvJugador1);
-        TextView jugador2= (TextView) findViewById(R.id.tvJugador2);
-        TextView jugador3= (TextView) findViewById(R.id.tvJugador3);
-        TextView jugador4= (TextView) findViewById(R.id.tvJugador4);
-        TextView jugador5= (TextView) findViewById(R.id.tvJugador5);
-        TextView jugador6= (TextView) findViewById(R.id.tvJugador6);
-        TextView jugador7= (TextView) findViewById(R.id.tvJugador7);
+        final TextView jugador1= (TextView) findViewById(R.id.tvJugador1);
+        final TextView jugador2= (TextView) findViewById(R.id.tvJugador2);
+        final TextView jugador3= (TextView) findViewById(R.id.tvJugador3);
+        final TextView jugador4= (TextView) findViewById(R.id.tvJugador4);
+        final TextView jugador5= (TextView) findViewById(R.id.tvJugador5);
+        final TextView jugador6= (TextView) findViewById(R.id.tvJugador6);
+        final TextView jugador7= (TextView) findViewById(R.id.tvJugador7);
 
         //2. variables del premio y tipo de apuesta
         TextView pA1= (TextView) findViewById(R.id.tvPremioApuesta1);
@@ -131,6 +131,30 @@ public class tablero extends AppCompatActivity {
         TextView apostar= (TextView) findViewById(R.id.tvApostar);
         TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
         TextView pagar= (TextView) findViewById(R.id.tvPagar);
+
+
+        final Jugador[] jugadores=new Jugador[7];
+
+
+
+
+
+
+        pagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            for (int i=0;i<jugadores.length;i++) {
+                jugadores[i].cargarapuesta(10);
+            }
+             jugador1.setText(jugadores[0].Apuesta);
+             jugador2.setText(jugadores[1].Apuesta);
+             jugador3.setText(jugadores[2].Apuesta);
+             jugador4.setText(jugadores[3].Apuesta);
+             jugador5.setText(jugadores[4].Apuesta);
+             jugador6.setText(jugadores[5].Apuesta);
+            }
+        });
+
     }
 
     @Override
