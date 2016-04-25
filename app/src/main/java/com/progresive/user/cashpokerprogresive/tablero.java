@@ -87,7 +87,7 @@ public class tablero extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        int pruebagit=0;
         setContentView(R.layout.activity_tablero);
 
         mVisible = true;
