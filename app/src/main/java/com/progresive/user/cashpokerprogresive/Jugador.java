@@ -4,8 +4,10 @@ package com.progresive.user.cashpokerprogresive;
  * Created by JuanEsteban on 25/04/2016.
  */
 public class Jugador {
+
     // atributos
-    public int Apuesta=0;
+
+    private int Apuesta=0;
     private boolean Enmesa=false;
     private boolean Enjuego=false;
 
@@ -38,4 +40,8 @@ public class Jugador {
         Enjuego=!(Enjuego);
     }
 
+    public int verapuesta()
+    {
+        return Apuesta;
+    }
 }
