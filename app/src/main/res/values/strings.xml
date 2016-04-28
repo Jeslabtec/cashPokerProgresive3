@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">cashPokerProgresive</string>
 
+    <string name="Pagar">Pagar</string>
+    <string name="Jugar">Jugar</string>
+    <string name="Retirarse">Retirarse</string>
+    <string name="Apostar">Apostar</string>
+    <string name="cero">0</string>
+
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="progressive">Progressive</string>

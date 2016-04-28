@@ -137,8 +137,13 @@ public class tablero extends AppCompatActivity {
         TextView pagar= (TextView) findViewById(R.id.tvPagar);
 
 
-        final Jugador[] jugadores=new Jugador[7];
 
+        // pensar en la mejor forma de crear el constructor para esto
+        final Jugador[] jugadores=new Jugador[7];
+        for (int i=0;i<jugadores.length;i++)
+        {
+            jugadores[i]=new Jugador();
+        }
 
 
 
@@ -155,7 +160,11 @@ public class tablero extends AppCompatActivity {
                     }
                 catch (Exception ex)
                 {
+                    for (int i=0;i<jugadortv.length;i++) {
+                        jugadortv[i].setText("Error");
+                    }
                 }
+
             }
         });
 
