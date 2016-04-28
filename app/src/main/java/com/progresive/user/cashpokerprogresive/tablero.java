@@ -109,21 +109,25 @@ public class tablero extends AppCompatActivity {
 
         // definiciones de las variables del tablero
         //1. Variables de los tv de los jugadores
-        TextView jugador1= (TextView) findViewById(R.id.tvJugador1);
-        TextView jugador2= (TextView) findViewById(R.id.tvJugador2);
-        TextView jugador3= (TextView) findViewById(R.id.tvJugador3);
-        TextView jugador4= (TextView) findViewById(R.id.tvJugador4);
-        TextView jugador5= (TextView) findViewById(R.id.tvJugador5);
-        TextView jugador6= (TextView) findViewById(R.id.tvJugador6);
-        TextView jugador7= (TextView) findViewById(R.id.tvJugador7);
+        final TextView[] jugadortv=new TextView[7];
+
+        jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
+        jugadortv[1]= (TextView) findViewById(R.id.tvJugador2);
+        jugadortv[2]= (TextView) findViewById(R.id.tvJugador3);
+        jugadortv[3]= (TextView) findViewById(R.id.tvJugador4);
+        jugadortv[4]= (TextView) findViewById(R.id.tvJugador5);
+        jugadortv[5]= (TextView) findViewById(R.id.tvJugador6);
+        jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
 
         //2. variables del premio y tipo de apuesta
-        TextView pA1= (TextView) findViewById(R.id.tvPremioApuesta1);
-        TextView pA2= (TextView) findViewById(R.id.tvPremioApuesta2);
-        TextView pA3= (TextView) findViewById(R.id.tvPremioApuesta3);
-        TextView pA4= (TextView) findViewById(R.id.tvPremioApuesta4);
-        TextView pA5= (TextView) findViewById(R.id.tvPremioApuesta5);
-        TextView pA6= (TextView) findViewById(R.id.tvPremioApuesta6);
+        final TextView[] pA=new TextView[7];
+
+        pA[1]= (TextView) findViewById(R.id.tvPremioApuesta1);
+        pA[2]= (TextView) findViewById(R.id.tvPremioApuesta2);
+        pA[3]= (TextView) findViewById(R.id.tvPremioApuesta3);
+        pA[4]= (TextView) findViewById(R.id.tvPremioApuesta4);
+        pA[5]= (TextView) findViewById(R.id.tvPremioApuesta5);
+        pA[6]= (TextView) findViewById(R.id.tvPremioApuesta6);
 
         //3. variables de los botones de control
         /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
@@ -131,6 +135,30 @@ public class tablero extends AppCompatActivity {
         TextView apostar= (TextView) findViewById(R.id.tvApostar);
         TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
         TextView pagar= (TextView) findViewById(R.id.tvPagar);
+
+
+        final Jugador[] jugadores=new Jugador[7];
+
+
+
+
+
+
+        pagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    for (int i=0;i<jugadores.length;i++) {
+                        jugadores[i].cargarapuesta(10);
+                        jugadortv[i].setText(Integer.toString(jugadores[i].verapuesta()));
+                        }
+                    }
+                catch (Exception ex)
+                {
+                }
+            }
+        });
+
     }
 
     @Override
