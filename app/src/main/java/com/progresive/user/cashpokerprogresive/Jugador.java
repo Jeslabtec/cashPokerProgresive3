@@ -37,16 +37,4 @@ public class Jugador {
     {
         return Apuesta;
     }
-
-
-    // constructor
-   /* public Jugador[] crearJugadores (int numeroJugadores)
-    {
-        Jugador[] jugadores=new Jugador[numeroJugadores];
-        for (int i=0;i<jugadores.length;i++)
-        {
-            jugadores[i]=new Jugador();
-        }
-        return jugadores;
-    }*/
 }
