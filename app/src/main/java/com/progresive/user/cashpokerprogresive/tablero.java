@@ -108,7 +108,7 @@ public class tablero extends AppCompatActivity {
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
         // definiciones de las variables del tablero
-        //1. Variables de los tv de los jugadores
+        //1. Vari ables de lostv de los jugadores
         final TextView[] jugadortv=new TextView[7];
 
         jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
@@ -120,7 +120,7 @@ public class tablero extends AppCompatActivity {
         jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
 
         //2. variables del premio y tipo de apuesta
-        final TextView[] pA=new TextView[7];
+        final TextView[] pA=new TextView[6];
 
         pA[1]= (TextView) findViewById(R.id.tvPremioApuesta1);
         pA[2]= (TextView) findViewById(R.id.tvPremioApuesta2);
@@ -135,6 +135,10 @@ public class tablero extends AppCompatActivity {
         TextView apostar= (TextView) findViewById(R.id.tvApostar);
         TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
         TextView pagar= (TextView) findViewById(R.id.tvPagar);
+
+
+       // https://www.iconfinder.com/        Descargar los iconos
+
 
 
 
