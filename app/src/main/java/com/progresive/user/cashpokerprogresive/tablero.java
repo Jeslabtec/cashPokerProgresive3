@@ -143,34 +143,15 @@ public class tablero extends AppCompatActivity {
 
 
         // pensar en la mejor forma de crear el constructor para esto
-        final Jugador[] jugadores=new Jugador[7];
-        for (int i=0;i<jugadores.length;i++)
-        {
-            jugadores[i]=new Jugador();
+        Mesa mesaJuego=new Mesa();
+
+        for (int i=0;i<jugadortv.length;i++) {
+            jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego));
         }
 
 
 
 
-
-        pagar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    for (int i=0;i<jugadores.length;i++) {
-                        jugadores[i].cargarapuesta(10);
-                        jugadortv[i].setText(Integer.toString(jugadores[i].verapuesta()));
-                        }
-                    }
-                catch (Exception ex)
-                {
-                    for (int i=0;i<jugadortv.length;i++) {
-                        jugadortv[i].setText("Error");
-                    }
-                }
-
-            }
-        });
 
     }
 
