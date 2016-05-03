@@ -14,6 +14,8 @@ import android.widget.TextView;
  * status bar and navigation/system bar) with user interaction.
  */
 public class tablero extends AppCompatActivity {
+
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -107,10 +109,12 @@ public class tablero extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
+        final Mesa mesaJuego=new Mesa();
+        final TextView[] jugadortv=new TextView[7];
+        final TextView[] pA=new TextView[6];
+
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
-        final TextView[] jugadortv=new TextView[7];
-
         jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
         jugadortv[1]= (TextView) findViewById(R.id.tvJugador2);
         jugadortv[2]= (TextView) findViewById(R.id.tvJugador3);
@@ -120,7 +124,7 @@ public class tablero extends AppCompatActivity {
         jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
 
         //2. variables del premio y tipo de apuesta
-        final TextView[] pA=new TextView[6];
+
 
         pA[1]= (TextView) findViewById(R.id.tvPremioApuesta1);
         pA[2]= (TextView) findViewById(R.id.tvPremioApuesta2);
@@ -131,10 +135,10 @@ public class tablero extends AppCompatActivity {
 
         //3. variables de los botones de control
         /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
-        TextView jugar= (TextView) findViewById(R.id.tvJugar);
-        TextView apostar= (TextView) findViewById(R.id.tvApostar);
-        TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
-        TextView pagar= (TextView) findViewById(R.id.tvPagar);
+        final TextView jugar= (TextView) findViewById(R.id.tvJugar);
+        final TextView apostar= (TextView) findViewById(R.id.tvApostar);
+        final TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
+        final TextView pagar= (TextView) findViewById(R.id.tvPagar);
 
 
        // https://www.iconfinder.com/        Descargar los iconos
@@ -143,12 +147,11 @@ public class tablero extends AppCompatActivity {
 
 
         // pensar en la mejor forma de crear el constructor para esto
-        Mesa mesaJuego=new Mesa();
+
 
         for (int i=0;i<jugadortv.length;i++) {
-            jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego));
+            jugadortv[i].setOnClickListener(new lTVClickJugadores());
         }
-
 
 
 

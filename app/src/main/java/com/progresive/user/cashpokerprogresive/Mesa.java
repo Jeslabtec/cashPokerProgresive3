@@ -16,31 +16,4 @@ public class Mesa {
         dealerJuego=new Dealer();
         }
 
-
-
-
-
-
-    public void Juego()
-    {
-        boolean[] jugadoresActivos;
-        switch (dealerJuego.verElEstadoDelJuego())
-        {
-            case 1://Fase de Playoff en esta etapa los jugadores pueden cargar sus apuestas o retirarse, es la etapa justo antes del juegos
-                break;
-            case 2:// Fase de Inicio del Juego es simple, en esta fase debe decrementarse en 1 las apuestas de los jugadores e iniciar el incremento del progresivo
-                jugadoresActivos=dealerJuego.getJugadoresActivos();
-                for (int i=0;i<jugadores.length;i++) {
-                    if(jugadoresActivos[i]==true) {
-                        jugadores[i].apostar();
-                    }
-                }
-                break;
-            case 3:// Fase de Pagos se realizan los pagos y se actualiza la tabla Administrativa
-                break;
-            default:// por si acaso
-                break;
-        }
-    }
-
 }

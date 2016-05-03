@@ -7,14 +7,31 @@ import android.view.View;
  */
 public class lTVClickBtnApeustasPremios implements View.OnClickListener {
 
-    public lTVClickBtnApeustasPremios()
-    {
+    public Dealer dealer;
 
+    public lTVClickBtnApeustasPremios(Dealer dealerJuego)
+    {
+    dealer=dealerJuego;
     }
+
 
     @Override
     public void onClick(View v)
     {
-        // TODO: add code
+        switch (dealer.verElEstadoDelJuego())
+        {
+            case 1:
+
+            break;
+            case 2:
+
+            break;
+            case 3:
+
+            break;
+            case 4:
+
+            break;
+        }
     }
 }

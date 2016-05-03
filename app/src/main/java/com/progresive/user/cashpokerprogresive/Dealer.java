@@ -7,7 +7,7 @@ public class Dealer {
     //atributos
 
     // atributos de control del juego
-    private int estadoJuego=1; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=3 o si esta en la fase play off=1
+    private int estadoJuego=1; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
     private boolean[] jugadoresActivos={false,false,false,false,false,false,false};
 
     // atributos de paso de informacion
