@@ -25,7 +25,7 @@ public class Dealer {
     {
         return(estadoJuego);
     }
-    boolean[] getJugadoresActivos()
+    boolean[] verJugadoresActivos()
     {
         return(jugadoresActivos);
     }

@@ -13,12 +13,14 @@ public class lTVClickControlesJuego implements View.OnClickListener {
         mesaDelJuego=mesaJuego;
     }
 
+    @Override
     public void onClick(View v)
     {
         switch(v.getId())
         {
             case R.id.tvPagar:
                 mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(1);
+                tablero.jugadortv[1].setText("putamadre");
             break;
             case R.id.tvJugar:
                 mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(2);

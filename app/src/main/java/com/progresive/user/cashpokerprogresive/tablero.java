@@ -15,7 +15,8 @@ import android.widget.TextView;
  */
 public class tablero extends AppCompatActivity {
 
-
+    final static TextView[] jugadortv=new TextView[7];
+    final static TextView[] pA=new TextView[6];
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -110,8 +111,7 @@ public class tablero extends AppCompatActivity {
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
         final Mesa mesaJuego=new Mesa();
-        final TextView[] jugadortv=new TextView[7];
-        final TextView[] pA=new TextView[6];
+
 
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
@@ -142,16 +142,23 @@ public class tablero extends AppCompatActivity {
 
 
        // https://www.iconfinder.com/        Descargar los iconos
+        pagar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
+        jugar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
+        retirar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
+        apostar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
 
-
-
-
+        for (int i=0;i<pA.length;i++) {
+            pA[i].setOnClickListener(new lTVClickBtnApeustasPremios(mesaJuego.dealerJuego));
+        }
+        for (int i=0;i<jugadortv.length;i++) {
+            jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego.jugadores[i], mesaJuego.dealerJuego));
+        }
         // pensar en la mejor forma de crear el constructor para esto
 
 
-        for (int i=0;i<jugadortv.length;i++) {
-            jugadortv[i].setOnClickListener(new lTVClickJugadores());
-        }
+        //for (int i=0;i<jugadortv.length;i++) {
+         //jugadortv[i].setOnClickListener(new lTVClickJugadores());
+        //}
 
 
 
