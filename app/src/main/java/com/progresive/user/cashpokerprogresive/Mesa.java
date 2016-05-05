@@ -7,6 +7,9 @@ public class Mesa {
     Jugador[] jugadores=new Jugador[7];
     Dealer dealerJuego;
 
+
+
+// constructor de la clase Mesa:  el programa
     public Mesa()
         {
             //Mesa NuevaMesa=new Mesa();

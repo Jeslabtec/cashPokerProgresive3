@@ -14,8 +14,15 @@ import android.widget.TextView;
  * status bar and navigation/system bar) with user interaction.
  */
 public class tablero extends AppCompatActivity {
-    final static Mesa mesaJuego=new Mesa();
-    final static TextView[] jugadortv=new TextView[7];
+
+    static Mesa mesaJuego=new Mesa();
+    static TextView[] jugadortv=new TextView[7];
+    static TextView[] pA=new TextView[6];
+    static TextView jugar;
+    static TextView apostar;
+    static TextView retirar;
+    static TextView pagar;
+
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -111,7 +118,6 @@ public class tablero extends AppCompatActivity {
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
 
-        final TextView[] pA=new TextView[6];
 
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
@@ -135,36 +141,30 @@ public class tablero extends AppCompatActivity {
 
         //3. variables de los botones de control
         /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
-        final TextView jugar= (TextView) findViewById(R.id.tvJugar);
-        final TextView apostar= (TextView) findViewById(R.id.tvApostar);
-        final TextView retirar= (TextView) findViewById(R.id.tvRetiroTotal);
-        final TextView pagar= (TextView) findViewById(R.id.tvPagar);
+        jugar= (TextView) findViewById(R.id.tvJugar);
+        apostar= (TextView) findViewById(R.id.tvApostar);
+        retirar= (TextView) findViewById(R.id.tvRetiroTotal);
+        pagar= (TextView) findViewById(R.id.tvPagar);
 
 
        // https://www.iconfinder.com/        Descargar los iconos
-        pagar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
-        jugar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
-        retirar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
-        apostar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
+        pagar.setOnClickListener(new lTVClickControlesJuego());
+        jugar.setOnClickListener(new lTVClickControlesJuego());
+        retirar.setOnClickListener(new lTVClickControlesJuego());
+        apostar.setOnClickListener(new lTVClickControlesJuego());
 
 
-        try {
-            for (int i=0;i<pA.length;i++) {
-                pA[i].setOnClickListener(new lTVClickBtnApeustasPremios(mesaJuego.dealerJuego));
-            }
-            for (int i=0;i<jugadortv.length;i++) {
-                jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego.jugadores[i], mesaJuego.dealerJuego));
-            }
+
+        // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
+
+        for (int i=0;i<pA.length;i++) {
+            pA[i].setOnClickListener(new lTVClickBtnApeustasPremios());
         }
-        catch (Exception ex){
-
+        for (int i=0;i<jugadortv.length;i++) {
+            jugadortv[i].setOnClickListener(new lTVClickJugadores());
         }
-        // pensar en la mejor forma de crear el constructor para esto
 
 
-        //for (int i=0;i<jugadortv.length;i++) {
-         //jugadortv[i].setOnClickListener(new lTVClickJugadores());
-        //}
 
 
 
