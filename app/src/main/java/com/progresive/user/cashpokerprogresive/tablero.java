@@ -1,10 +1,13 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.widget.ContentFrameLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +25,7 @@ public class tablero extends AppCompatActivity {
     static TextView apostar;
     static TextView retirar;
     static TextView pagar;
-
+    static AlertDialog alert1;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -116,6 +119,33 @@ public class tablero extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Putamadre");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton("hola", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+            }
+        });
+        builder1.setNegativeButton( "Jodete puta, no me saludes",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        alert1 = builder1.create();
+
+
+
+
+
+
+
 
 
 
