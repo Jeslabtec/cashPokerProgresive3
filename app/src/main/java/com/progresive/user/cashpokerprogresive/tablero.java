@@ -14,9 +14,9 @@ import android.widget.TextView;
  * status bar and navigation/system bar) with user interaction.
  */
 public class tablero extends AppCompatActivity {
-
+    final static Mesa mesaJuego=new Mesa();
     final static TextView[] jugadortv=new TextView[7];
-    final static TextView[] pA=new TextView[6];
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -110,8 +110,8 @@ public class tablero extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        final Mesa mesaJuego=new Mesa();
 
+        final TextView[] pA=new TextView[6];
 
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
@@ -126,12 +126,12 @@ public class tablero extends AppCompatActivity {
         //2. variables del premio y tipo de apuesta
 
 
-        pA[1]= (TextView) findViewById(R.id.tvPremioApuesta1);
-        pA[2]= (TextView) findViewById(R.id.tvPremioApuesta2);
-        pA[3]= (TextView) findViewById(R.id.tvPremioApuesta3);
-        pA[4]= (TextView) findViewById(R.id.tvPremioApuesta4);
-        pA[5]= (TextView) findViewById(R.id.tvPremioApuesta5);
-        pA[6]= (TextView) findViewById(R.id.tvPremioApuesta6);
+        pA[0]= (TextView) findViewById(R.id.tvPremioApuesta1);
+        pA[1]= (TextView) findViewById(R.id.tvPremioApuesta2);
+        pA[2]= (TextView) findViewById(R.id.tvPremioApuesta3);
+        pA[3]= (TextView) findViewById(R.id.tvPremioApuesta4);
+        pA[4]= (TextView) findViewById(R.id.tvPremioApuesta5);
+        pA[5]= (TextView) findViewById(R.id.tvPremioApuesta6);
 
         //3. variables de los botones de control
         /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
@@ -147,11 +147,17 @@ public class tablero extends AppCompatActivity {
         retirar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
         apostar.setOnClickListener(new lTVClickControlesJuego(mesaJuego));
 
-        for (int i=0;i<pA.length;i++) {
-            pA[i].setOnClickListener(new lTVClickBtnApeustasPremios(mesaJuego.dealerJuego));
+
+        try {
+            for (int i=0;i<pA.length;i++) {
+                pA[i].setOnClickListener(new lTVClickBtnApeustasPremios(mesaJuego.dealerJuego));
+            }
+            for (int i=0;i<jugadortv.length;i++) {
+                jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego.jugadores[i], mesaJuego.dealerJuego));
+            }
         }
-        for (int i=0;i<jugadortv.length;i++) {
-            jugadortv[i].setOnClickListener(new lTVClickJugadores(mesaJuego.jugadores[i], mesaJuego.dealerJuego));
+        catch (Exception ex){
+
         }
         // pensar en la mejor forma de crear el constructor para esto
 

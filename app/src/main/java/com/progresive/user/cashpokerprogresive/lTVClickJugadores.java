@@ -20,20 +20,20 @@ public class lTVClickJugadores implements View.OnClickListener {
     public void onClick(View v)
     {
         switch (dealerJuego.verElEstadoDelJuego())
-        {
-            case 1:     // fase de pago
-                jugador.cargarapuesta(dealerJuego.ponerFicha());
-            break;
-            case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
+            {
+                case 1:     // fase de pago
+                    jugador.cargarapuesta(dealerJuego.ponerFicha());
+                    break;
+                case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
 
-            break;
-            case 3:     // fase de apuestas
-                jugador.cargarapuesta(dealerJuego.ponerFicha());
-            break;
-            case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
+                    break;
+                case 3:     // fase de apuestas
+                    jugador.cargarapuesta(dealerJuego.ponerFicha());
+                    break;
+                case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
 
-            break;
-        }
+                    break;
+            }
 
     }
 }

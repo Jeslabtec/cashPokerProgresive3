@@ -16,21 +16,21 @@ public class lTVClickControlesJuego implements View.OnClickListener {
     @Override
     public void onClick(View v)
     {
-        switch(v.getId())
-        {
-            case R.id.tvPagar:
-                mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(1);
-                tablero.jugadortv[1].setText("putamadre");
-            break;
-            case R.id.tvJugar:
-                mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(2);
-            break;
-            case R.id.tvApostar:
-                mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(3);
-            break;
-            case R.id.tvRetiroTotal:
-                mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(4);
-            break;
-        }
+            switch(v.getId())
+            {
+                case R.id.tvPagar:
+                    mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(1);
+                    tablero.jugadortv[0].setText("putamadre");
+                    break;
+                case R.id.tvJugar:
+                    mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(2);
+                    break;
+                case R.id.tvApostar:
+                    mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(3);
+                    break;
+                case R.id.tvRetiroTotal:
+                    mesaDelJuego.dealerJuego.cambiarElEstadoDelJuego(4);
+                    break;
+            }
     }
 }

@@ -19,19 +19,19 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener {
     public void onClick(View v)
     {
         switch (dealer.verElEstadoDelJuego())
-        {
-            case 1:
+           {
+               case 1:
 
-            break;
-            case 2:
+                   break;
+               case 2:
 
-            break;
-            case 3:
+                   break;
+               case 3:
 
-            break;
-            case 4:
+                   break;
+               case 4:
 
-            break;
-        }
+                   break;
+           }
     }
 }

@@ -6,6 +6,12 @@
     <string name="Retirarse">Retirarse</string>
     <string name="Apostar">Apostar</string>
     <string name="cero">0</string>
+    <string name="Apuesta1">1</string>
+    <string name="Apuesta2">2</string>
+    <string name="Apuesta3">5</string>
+    <string name="Apuesta4">10</string>
+    <string name="Apuesta5">15</string>
+    <string name="Apuesta6">20</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
