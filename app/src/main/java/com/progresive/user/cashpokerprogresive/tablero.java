@@ -26,7 +26,8 @@ public class tablero extends AppCompatActivity {
     static TextView retirar;
     static TextView pagar;
     static AlertDialog alert1;
-
+    static AlertDialog msgConfRetiro;
+    static int eleccion=-1;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -120,35 +121,47 @@ public class tablero extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
+        //--------------------------------------------------------------------------------------------//
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
+        creaMensajes.setMessage("Putamadre");
+        creaMensajes.setCancelable(true);
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Putamadre");
-        builder1.setCancelable(true);
-
-        builder1.setPositiveButton("hola", new DialogInterface.OnClickListener() {
+        creaMensajes.setPositiveButton("hola", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
             }
         });
-        builder1.setNegativeButton( "Jodete puta, no me saludes",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+        creaMensajes.setNegativeButton("Jodete puta, no me saludes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
 
-        alert1 = builder1.create();
+        alert1 = creaMensajes.create();
+        //-----------------------------------------------------------------------------------------------------//
+        //Mensaje de confirmacion de retiro//
+        creaMensajes.setMessage("Seguro qué desea retirarse?");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-
-
-
-
-
-
-
-
-
+                tablero.mesaJuego.jugadores[eleccion].reiniciarApuesta();
+                dialog.cancel();
+                eleccion=-1;
+            }
+        });
+        creaMensajes.setNegativeButton("Cancelar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                eleccion=-1;
+                dialog.cancel();
+            }
+        });
+        msgConfRetiro= creaMensajes.create();
+       //-------------------------------------------------------------------------------------------------//
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
         jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
@@ -160,7 +173,6 @@ public class tablero extends AppCompatActivity {
         jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
 
         //2. variables del premio y tipo de apuesta
-
 
         pA[0]= (TextView) findViewById(R.id.tvPremioApuesta1);
         pA[1]= (TextView) findViewById(R.id.tvPremioApuesta2);
@@ -183,8 +195,6 @@ public class tablero extends AppCompatActivity {
         retirar.setOnClickListener(new lTVClickControlesJuego());
         apostar.setOnClickListener(new lTVClickControlesJuego());
 
-
-
         // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
 
         for (int i=0;i<pA.length;i++) {
@@ -193,12 +203,6 @@ public class tablero extends AppCompatActivity {
         for (int i=0;i<jugadortv.length;i++) {
             jugadortv[i].setOnClickListener(new lTVClickJugadores());
         }
-
-
-
-
-
-
     }
 
     @Override

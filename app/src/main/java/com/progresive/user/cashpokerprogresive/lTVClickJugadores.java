@@ -6,10 +6,6 @@ import android.view.View;
 /**
  * Created by JuanEsteban on 30/04/2016.
  */
-
-
-
-
 public class lTVClickJugadores implements View.OnClickListener {
 
     public int posicion (int id) {
@@ -40,6 +36,7 @@ public class lTVClickJugadores implements View.OnClickListener {
     public void onClick(View v)
     {
         int i=posicion(v.getId());
+        tablero.eleccion=i;
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
@@ -55,7 +52,7 @@ public class lTVClickJugadores implements View.OnClickListener {
                     tablero.mesaJuego.jugadores[i].cargarapuesta(tablero.mesaJuego.dealerJuego.ponerFicha());
                     break;
                 case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
-
+                    tablero.msgConfRetiro.show();
                     break;
             }
 

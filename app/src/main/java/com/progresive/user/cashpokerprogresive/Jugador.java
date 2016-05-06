@@ -17,6 +17,9 @@ public class Jugador {
     public void cargarapuesta(int fichas){
         Apuesta+=fichas;
     }
+    public void reiniciarApuesta(){
+        Apuesta=0;
+    }
     public boolean verSiPausado()
     {
         return(Enmesa);
