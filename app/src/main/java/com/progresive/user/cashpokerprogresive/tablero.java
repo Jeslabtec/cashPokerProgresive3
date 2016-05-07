@@ -18,15 +18,15 @@ import android.widget.TextView;
  */
 public class tablero extends AppCompatActivity {
 
+<<<<<<< HEAD
+    static Mesa mesaJuego;
+    static AlertDialog msgConfPago;
+=======
     static Mesa mesaJuego=new Mesa();
-    static TextView[] jugadortv=new TextView[7];
-    static TextView[] pA=new TextView[6];
-    static TextView jugar;
-    static TextView apostar;
-    static TextView retirar;
-    static TextView pagar;
     static AlertDialog alert1;
-
+    static AlertDialog msgConfRetiro;
+>>>>>>> origin/master
+    static int eleccion=-1;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -120,86 +120,147 @@ public class tablero extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
+        //--------------------------------------------------------------------------------------------//
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
+        creaMensajes.setMessage("Putamadre");
+        creaMensajes.setCancelable(true);
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Putamadre");
-        builder1.setCancelable(true);
+<<<<<<< HEAD
 
-        builder1.setPositiveButton("hola", new DialogInterface.OnClickListener() {
+        // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
+
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
+        creaMensajes.setMessage("Desea Confirmar El pago");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+=======
+        creaMensajes.setPositiveButton("hola", new DialogInterface.OnClickListener() {
+>>>>>>> origin/master
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-            dialog.cancel();
+            public void onClick(DialogInterface dialog, int id) {
+                tablero.mesaJuego.jugador[eleccion].cargarapuesta(5);
+                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[eleccion].verapuesta()));
+                tablero.eleccion=-1;
+                dialog.cancel();
             }
         });
-        builder1.setNegativeButton( "Jodete puta, no me saludes",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+<<<<<<< HEAD
 
-        alert1 = builder1.create();
+        creaMensajes.setNegativeButton( "Cancelar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                tablero.eleccion=-1;
+                dialog.cancel();
+            }
+        });
+        msgConfPago = creaMensajes.create();
 
+        TextView[] datos={(TextView) findViewById(R.id.tvJugador1),(TextView) findViewById(R.id.tvJugador2),
+                (TextView) findViewById(R.id.tvJugador3),(TextView) findViewById(R.id.tvJugador4),
+                (TextView) findViewById(R.id.tvJugador5),(TextView) findViewById(R.id.tvJugador6),
+                (TextView) findViewById(R.id.tvJugador7),(TextView) findViewById(R.id.tvPremioApuesta1),
+                (TextView) findViewById(R.id.tvPremioApuesta2),(TextView) findViewById(R.id.tvPremioApuesta3),
+                (TextView) findViewById(R.id.tvPremioApuesta4),(TextView) findViewById(R.id.tvPremioApuesta5),
+                (TextView) findViewById(R.id.tvPremioApuesta6),(TextView) findViewById(R.id.tvPagar),
+                (TextView) findViewById(R.id.tvJugar),(TextView) findViewById(R.id.tvApostar),
+                (TextView) findViewById(R.id.tvRetiroTotal)};
 
+        mesaJuego=new Mesa(datos);
+=======
+        creaMensajes.setNegativeButton("Jodete puta, no me saludes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+>>>>>>> origin/master
 
+        alert1 = creaMensajes.create();
+        //-----------------------------------------------------------------------------------------------------//
+        //Mensaje de confirmacion de retiro//
+        creaMensajes.setMessage("Seguro qué desea retirarse?");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+<<<<<<< HEAD
 
-
-
-
-
-
+       // https://www.iconfinder.com/        Descargar los iconos
+        }
+=======
+                tablero.mesaJuego.jugadores[eleccion].reiniciarApuesta();
+                dialog.cancel();
+                eleccion=-1;
+            }
+        });
+        creaMensajes.setNegativeButton("Cancelar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                eleccion=-1;
+                dialog.cancel();
+            }
+        });
+        msgConfRetiro= creaMensajes.create();
+       //-------------------------------------------------------------------------------------------------//
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
-        jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
-        jugadortv[1]= (TextView) findViewById(R.id.tvJugador2);
-        jugadortv[2]= (TextView) findViewById(R.id.tvJugador3);
-        jugadortv[3]= (TextView) findViewById(R.id.tvJugador4);
-        jugadortv[4]= (TextView) findViewById(R.id.tvJugador5);
-        jugadortv[5]= (TextView) findViewById(R.id.tvJugador6);
-        jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
+        mesaJuego.jugadores[0]= new Jugador((TextView) findViewById(R.id.tvJugador1));
+        mesaJuego.jugadores[1]= new Jugador((TextView) findViewById(R.id.tvJugador2));
+        mesaJuego.jugadores[2]= new Jugador((TextView) findViewById(R.id.tvJugador3));
+        mesaJuego.jugadores[3]= new Jugador((TextView) findViewById(R.id.tvJugador4));
+        mesaJuego.jugadores[4]= new Jugador((TextView) findViewById(R.id.tvJugador5));
+        mesaJuego.jugadores[5]= new Jugador((TextView) findViewById(R.id.tvJugador6));
+        mesaJuego.jugadores[6]= new Jugador((TextView) findViewById(R.id.tvJugador7));
+
+>>>>>>> origin/master
 
         //2. variables del premio y tipo de apuesta
 
+<<<<<<< HEAD
 
-        pA[0]= (TextView) findViewById(R.id.tvPremioApuesta1);
-        pA[1]= (TextView) findViewById(R.id.tvPremioApuesta2);
-        pA[2]= (TextView) findViewById(R.id.tvPremioApuesta3);
-        pA[3]= (TextView) findViewById(R.id.tvPremioApuesta4);
-        pA[4]= (TextView) findViewById(R.id.tvPremioApuesta5);
-        pA[5]= (TextView) findViewById(R.id.tvPremioApuesta6);
 
-        //3. variables de los botones de control
-        /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
-        jugar= (TextView) findViewById(R.id.tvJugar);
-        apostar= (TextView) findViewById(R.id.tvApostar);
-        retirar= (TextView) findViewById(R.id.tvRetiroTotal);
-        pagar= (TextView) findViewById(R.id.tvPagar);
+
+
+
+
+
+
+
+
+
+
+
+=======
+        mesaJuego.dealerJuego= new Dealer(new TextView[]{(TextView) findViewById(R.id.tvPremioApuesta1),
+    (TextView) findViewById(R.id.tvPremioApuesta2),(TextView) findViewById(R.id.tvPremioApuesta3),
+                (TextView) findViewById(R.id.tvPremioApuesta4),
+      (TextView) findViewById(R.id.tvPremioApuesta5),
+        (TextView) findViewById(R.id.tvPremioApuesta6),
+
+       (TextView) findViewById(R.id.tvJugar),
+        (TextView) findViewById(R.id.tvApostar),
+       (TextView) findViewById(R.id.tvRetiroTotal),
+   (TextView) findViewById(R.id.tvPagar)});
 
 
        // https://www.iconfinder.com/        Descargar los iconos
+
+
+        // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
         pagar.setOnClickListener(new lTVClickControlesJuego());
         jugar.setOnClickListener(new lTVClickControlesJuego());
         retirar.setOnClickListener(new lTVClickControlesJuego());
         apostar.setOnClickListener(new lTVClickControlesJuego());
-
-
-
-        // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
-
+        
         for (int i=0;i<pA.length;i++) {
             pA[i].setOnClickListener(new lTVClickBtnApeustasPremios());
         }
         for (int i=0;i<jugadortv.length;i++) {
-            jugadortv[i].setOnClickListener(new lTVClickJugadores());
+            mesaJuego.jugadores[i].tvJugador.setOnClickListener(new lTVClickJugadores());
         }
-
-
-
-
-
-
     }
+>>>>>>> origin/master
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
