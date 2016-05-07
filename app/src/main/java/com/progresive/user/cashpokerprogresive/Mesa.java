@@ -8,15 +8,4 @@ public class Mesa {
     Dealer dealerJuego;
 
 
-
-// constructor de la clase Mesa:  el programa
-    public Mesa()
-        {
-            //Mesa NuevaMesa=new Mesa();
-        for(int i=0;i<jugadores.length;i++) {
-            jugadores[i] = new Jugador();
-            }
-        dealerJuego=new Dealer();
-        }
-
 }

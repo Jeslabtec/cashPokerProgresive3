@@ -1,5 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
+import android.widget.TextView;
+
 /**
  * Created by JuanEsteban on 25/04/2016.
  */
@@ -8,12 +10,24 @@ public class Jugador {
     // atributos
     private int Apuesta=0;
     private boolean Enmesa=false;
-    private boolean Enjuego=false;
-
+    private boolean Undido=false;
+    public TextView tvJugador;
     // metodos
+    public Jugador(TextView v)
+    {
+      tvJugador=v;
+    }
+
+
+
+
     public void apostar(){
         Apuesta--;
     }
+
+
+
+
     public void cargarapuesta(int fichas){
         Apuesta+=fichas;
     }
@@ -24,20 +38,15 @@ public class Jugador {
     {
         return(Enmesa);
     }
-    public boolean verSiEnJuego()
-    {
-        return(Enjuego);
-    }
     public void ponerPausado()
     {
         Enmesa=!(Enmesa);
-    }
-    public void ponerEnJuego()
-    {
-        Enjuego=!(Enjuego);
     }
     public int verapuesta()
     {
         return Apuesta;
     }
+    public void undirlo(){Undido=!Undido;}
+    public boolean verundido(){return Undido;}
+
 }

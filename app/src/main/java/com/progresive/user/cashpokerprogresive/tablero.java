@@ -19,12 +19,6 @@ import android.widget.TextView;
 public class tablero extends AppCompatActivity {
 
     static Mesa mesaJuego=new Mesa();
-    static TextView[] jugadortv=new TextView[7];
-    static TextView[] pA=new TextView[6];
-    static TextView jugar;
-    static TextView apostar;
-    static TextView retirar;
-    static TextView pagar;
     static AlertDialog alert1;
     static AlertDialog msgConfRetiro;
     static int eleccion=-1;
@@ -164,44 +158,43 @@ public class tablero extends AppCompatActivity {
        //-------------------------------------------------------------------------------------------------//
         // definiciones de las variables del tablero
         //1. Vari ables de lostv de los jugadores
-        jugadortv[0]= (TextView) findViewById(R.id.tvJugador1);
-        jugadortv[1]= (TextView) findViewById(R.id.tvJugador2);
-        jugadortv[2]= (TextView) findViewById(R.id.tvJugador3);
-        jugadortv[3]= (TextView) findViewById(R.id.tvJugador4);
-        jugadortv[4]= (TextView) findViewById(R.id.tvJugador5);
-        jugadortv[5]= (TextView) findViewById(R.id.tvJugador6);
-        jugadortv[6]= (TextView) findViewById(R.id.tvJugador7);
+        mesaJuego.jugadores[0]= new Jugador((TextView) findViewById(R.id.tvJugador1));
+        mesaJuego.jugadores[1]= new Jugador((TextView) findViewById(R.id.tvJugador2));
+        mesaJuego.jugadores[2]= new Jugador((TextView) findViewById(R.id.tvJugador3));
+        mesaJuego.jugadores[3]= new Jugador((TextView) findViewById(R.id.tvJugador4));
+        mesaJuego.jugadores[4]= new Jugador((TextView) findViewById(R.id.tvJugador5));
+        mesaJuego.jugadores[5]= new Jugador((TextView) findViewById(R.id.tvJugador6));
+        mesaJuego.jugadores[6]= new Jugador((TextView) findViewById(R.id.tvJugador7));
+
 
         //2. variables del premio y tipo de apuesta
 
-        pA[0]= (TextView) findViewById(R.id.tvPremioApuesta1);
-        pA[1]= (TextView) findViewById(R.id.tvPremioApuesta2);
-        pA[2]= (TextView) findViewById(R.id.tvPremioApuesta3);
-        pA[3]= (TextView) findViewById(R.id.tvPremioApuesta4);
-        pA[4]= (TextView) findViewById(R.id.tvPremioApuesta5);
-        pA[5]= (TextView) findViewById(R.id.tvPremioApuesta6);
+        mesaJuego.dealerJuego= new Dealer(new TextView[]{(TextView) findViewById(R.id.tvPremioApuesta1),
+    (TextView) findViewById(R.id.tvPremioApuesta2),(TextView) findViewById(R.id.tvPremioApuesta3),
+                (TextView) findViewById(R.id.tvPremioApuesta4),
+      (TextView) findViewById(R.id.tvPremioApuesta5),
+        (TextView) findViewById(R.id.tvPremioApuesta6),
 
-        //3. variables de los botones de control
-        /*nota: el retiro momentaneo se dara haciendo click sostenido sobre el jugador*/
-        jugar= (TextView) findViewById(R.id.tvJugar);
-        apostar= (TextView) findViewById(R.id.tvApostar);
-        retirar= (TextView) findViewById(R.id.tvRetiroTotal);
-        pagar= (TextView) findViewById(R.id.tvPagar);
+       (TextView) findViewById(R.id.tvJugar),
+        (TextView) findViewById(R.id.tvApostar),
+       (TextView) findViewById(R.id.tvRetiroTotal),
+   (TextView) findViewById(R.id.tvPagar)});
 
 
        // https://www.iconfinder.com/        Descargar los iconos
+
+
+        // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
         pagar.setOnClickListener(new lTVClickControlesJuego());
         jugar.setOnClickListener(new lTVClickControlesJuego());
         retirar.setOnClickListener(new lTVClickControlesJuego());
         apostar.setOnClickListener(new lTVClickControlesJuego());
-
-        // enlace de cada uno de los botones de la interfaz grafica con su respectivo litener
-
+        
         for (int i=0;i<pA.length;i++) {
             pA[i].setOnClickListener(new lTVClickBtnApeustasPremios());
         }
         for (int i=0;i<jugadortv.length;i++) {
-            jugadortv[i].setOnClickListener(new lTVClickJugadores());
+            mesaJuego.jugadores[i].tvJugador.setOnClickListener(new lTVClickJugadores());
         }
     }
 
