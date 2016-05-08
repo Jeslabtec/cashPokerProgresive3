@@ -11,6 +11,7 @@ public class Jugador {
     private int Apuesta=0;
     private boolean Enmesa=false;
 
+    private boolean Undido=false;
     public TextView jugadortv;
 
     // constructor
@@ -19,12 +20,6 @@ public class Jugador {
        jugadortv=v;
        jugadortv.setOnClickListener(new lTVClickJugadores());
     }
-
-
-
-    private boolean Undido=false;
-
-
 
 
 

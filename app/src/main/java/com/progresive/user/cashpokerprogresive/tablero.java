@@ -1,4 +1,4 @@
-package com.progresive.user.cashpokerprogresive;
+﻿package com.progresive.user.cashpokerprogresive;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -121,11 +121,9 @@ public class tablero extends AppCompatActivity {
         creaMensajes.setMessage("Putamadre");
         creaMensajes.setCancelable(true);
 
-
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
 
         creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 tablero.mesaJuego.jugador[eleccion].cargarapuesta(5);
@@ -134,8 +132,6 @@ public class tablero extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-
-
         creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
@@ -186,15 +182,30 @@ public class tablero extends AppCompatActivity {
 
 
 
+        alert1 = creaMensajes.create();
+        //-----------------------------------------------------------------------------------------------------//
+        //Mensaje de confirmacion de retiro//
+        creaMensajes.setMessage("Seguro qué desea retirarse?");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tablero.mesaJuego.jugadores[eleccion].reiniciarApuesta();
+                dialog.cancel();
+                eleccion=-1;
+            }
+        });
+        creaMensajes.setNegativeButton("Cancelar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                eleccion=-1;
+                dialog.cancel();
+            }
+        });
+        msgConfRetiro= creaMensajes.create();
+       
+ // https://www.iconfinder.com/        Descargar los iconos
 
-
-
-
-
-
-
-
-       // https://www.iconfinder.com/        Descargar los iconos
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
