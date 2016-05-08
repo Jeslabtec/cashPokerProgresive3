@@ -18,7 +18,7 @@ import android.widget.TextView;
  */
 public class tablero extends AppCompatActivity {
 
-
+    static AppCompatActivity dato;
     static Mesa mesaJuego;
     static AlertDialog msgConfPago;
     static AlertDialog msgConfRetiro;
@@ -116,30 +116,14 @@ public class tablero extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        //--------------------------------------------------------------------------------------------//
-        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
-        creaMensajes.setMessage("Putamadre");
-        creaMensajes.setCancelable(true);
 
-        // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
+        dato=this;
 
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.mesaJuego.jugador[eleccion].cargarapuesta(5);
-                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[eleccion].verapuesta()));
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        msgConfPago = creaMensajes.create();
+
+
+        /**********************************************************************************************
+         * Creación del objeto mesajuego, objeto fundamental para el funcionamiento del poker         *
+         * ********************************************************************************************/
 
         TextView[] datos = {(TextView) findViewById(R.id.tvJugador1), (TextView) findViewById(R.id.tvJugador2),
                 (TextView) findViewById(R.id.tvJugador3), (TextView) findViewById(R.id.tvJugador4),
@@ -154,26 +138,33 @@ public class tablero extends AppCompatActivity {
         mesaJuego = new Mesa(datos);
 
 
-        //-----------------------------------------------------------------------------------------------------//
-        //Mensaje de confirmacion de retiro//
-        creaMensajes.setMessage("Seguro qué desea retirarse?");
+
+
+
+        // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
+        creaMensajes.setMessage("Confirma el pago de este premio?");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
+            public void onClick(DialogInterface dialog, int id) {
+                tablero.mesaJuego.jugador[eleccion].cargarapuesta(Integer.parseInt((String)tablero.mesaJuego.dealerJuego.apuestaPremio[5].getText()));
+                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[eleccion].verapuesta()));
+                tablero.eleccion = -1;
                 dialog.cancel();
-                eleccion = -1;
             }
         });
         creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                eleccion = -1;
+                tablero.eleccion = -1;
                 dialog.cancel();
             }
         });
-        msgConfRetiro = creaMensajes.create();
+        msgConfPago = creaMensajes.create();
+
+
+
 
 
         //-----------------------------------------------------------------------------------------------------//

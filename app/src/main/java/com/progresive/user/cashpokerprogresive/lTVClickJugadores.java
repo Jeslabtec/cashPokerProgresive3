@@ -1,6 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.view.View;
 
@@ -43,8 +44,9 @@ public class lTVClickJugadores implements View.OnClickListener {
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
+                    prueba(tablero.eleccion);
                     tablero.msgConfPago.show();
-                    tablero.eleccion=i;
+                    //tablero.eleccion=i;
                     break;
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
 
@@ -60,7 +62,31 @@ public class lTVClickJugadores implements View.OnClickListener {
     }
 
 
+    public void prueba(final int elecciones)
+    {
+        AlertDialog msgConfPago;
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
+        creaMensajes.setMessage("Confirma el pago de este premio?");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                tablero.mesaJuego.jugador[elecciones].cargarapuesta(Integer.parseInt((String)tablero.mesaJuego.dealerJuego.apuestaPremio[5].getText()));
+                tablero.mesaJuego.jugador[elecciones].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[elecciones].verapuesta()));
+                tablero.eleccion = -1;
+                dialog.cancel();
+            }
+        });
+        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                tablero.eleccion = -1;
+                dialog.cancel();
+            }
+        });
+        msgConfPago = creaMensajes.create();
 
+    }
 
 
 }

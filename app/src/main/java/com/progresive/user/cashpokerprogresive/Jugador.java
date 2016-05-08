@@ -15,8 +15,7 @@ public class Jugador {
     public TextView jugadortv;
 
     // constructor
-    public Jugador (TextView v)
-    {
+    public Jugador (TextView v)    {
        jugadortv=v;
        jugadortv.setOnClickListener(new lTVClickJugadores());
     }
