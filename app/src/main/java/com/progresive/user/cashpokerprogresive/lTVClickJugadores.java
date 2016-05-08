@@ -1,6 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.app.AlertDialog;
+import android.os.Handler;
 import android.view.View;
 
 /**
@@ -8,10 +9,11 @@ import android.view.View;
  */
 public class lTVClickJugadores implements View.OnClickListener {
 
+
     public int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:
-                tablero.mesaJuego.jugadores[0].undirlo();
+                tablero.mesaJuego.jugador[0].undirlo();
                 return (0);
             case R.id.tvJugador2:
                 return (1);
@@ -41,16 +43,14 @@ public class lTVClickJugadores implements View.OnClickListener {
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
-                    tablero.alert1.show();
-                    tablero.mesaJuego.jugadores[i].cargarapuesta(tablero.mesaJuego.dealerJuego.ponerFicha());
-                    tablero.mesaJuego.jugadores[i].tvJugador.setText(Integer.toString(tablero.mesaJuego.jugadores[i].verapuesta()));
-                    tablero.mesaJuego.dealerJuego.tomarFicha(0);
-                break;
+                    tablero.msgConfPago.show();
+                    tablero.eleccion=i;
+                    break;
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
 
                     break;
                 case 3:     // fase de apuestas
-                    tablero.mesaJuego.jugadores[i].cargarapuesta(tablero.mesaJuego.dealerJuego.ponerFicha());
+                    tablero.mesaJuego.jugador[i].cargarapuesta(1);
                     break;
                 case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
                     tablero.msgConfRetiro.show();

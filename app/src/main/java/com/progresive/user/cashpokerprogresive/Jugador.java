@@ -10,14 +10,16 @@ public class Jugador {
     // atributos
     private int Apuesta=0;
     private boolean Enmesa=false;
-    private boolean Undido=false;
-    public TextView tvJugador;
-    // metodos
-    public Jugador(TextView v)
-    {
-      tvJugador=v;
-    }
 
+    private boolean Undido=false;
+    public TextView jugadortv;
+
+    // constructor
+    public Jugador (TextView v)
+    {
+       jugadortv=v;
+       jugadortv.setOnClickListener(new lTVClickJugadores());
+    }
 
 
 
