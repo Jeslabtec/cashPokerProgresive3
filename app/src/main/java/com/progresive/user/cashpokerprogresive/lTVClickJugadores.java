@@ -13,7 +13,7 @@ public class lTVClickJugadores implements View.OnClickListener {
     public int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:
-                tablero.mesaJuego.jugadores[0].undirlo();
+                tablero.mesaJuego.jugador[0].undirlo();
                 return (0);
             case R.id.tvJugador2:
                 return (1);
@@ -43,18 +43,9 @@ public class lTVClickJugadores implements View.OnClickListener {
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
-<<<<<<< HEAD
-
                     tablero.msgConfPago.show();
                     tablero.eleccion=i;
                     break;
-=======
-                    tablero.alert1.show();
-                    tablero.mesaJuego.jugadores[i].cargarapuesta(tablero.mesaJuego.dealerJuego.ponerFicha());
-                    tablero.mesaJuego.jugadores[i].tvJugador.setText(Integer.toString(tablero.mesaJuego.jugadores[i].verapuesta()));
-                    tablero.mesaJuego.dealerJuego.tomarFicha(0);
-                break;
->>>>>>> origin/master
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
 
                     break;

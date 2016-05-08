@@ -10,7 +10,7 @@ public class Jugador {
     // atributos
     private int Apuesta=0;
     private boolean Enmesa=false;
-<<<<<<< HEAD
+
     public TextView jugadortv;
 
     // constructor
@@ -22,15 +22,8 @@ public class Jugador {
 
 
 
-=======
     private boolean Undido=false;
-    public TextView tvJugador;
->>>>>>> origin/master
-    // metodos
-    public Jugador(TextView v)
-    {
-      tvJugador=v;
-    }
+
 
 
 

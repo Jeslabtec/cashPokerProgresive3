@@ -10,7 +10,7 @@ public class Mesa {
     Jugador[] jugador=new Jugador[7];
     Dealer dealerJuego;
 
-<<<<<<< HEAD
+
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)
     {
@@ -20,7 +20,5 @@ public class Mesa {
         }
         dealerJuego=new Dealer(atributosDealer);
     }
-=======
->>>>>>> origin/master
 
 }
