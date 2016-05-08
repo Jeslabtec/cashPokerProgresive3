@@ -1,4 +1,5 @@
-﻿package com.progresive.user.cashpokerprogresive;
+package com.progresive.user.cashpokerprogresive;
+
 
 import android.widget.TextView;
 
@@ -23,14 +24,14 @@ public class Dealer {
           apuestaPremio[i]=v[i];
           apuestaPremio[i].setOnClickListener(new lTVClickBtnApeustasPremios());
       }
-      pagar=v[6];
-      pagar.setOnClickListener(new lTVClickControlesJuego());
-      jugar=v[7];
-      jugar.setOnClickListener(new lTVClickControlesJuego());
-      apostar=v[8];
-      apostar.setOnClickListener(new lTVClickControlesJuego());
-      retirar=v[9];
-      retirar.setOnClickListener(new lTVClickControlesJuego());
+      pagarTV=v[6];
+      pagarTV.setOnClickListener(new lTVClickControlesJuego());
+      jugarTV=v[7];
+      jugarTV.setOnClickListener(new lTVClickControlesJuego());
+      apostarTV=v[8];
+      apostarTV.setOnClickListener(new lTVClickControlesJuego());
+      retirarTV=v[9];
+      retirarTV.setOnClickListener(new lTVClickControlesJuego());
     }
 
 

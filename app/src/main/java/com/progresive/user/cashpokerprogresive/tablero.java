@@ -1,4 +1,4 @@
-﻿package com.progresive.user.cashpokerprogresive;
+package com.progresive.user.cashpokerprogresive;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -175,14 +175,7 @@ public class tablero extends AppCompatActivity {
         });
         msgConfRetiro = creaMensajes.create();
 
-    }
 
-
-
-
-
-
-        alert1 = creaMensajes.create();
         //-----------------------------------------------------------------------------------------------------//
         //Mensaje de confirmacion de retiro//
         creaMensajes.setMessage("Seguro qué desea retirarse?");
@@ -190,22 +183,22 @@ public class tablero extends AppCompatActivity {
         creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugadores[eleccion].reiniciarApuesta();
+                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
                 dialog.cancel();
-                eleccion=-1;
+                eleccion = -1;
             }
         });
-        creaMensajes.setNegativeButton("Cancelar",new DialogInterface.OnClickListener() {
+        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                eleccion=-1;
+                eleccion = -1;
                 dialog.cancel();
             }
         });
-        msgConfRetiro= creaMensajes.create();
-       
- // https://www.iconfinder.com/        Descargar los iconos
+        msgConfRetiro = creaMensajes.create();
 
+        // https://www.iconfinder.com/        Descargar los iconos
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
