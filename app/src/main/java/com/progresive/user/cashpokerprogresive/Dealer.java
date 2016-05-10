@@ -1,4 +1,4 @@
-﻿package com.progresive.user.cashpokerprogresive;
+package com.progresive.user.cashpokerprogresive;
 
 
 import android.app.AlertDialog;
