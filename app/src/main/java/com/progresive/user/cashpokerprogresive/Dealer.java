@@ -18,7 +18,6 @@ public class Dealer {
     public TextView[] apuestaPremio = new TextView[6];
 
 
-    private boolean confirmacion = false;
     private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
 
     AlertDialog msgErrorApuesta;
