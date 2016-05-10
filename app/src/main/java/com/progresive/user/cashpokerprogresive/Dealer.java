@@ -15,8 +15,16 @@ public class Dealer {
     public TextView jugarTV;
     public TextView apostarTV;
     public TextView retirarTV;
-    private int estadoJuego=1; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
+    public TextView confirmarTV;
     public TextView[] apuestaPremio=new TextView[6];
+
+
+
+
+
+    private boolean confirmacion=false;
+    private int estadoJuego=3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
+    private int cantidadASubir=0;
 
 
 
@@ -39,6 +47,8 @@ public class Dealer {
       apostarTV.setOnClickListener(new lTVClickControlesJuego());
       retirarTV=v[9];
       retirarTV.setOnClickListener(new lTVClickControlesJuego());
+      confirmarTV=v[10];
+      confirmarTV.setOnClickListener(new lTVClickControlesJuego());
     }
 
 
@@ -54,6 +64,24 @@ public class Dealer {
     {
         estadoJuego=NuevoEstado;
     }
+    int verCantidadASubir()
+    {
+        return(cantidadASubir);
+    }
+    void cambiarCantidadASubir(int FichaASumar)
+    {
+        cantidadASubir+=FichaASumar;
+    }
+    void reiniciarCantidadASubir(){cantidadASubir=0;}
+    boolean verSiConfirmacion()
+    {
+        return(confirmacion);
+    }
+    void cambiarConfirmacion()    {
+        confirmacion=!(confirmacion);
+    }
+
+
 
 
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles

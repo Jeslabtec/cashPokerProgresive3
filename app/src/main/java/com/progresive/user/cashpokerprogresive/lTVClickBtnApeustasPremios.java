@@ -38,6 +38,7 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
            {
                case 1: // fase pagar
+
                    // tablero.mesaJuego.dealerJuego.tomarFicha(i);
                break;
                case 2: //jugar
