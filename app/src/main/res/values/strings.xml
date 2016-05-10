@@ -12,7 +12,8 @@
     <string name="Apuesta4">10</string>
     <string name="Apuesta5">15</string>
     <string name="Apuesta6">20</string>
-
+    <string name="Confirmar">Confirmar</string>
+    <string name="Cancelar">Cancelar</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="progressive">Progressive</string>

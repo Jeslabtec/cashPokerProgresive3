@@ -296,17 +296,6 @@
             android:layout_height="78dp"
             android:layout_gravity="center_horizontal|bottom">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="confirmar"
-                android:id="@+id/confirmarTV"
-                android:background="@drawable/coins"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:textSize="40sp"
-                android:visibility="visible" />
         </LinearLayout>
 
     </FrameLayout>
