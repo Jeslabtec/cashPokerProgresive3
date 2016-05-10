@@ -19,14 +19,9 @@ public class Jugador {
        jugadortv.setOnClickListener(new lTVClickJugadores());
     }
 
-
-
     public void apostar(){
         Apuesta--;
     }
-
-
-
 
     public void cargarapuesta(int fichas){
         Apuesta+=fichas;
