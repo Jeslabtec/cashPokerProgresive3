@@ -6,6 +6,15 @@ import android.view.View;
  * Created by JuanEsteban on 03/05/2016.
  */
 public class lTVClickControlesJuego implements View.OnClickListener {
+
+    private void PonerAJugar(){
+        for(int i=1;i<tablero.mesaJuego.jugador.length;i++){
+            if (tablero.mesaJuego.jugador[i].verapuesta()>0){
+                tablero.mesaJuego.jugador[i].cargarapuesta(-1);
+            }
+
+        }
+    }
     @Override
     public void onClick(View v)
     {
@@ -20,6 +29,7 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
                     tablero.mesaJuego.dealerJuego.confirmarTV.setVisibility(View.INVISIBLE);
                     tablero.mesaJuego.dealerJuego.confirmarTV.setClickable(false);
+                    PonerAJugar();
                     break;
                 case R.id.tvApostar:
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);

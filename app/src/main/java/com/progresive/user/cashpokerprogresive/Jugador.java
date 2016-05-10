@@ -10,9 +10,7 @@ public class Jugador {
 
     // atributos
     private int Apuesta=0;
-    private boolean Enmesa=false;
-
-    private boolean Undido=false;
+    private boolean Enmesa=true;
     public TextView jugadortv;
 
     // constructor
@@ -21,14 +19,9 @@ public class Jugador {
        jugadortv.setOnClickListener(new lTVClickJugadores());
     }
 
-
-
     public void apostar(){
         Apuesta--;
     }
-
-
-
 
     public void cargarapuesta(int fichas){
         Apuesta+=fichas;
@@ -48,7 +41,6 @@ public class Jugador {
     {
         return Apuesta;
     }
-    public void undirlo(){Undido=!Undido;}
-    public boolean verundido(){return Undido;}
+
 
 }

@@ -108,20 +108,21 @@ public class Dealer {
         msgConfPago = creaMensajes.create();
         return(msgConfPago);
     }
-
+//------------------------------------------------------------------------------------------------------------------------------//
     AlertDialog msgConfirmarRetiro(final int eleccion){
         AlertDialog msgConfRetiro;
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Seguro qué desea retirarse?");
+        creaMensajes.setMessage("¿Seguro qué desea retirarse?");
         creaMensajes.setCancelable(true);
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
+            tablero.mesaJuego.dealerJuego.msgConfirmarDinero(eleccion).show();
                 dialog.cancel();
+                //Mensaje con
             }
         });
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        creaMensajes.setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
@@ -130,8 +131,27 @@ public class Dealer {
         msgConfRetiro = creaMensajes.create();
         return msgConfRetiro;
     }
+    //-----------------------------------------------------------------------------------------------------------//
+    AlertDialog msgConfirmarDinero(final int eleccion){
+        AlertDialog msgConfDinero;
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
+        creaMensajes.setMessage("Pagar al Jugador "+tablero.mesaJuego.jugador[eleccion].jugadortv.getText()+" fichas");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
+                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(R.string.cero);
+                dialog.cancel();
+            }
+        });
+        msgConfDinero = creaMensajes.create();
+        return msgConfDinero;
+    }
+//---------------------------------------------------------------------------------------------------------//
 
+}
 
 
     // Métodos de paso de informacion
-}
+

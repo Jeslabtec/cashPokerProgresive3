@@ -16,7 +16,6 @@ public class lTVClickJugadores implements View.OnClickListener {
     public int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:
-                tablero.mesaJuego.jugador[0].undirlo();
                 return (0);
             case R.id.tvJugador2:
                 return (1);
