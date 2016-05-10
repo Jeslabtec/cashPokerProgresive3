@@ -19,4 +19,9 @@ public class Mesa {
         }
         dealerJuego=new Dealer(atributosDealer);
     }
+
+
+
+
+
 }

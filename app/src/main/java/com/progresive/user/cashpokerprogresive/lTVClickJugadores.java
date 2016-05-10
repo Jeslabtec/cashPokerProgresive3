@@ -11,6 +11,8 @@ import android.view.View;
 public class lTVClickJugadores implements View.OnClickListener {
 
 
+
+
     public int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:
@@ -40,13 +42,10 @@ public class lTVClickJugadores implements View.OnClickListener {
     public void onClick(View v)
     {
         int i=posicion(v.getId());
-        tablero.eleccion=i;
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
-                    prueba(tablero.eleccion);
-                    tablero.msgConfPago.show();
-                    //tablero.eleccion=i;
+                    tablero.mesaJuego.dealerJuego.msgConfirmarPago(i).show();
                     break;
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
 
@@ -55,38 +54,14 @@ public class lTVClickJugadores implements View.OnClickListener {
                     tablero.mesaJuego.jugador[i].cargarapuesta(1);
                     break;
                 case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
-                    tablero.msgConfRetiro.show();
+                    tablero.mesaJuego.dealerJuego.msgConfirmarRetiro(i).show();
                     break;
             }
 
     }
 
 
-    public void prueba(final int elecciones)
-    {
-        AlertDialog msgConfPago;
-        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Confirma el pago de este premio?");
-        creaMensajes.setCancelable(true);
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.mesaJuego.jugador[elecciones].cargarapuesta(Integer.parseInt((String)tablero.mesaJuego.dealerJuego.apuestaPremio[5].getText()));
-                tablero.mesaJuego.jugador[elecciones].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[elecciones].verapuesta()));
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        msgConfPago = creaMensajes.create();
 
-    }
 
 
 }

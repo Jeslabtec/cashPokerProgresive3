@@ -20,9 +20,6 @@ public class tablero extends AppCompatActivity {
 
     static AppCompatActivity dato;
     static Mesa mesaJuego;
-    static AlertDialog msgConfPago;
-    static AlertDialog msgConfRetiro;
-    static int eleccion=-1;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -142,26 +139,7 @@ public class tablero extends AppCompatActivity {
 
 
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
-        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(this);
-        creaMensajes.setMessage("Confirma el pago de este premio?");
-        creaMensajes.setCancelable(true);
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.mesaJuego.jugador[eleccion].cargarapuesta(Integer.parseInt((String)tablero.mesaJuego.dealerJuego.apuestaPremio[5].getText()));
-                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[eleccion].verapuesta()));
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tablero.eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        msgConfPago = creaMensajes.create();
+
 
 
 
@@ -169,24 +147,7 @@ public class tablero extends AppCompatActivity {
 
         //-----------------------------------------------------------------------------------------------------//
         //Mensaje de confirmacion de retiro//
-        creaMensajes.setMessage("Seguro qué desea retirarse?");
-        creaMensajes.setCancelable(true);
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
-                dialog.cancel();
-                eleccion = -1;
-            }
-        });
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                eleccion = -1;
-                dialog.cancel();
-            }
-        });
-        msgConfRetiro = creaMensajes.create();
+
 
         // https://www.iconfinder.com/        Descargar los iconos
     }

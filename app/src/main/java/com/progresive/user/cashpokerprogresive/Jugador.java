@@ -5,6 +5,7 @@ import android.widget.TextView;
 /**
  * Created by JuanEsteban on 25/04/2016.
  */
+
 public class Jugador {
 
     // atributos
