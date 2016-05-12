@@ -10,7 +10,7 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
 
 
 
-    public int posicion (int id, TextView[] datos) {
+    public int Apuesta (int id, TextView[] datos) {
         switch (id) {
             case R.id.tvPremioApuesta1:
                 return (Integer.parseInt((String) datos[0].getText()));
@@ -34,17 +34,31 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
     @Override
     public void onClick(View v)
     {
-        int i=posicion(v.getId(),tablero.mesaJuego.dealerJuego.apuestaPremio);
+        int i=Apuesta(v.getId(),tablero.mesaJuego.dealerJuego.apuestaPremio);
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
            {
                case 1: // fase pagar
-
+                   if (lTVClickJugadores.jugadorSeleccionado<7&&lTVClickJugadores.jugadorSeleccionado>=0) {
+                       tablero.mesaJuego.dealerJuego.msgConfirmarPago(i).show();
+                   }
+                   else
+                   {
+                       tablero.mesaJuego.dealerJuego.msgErrorApuesta.show();
+                   }
                    // tablero.mesaJuego.dealerJuego.tomarFicha(i);
                break;
                case 2: //jugar
 
                break;
                case 3: //apostar
+                   if (lTVClickJugadores.jugadorSeleccionado<7&&lTVClickJugadores.jugadorSeleccionado>=0) {
+                       tablero.mesaJuego.jugador[lTVClickJugadores.jugadorSeleccionado].cargarapuesta(i);
+                       tablero.mesaJuego.jugador[lTVClickJugadores.jugadorSeleccionado].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[lTVClickJugadores.jugadorSeleccionado].verapuesta()));
+                   }
+                   else
+                   {
+                        tablero.mesaJuego.dealerJuego.msgErrorApuesta.show();
+                   }
                    //tablero.mesaJuego.dealerJuego.tomarFicha(i);
                break;
                case 4: //retirar
