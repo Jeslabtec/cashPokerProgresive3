@@ -15,111 +15,106 @@ public class Dealer {
     public TextView jugarTV;
     public TextView apostarTV;
     public TextView retirarTV;
-    public TextView confirmarTV;
-    public TextView[] apuestaPremio=new TextView[6];
+    public TextView[] apuestaPremio = new TextView[6];
+
+    public TextView AvisoTV;
+    public TextView ProgresivoTV;
 
 
+    private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
+    private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
 
-
-
-    private boolean confirmacion=false;
-    private int estadoJuego=3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
-    private int cantidadASubir=0;
-
-
-
-
-
-
+    public int jugadorSeleccionado=-1; //Es una variable que guarda que jugadors a sido seleccionado
+    private boolean Restando=false;
     // atributos de paso de informacion
     // atributos Administrativos: no se si crearlos aquí o en el tipo de datos mesa
 
-    public Dealer(TextView[] v)    {
-      for (int i=0;i<apuestaPremio.length;i++){
-          apuestaPremio[i]=v[i];
-          apuestaPremio[i].setOnClickListener(new lTVClickBtnApeustasPremios());
-      }
-      pagarTV=v[6];
-      pagarTV.setOnClickListener(new lTVClickControlesJuego());
-      jugarTV=v[7];
-      jugarTV.setOnClickListener(new lTVClickControlesJuego());
-      apostarTV=v[8];
-      apostarTV.setOnClickListener(new lTVClickControlesJuego());
-      retirarTV=v[9];
-      retirarTV.setOnClickListener(new lTVClickControlesJuego());
-      confirmarTV=v[10];
-      confirmarTV.setOnClickListener(new lTVClickControlesJuego());
+    public Dealer(TextView[] v) {
+        for (int i = 0; i < apuestaPremio.length; i++) {
+            apuestaPremio[i] = v[i];
+            apuestaPremio[i].setOnClickListener(new lTVClickBtnApeustasPremios());
+        }
+        pagarTV = v[6];
+        pagarTV.setOnClickListener(new lTVClickControlesJuego());
+        jugarTV = v[7];
+        jugarTV.setOnClickListener(new lTVClickControlesJuego());
+        apostarTV = v[8];
+        apostarTV.setOnClickListener(new lTVClickControlesJuego());
+        retirarTV = v[9];
+        retirarTV.setOnClickListener(new lTVClickControlesJuego());
+
+        AvisoTV = v[10];
+        ProgresivoTV=v[11];
+    }
+    boolean verSiRestando(){
+        return Restando;
+    }
+    void cambiarRestando(){
+        if(Restando) {
+            Restando = false;
+            apuestaPremio[5].setText("+");
+
+        }else{
+            Restando=true;
+            apuestaPremio[5].setText("-");
+        }
     }
 
-
-
-
-
-
-    int verElEstadoDelJuego()
-    {
-        return(estadoJuego);
+    int verElEstadoDelJuego() {
+        return (estadoJuego);
     }
-    void cambiarElEstadoDelJuego(int NuevoEstado)
-    {
-        estadoJuego=NuevoEstado;
+    void cambiarElEstadoDelJuego(int NuevoEstado) {
+        estadoJuego = NuevoEstado;
     }
-    int verCantidadASubir()
-    {
-        return(cantidadASubir);
-    }
-    void cambiarCantidadASubir(int FichaASumar)
-    {
-        cantidadASubir+=FichaASumar;
-    }
-    void reiniciarCantidadASubir(){cantidadASubir=0;}
-    boolean verSiConfirmacion()
-    {
-        return(confirmacion);
-    }
-    void cambiarConfirmacion()    {
-        confirmacion=!(confirmacion);
-    }
-
-
-
+    boolean versiAlguienJugando(){return AlgunaApuesta;}
+    void nadieJugando(){AlgunaApuesta=false;}
+    void alguienJugando(){AlgunaApuesta=true;}
 
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles
+//-----------------------------------------------------------------------------------------------------------------------//
+    AlertDialog msgConfirmarPago(final int Premio) {
 
-    AlertDialog msgConfirmarPago(final int elecciones){
-        AlertDialog msgConfPago;
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
         creaMensajes.setMessage("Confirma el pago de este premio?");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                tablero.mesaJuego.jugador[elecciones].cargarapuesta(Integer.parseInt((String)tablero.mesaJuego.dealerJuego.apuestaPremio[5].getText()));
-                tablero.mesaJuego.jugador[elecciones].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[elecciones].verapuesta()));
+
+
+                double i=Double.parseDouble((String)ProgresivoTV.getText());
+
+                tablero.mesaJuego.jugador[tablero.mesaJuego.dealerJuego.jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
+                tablero.mesaJuego.dealerJuego.jugadorSeleccionado=-1;
+
                 dialog.cancel();
             }
         });
+
         creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
+                tablero.mesaJuego.dealerJuego.jugadorSeleccionado=-1;
                 dialog.cancel();
             }
         });
-        msgConfPago = creaMensajes.create();
-        return(msgConfPago);
+
+        return creaMensajes.create();
+
     }
-//------------------------------------------------------------------------------------------------------------------------------//
-    AlertDialog msgConfirmarRetiro(final int eleccion){
-        AlertDialog msgConfRetiro;
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+    AlertDialog msgConfirmarRetiro(final int eleccion) {
+
+
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
         creaMensajes.setMessage("¿Seguro qué desea retirarse?");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            tablero.mesaJuego.dealerJuego.msgConfirmarDinero(eleccion).show();
+                tablero.mesaJuego.dealerJuego.msgConfirmarDinero(eleccion).show();
                 dialog.cancel();
-                //Mensaje con
             }
         });
         creaMensajes.setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
@@ -128,30 +123,65 @@ public class Dealer {
                 dialog.cancel();
             }
         });
-        msgConfRetiro = creaMensajes.create();
-        return msgConfRetiro;
+        return creaMensajes.create();
     }
+
     //-----------------------------------------------------------------------------------------------------------//
-    AlertDialog msgConfirmarDinero(final int eleccion){
-        AlertDialog msgConfDinero;
+
+    AlertDialog msgErrorApuesta() {
+
+
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Pagar al Jugador "+tablero.mesaJuego.jugador[eleccion].jugadortv.getText()+" fichas");
+        creaMensajes.setMessage("Antes debe Seleccionar un Jugador");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+       return creaMensajes.create();
+
+    }
+
+    //-----------------------------------------------------------------------------------------------------------//
+    AlertDialog msgConfirmarDinero(final int eleccion) {
+
+
+
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
+        creaMensajes.setMessage("Pagar al Jugador " + tablero.mesaJuego.jugador[eleccion].jugadortv.getText() + " fichas");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
-                tablero.mesaJuego.jugador[eleccion].jugadortv.setText(R.string.cero);
                 dialog.cancel();
             }
         });
-        msgConfDinero = creaMensajes.create();
-        return msgConfDinero;
+
+       return creaMensajes.create();
     }
-//---------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------------------------------------------------------------//
+    AlertDialog msgPedirALgunaApuesta() {
+        AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
+        creaMensajes.setMessage("Para jugar necesita mínimo una apuesta.");
+        creaMensajes.setCancelable(true);
+        creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        return creaMensajes.create();
+    }
+        //-----------------------------------------------------------------------------------------------------------//
+
+        // Métodos de paso de informacion
 
 }
 
 
-    // Métodos de paso de informacion
+        // Métodos de paso de informacion
 
