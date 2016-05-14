@@ -1,5 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 
 /**
@@ -7,36 +9,46 @@ import android.view.View;
  */
 public class lTVClickControlesJuego implements View.OnClickListener {
 
-    private void PonerAJugar(){
-        for(int i=0;i<tablero.mesaJuego.jugador.length;i++){
-            if (tablero.mesaJuego.jugador[i].verapuesta()>0){
-                tablero.mesaJuego.jugador[i].cargarapuesta(-1);
-                tablero.mesaJuego.jugador[i].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[i].verapuesta()));
-            }
 
-        }
-    }
+
+    //Funcion que sirve para saber si alguien esta jugando
+
     @Override
-    public void onClick(View v)
-    {
-            switch(v.getId())
-            {
+    public void onClick(View v) {
+        if (tablero.mesaJuego.hayAlguienJugando()) {
+            switch (v.getId()) {
                 case R.id.tvPagar:
+
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(1);
+                    tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvJugar:
+
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
-                    PonerAJugar();
+                    tablero.mesaJuego.cambiarBotones();
+                    tablero.mesaJuego.dealerJuego.PonerAJugar();
                     break;
                 case R.id.tvApostar:
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
+                    tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvRetiroTotal:
+
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(4);
+                    tablero.mesaJuego.cambiarBotones();
                     break;
-               default:
-                break;
+                default:
+                    break;
             }
-        lTVClickJugadores.jugadorSeleccionado=-1;
+            tablero.mesaJuego.dealerJuego.jugadorSeleccionado = -1;
+        } else {
+            if (R.id.tvApostar!=v.getId()) {
+                tablero.mesaJuego.dealerJuego.msgPedirALgunaApuesta().show();
+            }else{
+                tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
+                tablero.mesaJuego.cambiarBotones();
+            }
+        }
+
     }
 }

@@ -142,12 +142,11 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/cero"
                 android:id="@+id/tvJugador2"
-                android:layout_above="@+id/tvJugador4"
                 android:layout_toRightOf="@+id/tvJugador3"
-                android:layout_toEndOf="@+id/tvJugador3"
                 android:gravity="center_vertical|center_horizontal"
                 android:enabled="true"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:layout_above="@+id/tvJugador3" />
 
             <TextView
                 android:layout_width="120dp"
@@ -166,11 +165,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:text="1000000"
                 android:id="@+id/textView7"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:textSize="70sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/Apostemos"
+                android:id="@+id/TextviewAviso"
+                android:textSize="50sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/textView7"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -255,7 +265,7 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="263dp"
+            android:layout_width="353dp"
             android:layout_height="85dp"
             android:layout_gravity="right|bottom">
 

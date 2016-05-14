@@ -10,10 +10,10 @@ import android.view.View;
  */
 public class lTVClickJugadores implements View.OnClickListener {
 
-    static int jugadorSeleccionado=-1;
 
 
-    public int posicion (int id) {
+
+    private int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:
                 return (0);
@@ -37,22 +37,26 @@ public class lTVClickJugadores implements View.OnClickListener {
 
 
 
+
     @Override
     public void onClick(View v)
     {
         int i=posicion(v.getId());
+
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
-                        jugadorSeleccionado=i;
+                    tablero.mesaJuego.dealerJuego.jugadorSeleccionado=i;
+                    tablero.mesaJuego.jugadorSeleccionadoColor(i);
                     break;
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
-
                     break;
                 case 3:     // fase de apuestas
-                        jugadorSeleccionado=i;
+                    tablero.mesaJuego.dealerJuego.jugadorSeleccionado=i;
+                    tablero.mesaJuego.jugadorSeleccionadoColor(i);
                     break;
                 case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
+                    tablero.mesaJuego.jugadorSeleccionadoColor(i);
                     tablero.mesaJuego.dealerJuego.msgConfirmarRetiro(i).show();
                     break;
             }

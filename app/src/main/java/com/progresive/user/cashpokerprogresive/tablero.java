@@ -130,7 +130,8 @@ public class tablero extends AppCompatActivity {
                 (TextView) findViewById(R.id.tvPremioApuesta4), (TextView) findViewById(R.id.tvPremioApuesta5),
                 (TextView) findViewById(R.id.tvPremioApuesta6), (TextView) findViewById(R.id.tvPagar),
                 (TextView) findViewById(R.id.tvJugar), (TextView) findViewById(R.id.tvApostar),
-                (TextView) findViewById(R.id.tvRetiroTotal)};
+
+                (TextView) findViewById(R.id.tvRetiroTotal),(TextView) findViewById(R.id.TextviewAviso),(TextView) findViewById(R.id.textView7)};
 
         mesaJuego = new Mesa(datos);
 

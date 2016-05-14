@@ -16,13 +16,12 @@ public class Dealer {
     public TextView apostarTV;
     public TextView retirarTV;
     public TextView[] apuestaPremio = new TextView[6];
-
     public TextView AvisoTV;
     public TextView ProgresivoTV;
 
 
     private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
-    private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
+    //private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
 
     public int jugadorSeleccionado=-1; //Es una variable que guarda que jugadors a sido seleccionado
     private boolean Restando=false;
@@ -59,6 +58,16 @@ public class Dealer {
             apuestaPremio[5].setText("-");
         }
     }
+    public void PonerAJugar() {
+        for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
+            if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
+                tablero.mesaJuego.jugador[i].cargarapuesta(-1);
+                tablero.mesaJuego.jugador[i].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[i].verapuesta()));
+            }
+
+        }
+    }
+
 
     int verElEstadoDelJuego() {
         return (estadoJuego);
@@ -66,9 +75,9 @@ public class Dealer {
     void cambiarElEstadoDelJuego(int NuevoEstado) {
         estadoJuego = NuevoEstado;
     }
-    boolean versiAlguienJugando(){return AlgunaApuesta;}
-    void nadieJugando(){AlgunaApuesta=false;}
-    void alguienJugando(){AlgunaApuesta=true;}
+   // boolean versiAlguienJugando(){return AlgunaApuesta;}
+   // void nadieJugando(){AlgunaApuesta=false;}
+    //void alguienJugando(){AlgunaApuesta=true;}
 
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles
 //-----------------------------------------------------------------------------------------------------------------------//
@@ -80,13 +89,10 @@ public class Dealer {
         creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-
-
                 double i=Double.parseDouble((String)ProgresivoTV.getText());
-
-                tablero.mesaJuego.jugador[tablero.mesaJuego.dealerJuego.jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
-                tablero.mesaJuego.dealerJuego.jugadorSeleccionado=-1;
-
+                tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
+                jugadorSeleccionado=-1;
+                tablero.mesaJuego.jugadorSeleccionadoColor(-1);
                 dialog.cancel();
             }
         });
@@ -113,7 +119,7 @@ public class Dealer {
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.dealerJuego.msgConfirmarDinero(eleccion).show();
+                msgConfirmarDinero(eleccion).show();
                 dialog.cancel();
             }
         });
@@ -129,10 +135,8 @@ public class Dealer {
     //-----------------------------------------------------------------------------------------------------------//
 
     AlertDialog msgErrorApuesta() {
-
-
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Antes debe Seleccionar un Jugador");
+        creaMensajes.setMessage("Antes debe Seleccionar un Jugador que esté jugando");
         creaMensajes.setCancelable(true);
         creaMensajes.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -157,6 +161,10 @@ public class Dealer {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
+                if(!tablero.mesaJuego.hayAlguienJugando()){
+                    tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
+                    tablero.mesaJuego.cambiarBotones();
+                }
                 dialog.cancel();
             }
         });
@@ -166,7 +174,7 @@ public class Dealer {
     //--------------------------------------------------------------------------------------------------------------------------------//
     AlertDialog msgPedirALgunaApuesta() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Para jugar necesita mínimo una apuesta.");
+        creaMensajes.setMessage("Para continuar necesita mínimo una apuesta.");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
