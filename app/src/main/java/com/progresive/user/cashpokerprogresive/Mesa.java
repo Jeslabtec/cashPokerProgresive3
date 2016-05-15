@@ -217,4 +217,15 @@ public class Mesa {
         }
     }
 
+    public void retardo(int miliSegundos)
+    {
+        try{
+           Thread.sleep(miliSegundos);
+        }
+        catch(InterruptedException ex) {
+
+    }
+
+    }
+
 }

@@ -27,4 +27,5 @@
     <string name="Pago">Pagando</string>
     <string name="Retirando">Retirando</string>
     <string name="progressive">Progressive</string>
+    <string name="BaseProgresivo">$1200</string>
 </resources>
