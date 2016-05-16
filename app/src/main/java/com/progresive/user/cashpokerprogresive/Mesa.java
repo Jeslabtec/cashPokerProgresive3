@@ -221,10 +221,10 @@ public class Mesa {
     {
         try{
            Thread.sleep(miliSegundos);
-        }
+           }
         catch(InterruptedException ex) {
 
-    }
+            }
 
     }
 

@@ -117,6 +117,15 @@ public class tablero extends AppCompatActivity {
         dato=this;
 
 
+        /**********************************************************************************************
+         * Creación del objeto mesajuego, objeto fundamental para el funcionamiento del poker         *
+         * ********************************************************************************************/
+
+        try {
+            DBManipulación base= new DBManipulación();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /**********************************************************************************************
          * Creación del objeto mesajuego, objeto fundamental para el funcionamiento del poker         *
