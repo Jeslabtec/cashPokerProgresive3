@@ -24,7 +24,7 @@ public class Dealer {
     //private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
 
     public int jugadorSeleccionado=-1; //Es una variable que guarda que jugadors a sido seleccionado
-    private boolean Restando=false;
+    private boolean Restando=true;
     // atributos de paso de informacion
     // atributos Administrativos: no se si crearlos aquí o en el tipo de datos mesa
 
@@ -48,6 +48,10 @@ public class Dealer {
     boolean verSiRestando(){
         return Restando;
     }
+    void ponerSumando(){
+        Restando = false;
+        apuestaPremio[5].setText("+");
+    }
     void cambiarRestando(){
         if(Restando) {
             Restando = false;
@@ -62,7 +66,7 @@ public class Dealer {
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
                 tablero.mesaJuego.jugador[i].cargarapuesta(-1);
-                tablero.mesaJuego.jugador[i].jugadortv.setText(Integer.toString(tablero.mesaJuego.jugador[i].verapuesta()));
+                tablero.mesaJuego.jugador[i].cargarSuperApuesta();
             }
 
         }
@@ -91,6 +95,7 @@ public class Dealer {
             public void onClick(DialogInterface dialog, int id) {
                 double i=Double.parseDouble((String)ProgresivoTV.getText());
                 tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
+                tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
                 jugadorSeleccionado=-1;
                 tablero.mesaJuego.jugadorSeleccionadoColor(-1);
                 dialog.cancel();
@@ -110,7 +115,7 @@ public class Dealer {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------//
-    AlertDialog msgConfirmarRetiro(final int eleccion) {
+    AlertDialog msgConfirmarRetiro() {
 
 
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
@@ -119,7 +124,7 @@ public class Dealer {
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                msgConfirmarDinero(eleccion).show();
+                msgConfirmarDinero().show();
                 dialog.cancel();
             }
         });
@@ -136,7 +141,7 @@ public class Dealer {
 
     AlertDialog msgErrorApuesta() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Antes debe Seleccionar un Jugador que esté jugando");
+        creaMensajes.setMessage("Antes debe Seleccionar un Jugador.");
         creaMensajes.setCancelable(true);
         creaMensajes.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -150,17 +155,17 @@ public class Dealer {
     }
 
     //-----------------------------------------------------------------------------------------------------------//
-    AlertDialog msgConfirmarDinero(final int eleccion) {
-
-
-
+    AlertDialog msgConfirmarDinero() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Pagar al Jugador " + tablero.mesaJuego.jugador[eleccion].jugadortv.getText() + " fichas");
+        creaMensajes.setMessage("Pagar al Jugador " + tablero.mesaJuego.jugador[jugadorSeleccionado].jugadortv.getText() + " fichas");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugador[eleccion].reiniciarApuesta();
+                tablero.mesaJuego.jugador[jugadorSeleccionado].reiniciarApuesta();
+                tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
+                tablero.mesaJuego.jugador[jugadorSeleccionado].reiniciarSuperApuesta();
+                jugadorSeleccionado=-1;
                 if(!tablero.mesaJuego.hayAlguienJugando()){
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
                     tablero.mesaJuego.cambiarBotones();

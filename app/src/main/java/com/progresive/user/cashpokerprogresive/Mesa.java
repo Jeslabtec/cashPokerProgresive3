@@ -30,7 +30,7 @@ public class Mesa {
         for (int j=0;j<jugador.length;j++) {
             if(i==j) {
                 jugador[j].jugadortv.setTextColor(0xffffffff);
-            }else{
+            }else if(jugador[j].jugadortv.isEnabled()){
                 jugador[j].jugadortv.setTextColor(0xff000000);
             }
         }
@@ -43,6 +43,10 @@ public class Mesa {
                 jugador[i].jugadortv.setEnabled(false);
             }
         }
+    }
+    public void  restringirJugador(int i){
+        jugador[i].jugadortv.setTextColor(0xffe0e0e0);
+        jugador[i].jugadortv.setEnabled(false);
     }
     //Funcion que habilita a los jugadores en la fase de apuesta
     public void habilitarJugadores()
@@ -66,12 +70,13 @@ public class Mesa {
 
     //Que pasa con los textview cuando se unde cualquiera de los controles//
     private void BotonesdeApuesta(){
+
         dealerJuego.apuestaPremio[0].setText(R.string.Apuesta1);
         dealerJuego.apuestaPremio[1].setText(R.string.Apuesta2);
         dealerJuego.apuestaPremio[2].setText(R.string.Apuesta3);
         dealerJuego.apuestaPremio[3].setText(R.string.Apuesta4);
         dealerJuego.apuestaPremio[4].setText(R.string.Apuesta5);
-        dealerJuego.apuestaPremio[5].setText(R.string.Apuesta6);
+        dealerJuego.ponerSumando();
 
         dealerJuego.retirarTV.setBackgroundColor(0x00000000);
         dealerJuego.retirarTV.setTextColor(0xff000000);
@@ -110,9 +115,9 @@ public class Mesa {
         dealerJuego.apostarTV.setTextColor(0xff000000);
         dealerJuego.apostarTV.setEnabled(true);
 
-        dealerJuego.retirarTV.setBackgroundColor(0x00000000);
+        dealerJuego.retirarTV.setBackgroundColor(0xffe0e0e0);
         dealerJuego.retirarTV.setTextColor(0xff000000);
-        dealerJuego.retirarTV.setEnabled(true);
+        dealerJuego.retirarTV.setEnabled(false);
 
         dealerJuego.jugarTV.setBackgroundColor(0xffe0e0e0);
         dealerJuego.jugarTV.setTextColor(0xff000000);
@@ -129,13 +134,12 @@ public class Mesa {
         }
         dealerJuego.AvisoTV.setText(R.string.Pago);
         jugadorSeleccionadoColor(-1);
-        restringirJugadores();
     }
     //--------------------------------------------------------------------------------------------------//
     private void BotonesdeJuego(){
         dealerJuego.apuestaPremio[0].setText("1");
         dealerJuego.apuestaPremio[1].setText("3");
-        dealerJuego.apuestaPremio[2].setText("v9");
+        dealerJuego.apuestaPremio[2].setText("9");
         dealerJuego.apuestaPremio[3].setText("27");
         dealerJuego.apuestaPremio[4].setText("81");
         dealerJuego.apuestaPremio[5].setText("100");
@@ -144,9 +148,9 @@ public class Mesa {
         dealerJuego.apostarTV.setTextColor(0xff000000);
         dealerJuego.apostarTV.setEnabled(true);
 
-        dealerJuego.retirarTV.setBackgroundColor(0x00000000);
+        dealerJuego.retirarTV.setBackgroundColor(0xffe0e0e0);
         dealerJuego.retirarTV.setTextColor(0xff000000);
-        dealerJuego.retirarTV.setEnabled(true);
+        dealerJuego.retirarTV.setEnabled(false);
 
         dealerJuego.pagarTV.setBackgroundColor(0x00000000);
         dealerJuego.pagarTV.setTextColor(0xff000000);
@@ -190,8 +194,9 @@ public class Mesa {
         }
 
         dealerJuego.AvisoTV.setText(R.string.Retirando);
-        jugadorSeleccionadoColor(-1);
         restringirJugadores();
+        jugadorSeleccionadoColor(-1);
+
     }
     //-------------------------------------------------------------------------------------------------------------------//
 

@@ -11,6 +11,7 @@ public class Jugador {
 
     // atributos
     private int Apuesta=0;
+    private int SuperApuesta=0;
     private boolean Enmesa=true;
     public TextView jugadortv;
 
@@ -23,12 +24,26 @@ public class Jugador {
         Apuesta--;
         jugadortv.setText(Integer.toString(Apuesta));
     }
-    public void cargarapuesta(int fichas){
+    /*public void cargarapuesta(int fichas){
         Apuesta+=fichas;
         if (Apuesta<0){
             Apuesta=0;
         }
         jugadortv.setText(Integer.toString(Apuesta));
+    }*/
+    public void cargarapuesta(int fichas){
+        Apuesta+=fichas;
+
+        if (Apuesta<SuperApuesta){
+            Apuesta=SuperApuesta;
+        }
+        jugadortv.setText(Integer.toString(Apuesta));
+    }
+    public void cargarSuperApuesta(){
+        SuperApuesta=Apuesta;
+    }
+    public void reiniciarSuperApuesta(){
+        SuperApuesta=0;
     }
     public void reiniciarApuesta(){
         Apuesta=0;

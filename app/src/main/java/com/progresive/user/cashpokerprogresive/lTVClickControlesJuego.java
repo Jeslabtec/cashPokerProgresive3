@@ -15,15 +15,13 @@ public class lTVClickControlesJuego implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (tablero.mesaJuego.hayAlguienJugando()) {
+        if (tablero.mesaJuego.hayAlguienJugando() || tablero.mesaJuego.dealerJuego.verElEstadoDelJuego()==2) {
             switch (v.getId()) {
                 case R.id.tvPagar:
-
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(1);
                     tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvJugar:
-
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
                     tablero.mesaJuego.cambiarBotones();
                     tablero.mesaJuego.dealerJuego.PonerAJugar();

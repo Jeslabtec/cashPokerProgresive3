@@ -29,7 +29,7 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
                     return (Integer.parseInt((String) datos[5].getText()));
                 }
             default:
-                return -1;
+                return 0;
         }
 
     }

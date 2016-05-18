@@ -42,11 +42,10 @@ public class lTVClickJugadores implements View.OnClickListener {
     public void onClick(View v)
     {
         int i=posicion(v.getId());
-
+        tablero.mesaJuego.dealerJuego.jugadorSeleccionado=i;
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
             {
                 case 1:     // fase de pago
-                    tablero.mesaJuego.dealerJuego.jugadorSeleccionado=i;
                     tablero.mesaJuego.jugadorSeleccionadoColor(i);
                     break;
                 case 2:     // fase de juego... en este caso no pasa nada porque solo se da click en iniciar juego, pero nunca se toca el jugador
@@ -57,7 +56,7 @@ public class lTVClickJugadores implements View.OnClickListener {
                     break;
                 case 4:     // fase de retiros.... esta es la mas complicada pues reqiero el nombre del jugador
                     tablero.mesaJuego.jugadorSeleccionadoColor(i);
-                    tablero.mesaJuego.dealerJuego.msgConfirmarRetiro(i).show();
+                    tablero.mesaJuego.dealerJuego.msgConfirmarRetiro().show();
                     break;
             }
 
