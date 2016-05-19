@@ -1,8 +1,11 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by JuanEsteban on 03/05/2016.
@@ -47,6 +50,6 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                 tablero.mesaJuego.cambiarBotones();
             }
         }
-
     }
+
 }

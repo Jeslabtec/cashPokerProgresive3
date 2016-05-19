@@ -147,7 +147,7 @@ public class tablero extends AppCompatActivity {
 
         mesaJuego = new Mesa(datos);
 
-
+       // AbrirCodiaut();
 
 
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
@@ -167,7 +167,7 @@ public class tablero extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
+        AbrirCodiaut();
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
@@ -216,4 +216,12 @@ public class tablero extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+    private void AbrirCodiaut()
+    {
+        Intent orden= new Intent(tablero.this,Codigoaut.class);
+        startActivity(orden);
+    }
+
+
 }
