@@ -3,13 +3,15 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.widget.TextView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by JuanEsteban on 28/04/2016.
  */
 public class Dealer {
-
 
     public TextView pagarTV;
     public TextView jugarTV;
@@ -19,7 +21,7 @@ public class Dealer {
     public TextView AvisoTV;
     public TextView ProgresivoTV;
 
-
+    private int ValorProgresivoLoco = 0;
     private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
     //private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
 
@@ -62,15 +64,28 @@ public class Dealer {
             apuestaPremio[5].setText("-");
         }
     }
+    public int cuantosJugando(){
+        int jugadores=0;
+        for(int i = 0; i < tablero.mesaJuego.jugador.length; i++){
+            if(tablero.mesaJuego.jugador[i].verapuesta() > 0){
+                jugadores++;
+            }
+        }
+        return jugadores;
+    }
+
+
     public void PonerAJugar() {
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
                 tablero.mesaJuego.jugador[i].cargarapuesta(-1);
                 tablero.mesaJuego.jugador[i].cargarSuperApuesta();
-            }
 
+            }
+        }               // SLEEP 2 SECONDS HERE ...
+        progresivoLoco();
         }
-    }
+
 
 
     int verElEstadoDelJuego() {
@@ -79,9 +94,27 @@ public class Dealer {
     void cambiarElEstadoDelJuego(int NuevoEstado) {
         estadoJuego = NuevoEstado;
     }
-   // boolean versiAlguienJugando(){return AlgunaApuesta;}
-   // void nadieJugando(){AlgunaApuesta=false;}
-    //void alguienJugando(){AlgunaApuesta=true;}
+
+    //Timer***********************************************************************************************
+    final Handler handler = new Handler();
+    Timer t = new Timer();
+
+    public void progresivoLoco() {
+        t.schedule(new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        if (estadoJuego==2) {
+                            progresivoLoco();
+                            ValorProgresivoLoco++;
+                            ProgresivoTV.setText(Integer.toString(ValorProgresivoLoco));
+                        }
+                    }
+                });
+            }
+        }, 100);
+    }
+//***********************************************************************************************************
 
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles
 //-----------------------------------------------------------------------------------------------------------------------//

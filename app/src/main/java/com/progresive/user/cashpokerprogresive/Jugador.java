@@ -11,6 +11,7 @@ public class Jugador {
 
     // atributos
     private int Apuesta=0;
+    //Evita en la fase de apostar se retiren fichas ya jugadas en la fase de juego
     private int SuperApuesta=0;
     private boolean Enmesa=true;
     public TextView jugadortv;

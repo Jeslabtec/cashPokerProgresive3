@@ -3,6 +3,7 @@ package com.progresive.user.cashpokerprogresive;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.ContentFrameLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -145,8 +147,8 @@ public class tablero extends AppCompatActivity {
         mesaJuego = new Mesa(datos);
 
 
-
-
+        Intent intentAbrir=new Intent(this,Codigoaut.class);
+        startActivity(intentAbrir);
 
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
 

@@ -28,4 +28,5 @@
     <string name="Retirando">Retirando</string>
     <string name="progressive">Progressive</string>
     <string name="BaseProgresivo">$1200</string>
+    <string name="title_activity_codeaut">codeaut</string>
 </resources>
