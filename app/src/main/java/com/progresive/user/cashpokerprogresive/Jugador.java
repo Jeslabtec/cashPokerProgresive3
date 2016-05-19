@@ -40,14 +40,20 @@ public class Jugador {
         }
         jugadortv.setText(Integer.toString(Apuesta));
     }
+    public void apostemos(){
+        Apuesta--;
+        SuperApuesta--;
+        jugadortv.setText(Integer.toString(Apuesta));
+
+    }
     public void cargarSuperApuesta(){
         SuperApuesta=Apuesta;
     }
-    public void reiniciarSuperApuesta(){
-        SuperApuesta=0;
-    }
+
+
     public void reiniciarApuesta(){
         Apuesta=0;
+        SuperApuesta=0;
         jugadortv.setText(Integer.toString(Apuesta));
     }
     public boolean verSiPausado()

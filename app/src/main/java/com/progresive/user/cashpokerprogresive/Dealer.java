@@ -78,8 +78,9 @@ public class Dealer {
     public void PonerAJugar() {
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
-                tablero.mesaJuego.jugador[i].cargarapuesta(-1);
                 tablero.mesaJuego.jugador[i].cargarSuperApuesta();
+                tablero.mesaJuego.jugador[i].apostemos();
+
 
             }
         }               // SLEEP 2 SECONDS HERE ...
@@ -129,6 +130,7 @@ public class Dealer {
                 double i=Double.parseDouble((String)ProgresivoTV.getText());
                 tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
                 tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
+                tablero.mesaJuego.jugador[jugadorSeleccionado].cargarSuperApuesta();
                 jugadorSeleccionado=-1;
                 tablero.mesaJuego.jugadorSeleccionadoColor(-1);
                 dialog.cancel();
@@ -197,7 +199,6 @@ public class Dealer {
             public void onClick(DialogInterface dialog, int which) {
                 tablero.mesaJuego.jugador[jugadorSeleccionado].reiniciarApuesta();
                 tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
-                tablero.mesaJuego.jugador[jugadorSeleccionado].reiniciarSuperApuesta();
                 jugadorSeleccionado=-1;
                 if(!tablero.mesaJuego.hayAlguienJugando()){
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);

@@ -92,6 +92,7 @@ public class tablero extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,8 +148,7 @@ public class tablero extends AppCompatActivity {
         mesaJuego = new Mesa(datos);
 
 
-        Intent intentAbrir=new Intent(this,Codigoaut.class);
-        startActivity(intentAbrir);
+
 
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
 
