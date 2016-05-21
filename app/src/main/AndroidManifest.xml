@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.progresive.user.cashpokerprogresive">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,25 +17,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <activity
-            android:name=".tablero"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme">
+            android:name=".CPPLogin"
+            android:label="@string/title_activity_cpplogin"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
 
 
-        <activity android:name=".Codigoaut"
+        <activity
+            android:name=".tablero"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:layout_width="300dp"
-            android:layout_height="100dp">
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+
         </activity>
+
+
+
+        <activity
+            android:name=".Codigoaut"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name"></activity>
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
     </application>
 
 </manifest>

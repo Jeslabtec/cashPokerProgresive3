@@ -28,6 +28,7 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
                     tablero.mesaJuego.cambiarBotones();
                     tablero.mesaJuego.dealerJuego.PonerAJugar();
+                    tablero.mesaJuego.AbrirCodiaut();
                     break;
                 case R.id.tvApostar:
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);

@@ -1,6 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
@@ -221,7 +222,11 @@ public class Mesa {
                 break;
         }
     }
-
+    public void AbrirCodiaut()
+    {
+        Intent orden= new Intent(tablero.dato,Codigoaut.class);
+        tablero.dato.startActivity(orden);
+    }
 
     public void retardo(int miliSegundos)
     {

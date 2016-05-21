@@ -124,30 +124,33 @@ public class tablero extends AppCompatActivity {
          * Creación del objeto mesajuego, objeto fundamental para el funcionamiento del poker         *
          * ********************************************************************************************/
 
-        try {
-            DBManipulación base= new DBManipulación();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         /**********************************************************************************************
          * Creación del objeto mesajuego, objeto fundamental para el funcionamiento del poker         *
          * ********************************************************************************************/
 
-        TextView[] datos = {(TextView) findViewById(R.id.tvJugador1), (TextView) findViewById(R.id.tvJugador2),
-                (TextView) findViewById(R.id.tvJugador3), (TextView) findViewById(R.id.tvJugador4),
-                (TextView) findViewById(R.id.tvJugador5), (TextView) findViewById(R.id.tvJugador6),
-                (TextView) findViewById(R.id.tvJugador7), (TextView) findViewById(R.id.tvPremioApuesta1),
-                (TextView) findViewById(R.id.tvPremioApuesta2), (TextView) findViewById(R.id.tvPremioApuesta3),
-                (TextView) findViewById(R.id.tvPremioApuesta4), (TextView) findViewById(R.id.tvPremioApuesta5),
-                (TextView) findViewById(R.id.tvPremioApuesta6), (TextView) findViewById(R.id.tvPagar),
-                (TextView) findViewById(R.id.tvJugar), (TextView) findViewById(R.id.tvApostar),
-
-                (TextView) findViewById(R.id.tvRetiroTotal),(TextView) findViewById(R.id.TextviewAviso),(TextView) findViewById(R.id.textView7)};
+        TextView[] datos = {(TextView) findViewById(R.id.tvJugador1),
+                (TextView) findViewById(R.id.tvJugador2),
+                (TextView) findViewById(R.id.tvJugador3),
+                (TextView) findViewById(R.id.tvJugador4),
+                (TextView) findViewById(R.id.tvJugador5),
+                (TextView) findViewById(R.id.tvJugador6),
+                (TextView) findViewById(R.id.tvJugador7),
+                (TextView) findViewById(R.id.tvPremioApuesta1),
+                (TextView) findViewById(R.id.tvPremioApuesta2),
+                (TextView) findViewById(R.id.tvPremioApuesta3),
+                (TextView) findViewById(R.id.tvPremioApuesta4),
+                (TextView) findViewById(R.id.tvPremioApuesta5),
+                (TextView) findViewById(R.id.tvPremioApuesta6),
+                (TextView) findViewById(R.id.tvPagar),
+                (TextView) findViewById(R.id.tvJugar),
+                (TextView) findViewById(R.id.tvApostar),
+                (TextView) findViewById(R.id.tvRetiroTotal),
+                (TextView) findViewById(R.id.TextviewAviso),
+                (TextView) findViewById(R.id.textView7)};
 
         mesaJuego = new Mesa(datos);
 
-       // AbrirCodiaut();
 
 
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
@@ -167,7 +170,7 @@ public class tablero extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        AbrirCodiaut();
+
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
@@ -217,11 +220,7 @@ public class tablero extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
-    private void AbrirCodiaut()
-    {
-        Intent orden= new Intent(tablero.this,Codigoaut.class);
-        startActivity(orden);
-    }
+
 
 
 }
