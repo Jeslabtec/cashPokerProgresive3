@@ -21,7 +21,10 @@ public class Dealer {
     public TextView AvisoTV;
     public TextView ProgresivoTV;
 
-    private int ValorProgresivoLoco = 0;
+    public double valorficha=1000;
+
+    private double ValorProgresivoLoco = 0;
+
     private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
     //private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
 
@@ -46,6 +49,7 @@ public class Dealer {
 
         AvisoTV = v[10];
         ProgresivoTV=v[11];
+        ValorProgresivoLoco=Double.parseDouble((String) (ProgresivoTV.getText()));
     }
     boolean verSiRestando(){
         return Restando;
@@ -80,12 +84,9 @@ public class Dealer {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
                 tablero.mesaJuego.jugador[i].cargarSuperApuesta();
                 tablero.mesaJuego.jugador[i].apostemos();
-
-
             }
-        }               // SLEEP 2 SECONDS HERE ...
-        progresivoLoco();
         }
+    }
 
 
 
@@ -96,6 +97,13 @@ public class Dealer {
         estadoJuego = NuevoEstado;
     }
 
+
+
+
+
+
+
+
     //Timer***********************************************************************************************
     final Handler handler = new Handler();
     Timer t = new Timer();
@@ -105,10 +113,13 @@ public class Dealer {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
+                        double intermedio;
                         if (estadoJuego==2) {
+                            intermedio=tablero.u-ValorProgresivoLoco;
                             progresivoLoco();
-                            ValorProgresivoLoco++;
-                            ProgresivoTV.setText(Integer.toString(ValorProgresivoLoco));
+                            ValorProgresivoLoco= ((0.0337)*(double)(tablero.u)+(0.9663)*(ValorProgresivoLoco))+(Math.random()*(2*intermedio/3)-intermedio/3);
+                            //ValorProgresivoLoco= (int) ((0.0337)*(double)(tablero.u)+(0.9663)*(double)(ValorProgresivoLoco)+Math.random()*(6-0));
+                            ProgresivoTV.setText(Integer.toString((int) ValorProgresivoLoco));
                         }
                     }
                 });
@@ -116,6 +127,15 @@ public class Dealer {
         }, 100);
     }
 //***********************************************************************************************************
+
+
+
+
+
+
+
+
+
 
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles
 //-----------------------------------------------------------------------------------------------------------------------//

@@ -38,10 +38,11 @@ import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ *  Pantalla de inicio basada en ingresar Usuario y contraseña para el manejo de base de datos
  */
 public class CPPLogin extends AppCompatActivity  {
-    private ManejoBD manip;
+    private ManejoBD manip;     // Atributo de la clase creado para manejar todo lo concerniente a
+                                // coneccion de la BD
 
 
 
