@@ -22,7 +22,7 @@ public class tablero extends AppCompatActivity {
 
     static AppCompatActivity dato;
     static Mesa mesaJuego;
-    static double u=0;
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -151,20 +151,8 @@ public class tablero extends AppCompatActivity {
                 (TextView) findViewById(R.id.textView7)};
 
         mesaJuego = new Mesa(datos);
-
-        u=Double.parseDouble((String)mesaJuego.dealerJuego.ProgresivoTV.getText());
-
-
-
-
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
-
-
-
-
-
-
-        //-----------------------------------------------------------------------------------------------------//
+       //-----------------------------------------------------------------------------------------------------//
         //Mensaje de confirmacion de retiro//
 
 

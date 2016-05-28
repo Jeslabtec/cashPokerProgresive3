@@ -30,7 +30,8 @@
     <string name="BaseProgresivo">$1200</string>
     <string name="title_activity_codeaut">codeaut</string>
     <string name="title_activity_cpplogin">Sign in</string>
-
+    <string name="CodigoInvalido">Código Invalido</string>
+    <string name="PagoAprobado">Pago Aprobado</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

@@ -9,10 +9,6 @@ import android.view.View;
  * Created by JuanEsteban on 30/04/2016.
  */
 public class lTVClickJugadores implements View.OnClickListener {
-
-
-
-
     private int posicion (int id) {
         switch (id) {
             case R.id.tvJugador1:

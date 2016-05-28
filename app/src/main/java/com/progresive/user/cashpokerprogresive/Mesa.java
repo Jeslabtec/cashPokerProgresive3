@@ -14,6 +14,7 @@ public class Mesa {
     Dealer dealerJuego;
 
 
+
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)    {
 
@@ -200,7 +201,6 @@ public class Mesa {
 
     }
     //-------------------------------------------------------------------------------------------------------------------//
-
         // metodos
     //dependiendo del estado del juego se habilitaran o desabilitaran algunos botones
 
@@ -224,19 +224,7 @@ public class Mesa {
     }
     public void AbrirCodiaut()
     {
-        Intent orden= new Intent(tablero.dato,Codigoaut.class);
+        Intent orden=new Intent(tablero.dato,Codigoaut.class);
         tablero.dato.startActivity(orden);
     }
-
-    public void retardo(int miliSegundos)
-    {
-        try{
-           Thread.sleep(miliSegundos);
-           }
-        catch(InterruptedException ex) {
-
-            }
-
-    }
-
 }

@@ -41,8 +41,10 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
         switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
            {//----------------------------------------------------------------------------------------------------//
                case 1: // fase pagar
+                   if (i>9) {tablero.mesaJuego.dealerJuego.necesariosupervisor = true;}//Configura si se necesita supervisor o no.
 
                    if (tablero.mesaJuego.dealerJuego.jugadorSeleccionado>=0) {
+
                        tablero.mesaJuego.dealerJuego.msgConfirmarPago(i).show();
                    }
                    else

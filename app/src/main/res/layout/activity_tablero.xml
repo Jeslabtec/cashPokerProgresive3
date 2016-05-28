@@ -154,12 +154,12 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/cero"
                 android:id="@+id/tvJugador1"
-                android:layout_alignTop="@+id/tvJugador7"
-                android:layout_toRightOf="@+id/tvJugador2"
-                android:layout_toEndOf="@+id/tvJugador2"
                 android:gravity="center_vertical|center_horizontal"
                 android:enabled="true"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:layout_above="@+id/tvJugador2"
+                android:layout_toRightOf="@+id/tvJugador2"
+                android:layout_toEndOf="@+id/tvJugador2" />
 
             <TextView
                 android:layout_width="wrap_content"
