@@ -12,7 +12,7 @@ import java.util.TimerTask;
  * Created by JuanEsteban on 28/04/2016.
  */
 public class Dealer {
-
+//Textviews de la vista tablero_______________________
     public TextView pagarTV;
     public TextView jugarTV;
     public TextView apostarTV;
@@ -20,19 +20,21 @@ public class Dealer {
     public TextView[] apuestaPremio = new TextView[6];
     public TextView AvisoTV;
     public TextView ProgresivoTV;
-
-    public double valorficha=1000;
-
-    private double ValorProgresivoLoco = 0;
-
+//____________________________________________________________
+    private float PorcentajePremio; //Variable que gusrda el porcentaje del premio.
+    public double valorficha=1000;  //Valor de la ficha
+    private double ValorProgresivoLoco = 0;//Auxiliar para aumentar el progresivo
+    public boolean necesariosupervisor=false; //Sirve para preguntar quien es el encargado de habilitar el pago, el supervisor o el deales
+    //False:Dealer, True:supervisor.
     private int estadoJuego = 3; // variable de contol que dira si el juego a iniciado=2, si esta en fase de pago=1 o si esta en la fase de apuestas=3, o en fase de retiros
     //private boolean AlgunaApuesta=false; //variable que permite al programa saber que hay por lo menos un jugador en la mesa
-
+    public double AumentoPremio=0; //Cuanto aumento el premio
     public int jugadorSeleccionado=-1; //Es una variable que guarda que jugadors a sido seleccionado
-    private boolean Restando=true;
+    private boolean Restando=true; //booleano que permit saber si se esta restando o no
+    public double Rand1=0;
+    public double Rand2=0;
     // atributos de paso de informacion
-    // atributos Administrativos: no se si crearlos aquí o en el tipo de datos mesa
-
+//______________________________________________________________________________
     public Dealer(TextView[] v) {
         for (int i = 0; i < apuestaPremio.length; i++) {
             apuestaPremio[i] = v[i];
@@ -50,14 +52,18 @@ public class Dealer {
         AvisoTV = v[10];
         ProgresivoTV=v[11];
         ValorProgresivoLoco=Double.parseDouble((String) (ProgresivoTV.getText()));
-    }
+        AumentoPremio=Double.parseDouble((String)ProgresivoTV.getText());
+}
+//Sirve para saber si se esta restando o sumando. retorna el valor de restando.
     boolean verSiRestando(){
         return Restando;
     }
+//Pone a sumar el dispositivo, me asugura que cada vez que se inicie la fase de apostar este configurado en suma
     void ponerSumando(){
         Restando = false;
         apuestaPremio[5].setText("+");
     }
+//Cambia a restar o sumar cuando se presiona ese boton
     void cambiarRestando(){
         if(Restando) {
             Restando = false;
@@ -68,6 +74,7 @@ public class Dealer {
             apuestaPremio[5].setText("-");
         }
     }
+//Devuelve la cantidad de jugadores en la mesa.
     public int cuantosJugando(){
         int jugadores=0;
         for(int i = 0; i < tablero.mesaJuego.jugador.length; i++){
@@ -89,21 +96,12 @@ public class Dealer {
     }
 
 
-
     int verElEstadoDelJuego() {
         return (estadoJuego);
     }
     void cambiarElEstadoDelJuego(int NuevoEstado) {
         estadoJuego = NuevoEstado;
     }
-
-
-
-
-
-
-
-
     //Timer***********************************************************************************************
     final Handler handler = new Handler();
     Timer t = new Timer();
@@ -115,11 +113,11 @@ public class Dealer {
                     public void run() {
                         double intermedio;
                         if (estadoJuego==2) {
-                            intermedio=tablero.u-ValorProgresivoLoco;
-                            progresivoLoco();
-                            ValorProgresivoLoco= ((0.0337)*(double)(tablero.u)+(0.9663)*(ValorProgresivoLoco))+(Math.random()*(2*intermedio/3)-intermedio/3);
+                            intermedio=AumentoPremio-ValorProgresivoLoco;
+                            ValorProgresivoLoco= ((0.0337)*(double)(AumentoPremio)+(0.9663)*(ValorProgresivoLoco))+(Math.random()*(2*intermedio/3)-intermedio/3);
                             //ValorProgresivoLoco= (int) ((0.0337)*(double)(tablero.u)+(0.9663)*(double)(ValorProgresivoLoco)+Math.random()*(6-0));
                             ProgresivoTV.setText(Integer.toString((int) ValorProgresivoLoco));
+                            progresivoLoco();
                         }
                     }
                 });
@@ -128,36 +126,22 @@ public class Dealer {
     }
 //***********************************************************************************************************
 
-
-
-
-
-
-
-
-
-
     // mensajes a ser mostrados para las confirmaciones en los juegos hay que cambiar parametros para ser lo mas universales posibles
 //-----------------------------------------------------------------------------------------------------------------------//
     AlertDialog msgConfirmarPago(final int Premio) {
-
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
         creaMensajes.setMessage("Confirma el pago de este premio?");
         creaMensajes.setCancelable(true);
-        creaMensajes.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                double i=Double.parseDouble((String)ProgresivoTV.getText());
-                tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double)Premio)/100*i));
-                tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
-                tablero.mesaJuego.jugador[jugadorSeleccionado].cargarSuperApuesta();
-                jugadorSeleccionado=-1;
-                tablero.mesaJuego.jugadorSeleccionadoColor(-1);
+                PorcentajePremio=(float)Premio;
+                tablero.mesaJuego.AbrirCodiaut();
                 dialog.cancel();
             }
         });
 
-        creaMensajes.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        creaMensajes.setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 tablero.mesaJuego.dealerJuego.jugadorSeleccionado=-1;
@@ -168,10 +152,18 @@ public class Dealer {
         return creaMensajes.create();
 
     }
+    //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
+   void AccionesConfirmarPago (){
+        double i=Double.parseDouble((String)ProgresivoTV.getText());
+        tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double)PorcentajePremio)/100*i));
+        tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
+        tablero.mesaJuego.jugador[jugadorSeleccionado].cargarSuperApuesta();
+        jugadorSeleccionado=-1;
+        tablero.mesaJuego.jugadorSeleccionadoColor(-1);
+    }
 
     //------------------------------------------------------------------------------------------------------------------------------//
     AlertDialog msgConfirmarRetiro() {
-
 
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
         creaMensajes.setMessage("¿Seguro qué desea retirarse?");

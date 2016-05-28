@@ -41,9 +41,10 @@ import static android.Manifest.permission.READ_CONTACTS;
  *  Pantalla de inicio basada en ingresar Usuario y contraseña para el manejo de base de datos
  */
 public class CPPLogin extends AppCompatActivity  {
-    private ManejoBD manip;     // Atributo de la clase creado para manejar todo lo concerniente a
-                                // coneccion de la BD
+    static ManejoBD manip;  // Atributo de la clase creado para manejar tod lo concerniente a
 
+    // coneccion de la BD
+    static AppCompatActivity ContextoLogin;
 
 
     @Override
@@ -54,8 +55,9 @@ public class CPPLogin extends AppCompatActivity  {
         final EditText Usuario=(EditText)findViewById(R.id.edtUsuario);
         final EditText Pw= (EditText) findViewById(R.id.edtPassword);
         final Button lg=(Button) findViewById(R.id.btnLogin);
-        manip=new ManejoBD();
 
+        manip=new ManejoBD();
+        ContextoLogin=this;
 
         lg.setOnClickListener(new OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class CPPLogin extends AppCompatActivity  {
                 if(manip.Login(Usuario.getText().toString(),Pw.getText().toString())){
                     Intent pTablero=new Intent(CPPLogin.this,tablero.class);
                     startActivity(pTablero);
+                    finish();
                 }
                 else{
                     Toast.makeText(CPPLogin.this,"Te jodiste",Toast.LENGTH_SHORT).show();

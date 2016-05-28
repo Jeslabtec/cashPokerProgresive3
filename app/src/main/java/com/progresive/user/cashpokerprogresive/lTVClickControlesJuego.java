@@ -12,10 +12,6 @@ import static android.support.v4.app.ActivityCompat.startActivity;
  */
 public class lTVClickControlesJuego implements View.OnClickListener {
 
-
-
-    //Funcion que sirve para saber si alguien esta jugando
-
     @Override
     public void onClick(View v) {
         if (tablero.mesaJuego.hayAlguienJugando() || tablero.mesaJuego.dealerJuego.verElEstadoDelJuego()==2) {
@@ -25,7 +21,15 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvJugar:
-                    tablero.u+=tablero.mesaJuego.dealerJuego.cuantosJugando()*tablero.mesaJuego.dealerJuego.valorficha;
+                    tablero.mesaJuego.dealerJuego.Rand1=Math.random();
+                    //Numero Aleatorio
+                    tablero.mesaJuego.dealerJuego.AumentoPremio+=
+                            tablero.mesaJuego.dealerJuego.cuantosJugando()*
+                            tablero.mesaJuego.dealerJuego.valorficha*
+                            (tablero.mesaJuego.dealerJuego.Rand1+
+                            tablero.mesaJuego.dealerJuego.Rand2);
+                    tablero.mesaJuego.dealerJuego.Rand2=1-tablero.mesaJuego.dealerJuego.Rand1;
+                    //Valor al que debe llegar el progresivo.
                     tablero.mesaJuego.dealerJuego.progresivoLoco();
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
                     tablero.mesaJuego.cambiarBotones();
@@ -36,7 +40,6 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvRetiroTotal:
-
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(4);
                     tablero.mesaJuego.cambiarBotones();
                     break;
