@@ -32,7 +32,7 @@ public class Mesa {
         for (int j=0;j<jugador.length;j++) {
             if(i==j) {
                 jugador[j].jugadortv.setTextColor(0xffffffff);
-            }else if(jugador[j].jugadortv.isEnabled()){
+            }else if(jugador[j].jugadortv.isEnabled() && jugador[j].verSiPausado()){
                 jugador[j].jugadortv.setTextColor(0xff000000);
             }
         }
@@ -56,6 +56,7 @@ public class Mesa {
         {
             for (int i = 0; i < jugador.length; i++) {
                 jugador[i].jugadortv.setTextColor(0xFF000000);
+                jugador[i].despausar();
                 jugador[i].jugadortv.setEnabled(true);
             }
         }
@@ -63,7 +64,7 @@ public class Mesa {
     //Funcion que pregunta si hay alguien jugando si lo hay responde con true
     public boolean hayAlguienJugando(){
         for(int i = 0; i < jugador.length; i++){
-           if (jugador[i].verapuesta()!=0) {
+           if (jugador[i].verapuesta()!=0 &&jugador[i].verSiPausado()) {
              return true;
            }
         }

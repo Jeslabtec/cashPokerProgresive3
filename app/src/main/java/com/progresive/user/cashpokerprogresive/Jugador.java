@@ -20,40 +20,36 @@ public class Jugador {
     public Jugador (TextView v)    {
        jugadortv=v;
        jugadortv.setOnClickListener(new lTVClickJugadores());
+        jugadortv.setOnLongClickListener(new LongclickPausarJugador());
     }
-    public void apostar(){
-        Apuesta--;
-        jugadortv.setText(Integer.toString(Apuesta));
-    }
-    /*public void cargarapuesta(int fichas){
-        Apuesta+=fichas;
-        if (Apuesta<0){
-            Apuesta=0;
-        }
-        jugadortv.setText(Integer.toString(Apuesta));
-    }*/
-    public void cargarapuesta(int fichas){
-        Apuesta+=fichas;
 
-        if (Apuesta<SuperApuesta){
-            Apuesta=SuperApuesta;
+    public void cargarapuesta(int fichas){
+        if(Enmesa) {
+            Apuesta += fichas;
+            if (Apuesta < SuperApuesta) {
+                Apuesta = SuperApuesta;
+            }
+            jugadortv.setText(Integer.toString(Apuesta));
         }
-        jugadortv.setText(Integer.toString(Apuesta));
     }
     public void apostemos(){
-        Apuesta--;
-        SuperApuesta--;
-        jugadortv.setText(Integer.toString(Apuesta));
-
+        if(Enmesa) {
+            Apuesta--;
+            SuperApuesta--;
+            jugadortv.setText(Integer.toString(Apuesta));
+        }
     }
     public void cargarSuperApuesta(){
-        SuperApuesta=Apuesta;
+        if(Enmesa) {
+            SuperApuesta = Apuesta;
+        }
     }
 
 
     public void reiniciarApuesta(){
         Apuesta=0;
         SuperApuesta=0;
+        Enmesa=true;
         jugadortv.setText(Integer.toString(Apuesta));
     }
     public boolean verSiPausado()
@@ -61,13 +57,23 @@ public class Jugador {
         return(Enmesa);
     }
     public void ponerPausado()
-    {
-        Enmesa=!(Enmesa);
+    {if(Apuesta>0) {
+        Enmesa = !(Enmesa);
+        if (!Enmesa) {
+            jugadortv.setBackgroundColor(0xFFCD1C1C);
+            jugadortv.setTextColor(0xffe0e0e0);
+        } else {
+            jugadortv.setBackgroundColor(0x00000000);
+            jugadortv.setTextColor(0xff000000);
+        }
+    }
+    }
+    public  void despausar(){
+        jugadortv.setBackgroundColor(0x00000000);
+        Enmesa=true;
     }
     public int verapuesta()
     {
         return Apuesta;
     }
-
-
 }

@@ -21,19 +21,8 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvJugar:
-                    tablero.mesaJuego.dealerJuego.Rand1=Math.random();
-                    //Numero Aleatorio
-                    tablero.mesaJuego.dealerJuego.AumentoPremio+=
-                            tablero.mesaJuego.dealerJuego.cuantosJugando()*
-                            tablero.mesaJuego.dealerJuego.valorficha*
-                            (tablero.mesaJuego.dealerJuego.Rand1+
-                            tablero.mesaJuego.dealerJuego.Rand2);
-                    tablero.mesaJuego.dealerJuego.Rand2=1-tablero.mesaJuego.dealerJuego.Rand1;
-                    //Valor al que debe llegar el progresivo.
-                    tablero.mesaJuego.dealerJuego.progresivoLoco();
-                    tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(2);
-                    tablero.mesaJuego.cambiarBotones();
                     tablero.mesaJuego.dealerJuego.PonerAJugar();
+                    tablero.mesaJuego.cambiarBotones();
                     break;
                 case R.id.tvApostar:
                     tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
