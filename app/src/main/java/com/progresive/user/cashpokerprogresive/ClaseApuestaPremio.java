@@ -8,12 +8,14 @@ import android.widget.TextView;
 public class ClaseApuestaPremio {
 
     private TextView ApuestaPremioTV;
-    private String
+    private String Porcentaje;
+    private String valoresSuma;
 
     public  ClaseApuestaPremio(TextView v,int i){
         ApuestaPremioTV=v;
         ApuestaPremioTV.setOnClickListener(new lTVClickBtnApeustasPremios());
+        Porcentaje=CPPLogin.manip.verPorcentajePremio(i);
+        valoresSuma=ApuestaPremioTV.getText();
 
     }
-
 }
