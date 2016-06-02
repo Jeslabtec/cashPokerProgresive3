@@ -12,6 +12,9 @@ public class ManejoBD  {
     private String pwreal="coso";   // contraceña de la aplicaci{on para esta tablet
     private String[] ClavesDealer={"345678","123456"};
     private String[] ClavesSupervisor={"34567890","12345678"};
+    private int DineroEnProgresivo = 1000000;
+    private int ValorFicha=1000;
+    private String[] PorcentajePremios={"1","2","4","8","16","32"};
 /*
 * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
 * */
@@ -37,6 +40,15 @@ public class ManejoBD  {
             }
         }
         return false;
+    }
+    public int verDineroProgresivo(){
+        return DineroEnProgresivo;
+    }
+    public int verValorFicha(){
+        return ValorFicha;
+    }
+    public String verPorcentajePremio(int i){
+        return PorcentajePremios[i];
     }
 }
 

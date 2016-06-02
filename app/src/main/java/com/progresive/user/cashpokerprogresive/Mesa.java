@@ -3,29 +3,48 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by JuanEsteban on 28/04/2016.
  */
 public class Mesa {
     Jugador[] jugador=new Jugador[7];
-    Dealer dealerJuego;
+    ClaseApuestaPremio[] ApuestaPremio=new ClaseApuestaPremio[6];
 
+    ControlesJuego pagarTV;
+    ControlesJuego jugarTV;
+    ControlesJuego apostarTV;
+    ControlesJuego retirarseTV;
 
+    ClaseDelProgresivo ProgresivoTV;
 
+    private int jugadorSeleccionado; //Es una variable que guarda que jugadors a sido seleccionado
+    private int EstadoJuego=3;
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)    {
-
-        TextView[] atributosDealer={v[7],v[8],v[9],v[10],v[11],v[12],v[13],v[14],v[15],v[16],v[17],v[18]};
 
         for (int i=0; i<jugador.length;i++){
             jugador[i]=new Jugador(v[i]);
         }
-        dealerJuego=new Dealer(atributosDealer);
+        for (int i=0; i<ApuestaPremio.length;i++){
+            ApuestaPremio[i]=new ClaseApuestaPremio(v[i+7],i);
+        }
+
+        pagarTV = new ControlesJuego(v[13]);
+        jugarTV = new ControlesJuego(v[14]);
+        apostarTV = new ControlesJuego(v[15]);
+        retirarseTV = new ControlesJuego(v[16]);
+
+        ProgresivoTV = new ClaseDelProgresivo(v[18]);
         cambiarBotones();
     }
+
    //---------------------------------------------------------------------------------
 //funcion que cambia el textview mientras es undido
     public void jugadorSeleccionadoColor(int i){
@@ -70,7 +89,55 @@ public class Mesa {
         }
         return false;
     }
+    //Funcion que me dice cuantos jugadores hay en mesa
+    public int cuantosJugando() {
+        int jugadores = 0;
+        for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
+            if (tablero.mesaJuego.jugador[i].verapuesta() > 0 && tablero.mesaJuego.jugador[i].verSiPausado()) {
+                jugadores++;
+            }
+        }
+        return jugadores;
+    }
+//Funcion para iniciar el juego
+    public void PonerAJugar() {
+        progresivoLoco();
+        cambiarElEstadoDelJuego(2);
+        for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
+            if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
+                tablero.mesaJuego.jugador[i].cargarSuperApuesta();
+                tablero.mesaJuego.jugador[i].apostemos();
+            }
+        }
+    }
 
+    //Timer***********************************************************************************************
+    final Handler handler = new Handler();
+    Timer t = new Timer();
+
+    public void progresivoLoco() {
+        t.schedule(new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        double intermedio;
+                        if (EstadoJuego == 2) {
+                            ProgresivoTV.aumentoAleatorio();
+                            progresivoLoco();
+                        }
+                    }
+                });
+            }
+        }, 100);
+    }
+//*************************************************************************************************************************
+    int verElEstadoDelJuego() {
+        return (EstadoJuego);
+    }
+
+    void cambiarElEstadoDelJuego(int NuevoEstado) {
+        EstadoJuego = NuevoEstado;
+    }
     //Que pasa con los textview cuando se unde cualquiera de los controles//
     private void BotonesdeApuesta(){
 
@@ -81,21 +148,10 @@ public class Mesa {
         dealerJuego.apuestaPremio[4].setText(R.string.Apuesta5);
         dealerJuego.ponerSumando();
 
-        dealerJuego.retirarTV.setBackgroundColor(0x00000000);
-        dealerJuego.retirarTV.setTextColor(0xff000000);
-        dealerJuego.retirarTV.setEnabled(true);
-
-        dealerJuego.pagarTV.setBackgroundColor(0xffE0E0E0);
-        dealerJuego.pagarTV.setTextColor(0xff000000);
-        dealerJuego.pagarTV.setEnabled(false);
-
-        dealerJuego.jugarTV.setBackgroundColor(0x00000000);
-        dealerJuego.jugarTV.setTextColor(0xff000000);
-        dealerJuego.jugarTV.setEnabled(true);
-
-        dealerJuego.apostarTV.setBackgroundColor(0xff000000);
-        dealerJuego.apostarTV.setTextColor(0xffffffff);
-        dealerJuego.apostarTV.setEnabled(false);
+        retirarseTV.Bloquear();
+        pagarTV.Bloquear();
+        jugarTV.Habilitar();
+        apostarTV.Seleccionar();
 
         for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
         {
@@ -114,21 +170,10 @@ public class Mesa {
         dealerJuego.apuestaPremio[4].setText("81");
         dealerJuego.apuestaPremio[5].setText("100");
 
-        dealerJuego.apostarTV.setBackgroundColor(0x00000000);
-        dealerJuego.apostarTV.setTextColor(0xff000000);
-        dealerJuego.apostarTV.setEnabled(true);
-
-        dealerJuego.retirarTV.setBackgroundColor(0xffe0e0e0);
-        dealerJuego.retirarTV.setTextColor(0xff000000);
-        dealerJuego.retirarTV.setEnabled(false);
-
-        dealerJuego.jugarTV.setBackgroundColor(0xffe0e0e0);
-        dealerJuego.jugarTV.setTextColor(0xff000000);
-        dealerJuego.jugarTV.setEnabled(false);
-
-        dealerJuego.pagarTV.setBackgroundColor(0xff000000);
-        dealerJuego.pagarTV.setTextColor(0xffffffff);
-        dealerJuego.pagarTV.setEnabled(false);
+        retirarseTV.Bloquear();
+        pagarTV.Seleccionar();
+        jugarTV.Bloquear();
+        apostarTV.Habilitar();
 
         for (int i=0; i<dealerJuego.apuestaPremio.length; i++)
         {
@@ -147,21 +192,12 @@ public class Mesa {
         dealerJuego.apuestaPremio[4].setText("81");
         dealerJuego.apuestaPremio[5].setText("100");
 
-        dealerJuego.apostarTV.setBackgroundColor(0x00000000);
-        dealerJuego.apostarTV.setTextColor(0xff000000);
-        dealerJuego.apostarTV.setEnabled(true);
 
-        dealerJuego.retirarTV.setBackgroundColor(0xffe0e0e0);
-        dealerJuego.retirarTV.setTextColor(0xff000000);
-        dealerJuego.retirarTV.setEnabled(false);
+        retirarseTV.Bloquear();
+        pagarTV.Habilitar();
+        jugarTV.Seleccionar();
+        apostarTV.Habilitar();
 
-        dealerJuego.pagarTV.setBackgroundColor(0x00000000);
-        dealerJuego.pagarTV.setTextColor(0xff000000);
-        dealerJuego.pagarTV.setEnabled(true);
-
-        dealerJuego.jugarTV.setBackgroundColor(0xff000000);
-        dealerJuego.jugarTV.setTextColor(0xffffffff);
-        dealerJuego.jugarTV.setEnabled(false);
 
         for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
         {
@@ -175,21 +211,11 @@ public class Mesa {
     //---------------------------------------------------------------------------------------------------------------//
     private void BotonesdeRetiro(){
 
-        dealerJuego.apostarTV.setBackgroundColor(0x00000000);
-        dealerJuego.apostarTV.setTextColor(0xff000000);
-        dealerJuego.apostarTV.setEnabled(true);
 
-        dealerJuego.pagarTV.setBackgroundColor(0xffe0e0e0);
-        dealerJuego.pagarTV.setTextColor(0xff000000);
-        dealerJuego.pagarTV.setEnabled(false);
-
-        dealerJuego.jugarTV.setBackgroundColor(0xffe0e0e0);
-        dealerJuego.jugarTV.setTextColor(0xff000000);
-        dealerJuego.jugarTV.setEnabled(false);
-
-        dealerJuego.retirarTV.setBackgroundColor(0xff000000);
-        dealerJuego.retirarTV.setTextColor(0xffffffff);
-        dealerJuego.retirarTV.setEnabled(true);
+        retirarseTV.Seleccionar();
+        pagarTV.Bloquear();
+        jugarTV.Bloquear();
+        apostarTV.Habilitar();
 
         for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
         {
@@ -206,7 +232,7 @@ public class Mesa {
     //dependiendo del estado del juego se habilitaran o desabilitaran algunos botones
 
     public void cambiarBotones(){
-        switch (dealerJuego.verElEstadoDelJuego())
+        switch (EstadoJuego)
         {//----------------------------------------------------------------------------------------------
             case 1:
                 BotonesdePago();

@@ -1,14 +1,10 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.widget.ContentFrameLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -148,7 +144,7 @@ public class tablero extends AppCompatActivity {
                 (TextView) findViewById(R.id.tvApostar),
                 (TextView) findViewById(R.id.tvRetiroTotal),
                 (TextView) findViewById(R.id.TextviewAviso),
-                (TextView) findViewById(R.id.textView7)};
+                (TextView) findViewById(R.id.TVprogresivo)};
 
         mesaJuego = new Mesa(datos);
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
