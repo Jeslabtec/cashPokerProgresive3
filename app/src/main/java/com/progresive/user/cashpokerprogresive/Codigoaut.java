@@ -20,6 +20,7 @@ public class Codigoaut extends AppCompatActivity {
      */
     public TextView CodingTV;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class Codigoaut extends AppCompatActivity {
                 (TextView) findViewById(R.id.coding),
                 (TextView) findViewById(R.id.BorrarTV),
                 (TextView) findViewById(R.id.EncargadoTV)};
-        if(tablero.mesaJuego.dealerJuego.necesariosupervisor) {
+        if(tablero.mesaJuego.necesariosupervisor) {
             CodeTV[13].setText("Supervisor");
         }else{
             CodeTV[13].setText("Dealer");
@@ -119,9 +120,9 @@ public class Codigoaut extends AppCompatActivity {
                 }
                 break;
             case R.id.okTV:
-                if(tablero.mesaJuego.dealerJuego.necesariosupervisor) {
+                if(tablero.mesaJuego.necesariosupervisor) {
                     if (CPPLogin.manip.VerificarClaveSupervisor((String) CodeTV[11].getText())) {
-                        tablero.mesaJuego.dealerJuego.AccionesConfirmarPago();
+                        tablero.mesaJuego.AccionesConfirmarPago();
                         Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
                         finish();
                     }else{
@@ -131,7 +132,7 @@ public class Codigoaut extends AppCompatActivity {
                 }else {
 
                     if (CPPLogin.manip.VerificarClaveDealer((String) CodeTV[11].getText())) {
-                        tablero.mesaJuego.dealerJuego.AccionesConfirmarPago();
+                        tablero.mesaJuego.AccionesConfirmarPago();
                         Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
                         finish();
                     } else {

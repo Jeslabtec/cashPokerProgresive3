@@ -34,5 +34,4 @@ public class ControlesJuego {
         ControlTV.setEnabled(false);
         Seleccionado=true;
     }
-
 }

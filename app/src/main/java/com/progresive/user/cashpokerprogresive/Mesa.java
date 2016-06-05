@@ -14,69 +14,71 @@ import java.util.TimerTask;
  * Created by JuanEsteban on 28/04/2016.
  */
 public class Mesa {
+    //Objetos que representa c/u de los jugadores
     Jugador[] jugador=new Jugador[7];
+    //Objetos de Los botones de apuestas premios
     ClaseApuestaPremio[] ApuestaPremio=new ClaseApuestaPremio[6];
-
+    //Textview que me dice en que fase esta el juego
+    TextView AvisoTV;
     ControlesJuego pagarTV;
     ControlesJuego jugarTV;
     ControlesJuego apostarTV;
     ControlesJuego retirarseTV;
-
     ClaseDelProgresivo ProgresivoTV;
+    MensajesAlerta mensaje;
 
-    private int jugadorSeleccionado; //Es una variable que guarda que jugadors a sido seleccionado
+//variable que dice si se necesita el supervisor o no
+    public boolean necesariosupervisor = false;
+    private int ApuPreSeleccionado=-1;
     private int EstadoJuego=3;
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)    {
-
+//Creacion de los objetos jugadores que son 7
         for (int i=0; i<jugador.length;i++){
             jugador[i]=new Jugador(v[i]);
         }
+        //Creacion de los objetos ApuestaPremio que son 6
         for (int i=0; i<ApuestaPremio.length;i++){
             ApuestaPremio[i]=new ClaseApuestaPremio(v[i+7],i);
         }
-
+       //Creacion de los 4 objetos de control
         pagarTV = new ControlesJuego(v[13]);
         jugarTV = new ControlesJuego(v[14]);
         apostarTV = new ControlesJuego(v[15]);
         retirarseTV = new ControlesJuego(v[16]);
-
+        //Seteo del long click listener de la configuracion
+        AvisoTV = v[17];
+        AvisoTV.setOnLongClickListener(new longclickconfiguracion());
+        //Creacion del objeto progresivo
         ProgresivoTV = new ClaseDelProgresivo(v[18]);
+
         cambiarBotones();
+        //Objeto que contiene los mensajes de alerta
+        mensaje=new MensajesAlerta();
     }
 
    //---------------------------------------------------------------------------------
-//funcion que cambia el textview mientras es undido
-    public void jugadorSeleccionadoColor(int i){
-        for (int j=0;j<jugador.length;j++) {
-            if(i==j) {
-                jugador[j].jugadortv.setTextColor(0xffffffff);
-            }else if(jugador[j].jugadortv.isEnabled() && jugador[j].verSiPausado()){
-                jugador[j].jugadortv.setTextColor(0xff000000);
-            }
-        }
-    }
-//Funcion que pregunta quienes estan en cero y los bloquea
+
+    //funcion que cambia el textview mientras es undido
+
+    //Funcion que pregunta quienes estan en cero y los bloquea
     public void restringirJugadores(){
         for(int i=0;i<jugador.length;i++){
             if(jugador[i].verapuesta()==0){
-                jugador[i].jugadortv.setTextColor(0xffe0e0e0);
-                jugador[i].jugadortv.setEnabled(false);
+                jugador[i].Bloquear();
+
             }
         }
     }
     public void  restringirJugador(int i){
-        jugador[i].jugadortv.setTextColor(0xffe0e0e0);
-        jugador[i].jugadortv.setEnabled(false);
+        jugador[i].Bloquear();
     }
     //Funcion que habilita a los jugadores en la fase de apuesta
     public void habilitarJugadores()
     {
         {
             for (int i = 0; i < jugador.length; i++) {
-                jugador[i].jugadortv.setTextColor(0xFF000000);
-                jugador[i].despausar();
-                jugador[i].jugadortv.setEnabled(true);
+                jugador[i].Habilitar();
             }
         }
     }
@@ -99,19 +101,45 @@ public class Mesa {
         }
         return jugadores;
     }
-//Funcion para iniciar el juego
+    //Funcion que permite saber que jugadro esta seleccionado
+    public int JugadorSeleccionado(){
+        for (int i=0;i<jugador.length;i++){
+            if(jugador[i].EstoySeleccionado()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void SeleccionarJugador(int j){
+        for (int i=0;i<jugador.length;i++) {
+            if(i==j) {
+                jugador[i].Seleccionar();
+            }else if(jugador[i].jugadortv.isEnabled()) {
+                jugador[i].Habilitar();
+            }
+        }
+    }
+    public int ApuPreSeleccionado(){
+        return ApuPreSeleccionado;
+    }
+    public void SeleccionarApuPre(int i){
+        ApuPreSeleccionado=i;
+    }
+    //Funcion para iniciar el juego
     public void PonerAJugar() {
-        progresivoLoco();
-        cambiarElEstadoDelJuego(2);
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
                 tablero.mesaJuego.jugador[i].cargarSuperApuesta();
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
+        ProgresivoTV.setAumentoPremio();
+        progresivoLoco();
     }
 
     //Timer***********************************************************************************************
+    //Funcion que se realiza iterativamente durante toda la fase de juego
     final Handler handler = new Handler();
     Timer t = new Timer();
 
@@ -120,7 +148,6 @@ public class Mesa {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        double intermedio;
                         if (EstadoJuego == 2) {
                             ProgresivoTV.aumentoAleatorio();
                             progresivoLoco();
@@ -128,104 +155,78 @@ public class Mesa {
                     }
                 });
             }
-        }, 100);
+        }, 90);
     }
 //*************************************************************************************************************************
+//Funcion que devuelve el estado del juego
     int verElEstadoDelJuego() {
         return (EstadoJuego);
     }
-
+//Funcion que cambia el estado de juego
     void cambiarElEstadoDelJuego(int NuevoEstado) {
         EstadoJuego = NuevoEstado;
     }
-    //Que pasa con los textview cuando se unde cualquiera de los controles//
-    private void BotonesdeApuesta(){
+//*********************************************************************************************************************
+    //Que pasa con los textview cuando se une cualquiera de los controles//
+        private void BotonesdeApuesta(){
+        ApuestaPremio[5].ponerSumando();
 
-        dealerJuego.apuestaPremio[0].setText(R.string.Apuesta1);
-        dealerJuego.apuestaPremio[1].setText(R.string.Apuesta2);
-        dealerJuego.apuestaPremio[2].setText(R.string.Apuesta3);
-        dealerJuego.apuestaPremio[3].setText(R.string.Apuesta4);
-        dealerJuego.apuestaPremio[4].setText(R.string.Apuesta5);
-        dealerJuego.ponerSumando();
-
-        retirarseTV.Bloquear();
+        retirarseTV.Habilitar();
         pagarTV.Bloquear();
         jugarTV.Habilitar();
         apostarTV.Seleccionar();
 
-        for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
+        for (int i=0;i<ApuestaPremio.length;i++)
         {
-            dealerJuego.apuestaPremio[i].setVisibility(View.VISIBLE);
-            dealerJuego.apuestaPremio[i].setBackgroundResource(R.drawable.coins);
+            ApuestaPremio[i].BotonesApuesta();
         }
-        dealerJuego.AvisoTV.setText(R.string.Apostemos);
+        AvisoTV.setText(R.string.Apostemos);
         habilitarJugadores();
     }
     //----------------------------------------------------------------------------------------//
     private void BotonesdePago(){
-        dealerJuego.apuestaPremio[0].setText("1");
-        dealerJuego.apuestaPremio[1].setText("3");
-        dealerJuego.apuestaPremio[2].setText("9");
-        dealerJuego.apuestaPremio[3].setText("27");
-        dealerJuego.apuestaPremio[4].setText("81");
-        dealerJuego.apuestaPremio[5].setText("100");
-
         retirarseTV.Bloquear();
         pagarTV.Seleccionar();
         jugarTV.Bloquear();
         apostarTV.Habilitar();
 
-        for (int i=0; i<dealerJuego.apuestaPremio.length; i++)
+        for (int i=0; i<ApuestaPremio.length; i++)
         {
-            dealerJuego.apuestaPremio[i].setVisibility(View.VISIBLE);
-            dealerJuego.apuestaPremio[i].setBackgroundResource(R.drawable.descarga);
+           ApuestaPremio[i].BotonesPremio();
         }
-        dealerJuego.AvisoTV.setText(R.string.Pago);
-        jugadorSeleccionadoColor(-1);
+        AvisoTV.setText(R.string.Pago);
     }
     //--------------------------------------------------------------------------------------------------//
     private void BotonesdeJuego(){
-        dealerJuego.apuestaPremio[0].setText("1");
-        dealerJuego.apuestaPremio[1].setText("3");
-        dealerJuego.apuestaPremio[2].setText("9");
-        dealerJuego.apuestaPremio[3].setText("27");
-        dealerJuego.apuestaPremio[4].setText("81");
-        dealerJuego.apuestaPremio[5].setText("100");
-
-
         retirarseTV.Bloquear();
         pagarTV.Habilitar();
         jugarTV.Seleccionar();
         apostarTV.Habilitar();
 
-
-        for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
+        for (int i=0;i<ApuestaPremio.length;i++)
         {
-            dealerJuego.apuestaPremio[i].setVisibility(View.VISIBLE);
-            dealerJuego.apuestaPremio[i].setBackgroundResource(R.drawable.descarga);
+           ApuestaPremio[i].BotonesPremio();
         }
-        dealerJuego.AvisoTV.setText(R.string.jogo);
-        jugadorSeleccionadoColor(-1);
+
+        AvisoTV.setText(R.string.jogo);
+        SeleccionarJugador(-1);
         restringirJugadores();
     }
     //---------------------------------------------------------------------------------------------------------------//
     private void BotonesdeRetiro(){
-
-
         retirarseTV.Seleccionar();
         pagarTV.Bloquear();
         jugarTV.Bloquear();
         apostarTV.Habilitar();
 
-        for (int i=0;i<dealerJuego.apuestaPremio.length;i++)
+        for (int i=0;i<ApuestaPremio.length;i++)
         {
-            dealerJuego.apuestaPremio[i].setVisibility(View.INVISIBLE);
+            ApuestaPremio[i].BotonesDesaparecer();
         }
 
-        dealerJuego.AvisoTV.setText(R.string.Retirando);
+        AvisoTV.setText(R.string.Retirando);
+        SeleccionarJugador(-1);
         restringirJugadores();
-        jugadorSeleccionadoColor(-1);
-
     }
     //-------------------------------------------------------------------------------------------------------------------//
         // metodos
@@ -249,9 +250,14 @@ public class Mesa {
                 break;
         }
     }
-    public void AbrirCodiaut()
-    {
-        Intent orden=new Intent(tablero.dato,Codigoaut.class);
-        tablero.dato.startActivity(orden);
+
+    //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
+   public void AccionesConfirmarPago() {
+        double i = ProgresivoTV.ValorDelPremio();
+        double j = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
+        jugador[JugadorSeleccionado()].cargarapuesta((int) ((j / 100 * i)));
+        jugador[JugadorSeleccionado()].cargarSuperApuesta();
+        restringirJugador(JugadorSeleccionado());
     }
+
 }

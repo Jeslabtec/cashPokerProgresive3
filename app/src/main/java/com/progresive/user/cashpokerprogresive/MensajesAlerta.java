@@ -2,46 +2,35 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 
 /**
  * Created by user on 02/06/2016.
  */
 public class MensajesAlerta {
 
-    AlertDialog msgConfirmarPago(final int Premio) {
+    AlertDialog msgConfirmarPago() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Confirma el pago de este premio?");
+        creaMensajes.setMessage("¿Confirma el pago de este premio?");
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                PorcentajePremio = (float) Premio;
-                tablero.mesaJuego.AbrirCodiaut();
+                AbrirCodiaut();
                 dialog.cancel();
             }
         });
-
         creaMensajes.setNegativeButton(R.string.Cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                tablero.mesaJuego.dealerJuego.jugadorSeleccionado = -1;
+                tablero.mesaJuego.SeleccionarJugador(-1);
                 dialog.cancel();
             }
         });
-
         return creaMensajes.create();
-
     }
 
-    //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
-    void AccionesConfirmarPago() {
-        double i = Double.parseDouble((String) ProgresivoTV.getText());
-        tablero.mesaJuego.jugador[jugadorSeleccionado].cargarapuesta((int) (((double) PorcentajePremio) / 100 * i));
-        tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
-        tablero.mesaJuego.jugador[jugadorSeleccionado].cargarSuperApuesta();
-        jugadorSeleccionado = -1;
-        tablero.mesaJuego.jugadorSeleccionadoColor(-1);
-    }
+
 
     //------------------------------------------------------------------------------------------------------------------------------//
     AlertDialog msgConfirmarRetiro() {
@@ -66,7 +55,7 @@ public class MensajesAlerta {
     }
 
     //-----------------------------------------------------------------------------------------------------------//
-
+//Mensaje de error cuando aun no tengo apuestas
     AlertDialog msgErrorApuesta() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
         creaMensajes.setMessage(R.string.DebSelJug);
@@ -83,18 +72,24 @@ public class MensajesAlerta {
     }
 
     //-----------------------------------------------------------------------------------------------------------//
+
+    //Mensaje que permite confirmar el pago del dinero.
     AlertDialog msgConfirmarDinero() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("Pagar al Jugador " + tablero.mesaJuego.jugador[jugadorSeleccionado].jugadortv.getText() + " fichas");
+
+        creaMensajes.setMessage("Pagar al Jugador " +
+        tablero.mesaJuego.jugador[tablero.mesaJuego.JugadorSeleccionado()].verapuesta() + " fichas");
+
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tablero.mesaJuego.jugador[jugadorSeleccionado].reiniciarApuesta();
-                tablero.mesaJuego.restringirJugador(jugadorSeleccionado);
-                jugadorSeleccionado = -1;
+                int i=tablero.mesaJuego.JugadorSeleccionado();
+                tablero.mesaJuego.jugador[i].reiniciarApuesta();
+                tablero.mesaJuego.restringirJugador(i);
+                tablero.mesaJuego.SeleccionarJugador(-1);
                 if (!tablero.mesaJuego.hayAlguienJugando()) {
-                    tablero.mesaJuego.dealerJuego.cambiarElEstadoDelJuego(3);
+                    tablero.mesaJuego.cambiarElEstadoDelJuego(3);
                     tablero.mesaJuego.cambiarBotones();
                 }
                 dialog.cancel();
@@ -118,4 +113,9 @@ public class MensajesAlerta {
         return creaMensajes.create();
     }
     //-----------------------------------------------------------------------------------------------------------//
+    public void AbrirCodiaut()
+    {
+        Intent orden=new Intent(tablero.dato,Codigoaut.class);
+        tablero.dato.startActivity(orden);
+    }
 }

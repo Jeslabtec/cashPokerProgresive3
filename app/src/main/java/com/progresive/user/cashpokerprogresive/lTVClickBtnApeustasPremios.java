@@ -9,27 +9,34 @@ import android.widget.TextView;
 public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
 
 
-    public int Apuesta (int id, TextView[] datos) {
+    public int Apuesta (int id) {
         switch (id) {
             case R.id.tvPremioApuesta1:
-                return (Integer.parseInt((String) datos[0].getText()));
+                 tablero.mesaJuego.SeleccionarApuPre(0);
+                return 0;
             case R.id.tvPremioApuesta2:
-                return (Integer.parseInt((String) datos[1].getText()));
+                tablero.mesaJuego.SeleccionarApuPre(1);
+                return 1;
             case R.id.tvPremioApuesta3:
-                return (Integer.parseInt((String) datos[2].getText()));
+                tablero.mesaJuego.SeleccionarApuPre(2);
+                return 2;
             case R.id.tvPremioApuesta4:
-                return (Integer.parseInt((String) datos[3].getText()));
+                tablero.mesaJuego.SeleccionarApuPre(3);
+                return 3;
             case R.id.tvPremioApuesta5:
-                return (Integer.parseInt((String) datos[4].getText()));
+                tablero.mesaJuego.SeleccionarApuPre(4);
+                return 4;
             case R.id.tvPremioApuesta6:
-                if (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego() == 3) {
-                    tablero.mesaJuego.dealerJuego.cambiarRestando();
-                    return 0;
+                if (tablero.mesaJuego.verElEstadoDelJuego() == 3) {
+                    tablero.mesaJuego.ApuestaPremio[5].cambiarRestando();
+                    return 5;
                 }else{
-                    return (Integer.parseInt((String) datos[5].getText()));
+                    tablero.mesaJuego.SeleccionarApuPre(5);
+                    return 5;
                 }
             default:
-                return 0;
+                return -1;
+
         }
 
     }
@@ -37,19 +44,26 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
     @Override
     public void onClick(View v)
     {
-        int i=Apuesta(v.getId(),tablero.mesaJuego.dealerJuego.apuestaPremio);
-        switch (tablero.mesaJuego.dealerJuego.verElEstadoDelJuego())
+        int i=Apuesta(v.getId());
+
+        switch (tablero.mesaJuego.verElEstadoDelJuego())
+
            {//----------------------------------------------------------------------------------------------------//
                case 1: // fase pagar
-                   if (i>9) {tablero.mesaJuego.dealerJuego.necesariosupervisor = true;}//Configura si se necesita supervisor o no.
 
-                   if (tablero.mesaJuego.dealerJuego.jugadorSeleccionado>=0) {
+                   if (tablero.mesaJuego.ApuestaPremio[i].ValorNumerico()>9) {
+                       tablero.mesaJuego.necesariosupervisor = true;}
+                   else{
+                       tablero.mesaJuego.necesariosupervisor = false;
+                   }
+                   //Configura si se necesita supervisor o no.
 
-                       tablero.mesaJuego.dealerJuego.msgConfirmarPago(i).show();
+                   if (tablero.mesaJuego.JugadorSeleccionado()>=0) {
+                       tablero.mesaJuego.mensaje.msgConfirmarPago().show();
                    }
                    else
                    {
-                       tablero.mesaJuego.dealerJuego.msgErrorApuesta().show();
+                       tablero.mesaJuego.mensaje.msgErrorApuesta().show();
                    }
 
                break;
@@ -59,17 +73,23 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
                break;
                //-----------------------------------------------------------------------------------------------------------------//
                case 3: //apostar
+                   int jug=tablero.mesaJuego.JugadorSeleccionado();
+                   int Apu=0;
 
-                   if (tablero.mesaJuego.dealerJuego.jugadorSeleccionado>=0) {
-                       if (tablero.mesaJuego.dealerJuego.verSiRestando()) {
-                           tablero.mesaJuego.jugador[tablero.mesaJuego.dealerJuego.jugadorSeleccionado].cargarapuesta(-i);
+                   if(i!=5) {
+                       Apu = (int) tablero.mesaJuego.ApuestaPremio[i].ValorNumerico();
+                   }
+
+                   if (jug>=0) {
+                       if (tablero.mesaJuego.ApuestaPremio[5].verSiRestando()) {
+                           tablero.mesaJuego.jugador[jug].cargarapuesta(-Apu);
                        }else{
-                           tablero.mesaJuego.jugador[tablero.mesaJuego.dealerJuego.jugadorSeleccionado].cargarapuesta(i);
+                           tablero.mesaJuego.jugador[jug].cargarapuesta(Apu);
                        }
                    }
                    else
                    {
-                        tablero.mesaJuego.dealerJuego.msgErrorApuesta().show();
+                        tablero.mesaJuego.mensaje.msgErrorApuesta().show();
                    }
                    //tablero.mesaJuego.dealerJuego.tomarFicha(i);
                break;
