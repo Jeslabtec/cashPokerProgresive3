@@ -110,7 +110,7 @@ public class Mesa {
         }
         return -1;
     }
-
+//funcion que permite seleccionar un jugador
     public void SeleccionarJugador(int j){
         for (int i=0;i<jugador.length;i++) {
             if(i==j) {

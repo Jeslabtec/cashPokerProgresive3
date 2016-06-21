@@ -42,8 +42,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class CPPLogin extends AppCompatActivity  {
     static ManejoBD manip;  // Atributo de la clase creado para manejar tod lo concerniente a
-
-    // coneccion de la BD
+     // coneccion de la BD
     static AppCompatActivity ContextoLogin;
 
 
@@ -55,6 +54,7 @@ public class CPPLogin extends AppCompatActivity  {
         final EditText Usuario=(EditText)findViewById(R.id.edtUsuario);
         final EditText Pw= (EditText) findViewById(R.id.edtPassword);
         final Button lg=(Button) findViewById(R.id.btnLogin);
+
 
         manip=new ManejoBD();
         ContextoLogin=this;
@@ -68,7 +68,7 @@ public class CPPLogin extends AppCompatActivity  {
                     finish();
                 }
                 else{
-                    Toast.makeText(CPPLogin.this,"Te jodiste",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CPPLogin.this,"Usuario o clave inexistente",Toast.LENGTH_SHORT).show();
                 }
 
             }

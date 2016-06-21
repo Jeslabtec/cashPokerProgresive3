@@ -86,7 +86,7 @@ public class Jugador {
     {
         return Apuesta;
     }
-// funciones graficas
+// funciones graficas de los botones
     public void Bloquear() {
         if (Enmesa) {
             jugadortv.setBackgroundColor(0x00000000);

@@ -4,7 +4,12 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Created by user on 02/06/2016.
+ * Created by Santigo Lopez on 02/06/2016.
+ * Clase que crea los objetos apuesta premio.
+ * Estos objetos tienen la respnsabilidad de ademas de poner el valor de la apuesta
+ * en los jugadores, guarda cada uno de los 6 premios disponibles en el juego.
+ * Esta clase permite cambiar las características físicas de dchos botones y guardar los valores
+ * del porcentaje y los valores de apuesta
  */
 public class ClaseApuestaPremio {
 
