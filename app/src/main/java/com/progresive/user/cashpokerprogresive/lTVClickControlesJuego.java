@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.Toast;
+
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
 
 import static android.support.v4.app.ActivityCompat.startActivity;
 
@@ -22,6 +27,17 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                     break;
                 case R.id.tvJugar:
                     tablero.mesaJuego.cambiarElEstadoDelJuego(2);
+                    try {
+                        CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"entrada",tablero.mesaJuego.cuantosJugando(),2,0);
+                    } catch (ExecutionException e) {
+                        Toast.makeText(tablero.dato,e.getMessage(),Toast.LENGTH_LONG).show();
+                    } catch (InterruptedException e) {
+                        Toast.makeText(tablero.dato,e.getMessage(),Toast.LENGTH_LONG).show();
+                        //e.printStackTrace();
+                    } catch (JSONException e) {
+                        Toast.makeText(tablero.dato,e.getMessage(),Toast.LENGTH_LONG).show();
+                        //e.printStackTrace();
+                    }
                     tablero.mesaJuego.cambiarBotones();
                     tablero.mesaJuego.PonerAJugar();
                     break;

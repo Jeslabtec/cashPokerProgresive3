@@ -1,7 +1,32 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.AbstractExecutionAwareRequest;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 
 /**
  * Clase para el manejo de la conexíon con la base de datos. La conexion se realizara a traves de
@@ -10,46 +35,176 @@ import android.view.View;
 public class ManejoBD  {
     private String userreal="a"; // usuario de la aplicación para esta tablet
     private String pwreal="a";   // contraceña de la aplicaci{on para esta tablet
-    private String[] ClavesDealer={"345678","123456"};
-    private String[] ClavesSupervisor={"34567890","12345678"};
+    private String ClavesDealer="345678";
+    private String ClavesSupervisor="12345678";
     private int DineroEnProgresivo = 1000000;
     private int ValorFicha=1000;
-    private String[] PorcentajePremios={"1","2","4","8","16","32"};
-/*
-* Funcion login: revisa si las contraseñas suministradas son iguales a las reales
-* */
-
-    public boolean Login(String Usuario, String pass){
-        return((Usuario.equals(userreal))&&(pass.equals(pwreal)));
-    }
-
-    public boolean VerificarClaveDealer(String pass){
-
-        for (int i=0;i<ClavesDealer.length;i++) {
-            if (pass.equals(ClavesDealer[i])) {
-                return true;
+    private double[] PorcentajePremios={};
+    public Integer idTablet=-1;
+    public Integer idSede=-1;
+    public Integer idDealer=1;
+    /*
+    * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
+    * */
+    public boolean Login(String Usuario, String pass) throws JSONException, ExecutionException, InterruptedException {
+        boolean activo=false;
+        int resultactive=0;
+        JSONObject json=new JSONObject();
+        json.put("USR",Usuario);
+        json.put("PW",pass);
+        String[] parametros={"/isActive",json.toString()};
+        String loggin = new ManejoPOST().execute(parametros).get();
+        JSONObject jsonresponse=new JSONObject(loggin);
+        if(jsonresponse.getString("ERROR").equals("OK")){
+            resultactive=jsonresponse.getInt("Active");
+            if(resultactive==0){
+                Toast.makeText(CPPLogin.ContextoLogin,"Producto no Activado",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(CPPLogin.ContextoLogin,"Iniciando la Aplicacion",Toast.LENGTH_SHORT).show();
+                this.idTablet=jsonresponse.getInt("idTablet");        //poner en rest para devolver idTablet
+                this.idSede=jsonresponse.getInt("idSede");
+                this.DineroEnProgresivo=jsonresponse.getInt("valorProgresivo");
+                this.ValorFicha=jsonresponse.getInt("valorFicha");
+                JSONArray porcentajes = jsonresponse.getJSONArray("porcentajes");
+                for (int i=0;i<porcentajes.length();i++){
+                    this.PorcentajePremios[i]=porcentajes.getInt(i);
+                }
+                activo=true;
             }
         }
-        return false;
-    }
-    public boolean VerificarClaveSupervisor(String pass){
-
-        for (int i=0;i<ClavesSupervisor.length;i++) {
-            if (pass.equals(ClavesSupervisor[i])) {
-                return true;
-            }
+        else{
+           Toast.makeText(CPPLogin.ContextoLogin,"Error: Usuario o Contraseña incorrectos",Toast.LENGTH_SHORT).show();
         }
-        return false;
+        return(activo);
     }
+    public boolean VerificarClave(String pass,String relacion) throws ExecutionException, InterruptedException, JSONException { // sobre el rest para esta funcion el URL termina en /isEmployed, datos USR, PW y SID, devuelve relacion.
+        boolean result=false;
+        JSONObject json=new JSONObject();
+        json.put("PW",pass);
+        json.put("SID",this.idSede);
+        json.put("R",relacion);
+        String[] parametros={"/isEmployed",json.toString()};
+        String verification = new ManejoPOST().execute(parametros).get();
+        JSONObject jsonresponse=new JSONObject(verification);
+        if(jsonresponse.getInt("idEmpleado")==-1){
+            Toast.makeText(CPPLogin.ContextoLogin,"no existe un "+relacion+" con esa contraseña",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(CPPLogin.ContextoLogin,"Pago validado", Toast.LENGTH_SHORT).show();
+            result=true;
+        }
+
+        return result;
+    }
+
+    /*
+    *Actualizaciones en el servidor para realizar tablas administrativas
+    * */
+
+    public void EnviarMovimiento(int idTab,String oper,int value,int idDeal,int idSup) throws ExecutionException, InterruptedException, JSONException {
+        JSONObject json=new JSONObject(),jsonresp;
+        boolean salida=false;
+        json.put("TID",idTab);
+        json.put("TOP",oper);
+        json.put("VOP",value);
+        json.put("DID",idDeal);
+        json.put("SupID",idSup);
+        String[] parametros={"/setMovement",json.toString()};
+        do {
+            String respuesta = new ManejoPOST().execute(parametros).get();
+            jsonresp=new JSONObject(respuesta);
+            salida=jsonresp.getBoolean("result"); //revisar
+            Toast.makeText(tablero.dato,"provando",Toast.LENGTH_SHORT).show();
+        }while (!salida);
+        Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+
+
+
+
     public int verDineroProgresivo(){
         return DineroEnProgresivo;
     }
     public int verValorFicha(){
         return ValorFicha;
     }
-    public String verPorcentajePremio(int i){
+    public double verPorcentajePremio(int i){
         return PorcentajePremios[i];
     }
+
+
+
+
+
+    // codigo funcional para realizar consultas a traves del get en Http
+    private class ManejoGET extends AsyncTask <String,String,String>    {
+        @Override
+        protected String doInBackground (String... URI){
+                String strrespuesta="Iniciando Conexión";
+            publishProgress(strrespuesta);
+                HttpGet getprueba = new HttpGet("http://www.maremarehotel.com/PruebaRestServidor/index.php"+URI[0]);
+                HttpClient cliente = new DefaultHttpClient();
+
+             try{
+                 HttpResponse respuesta=cliente.execute(getprueba);
+                 String strresp= new BufferedReader(new InputStreamReader(respuesta.getEntity().getContent())).readLine();
+                 strrespuesta=strresp;
+                 //Toast.makeText(CPPLogin.ContextoLogin,strresp,Toast.LENGTH_LONG).show();
+             }
+             catch (IOException ex){
+                 strrespuesta=ex.getMessage();
+                 //Toast.makeText(CPPLogin.ContextoLogin,ex.getMessage(),Toast.LENGTH_LONG).show();
+             }
+            return (strrespuesta);
+            // return("hola mundo");
+        }
+
+
+
+        @Override
+        protected void onPostExecute(String strrespuesta){
+            Toast.makeText(CPPLogin.ContextoLogin,strrespuesta,Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        protected void onProgressUpdate(String... progreso){
+            Toast.makeText(CPPLogin.ContextoLogin,progreso[0],Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
+
+
+
+
+
+    private class ManejoPOST extends AsyncTask <String,String,String>    {
+        @Override
+        protected String doInBackground (String... DatosPOST){
+            HttpClient client = new DefaultHttpClient();
+            HttpPost post = new HttpPost("http://www.maremarehotel.com/PruebaRestServidor/index.php"+DatosPOST[0]);
+            post.setHeader("Content-type", "application/json; charset=UTF-8");
+            post.setHeader("Accept", "application/json");
+            try {
+                HttpEntity entity= new StringEntity(DatosPOST[1]);
+                post.setEntity(entity);
+                HttpResponse response = client.execute(post);// ":usuarioLogin";"password",":contraseñaLogin"} y la URL
+                return (new BufferedReader(new InputStreamReader(response.getEntity().getContent())).readLine());
+            }
+            catch (IOException e) {
+               return (e.getMessage());
+            }
+        }
+
+    }
+
+
 }
 
 

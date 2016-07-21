@@ -31,7 +31,7 @@ public class ClaseApuestaPremio {
         ApuestaPremioTV=v;
         ApuestaPremioTV.setOnClickListener(new lTVClickBtnApeustasPremios());
         QuienSoy=i;
-        Porcentaje=CPPLogin.manip.verPorcentajePremio(i);
+        Porcentaje=Double.toString(CPPLogin.manip.verPorcentajePremio(i));
         valoresSuma=VectorValSuma[i];
     }
     //Pone los botones en forma de premio

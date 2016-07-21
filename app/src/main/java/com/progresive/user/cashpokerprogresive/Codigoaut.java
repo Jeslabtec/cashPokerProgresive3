@@ -137,26 +137,39 @@ public class Codigoaut extends AppCompatActivity {
                 break;
             case R.id.okTV:
                 if(tablero.mesaJuego.necesariosupervisor) {
-                    if (CPPLogin.manip.VerificarClaveSupervisor(AuxCoding)) {
-                        tablero.mesaJuego.AccionesConfirmarPago();
-                        Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
-                        AuxCoding="";
-                        finish();
-                    }else{
-                        Toast.makeText(Codigoaut.this,R.string.CodigoInvalido,Toast.LENGTH_SHORT).show();
-                        AuxCoding="";
-                        finish();
-                }
+                    try {
+                        if (CPPLogin.manip.VerificarClave(AuxCoding,"supervisor")) {
+                            tablero.mesaJuego.AccionesConfirmarPago();
+                            AuxCoding="";
+                            finish();
+                        }else{
+                            AuxCoding="";
+                            finish();
+                    }
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }else {
-                    if (CPPLogin.manip.VerificarClaveDealer(AuxCoding)) {
-                        tablero.mesaJuego.AccionesConfirmarPago();
-                        Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
-                        AuxCoding="";
-                        finish();
-                    } else {
-                        Toast.makeText(Codigoaut.this, R.string.CodigoInvalido, Toast.LENGTH_SHORT).show();
-                        AuxCoding="";
-                        finish();
+
+                    try {
+                        if (CPPLogin.manip.VerificarClave(AuxCoding,"dealer")) {
+                            tablero.mesaJuego.AccionesConfirmarPago();
+                            AuxCoding="";
+                            finish();
+                        } else {
+                            AuxCoding="";
+                            finish();
+                        }
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 }
                 break;
