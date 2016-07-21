@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 
 /**
  * Created by USER on 18/05/2016.
@@ -121,23 +125,35 @@ public class Codigoaut extends AppCompatActivity {
                 break;
             case R.id.okTV:
                 if(tablero.mesaJuego.necesariosupervisor) {
-                    if (CPPLogin.manip.VerificarClaveSupervisor((String) CodeTV[11].getText())) {
-                        tablero.mesaJuego.AccionesConfirmarPago();
-                        Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else{
-                        Toast.makeText(Codigoaut.this,R.string.CodigoInvalido,Toast.LENGTH_SHORT).show();
-                        finish();
-                }
+                    try {
+                        if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"supervisor")) {
+                            tablero.mesaJuego.AccionesConfirmarPago();
+                            finish();
+                        }else{
+                            finish();
+                    }
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }else {
 
-                    if (CPPLogin.manip.VerificarClaveDealer((String) CodeTV[11].getText())) {
-                        tablero.mesaJuego.AccionesConfirmarPago();
-                        Toast.makeText(Codigoaut.this, R.string.PagoAprobado, Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        Toast.makeText(Codigoaut.this, R.string.CodigoInvalido, Toast.LENGTH_SHORT).show();
-                        finish();
+                    try {
+                        if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"dealer")) {
+                            tablero.mesaJuego.AccionesConfirmarPago();
+                            finish();
+                        } else {
+                            finish();
+                        }
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 }
                 break;

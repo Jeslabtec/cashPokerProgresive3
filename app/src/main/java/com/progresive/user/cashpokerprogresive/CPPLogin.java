@@ -32,6 +32,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  *  Pantalla de inicio basada en ingresar Usuario y contraseña para el manejo de base de datos
  */
-public class CPPLogin extends AppCompatActivity  {
+public class CPPLogin extends AppCompatActivity {
     static ManejoBD manip;  // Atributo de la clase creado para manejar tod lo concerniente a
 
     // coneccion de la BD
@@ -51,30 +53,32 @@ public class CPPLogin extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpplogin);
-
-        final EditText Usuario=(EditText)findViewById(R.id.edtUsuario);
-        final EditText Pw= (EditText) findViewById(R.id.edtPassword);
-        final Button lg=(Button) findViewById(R.id.btnLogin);
+        final EditText Usuario = (EditText) findViewById(R.id.edtUsuario);
+        final EditText Pw = (EditText) findViewById(R.id.edtPassword);
+        final Button lg = (Button) findViewById(R.id.btnLogin);
 
         manip=new ManejoBD();
         ContextoLogin=this;
 
+
+
         lg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(manip.Login(Usuario.getText().toString(),Pw.getText().toString())){
-                    Intent pTablero=new Intent(CPPLogin.this,tablero.class);
-                    startActivity(pTablero);
-                    finish();
+                try {
+                    if(manip.Login(Usuario.getText().toString(),Pw.getText().toString())){
+                        Intent pTablero=new Intent(CPPLogin.this,tablero.class);
+                        startActivity(pTablero);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(CPPLogin.this,"No puede Cargarse el pantallazo inicial",Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(CPPLogin.this,e.getMessage(),Toast.LENGTH_SHORT);
                 }
-                else{
-                    Toast.makeText(CPPLogin.this,"Te jodiste",Toast.LENGTH_SHORT).show();
-                }
-
             }
         });
-
     }
-
 }
 
