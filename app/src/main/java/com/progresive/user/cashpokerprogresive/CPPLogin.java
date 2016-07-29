@@ -44,11 +44,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class CPPLogin extends AppCompatActivity {
     static ManejoBD manip;  // Atributo de la clase creado para manejar tod lo concerniente a
-
     // coneccion de la BD
     static AppCompatActivity ContextoLogin;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

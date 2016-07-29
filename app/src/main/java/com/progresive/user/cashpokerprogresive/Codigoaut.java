@@ -127,7 +127,8 @@ public class Codigoaut extends AppCompatActivity {
                 if(tablero.mesaJuego.necesariosupervisor) {
                     try {
                         if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"supervisor")) {
-                            tablero.mesaJuego.AccionesConfirmarPago();
+                            int pago=tablero.mesaJuego.AccionesConfirmarPago();
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt((String)CodeTV[11].getText()));
                             finish();
                         }else{
                             finish();
@@ -143,7 +144,8 @@ public class Codigoaut extends AppCompatActivity {
 
                     try {
                         if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"dealer")) {
-                            tablero.mesaJuego.AccionesConfirmarPago();
+                            int pago=tablero.mesaJuego.AccionesConfirmarPago();
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt((String)CodeTV[11].getText()));
                             finish();
                         } else {
                             finish();

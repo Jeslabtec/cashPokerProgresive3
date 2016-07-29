@@ -33,16 +33,12 @@ import java.util.concurrent.ExecutionException;
  * servicios API, similares a los servicios API de Facebook y Google utilizando php
  */
 public class ManejoBD  {
-    private String userreal="a"; // usuario de la aplicación para esta tablet
-    private String pwreal="a";   // contraceña de la aplicaci{on para esta tablet
-    private String ClavesDealer="345678";
-    private String ClavesSupervisor="12345678";
-    private int DineroEnProgresivo = 1000000;
-    private int ValorFicha=1000;
-    private double[] PorcentajePremios={};
+    private int DineroEnProgresivo=0;
+    private int ValorFicha=0;
+    private double[] PorcentajePremios=new double[6];
     public Integer idTablet=-1;
     public Integer idSede=-1;
-    public Integer idDealer=1;
+    public Integer idDealer=-1;// aun falta solucionar el primer problema con el valor del dealer
     /*
     * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
     * */
@@ -65,11 +61,11 @@ public class ManejoBD  {
                 this.idTablet=jsonresponse.getInt("idTablet");        //poner en rest para devolver idTablet
                 this.idSede=jsonresponse.getInt("idSede");
                 this.DineroEnProgresivo=jsonresponse.getInt("valorProgresivo");
-                this.ValorFicha=jsonresponse.getInt("valorFicha");
+                this.ValorFicha=jsonresponse.getInt("valorFichas");
                 JSONArray porcentajes = jsonresponse.getJSONArray("porcentajes");
                 for (int i=0;i<porcentajes.length();i++){
-                    this.PorcentajePremios[i]=porcentajes.getInt(i);
-                }
+                    this.PorcentajePremios[i]=porcentajes.getDouble(i);
+                    }
                 activo=true;
             }
         }
@@ -102,22 +98,33 @@ public class ManejoBD  {
     *Actualizaciones en el servidor para realizar tablas administrativas
     * */
 
-    public void EnviarMovimiento(int idTab,String oper,int value,int idDeal,int idSup) throws ExecutionException, InterruptedException, JSONException {
+    public void EnviarMovimiento(int idTab,String oper,int value,int idEmpleado) throws ExecutionException, InterruptedException, JSONException {
         JSONObject json=new JSONObject(),jsonresp;
         boolean salida=false;
         json.put("TID",idTab);
         json.put("TOP",oper);
         json.put("VOP",value);
-        json.put("DID",idDeal);
-        json.put("SupID",idSup);
+        json.put("EID",idEmpleado);
         String[] parametros={"/setMovement",json.toString()};
         do {
             String respuesta = new ManejoPOST().execute(parametros).get();
             jsonresp=new JSONObject(respuesta);
-            salida=jsonresp.getBoolean("result"); //revisar
-            Toast.makeText(tablero.dato,"provando",Toast.LENGTH_SHORT).show();
+            salida=jsonresp.getBoolean("result");
         }while (!salida);
-        Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
+    }
+    public void GuardarTabla(int idTab,int valprogresive) throws ExecutionException, InterruptedException, JSONException {
+        JSONObject json=new JSONObject(),jsonresp;
+        boolean salida=false;
+        json.put("TID",idTab);
+        json.put("VP",valprogresive);
+        String[] parametros={"/saveProgressive",json.toString()};
+        do {
+            String respuesta = new ManejoPOST().execute(parametros).get();
+            jsonresp=new JSONObject(respuesta);
+            salida=jsonresp.getBoolean("result");
+        }while (!salida);
+        // Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
     }
 
 
@@ -125,11 +132,7 @@ public class ManejoBD  {
 
 
 
-
-
-    public int verDineroProgresivo(){
-        return DineroEnProgresivo;
-    }
+    public int verDineroProgresivo(){return DineroEnProgresivo;}
     public int verValorFicha(){
         return ValorFicha;
     }
@@ -137,6 +140,7 @@ public class ManejoBD  {
         return PorcentajePremios[i];
     }
 
+    public void setDineroEnProgresivo(int nuevoValor){this.DineroEnProgresivo=nuevoValor;}
 
 
 

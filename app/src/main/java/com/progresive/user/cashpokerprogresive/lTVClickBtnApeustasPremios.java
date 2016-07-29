@@ -51,7 +51,7 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
            {//----------------------------------------------------------------------------------------------------//
                case 1: // fase pagar
 
-                   if (tablero.mesaJuego.ApuestaPremio[i].ValorNumerico()>9) {
+                   if (tablero.mesaJuego.ApuestaPremio[i].ValorNumerico()>0.09) {
                        tablero.mesaJuego.necesariosupervisor = true;}
                    else{
                        tablero.mesaJuego.necesariosupervisor = false;
