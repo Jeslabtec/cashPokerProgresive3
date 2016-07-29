@@ -42,10 +42,11 @@ public class Mesa {
             ApuestaPremio[i]=new ClaseApuestaPremio(v[i+7],i);
         }
        //Creacion de los 4 objetos de control
-        pagarTV = new ControlesJuego(v[13]);
-        jugarTV = new ControlesJuego(v[14]);
-        apostarTV = new ControlesJuego(v[15]);
-        retirarseTV = new ControlesJuego(v[16]);
+        pagarTV = new ControlesJuego(v[13],1);
+        jugarTV = new ControlesJuego(v[14],2);
+        apostarTV = new ControlesJuego(v[15],3);
+        retirarseTV = new ControlesJuego(v[16],4);
+
         //Seteo del long click listener de la configuracion
         AvisoTV = v[17];
         AvisoTV.setOnLongClickListener(new longclickconfiguracion());
@@ -59,8 +60,17 @@ public class Mesa {
 
    //---------------------------------------------------------------------------------
 
-    //funcion que cambia el textview mientras es undido
 
+
+    public void animacionBotones(){
+        ApuestaPremio[0].Movimiento(0,100);
+        ApuestaPremio[1].Movimiento(0,100);
+        ApuestaPremio[2].Movimiento(0,100);
+        ApuestaPremio[3].Movimiento(0,100);
+        ApuestaPremio[4].Movimiento(0,100);
+        ApuestaPremio[5].Movimiento(0,100);
+    }
+//funcion que cambia el textview mientras es undido
     //Funcion que pregunta quienes estan en cero y los bloquea
     public void restringirJugadores(){
         for(int i=0;i<jugador.length;i++){
@@ -180,7 +190,8 @@ public class Mesa {
         {
             ApuestaPremio[i].BotonesApuesta();
         }
-        AvisoTV.setText(R.string.Apostemos);
+        //animacionBotones();
+        AvisoTV.setBackgroundResource(R.drawable.avisoapostar);
         habilitarJugadores();
     }
     //----------------------------------------------------------------------------------------//
@@ -194,7 +205,7 @@ public class Mesa {
         {
            ApuestaPremio[i].BotonesPremio();
         }
-        AvisoTV.setText(R.string.Pago);
+        AvisoTV.setBackgroundResource(R.drawable.avisopagar);
     }
     //--------------------------------------------------------------------------------------------------//
     private void BotonesdeJuego(){
@@ -207,10 +218,9 @@ public class Mesa {
         {
            ApuestaPremio[i].BotonesPremio();
         }
-
-        AvisoTV.setText(R.string.jogo);
         SeleccionarJugador(-1);
         restringirJugadores();
+        AvisoTV.setBackgroundResource(R.drawable.avisojugar);
     }
     //---------------------------------------------------------------------------------------------------------------//
     private void BotonesdeRetiro(){
@@ -224,9 +234,9 @@ public class Mesa {
             ApuestaPremio[i].BotonesDesaparecer();
         }
 
-        AvisoTV.setText(R.string.Retirando);
         SeleccionarJugador(-1);
         restringirJugadores();
+        AvisoTV.setBackgroundResource(R.drawable.avisoretirarse);
     }
     //-------------------------------------------------------------------------------------------------------------------//
         // metodos

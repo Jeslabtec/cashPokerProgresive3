@@ -1,10 +1,9 @@
-<resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+<?xml version="1.0" encoding="utf-8"?>
 
-    <dimen name="tamano_texto">50sp</dimen>
+
+<resources>
+    <dimen name="tamano_texto_jugadores">50sp</dimen>
+    <dimen name="tamano_texto_progresivo">70sp</dimen>
 
     <dimen name="Tamano_jugadores_w">230dp</dimen>
     <dimen name="Tamano_jugadores_h">313dp</dimen>
@@ -30,7 +29,7 @@
     <dimen name="Distancia_Controles2">50dp</dimen>
     <dimen name="Distancia_Controles3">140dp</dimen>
     <dimen name="Distancia_Controles4">270dp</dimen>
-
+    
     <dimen name="Tamaño_progresivo_w">750dp</dimen>
     <dimen name="Tamaño_progresivo_h">140dp</dimen>
 

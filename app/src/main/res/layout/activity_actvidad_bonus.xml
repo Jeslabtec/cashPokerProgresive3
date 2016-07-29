@@ -17,5 +17,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:longClickable="true"
-        android:background="@drawable/bigger_bonus" />
+         />
 </RelativeLayout>

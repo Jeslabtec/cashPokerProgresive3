@@ -68,7 +68,7 @@ public class CPPLogin extends AppCompatActivity  {
                     finish();
                 }
                 else{
-                    Toast.makeText(CPPLogin.this,"Usuario o clave inexistente",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CPPLogin.this,R.string.error_UsuarioycontraInv,Toast.LENGTH_SHORT).show();
                 }
 
             }

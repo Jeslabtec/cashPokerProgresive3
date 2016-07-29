@@ -89,7 +89,7 @@ public class Jugador {
 // funciones graficas de los botones
     public void Bloquear() {
         if (Enmesa) {
-            jugadortv.setBackgroundColor(0x00000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorbloqueado);
             jugadortv.setTextColor(0xffe0e0e0);
             jugadortv.setEnabled(false);
             seleccionado = false;
@@ -98,7 +98,7 @@ public class Jugador {
 
     public void Habilitar(){
         if (Enmesa) {
-            jugadortv.setBackgroundColor(0x00000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorhabilitado);
             jugadortv.setTextColor(0xff000000);
             jugadortv.setEnabled(true);
             seleccionado = false;
@@ -106,14 +106,14 @@ public class Jugador {
     }
     public void Seleccionar(){
         if (Enmesa) {
-            jugadortv.setBackgroundColor(0x00000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorseleccionado);
             jugadortv.setTextColor(0xffffffff);
             jugadortv.setEnabled(true);
             seleccionado = true;
         }
     }
     public void Pausar(){
-        jugadortv.setBackgroundColor(0xffDCDCDC);
+        jugadortv.setBackgroundResource(R.drawable.jugadorpausado);
         jugadortv.setTextColor(0xffffffff);
         jugadortv.setEnabled(true);
         seleccionado=false;
