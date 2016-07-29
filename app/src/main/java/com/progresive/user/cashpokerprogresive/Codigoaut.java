@@ -23,7 +23,7 @@ public class Codigoaut extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     public TextView CodingTV;
-    public String AuxCoding="";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class Codigoaut extends AppCompatActivity {
                 (TextView) findViewById(R.id.coding),
                 (TextView) findViewById(R.id.BorrarTV),
                 (TextView) findViewById(R.id.EncargadoTV)};
-
         if(tablero.mesaJuego.necesariosupervisor) {
             CodeTV[13].setText("Supervisor");
         }else{
@@ -71,79 +70,67 @@ public class Codigoaut extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.num0:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="0";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "0");
                 }
                 break;
             case R.id.num1:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="1";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "1");
                 }
                 break;
             case R.id.num2:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="2";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "2");
                 }
                 break;
             case R.id.num3:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="3";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "3");
                 }
                 break;
             case R.id.num4:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="4";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "4");
                 }
                 break;
             case R.id.num5:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+= "5";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "5");
                 }
                 break;
             case R.id.num6:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="6";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "6");
                 }
                 break;
             case R.id.num7:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+= "7";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "7");
                 }
                 break;
             case R.id.num8:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+="8";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "8");
                 }
                 break;
             case R.id.num9:
                 if(CodeTV[11].getText().length()<Limite) {
-                    AuxCoding+= "9";
-                    CodeTV[11].setText(CodeTV[11].getText() + "*");
+                    CodeTV[11].setText(CodeTV[11].getText() + "9");
                 };
                 break;
             case R.id.BorrarTV:
                 if(CodeTV[11].getText().length()>0) {
-                    AuxCoding= (String)AuxCoding.subSequence(0, AuxCoding.length() - 1);
                     CodeTV[11].setText(CodeTV[11].getText().subSequence(0, CodeTV[11].getText().length() - 1));
                 }
                 break;
             case R.id.okTV:
                 if(tablero.mesaJuego.necesariosupervisor) {
                     try {
-                        if (CPPLogin.manip.VerificarClave(AuxCoding,"supervisor")) {
-                            tablero.mesaJuego.AccionesConfirmarPago();
-                            AuxCoding="";
+                        if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"supervisor")) {
+                            int pago=tablero.mesaJuego.AccionesConfirmarPago();
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt((String)CodeTV[11].getText()));
                             finish();
                         }else{
-                            AuxCoding="";
                             finish();
                     }
                     } catch (ExecutionException e) {
@@ -156,12 +143,11 @@ public class Codigoaut extends AppCompatActivity {
                 }else {
 
                     try {
-                        if (CPPLogin.manip.VerificarClave(AuxCoding,"dealer")) {
-                            tablero.mesaJuego.AccionesConfirmarPago();
-                            AuxCoding="";
+                        if (CPPLogin.manip.VerificarClave((String) CodeTV[11].getText(),"dealer")) {
+                            int pago=tablero.mesaJuego.AccionesConfirmarPago();
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt((String)CodeTV[11].getText()));
                             finish();
                         } else {
-                            AuxCoding="";
                             finish();
                         }
                     } catch (ExecutionException e) {

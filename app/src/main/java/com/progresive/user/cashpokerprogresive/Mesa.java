@@ -262,12 +262,17 @@ public class Mesa {
     }
 
     //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
-   public void AccionesConfirmarPago() {
-        double i = ProgresivoTV.ValorDelPremio();
-        double j = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
-        jugador[JugadorSeleccionado()].cargarapuesta((int) ((j / 100 * i)));
+   public int AccionesConfirmarPago() {
+        double premio = ProgresivoTV.ValorDelPremio();
+        double porcentaje = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
+        int pago=(int) (porcentaje * premio/CPPLogin.manip.verValorFicha());
+        int nuevoProgresivo=Integer.parseInt((String) tablero.mesaJuego.ProgresivoTV.ProgresivoTV.getText())-pago*CPPLogin.manip.verValorFicha();
+        CPPLogin.manip.setDineroEnProgresivo((nuevoProgresivo<1000000)?(1000000):(nuevoProgresivo));
+        tablero.mesaJuego.ProgresivoTV.ProgresivoTV.setText(Integer.toString(CPPLogin.manip.verDineroProgresivo())); // hacer cambio aqui e ingresar nueva columna llamada valorMinimoProgresivo
+        jugador[JugadorSeleccionado()].cargarapuesta(pago);
         jugador[JugadorSeleccionado()].cargarSuperApuesta();
         restringirJugador(JugadorSeleccionado());
+        return (pago);
     }
 
 }
