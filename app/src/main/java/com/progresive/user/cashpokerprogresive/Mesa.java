@@ -49,7 +49,7 @@ public class Mesa {
 
         //Seteo del long click listener de la configuracion
         AvisoTV = v[17];
-        AvisoTV.setOnLongClickListener(new longclickconfiguracion());
+
         //Creacion del objeto progresivo
         ProgresivoTV = new ClaseDelProgresivo(v[18]);
 
@@ -180,7 +180,6 @@ public class Mesa {
     //Que pasa con los textview cuando se une cualquiera de los controles//
         private void BotonesdeApuesta(){
         ApuestaPremio[5].ponerSumando();
-
         retirarseTV.Habilitar();
         pagarTV.Bloquear();
         jugarTV.Habilitar();
@@ -193,6 +192,7 @@ public class Mesa {
         //animacionBotones();
         AvisoTV.setBackgroundResource(R.drawable.avisoapostar);
         habilitarJugadores();
+        animacionBotones();
     }
     //----------------------------------------------------------------------------------------//
     private void BotonesdePago(){
