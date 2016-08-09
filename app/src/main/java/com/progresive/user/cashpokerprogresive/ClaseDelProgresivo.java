@@ -26,6 +26,10 @@ public class ClaseDelProgresivo {
         Dinero=AuxDinero;
         ProgresivoTV.setText(Integer.toString((AuxDinero)));
     }
+    public void cambiePremio(int nuevoValor)
+    {
+        AumentoPremio=nuevoValor;
+    }
     public void setAumentoPremio(){
         AumentoPremio+=tablero.mesaJuego.cuantosJugando()*ValorFicha*(Rand1+Rand2);
         Rand2=1-Rand1;
