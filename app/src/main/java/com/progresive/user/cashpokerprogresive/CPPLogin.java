@@ -53,6 +53,7 @@ public class CPPLogin extends AppCompatActivity {
         final EditText Usuario = (EditText) findViewById(R.id.edtUsuario);
         final EditText Pw = (EditText) findViewById(R.id.edtPassword);
         final Button lg = (Button) findViewById(R.id.btnLogin);
+        final EditText DPw=(EditText) findViewById(R.id.edtDealer);
 
         manip=new ManejoBD();
         ContextoLogin=this;
@@ -63,7 +64,7 @@ public class CPPLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if(manip.Login(Usuario.getText().toString(),Pw.getText().toString())){
+                    if(manip.Login(Usuario.getText().toString(),Pw.getText().toString(),DPw.getText().toString())){
                         Intent pTablero=new Intent(CPPLogin.this,tablero.class);
                         startActivity(pTablero);
                         finish();

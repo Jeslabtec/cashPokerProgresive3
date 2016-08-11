@@ -4,6 +4,8 @@ package com.progresive.user.cashpokerprogresive;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
 /**
@@ -15,6 +17,8 @@ public class ControlesJuego {
     private boolean Seleccionado=false;
 
     private int quienSoy;
+    private boolean grande=false;
+
 
     public ControlesJuego(TextView v,int i) {
         ControlTV = v;
@@ -23,6 +27,7 @@ public class ControlesJuego {
     }
 
     public void Bloquear() {
+        Hacer_peque();
         switch (quienSoy) {
             case 1:
                 ControlTV.setBackgroundResource(R.drawable.pagargris);
@@ -41,6 +46,7 @@ public class ControlesJuego {
         Seleccionado=false;
     }
     public void Habilitar(){
+        Hacer_peque();
     switch (quienSoy) {
         case 1:
             ControlTV.setBackgroundResource(R.drawable.pagar);
@@ -58,13 +64,8 @@ public class ControlesJuego {
         ControlTV.setEnabled(true);
         Seleccionado=false;
     }
-
     public void Seleccionar(){
-
-       /* ObjectAnimator Agrandador= ObjectAnimator.ofFloat(ControlTV, View.SCALE_X,1.5f);
-        ObjectAnimator Agrandador2=ObjectAnimator.ofFloat(ControlTV, View.SCALE_Y,1.5f);
-        AnimatorSet conjunto=new AnimatorSet();
-        conjunto.playSequentially(Agrandador,Agrandador2);*/
+        Hacer_grande();
         switch (quienSoy) {
             case 1:
                 ControlTV.setBackgroundResource(R.drawable.pagar);
@@ -81,5 +82,29 @@ public class ControlesJuego {
         }
         ControlTV.setEnabled(false);
         Seleccionado=true;
+    }
+    private void Hacer_grande() {
+        if (!grande) {
+            ObjectAnimator Agrandadorx = ObjectAnimator.ofFloat(ControlTV, View.SCALE_X, 1.3f);
+            ObjectAnimator Agrandadory = ObjectAnimator.ofFloat(ControlTV, View.SCALE_Y, 1.3f);
+            AnimatorSet conjunto = new AnimatorSet();
+            conjunto.playTogether(Agrandadorx, Agrandadory);
+            conjunto.setInterpolator(new BounceInterpolator());
+            conjunto.setDuration(500);
+            conjunto.start();
+            grande = true;
+        }
+    }
+    private void Hacer_peque(){
+            if(grande){
+                ObjectAnimator Agrandadorx= ObjectAnimator.ofFloat(ControlTV, View.SCALE_X,1f);
+                ObjectAnimator Agrandadory=ObjectAnimator.ofFloat(ControlTV, View.SCALE_Y,1f);
+                AnimatorSet conjunto=new AnimatorSet();
+                conjunto.playTogether(Agrandadorx,Agrandadory);
+                conjunto.setInterpolator(new BounceInterpolator());
+                conjunto.setDuration(500);
+                conjunto.start();
+                grande=false;
+            }
     }
 }

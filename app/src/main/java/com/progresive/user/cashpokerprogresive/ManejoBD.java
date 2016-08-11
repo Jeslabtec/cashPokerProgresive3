@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.common.server.response.FastJsonResponse;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -36,18 +38,23 @@ public class ManejoBD  {
     private int DineroEnProgresivo=0;
     private int ValorFicha=0;
     private double[] PorcentajePremios=new double[6];
+    private double PorcentajeAumento;
+    private int minimoProgresivo;
+    private int botebonus;
+    private double porcentajeBonus;
     public Integer idTablet=-1;
     public Integer idSede=-1;
     public Integer idDealer=-1;// aun falta solucionar el primer problema con el valor del dealer
     /*
     * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
     * */
-    public boolean Login(String Usuario, String pass) throws JSONException, ExecutionException, InterruptedException {
+    public boolean Login(String Usuario, String pass, String passd) throws JSONException, ExecutionException, InterruptedException {
         boolean activo=false;
         int resultactive=0;
         JSONObject json=new JSONObject();
         json.put("USR",Usuario);
         json.put("PW",pass);
+        json.put("DPW",passd);
         String[] parametros={"/isActive",json.toString()};
         String loggin = new ManejoPOST().execute(parametros).get();
         JSONObject jsonresponse=new JSONObject(loggin);
@@ -62,10 +69,15 @@ public class ManejoBD  {
                 this.idSede=jsonresponse.getInt("idSede");
                 this.DineroEnProgresivo=jsonresponse.getInt("valorProgresivo");
                 this.ValorFicha=jsonresponse.getInt("valorFichas");
+                this.PorcentajeAumento=jsonresponse.getDouble("pAumento");
+                this.minimoProgresivo= jsonresponse.getInt("minimoProgresivo");
+                this.botebonus=jsonresponse.getInt("boteDelBonus");
+                this.porcentajeBonus=jsonresponse.getInt("porcentajeBonus");
                 JSONArray porcentajes = jsonresponse.getJSONArray("porcentajes");
                 for (int i=0;i<porcentajes.length();i++){
                     this.PorcentajePremios[i]=porcentajes.getDouble(i);
                     }
+                this.idDealer=Integer.parseInt(passd);
                 activo=true;
             }
         }
@@ -94,6 +106,7 @@ public class ManejoBD  {
         return result;
     }
 
+
     /*
     *Actualizaciones en el servidor para realizar tablas administrativas
     * */
@@ -118,6 +131,7 @@ public class ManejoBD  {
         boolean salida=false;
         json.put("TID",idTab);
         json.put("VP",valprogresive);
+        json.put("BBote",1000);
         String[] parametros={"/saveProgressive",json.toString()};
         do {
             String respuesta = new ManejoPOST().execute(parametros).get();
@@ -126,11 +140,6 @@ public class ManejoBD  {
         }while (!salida);
         // Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
     }
-
-
-
-
-
 
     public int verDineroProgresivo(){return DineroEnProgresivo;}
     public int verValorFicha(){
@@ -142,6 +151,18 @@ public class ManejoBD  {
 
     public void setDineroEnProgresivo(int nuevoValor){this.DineroEnProgresivo=nuevoValor;}
 
+    public double verAumentoPremio(){
+        return PorcentajeAumento;
+    }
+    public int verMinimoProgresivo(){
+        return minimoProgresivo;
+    }
+    public double verPorcentajeBonus(){
+        return porcentajeBonus;
+    }
+    public int verBoteBonus(){
+        return botebonus;
+    }
 
 
 
@@ -179,15 +200,7 @@ public class ManejoBD  {
         protected void onProgressUpdate(String... progreso){
             Toast.makeText(CPPLogin.ContextoLogin,progreso[0],Toast.LENGTH_LONG).show();
         }
-
-
     }
-
-
-
-
-
-
     private class ManejoPOST extends AsyncTask <String,String,String>    {
         @Override
         protected String doInBackground (String... DatosPOST){
@@ -196,9 +209,11 @@ public class ManejoBD  {
             post.setHeader("Content-type", "application/json; charset=UTF-8");
             post.setHeader("Accept", "application/json");
             try {
+                //"/isActive","{"USR":Usuario,"PW":Contraseña}"
                 HttpEntity entity= new StringEntity(DatosPOST[1]);
                 post.setEntity(entity);
                 HttpResponse response = client.execute(post);// ":usuarioLogin";"password",":contraseñaLogin"} y la URL
+                //"{"activo":valor,"idTablet":valor,"valorProgresivo"}"
                 return (new BufferedReader(new InputStreamReader(response.getEntity().getContent())).readLine());
             }
             catch (IOException e) {

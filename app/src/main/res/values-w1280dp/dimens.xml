@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tamano_texto_jugadores">50sp</dimen>
+    <dimen name="tamano_texto_jugadores">20sp</dimen>
+    <dimen name="tamano_texto_progresivo">70sp</dimen>
+    <dimen name="tamano_texto_Apuestapremio">20sp</dimen>
 
     <dimen name="Tamano_jugadores_w">153dp</dimen>
     <dimen name="Tamano_jugadores_h">208dp</dimen>
@@ -15,17 +17,27 @@
 
     <dimen name="Bordes">13dp</dimen>
 
-    <dimen name="Distancia_ApuPre1">233dp</dimen>
-    <dimen name="Distancia_ApuPre2">153dp</dimen>
-    <dimen name="Distancia_ApuPre3">100dp</dimen>
-    <dimen name="Distancia_ApuPre4">60dp</dimen>
-    <dimen name="Distancia_ApuPre5">27dp</dimen>
-    <dimen name="Distancia_ApuPre6">0dp</dimen>
+    <dimen name="Distancia_ApuPre">32dp</dimen>
+    <!--
+    <dimen name="Distancia_ApuPre2">130dp</dimen>
+    <dimen name="Distancia_ApuPre3">95dp</dimen>
+    <dimen name="Distancia_ApuPre4">70dp</dimen>
+    <dimen name="Distancia_ApuPre5">50dp</dimen>
+    <dimen name="Distancia_ApuPre6">32dp</dimen>
 
-    <dimen name="Distancia_Controles1">0dp</dimen>
-    <dimen name="Distancia_Controles2">33dp</dimen>
+    <dimen name="Dis_separa_1">0dp</dimen>
+    <dimen name="Dis_separa_2">0dp</dimen>
+    <dimen name="Dis_separa_3">5dp</dimen>
+    <dimen name="Dis_separa_4">9dp</dimen>
+    <dimen name="Dis_separa_5">10dp</dimen>
+    <dimen name="Dis_separa_6">22dp</dimen>
+    -->
+
+    <dimen name="Distancia_Controles1">22dp</dimen>
+    <dimen name="Distancia_Controles2">58dp</dimen>
     <dimen name="Distancia_Controles3">93dp</dimen>
-    <dimen name="Distancia_Controles4">180dp</dimen>
+    <dimen name="Distancia_Controles4">140dp</dimen>
+
 
     <dimen name="Tamaño_progresivo_w">500dp</dimen>
     <dimen name="Tamaño_progresivo_h">93dp</dimen>

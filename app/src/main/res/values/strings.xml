@@ -38,6 +38,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>
+    <string name="passwordDelaer">Contraseña Dealer</string>
     <string name="action_sign_in">Ingresar</string>
     <string name="error_UsuarioycontraInv">Su usuario o contraseña son invalidos</string>
     <string name="action_sign_in_short"></string>

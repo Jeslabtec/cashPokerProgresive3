@@ -1,10 +1,11 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="tamano_texto">50sp</dimen>
+    <dimen name="tamano_texto_jugadores">50sp</dimen>
+    <dimen name="tamano_texto_progresivo">70sp</dimen>
+
 
     <dimen name="Tamano_jugadores_w">230dp</dimen>
     <dimen name="Tamano_jugadores_h">313dp</dimen>

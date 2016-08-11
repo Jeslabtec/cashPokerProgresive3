@@ -13,7 +13,7 @@
     <dimen name="Distancia_jugadores_3">350dp</dimen>
     <dimen name="Distancia_jugadores_4">260dp</dimen>
 
-    <dimen name="TamañoApuesta">100dp</dimen>
+    <dimen name="TamañoApuesta">130dp</dimen>
     <dimen name="TamañoControles">130dp</dimen>
 
     <dimen name="Bordes">20dp</dimen>

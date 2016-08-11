@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="tamano_texto_jugadores">50sp</dimen>
+    <dimen name="tamano_texto_progresivo">70sp</dimen>
+
     <dimen name="Tamano_jugadores_w">61dp</dimen>
     <dimen name="Tamano_jugadores_h">82dp</dimen>
 
@@ -18,7 +22,7 @@
     <dimen name="Distancia_ApuPre3">39dp</dimen>
     <dimen name="Distancia_ApuPre4">24dp</dimen>
     <dimen name="Distancia_ApuPre5">11dp</dimen>
-    <dimen name="Distancia_ApuPre6">0dp</dimen>
+    <dimen name="Distancia_ApuPre6">10dp</dimen>
 
     <dimen name="Distancia_Controles1">0dp</dimen>
     <dimen name="Distancia_Controles2">13dp</dimen>

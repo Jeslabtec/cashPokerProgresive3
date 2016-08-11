@@ -156,7 +156,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:gravity="center_vertical|center_horizontal"
 
-            android:text="1000000"
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"
             android:textSize="@dimen/tamano_texto_progresivo"
@@ -177,48 +176,58 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"  />
 
-
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
             android:textAppearance="?android:attr/textAppearanceLarge"
-
-            android:id="@+id/tvPremioApuesta1"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="40sp"
-            android:background="@drawable/uno"
-
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-
-            android:layout_marginLeft="@dimen/Bordes"
-            android:layout_marginStart="@dimen/Bordes"
-
-            android:layout_marginBottom="@dimen/Distancia_ApuPre1"
-
-            />
-
-        <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvPremioApuesta2"
+            android:id="@+id/tvPremioApuesta6"
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="#ffffff"
-            android:textSize="40sp"
-            android:background="@drawable/dos"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:background="@drawable/mas"
 
-            android:layout_toRightOf="@+id/tvPremioApuesta1"
-            android:layout_toEndOf="@+id/tvPremioApuesta1"
             android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
 
-            android:layout_marginBottom="@dimen/Distancia_ApuPre2"
-           />
 
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            />
+        <TextView
+            android:layout_width="@dimen/TamañoApuesta"
+            android:layout_height="@dimen/TamañoApuesta"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/tvPremioApuesta5"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:background="@drawable/veinte"
 
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
+
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            />
+        <TextView
+            android:layout_width="@dimen/TamañoApuesta"
+            android:layout_height="@dimen/TamañoApuesta"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/tvPremioApuesta4"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:background="@drawable/diez"
+
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
+
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            />
 
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
@@ -229,68 +238,56 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="#ffffff"
-            android:textSize="40sp"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
             android:background="@drawable/cinco"
 
-            android:layout_toRightOf="@+id/tvPremioApuesta2"
-            android:layout_toEndOf="@+id/tvPremioApuesta2"
             android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
 
-            android:layout_marginBottom="@dimen/Distancia_ApuPre3"
-            />
-        <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvPremioApuesta4"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="40sp"
-            android:background="@drawable/diez"
-
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/tvPremioApuesta3"
-            android:layout_toEndOf="@+id/tvPremioApuesta3"
-
-            android:layout_marginBottom="@dimen/Distancia_ApuPre4"
-           />
-
-        <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvPremioApuesta5"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="40sp"
-            android:background="@drawable/veinte"
-
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/tvPremioApuesta4"
-            android:layout_toEndOf="@+id/tvPremioApuesta4"
-
-            android:layout_marginBottom="@dimen/Distancia_ApuPre5"
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
             />
 
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvPremioApuesta6"
+            android:id="@+id/tvPremioApuesta2"
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="#ffffff"
-            android:textSize="40sp"
-            android:background="@drawable/mas"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:background="@drawable/dos"
 
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/tvPremioApuesta5"
-            android:layout_toEndOf="@+id/tvPremioApuesta5"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
 
-            android:layout_marginBottom="@dimen/Distancia_ApuPre6"
-           />
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            />
+
+        <TextView
+            android:layout_width="@dimen/TamañoApuesta"
+            android:layout_height="@dimen/TamañoApuesta"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:id="@+id/tvPremioApuesta1"
+            android:gravity="center"
+            android:layout_gravity="center"
+
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:background="@drawable/uno"
+
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"
+
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+
+            />
+
 
         <TextView
             android:layout_width="@dimen/TamañoControles"
@@ -299,9 +296,12 @@
             android:background="@drawable/apostar"
 
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/tvJugar"
-            android:layout_toStartOf="@+id/tvJugar"
+            android:layout_toRightOf="@+id/TextviewAviso"
+            android:layout_toEndOf="@+id/TextviewAviso"
+
             android:layout_marginBottom="@dimen/Distancia_Controles1"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
             />
 
         <TextView
@@ -311,9 +311,12 @@
             android:background="@drawable/jugar"
 
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/tvPagar"
-            android:layout_toStartOf="@+id/tvPagar"
+            android:layout_toRightOf="@+id/tvApostar"
+            android:layout_toEndOf="@+id/tvApostar"
+
             android:layout_marginBottom="@dimen/Distancia_Controles2"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
 
             />
 
@@ -324,9 +327,13 @@
             android:background="@drawable/pagar"
 
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/tvRetiroTotal"
-            android:layout_toStartOf="@+id/tvRetiroTotal"
+            android:layout_toRightOf="@+id/tvJugar"
+            android:layout_toEndOf="@+id/tvJugar"
+
+
             android:layout_marginBottom="@dimen/Distancia_Controles3"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
 
              />
 
@@ -337,13 +344,13 @@
             android:background="@drawable/retirarse"
 
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/Bordes"
-            android:layout_marginEnd="@dimen/Bordes"
+            android:layout_toRightOf="@+id/tvPagar"
+            android:layout_toEndOf="@+id/tvPagar"
+
+
             android:layout_marginBottom="@dimen/Distancia_Controles4"
-
-
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
             />
     </RelativeLayout>
 

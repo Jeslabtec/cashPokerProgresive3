@@ -20,6 +20,7 @@ public class Jugador {
     public TextView jugadortv;
     //Variable que dice si el jugador fue seleccionado
     private boolean seleccionado=false;
+    private boolean bloqueado=false;
 
     // constructor
     public Jugador (TextView v)    {
@@ -77,33 +78,46 @@ public class Jugador {
         }
     }
     //  Despausa la mesa
-    public  void despausar(){
-        Habilitar();
-        Enmesa=true;
-    }
+
 //Retorna la apuesta
     public int verapuesta()
     {
         return Apuesta;
     }
 // funciones graficas de los botones
+
+    //Se llama cuando bloqueo al jugador ya que no tiene apuesta
     public void Bloquear() {
         if (Enmesa) {
             jugadortv.setBackgroundResource(R.drawable.jugadorbloqueado);
-            jugadortv.setTextColor(0xffe0e0e0);
+            jugadortv.setTextColor(0xff000000);
             jugadortv.setEnabled(false);
             seleccionado = false;
+            bloqueado=true;
+
         }
     }
-
+    //Se llama cuando se hace el bonus por jugador
+    public void bonusScreen(boolean seleccionado){
+        if(seleccionado) {
+            jugadortv.setBackgroundResource(R.drawable.jugadorbonus);
+            jugadortv.setTextColor(0x00000000);
+        }else {
+            jugadortv.setBackgroundResource(R.drawable.jugadorblackbonus);
+            jugadortv.setTextColor(0xffffff);
+        }
+    }
+//Se llama cuando habilito a los jugadores para poner nuevas apuestas
     public void Habilitar(){
         if (Enmesa) {
             jugadortv.setBackgroundResource(R.drawable.jugadorhabilitado);
             jugadortv.setTextColor(0xff000000);
             jugadortv.setEnabled(true);
             seleccionado = false;
+            bloqueado=false;
         }
     }
+    //Se llama cuando selecciono al jugador.
     public void Seleccionar(){
         if (Enmesa) {
             jugadortv.setBackgroundResource(R.drawable.jugadorseleccionado);
@@ -112,6 +126,7 @@ public class Jugador {
             seleccionado = true;
         }
     }
+    //Cambia la forma del jugador cuando lo pongo en pausa
     public void Pausar(){
         jugadortv.setBackgroundResource(R.drawable.jugadorpausado);
         jugadortv.setTextColor(0xffffffff);
@@ -121,5 +136,9 @@ public class Jugador {
     //Cuando es el jugador seleccionado retorna 1 sino retorna 0
     public boolean EstoySeleccionado(){
         return seleccionado;
+    }
+    //
+    public boolean EstoyBloqueado(){
+        return bloqueado;
     }
 }

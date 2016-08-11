@@ -15,19 +15,21 @@ public class ClaseDelProgresivo {
     private double Rand2;
     private double AumentoPremio;
     private double Dinero;
-    private int AuxDinero;
+
     public ClaseDelProgresivo(TextView v) {
         ProgresivoTV = v;
         ValorFicha=CPPLogin.manip.verValorFicha();
         Rand1=Math.random();
         Rand2=0;
-        AuxDinero=CPPLogin.manip.verDineroProgresivo();
-        AumentoPremio=AuxDinero;
-        Dinero=AuxDinero;
-        ProgresivoTV.setText(Integer.toString((AuxDinero)));
+        AumentoPremio=(double) CPPLogin.manip.verDineroProgresivo();
+        Dinero=AumentoPremio;
+        ProgresivoTV.setText(Integer.toString((CPPLogin.manip.verDineroProgresivo())));
     }
+
     public void setAumentoPremio(){
-        AumentoPremio+=tablero.mesaJuego.cuantosJugando()*ValorFicha*(Rand1+Rand2);
+        //AumentoPremio+=tablero.mesaJuego.cuantosJugando()*ValorFicha*CPPLogin.manip.verAumentoPremio();
+        AumentoPremio+=tablero.mesaJuego.cuantosJugando()*ValorFicha*(Rand1+Rand2)*CPPLogin.manip.verAumentoPremio();
+        //CPPLogin.manip.verBoteBonus();
         Rand2=1-Rand1;
         Rand1=Math.random();
     }

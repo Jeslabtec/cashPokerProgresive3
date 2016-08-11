@@ -28,7 +28,7 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                 case R.id.tvJugar:
                     tablero.mesaJuego.cambiarElEstadoDelJuego(2);
                     try {
-                        CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"entrada",tablero.mesaJuego.cuantosJugando(),123456);
+                        CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"entrada",tablero.mesaJuego.cuantosJugando(),CPPLogin.manip.idDealer);
                     } catch (ExecutionException e) {
                         Toast.makeText(tablero.dato,e.getMessage(),Toast.LENGTH_LONG).show();
                     } catch (InterruptedException e) {
@@ -55,6 +55,9 @@ public class lTVClickControlesJuego implements View.OnClickListener {
         } else {
             if (R.id.tvApostar!=v.getId()) {
                 tablero.mesaJuego.mensaje.msgPedirALgunaApuesta().show();
+                tablero.mesaJuego.cambiarElEstadoDelJuego(3);
+                tablero.mesaJuego.cambiarBotones();
+            }else if(R.id.tvApostar==v.getId()){
                 tablero.mesaJuego.cambiarElEstadoDelJuego(3);
                 tablero.mesaJuego.cambiarBotones();
             }
