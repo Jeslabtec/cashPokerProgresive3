@@ -3,7 +3,7 @@
 
 <resources>
     <dimen name="tamano_texto_jugadores">50sp</dimen>
-    <dimen name="tamano_texto_progresivo">70sp</dimen>
+    <dimen name="tamano_texto_progresivo">50sp</dimen>
 
     <dimen name="Tamano_jugadores_w">230dp</dimen>
     <dimen name="Tamano_jugadores_h">313dp</dimen>

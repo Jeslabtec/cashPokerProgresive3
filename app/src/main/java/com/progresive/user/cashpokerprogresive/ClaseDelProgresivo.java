@@ -24,6 +24,10 @@ public class ClaseDelProgresivo {
         AumentoPremio=(double) CPPLogin.manip.verDineroProgresivo();
         Dinero=AumentoPremio;
         ProgresivoTV.setText(Integer.toString((CPPLogin.manip.verDineroProgresivo())));
+
+    public void cambiePremio(int nuevoValor)
+    {
+        AumentoPremio=nuevoValor;
     }
 
     public void setAumentoPremio(){

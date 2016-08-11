@@ -390,8 +390,15 @@ public class Mesa {
         double premio = ProgresivoTV.ValorDelPremio();
         double porcentaje = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
         int pago=(int) (porcentaje * premio/CPPLogin.manip.verValorFicha());
+
+// la solucion al problema de los desajustes del progresivo van aqui
+
         int nuevoProgresivo=Integer.parseInt((String) tablero.mesaJuego.ProgresivoTV.ProgresivoTV.getText())-pago*CPPLogin.manip.verValorFicha();
+
         CPPLogin.manip.setDineroEnProgresivo((nuevoProgresivo<CPPLogin.manip.verMinimoProgresivo())?(CPPLogin.manip.verMinimoProgresivo()):(nuevoProgresivo));
+       
+
+
         tablero.mesaJuego.ProgresivoTV.ProgresivoTV.setText(Integer.toString(CPPLogin.manip.verDineroProgresivo())); // hacer cambio aqui e ingresar nueva columna llamada valorMinimoProgresivo
         jugador[JugadorSeleccionado()].cargarapuesta(pago);
         jugador[JugadorSeleccionado()].cargarSuperApuesta();

@@ -148,7 +148,7 @@
             android:background="@drawable/jugadorhabilitado"
 
         />
-
+        <!-- android:textSize="@dimen/tamano_texto_progresivo" -->
         <TextView
             android:layout_width="@dimen/Tamaño_progresivo_w"
             android:layout_height="@dimen/Tamaño_progresivo_h"
@@ -158,7 +158,7 @@
 
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"
-            android:textSize="@dimen/tamano_texto_progresivo"
+
 
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
