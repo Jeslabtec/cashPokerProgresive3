@@ -2,6 +2,7 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.renderscript.Double2;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -19,26 +20,30 @@ import android.widget.TextView;
  */
 public class ClaseApuestaPremio {
 
-    private Double[] VectorValSuma = {1.0,2.0,5.0,10.0,20.0,0.0} ;
+    private double[] VectorValSuma = {1.0,2.0,5.0,10.0,20.0,0.0} ;
     private TextView ApuestaPremioTV;
     //String que guarda el porcentaje
     private String Porcentaje;
-    private Double Porcentajed;
+    private double Porcentajed;
     //String que guarda el valor de la suma
-    private Double valoresSuma;
+    private double valoresSuma;
+    private int valsuma;
     //Solo se usa en el apuesta premio del mas.
     private boolean Restando=false;
     //Permite saber al objeto cual boton es
     private int QuienSoy;
+
     public  ClaseApuestaPremio(TextView v,int i){
         //i es un valor que indica cual es el numero del boton
         //configuracion del textview
+
         ApuestaPremioTV=v;
         ApuestaPremioTV.setOnClickListener(new lTVClickBtnApeustasPremios());
         QuienSoy=i;
         Porcentajed=CPPLogin.manip.verPorcentajePremio(i);
         Porcentaje=Integer.toString((int)(Porcentajed*100))+"%";
         valoresSuma=VectorValSuma[i];
+
     }
     //Pone los botones en forma de premio
     public void BotonesPremio(){
@@ -64,32 +69,18 @@ public class ClaseApuestaPremio {
                 ApuestaPremioTV.setBackgroundResource(R.drawable.escalerasucia);
                 break;
         }
-        //ApuestaPremioTV.setBackgroundResource(R.drawable.descarga);
+
     }
     //pone a los botones en forma de apuesta
     public void BotonesApuesta(){
         ApuestaPremioTV.setVisibility(View.VISIBLE);
-        ApuestaPremioTV.setText("");
-        switch (QuienSoy)
-        {case 0:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.uno);
-            break;
-        case 1:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.dos);
-            break;
-        case 2:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.cinco);
-            break;
-        case 3:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.diez);
-            break;
-        case 4:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.veinte);
-            break;
-        case 5:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.mas);
-            break;
+        if(QuienSoy==5){
+            ApuestaPremioTV.setText("+");
+        }else{
+
+            ApuestaPremioTV.setText(Integer.toString((int)valoresSuma));
         }
+        ApuestaPremioTV.setBackgroundResource(R.drawable.botonapuesta);
     }
     public void Movimientopremio(int finX,int finY){
         ObjectAnimator animacionX= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_X,0,finX);
@@ -136,18 +127,18 @@ public class ClaseApuestaPremio {
     //Pone a sumar el dispositivo, me asugura que cada vez que se inicie la fase de apostar este configurado en suma
     void ponerSumando() {
         Restando = false;
-        ApuestaPremioTV.setBackgroundResource(R.drawable.mas);
+        ApuestaPremioTV.setText("+");
     }
 
     //Cambia a restar o sumar cuando se presiona ese boton
     void cambiarRestando() {
         if (Restando) {
             Restando = false;
-            ApuestaPremioTV.setBackgroundResource(R.drawable.mas);
+            ApuestaPremioTV.setText("+");
 
         } else {
             Restando = true;
-            ApuestaPremioTV.setBackgroundResource(R.drawable.menos);
+            ApuestaPremioTV.setText("-");
         }
     }
 

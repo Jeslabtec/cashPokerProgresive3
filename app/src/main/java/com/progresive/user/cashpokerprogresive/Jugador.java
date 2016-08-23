@@ -17,16 +17,21 @@ public class Jugador {
     //Es un valor que dice si la persona esta en la mesa o pidio una pausa
     private boolean Enmesa=true;
 
-    public TextView jugadortv;
+    public TextView jugadortv,jugadortvdown,jugadortvcirculo;
     //Variable que dice si el jugador fue seleccionado
     private boolean seleccionado=false;
     private boolean bloqueado=false;
 
     // constructor
-    public Jugador (TextView v)    {
-        jugadortv=v;
+    public Jugador (TextView v1,TextView v2,TextView v3)    {
+        jugadortv=v1;
+        jugadortvdown=v2;
+        jugadortvcirculo=v3;
+
         jugadortv.setOnClickListener(new lTVClickJugadores());
         jugadortv.setOnLongClickListener(new LongclickPausarJugador());
+        jugadortv.setText("0");
+        jugadortvdown.setText("X "+Integer.toString(CPPLogin.manip.verValorFicha()));
     }
 //cargar la apuesta en el textview
     public void cargarapuesta(int fichas){
@@ -78,6 +83,10 @@ public class Jugador {
         }
     }
     //  Despausa la mesa
+    public void avisoApuestaAcabada(){
+
+
+    }
 
 //Retorna la apuesta
     public int verapuesta()
@@ -89,29 +98,38 @@ public class Jugador {
     //Se llama cuando bloqueo al jugador ya que no tiene apuesta
     public void Bloquear() {
         if (Enmesa) {
-            jugadortv.setBackgroundResource(R.drawable.jugadorbloqueado);
-            jugadortv.setTextColor(0xff000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorbloqueadotop);
+            jugadortvdown.setBackgroundResource(R.drawable.jugadorbloqueadodown);
+            jugadortvcirculo.setBackgroundResource(R.drawable.jugadorbloqueadocirculo);
+
+            jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
+            jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
+            jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
             jugadortv.setEnabled(false);
             seleccionado = false;
             bloqueado=true;
-
         }
     }
     //Se llama cuando se hace el bonus por jugador
     public void bonusScreen(boolean seleccionado){
         if(seleccionado) {
-            jugadortv.setBackgroundResource(R.drawable.jugadorbonus);
-            jugadortv.setTextColor(0x00000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorbonusonup);
+            jugadortvdown.setBackgroundResource(R.drawable.jugadorbonusondown);
         }else {
-            jugadortv.setBackgroundResource(R.drawable.jugadorblackbonus);
-            jugadortv.setTextColor(0xffffff);
+            jugadortv.setBackgroundResource(R.drawable.jugadorbonusoffup);
+            jugadortvdown.setBackgroundResource(R.drawable.jugadorbonusoffdown);
+
         }
     }
 //Se llama cuando habilito a los jugadores para poner nuevas apuestas
     public void Habilitar(){
         if (Enmesa) {
-            jugadortv.setBackgroundResource(R.drawable.jugadorhabilitado);
-            jugadortv.setTextColor(0xff000000);
+            jugadortv.setBackgroundResource(R.drawable.jugadorhabilitadotop);
+            jugadortvdown.setBackgroundResource(R.drawable.jugadorhabilitadodown);
+            jugadortvcirculo.setBackgroundResource(R.drawable.jugadorhabilitadocirculo);
+            jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Dorado3));
+            jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
             jugadortv.setEnabled(true);
             seleccionado = false;
             bloqueado=false;
@@ -120,16 +138,24 @@ public class Jugador {
     //Se llama cuando selecciono al jugador.
     public void Seleccionar(){
         if (Enmesa) {
-            jugadortv.setBackgroundResource(R.drawable.jugadorseleccionado);
-            jugadortv.setTextColor(0xffffffff);
+            jugadortv.setBackgroundResource(R.drawable.jugadorseleccionadotop);
+            jugadortvdown.setBackgroundResource(R.drawable.jugadorseleccionadodown);
+            jugadortvcirculo.setBackgroundResource(R.drawable.jugadorseleccionadocirculo);
+            jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Dorado3));
+            jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
             jugadortv.setEnabled(true);
             seleccionado = true;
         }
     }
     //Cambia la forma del jugador cuando lo pongo en pausa
     public void Pausar(){
-        jugadortv.setBackgroundResource(R.drawable.jugadorpausado);
-        jugadortv.setTextColor(0xffffffff);
+        jugadortv.setBackgroundResource(R.drawable.jugadorpausadotop);
+        jugadortvdown.setBackgroundResource(R.drawable.jugadorpausadodown);
+        jugadortvcirculo.setBackgroundResource(R.drawable.jugadorpausadocirculo);
+        jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Rojo1));
+        jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+        jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
         jugadortv.setEnabled(true);
         seleccionado=false;
     }

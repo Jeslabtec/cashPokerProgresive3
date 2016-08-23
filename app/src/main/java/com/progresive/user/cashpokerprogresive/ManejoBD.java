@@ -40,8 +40,6 @@ public class ManejoBD  {
     private double[] PorcentajePremios=new double[6];
     private double PorcentajeAumento;
     private int minimoProgresivo;
-    private int botebonus;
-    private double porcentajeBonus;
     public Integer idTablet=-1;
     public Integer idSede=-1;
     public Integer idDealer=-1;// aun falta solucionar el primer problema con el valor del dealer
@@ -71,8 +69,6 @@ public class ManejoBD  {
                 this.ValorFicha=jsonresponse.getInt("valorFichas");
                 this.PorcentajeAumento=jsonresponse.getDouble("pAumento");
                 this.minimoProgresivo= jsonresponse.getInt("minimoProgresivo");
-                this.botebonus=jsonresponse.getInt("boteDelBonus");
-                this.porcentajeBonus=jsonresponse.getInt("porcentajeBonus");
                 JSONArray porcentajes = jsonresponse.getJSONArray("porcentajes");
                 for (int i=0;i<porcentajes.length();i++){
                     this.PorcentajePremios[i]=porcentajes.getDouble(i);
@@ -156,12 +152,6 @@ public class ManejoBD  {
     }
     public int verMinimoProgresivo(){
         return minimoProgresivo;
-    }
-    public double verPorcentajeBonus(){
-        return porcentajeBonus;
-    }
-    public int verBoteBonus(){
-        return botebonus;
     }
 
 

@@ -10,6 +10,7 @@
     <dimen name="Tamano_jugadores_w">230dp</dimen>
     <dimen name="Tamano_jugadores_h">313dp</dimen>
 
+
     <dimen name="Distancia_jugadores_1">620dp</dimen>
     <dimen name="Distancia_jugadores_2">450dp</dimen>
     <dimen name="Distancia_jugadores_3">350dp</dimen>

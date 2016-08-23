@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tamano_texto_jugadores">20sp</dimen>
-    <dimen name="tamano_texto_progresivo">70sp</dimen>
-    <dimen name="tamano_texto_Apuestapremio">20sp</dimen>
+    <dimen name="tamano_texto_jugadoresTop">45sp</dimen>
+    <dimen name="tamano_texto_jugadoresDown">20sp</dimen>
+    <dimen name="tamano_texto_jugadoresCirculo">45sp</dimen>
+    <dimen name="tamano_texto_progresivo">75sp</dimen>
+    <dimen name="tamano_texto_Apuestapremio">40sp</dimen>
 
     <dimen name="Tamano_jugadores_w">153dp</dimen>
     <dimen name="Tamano_jugadores_h">208dp</dimen>
+
+    <dimen name="Tamano_jugadores_topW">107dp</dimen>
+    <dimen name="Tamano_jugadores_toph">145dp</dimen>
+    <dimen name="Tamano_jugadores_downh">31dp</dimen>
+
+    <dimen name="BordesJugadorestopWNEG">101dp</dimen>
+    <dimen name="BordesJugadorestopHNEG">139dp</dimen>
+    <dimen name="BordesJugadoresDownHNEG">25dp</dimen>
+
+    <dimen name="BordesJugadorestopW">104dp</dimen>
+    <dimen name="BordesJugadorestopH">142dp</dimen>
+    <dimen name="BordesJugadoresDownH">28dp</dimen>
+    <dimen name="BordesJugadorCirculo">45dp</dimen>
+
 
     <dimen name="Distancia_jugadores_1">413dp</dimen>
     <dimen name="Distancia_jugadores_2">300dp</dimen>
@@ -13,6 +29,13 @@
     <dimen name="Distancia_jugadores_4">173dp</dimen>
 
     <dimen name="TamañoApuesta">67dp</dimen>
+    <dimen name="MarcoFichasCruz">35dp</dimen>
+    <dimen name="MarcoFichasCiculo1">9dp</dimen>
+    <dimen name="MarcoFichasCiculo2">11dp</dimen>
+    <dimen name="MarcoFichasCiculo3">13dp</dimen>
+
+
+
     <dimen name="TamañoControles">87dp</dimen>
 
     <dimen name="Bordes">13dp</dimen>
@@ -39,8 +62,11 @@
     <dimen name="Distancia_Controles4">140dp</dimen>
 
 
-    <dimen name="Tamaño_progresivo_w">500dp</dimen>
+    <dimen name="Tamaño_progresivo_w">480dp</dimen>
     <dimen name="Tamaño_progresivo_h">93dp</dimen>
+    <dimen name="Tamaño_progresivo_wInt">460dp</dimen>
+    <dimen name="Tamaño_progresivo_hInt">70dp</dimen>
+    <dimen name="Borde_progresivo">3dp</dimen>
 
     <dimen name="Tamaño_aviso_w">247dp</dimen>
     <dimen name="Tamaño_aviso_h">67dp</dimen>

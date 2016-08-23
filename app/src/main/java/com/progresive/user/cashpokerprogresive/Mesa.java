@@ -37,7 +37,7 @@ public class Mesa {
     public Mesa(TextView[] v)    {
 //Creacion de los objetos jugadores que son 7
         for (int i=0; i<jugador.length;i++){
-            jugador[i]=new Jugador(v[i]);
+            jugador[i]=new Jugador(v[i],v[i+19],v[i+26]);
         }
         //Creacion de los objetos ApuestaPremio que son 6
         for (int i=0; i<ApuestaPremio.length;i++){
@@ -54,7 +54,6 @@ public class Mesa {
 
         //Creacion del objeto progresivo
         ProgresivoTV = new ClaseDelProgresivo(v[18]);
-
         cambiarBotones();
         //Objeto que contiene los mensajes de alerta
         mensaje=new MensajesAlerta();
@@ -113,7 +112,9 @@ public class Mesa {
         for(int i=0;i<jugador.length;i++){
             if(jugador[i].verapuesta()==0){
                 jugador[i].Bloquear();
-
+            }
+            if(jugador[i].verapuesta()==1){
+                jugador[i].avisoApuestaAcabada();
             }
         }
     }
@@ -174,9 +175,12 @@ public class Mesa {
     public void SeleccionarApuPre(int i){
         ApuPreSeleccionado=i;
     }
+    //Funcion que devuelve el estado del juego
+    public int verElEstadoDelJuego() {
+        return (EstadoJuego);
+    }
 
-
-
+//-------------------------------------------------------------------------------------------------------------------------------------------
     //Funcion para iniciar el juego
     public void PonerAJugar() {
 
@@ -190,17 +194,21 @@ public class Mesa {
             jugadaActual++;
             if(jugadaActual==jugadasBonus){
                 ganadorBonus=(int) Math.floor(Math.random()*7);
-                tablero.mesaJuego.BonusCambio(ganadorBonus);
                 jugadaActual=0;
                 jugadasBonus=getBinomial(16,0.5);
+                EstadoBonusOn();
+                BonusCambio(ganadorBonus);
             }
         }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
     }
     //Bonus************************************************************************************************
+    //variable que dice en que jugada va a haber un ganado
     private int jugadasBonus=getBinomial(16,0.5);
+    //conteo de las jugadas que se reinicia cuando hay un ganador
     private int jugadaActual=0;
+    //
     private int iteracionesBonus=-1;
     private int jugadorBonus=-1;
     private int tiempoBonus=200;
@@ -228,12 +236,12 @@ public class Mesa {
             }
         }, tiempoBonus);
     }
-    public void BonusCambio(int jugadorGanador){
+    private void BonusCambio(int jugadorGanador){
         jugadorBonus=11+jugadorGanador;
         for (int i=0;i<jugador.length;i++){
             jugador[i].bonusScreen(false);
         }
-            SeleccionarJugadorBonus();
+        SeleccionarJugadorBonus();
     }
     //Sirve para ir pasando el jugador hasta que llegue al ganador
 
@@ -258,15 +266,25 @@ public class Mesa {
             iteracionesBonus=-1;
             jugadorBonus=-1;
             tiempoBonus=200;
+            cambiarBotones();
             pagarBonus();
         }
     }
     private void pagarBonus(){
         if(tablero.mesaJuego.jugador[ganadorBonus].verapuesta()>0 && tablero.mesaJuego.jugador[ganadorBonus].verSiPausado()){
-            tablero.mesaJuego.jugador[ganadorBonus].cargarapuesta(20);
+                tablero.mesaJuego.jugador[ganadorBonus].cargarapuesta(1);
         }
 
     }
+    private void EstadoBonusOn(){
+        retirarseTV.Bloquear();
+        pagarTV.Bloquear();
+        jugarTV.Bloquear();
+        apostarTV.Bloquear();
+        AvisoTV.setBackgroundResource(R.drawable.bonus);
+        habilitarJugadores();
+    }
+
 
 
     //Timer***********************************************************************************************
@@ -289,10 +307,7 @@ public class Mesa {
         }, 90);
     }
 //*************************************************************************************************************************
-//Funcion que devuelve el estado del juego
-    public int verElEstadoDelJuego() {
-        return (EstadoJuego);
-    }
+
 //Funcion que cambia el estado de juego
    public void cambiarElEstadoDelJuego(int NuevoEstado) {
         EstadoJuego = NuevoEstado;
@@ -386,17 +401,17 @@ public class Mesa {
     }
 
     //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
-   public int AccionesConfirmarPago() {
+
+
+
+    public int AccionesConfirmarPago() {
         double premio = ProgresivoTV.ValorDelPremio();
         double porcentaje = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
-        int pago=(int) (porcentaje * premio/CPPLogin.manip.verValorFicha());
-
-// la solucion al problema de los desajustes del progresivo van aqui
-
+        int pago=(porcentaje>=1)?((int) (porcentaje * premio/CPPLogin.manip.verValorFicha())):((int) porcentaje);
         int nuevoProgresivo=Integer.parseInt((String) tablero.mesaJuego.ProgresivoTV.ProgresivoTV.getText())-pago*CPPLogin.manip.verValorFicha();
 
         CPPLogin.manip.setDineroEnProgresivo((nuevoProgresivo<CPPLogin.manip.verMinimoProgresivo())?(CPPLogin.manip.verMinimoProgresivo()):(nuevoProgresivo));
-       
+
 
 
         tablero.mesaJuego.ProgresivoTV.ProgresivoTV.setText(Integer.toString(CPPLogin.manip.verDineroProgresivo())); // hacer cambio aqui e ingresar nueva columna llamada valorMinimoProgresivo

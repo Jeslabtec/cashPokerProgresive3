@@ -80,7 +80,7 @@ public class ControlesJuego {
                 ControlTV.setBackgroundResource(R.drawable.retirarse);
                 break;
         }
-        ControlTV.setEnabled(false);
+        ControlTV.setEnabled(true);
         Seleccionado=true;
     }
     private void Hacer_grande() {

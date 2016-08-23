@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
 import java.util.concurrent.ExecutionException;
-
+import android.media.AudioManager;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -22,13 +23,17 @@ import java.util.concurrent.ExecutionException;
 public class tablero extends AppCompatActivity {
 
     static AppCompatActivity dato;
+    //manejo de los sonidos
     static Mesa mesaJuego;
+    administradorDeSonido sound;
 
+    int clic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablero);
+
         dato=this;
         TextView[] datos = {(TextView) findViewById(R.id.tvJugador1),
                 (TextView) findViewById(R.id.tvJugador2),
@@ -48,15 +53,39 @@ public class tablero extends AppCompatActivity {
                 (TextView) findViewById(R.id.tvApostar),
                 (TextView) findViewById(R.id.tvRetiroTotal),
                 (TextView) findViewById(R.id.TextviewAviso),
-                (TextView) findViewById(R.id.TVprogresivo)};
+                (TextView) findViewById(R.id.TVprogresivo),
+                (TextView) findViewById(R.id.tvJugador1Down),
+                (TextView) findViewById(R.id.tvJugador2Down),
+                (TextView) findViewById(R.id.tvJugador3Down),
+                (TextView) findViewById(R.id.tvJugador4Down),
+                (TextView) findViewById(R.id.tvJugador5Down),
+                (TextView) findViewById(R.id.tvJugador6Down),
+                (TextView) findViewById(R.id.tvJugador7Down),
+                (TextView) findViewById(R.id.tvJugador1Circulo),
+                (TextView) findViewById(R.id.tvJugador2Circulo),
+                (TextView) findViewById(R.id.tvJugador3Circulo),
+                (TextView) findViewById(R.id.tvJugador4Circulo),
+                (TextView) findViewById(R.id.tvJugador5Circulo),
+                (TextView) findViewById(R.id.tvJugador6Circulo),
+                (TextView) findViewById(R.id.tvJugador7Circulo)};
 
         mesaJuego = new Mesa(datos);
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios
        //-----------------------------------------------------------------------------------------------------//
         //Mensaje de confirmacion de retiro//
+        //Administrador de sonido---------------------------------------------
 
-
+        sound = new administradorDeSonido(getApplicationContext());
+        // Set volume rocker mode to media volume
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        // Lee los sonidos que figuran en res/raw
+       clic = sound.load(R.raw.clic);
         // https://www.iconfinder.com/        Descargar los iconos
+    }
+    public void reproducirSonido()
+    {
+        //Obtenemos el id del sonido
+        sound.play(clic);
     }
 
     @Override

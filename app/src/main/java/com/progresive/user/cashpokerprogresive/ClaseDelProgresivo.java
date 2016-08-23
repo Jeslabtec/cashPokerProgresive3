@@ -18,12 +18,13 @@ public class ClaseDelProgresivo {
 
     public ClaseDelProgresivo(TextView v) {
         ProgresivoTV = v;
-        ValorFicha=CPPLogin.manip.verValorFicha();
-        Rand1=Math.random();
-        Rand2=0;
-        AumentoPremio=(double) CPPLogin.manip.verDineroProgresivo();
-        Dinero=AumentoPremio;
+        ValorFicha = CPPLogin.manip.verValorFicha();
+        Rand1 = Math.random();
+        Rand2 = 0;
+        AumentoPremio = (double) CPPLogin.manip.verDineroProgresivo();
+        Dinero = AumentoPremio;
         ProgresivoTV.setText(Integer.toString((CPPLogin.manip.verDineroProgresivo())));
+    }
 
     public void cambiePremio(int nuevoValor)
     {
