@@ -3,8 +3,9 @@
 
     <string name="Pagar">Pagar</string>
     <string name="Jugar">Jugar</string>
-    <string name="Retirarse">Retirarse</string>
-    <string name="Apostar">Apostar</string>
+    <string name="Retirar">Retirar</string>
+    <string name="Acreditar">Acreditar</string>
+    <string name="Bonus">Bonus</string>
     <string name="cero">0</string>
     <string name="Apuesta1">1</string>
     <string name="Apuesta2">2</string>

@@ -28,39 +28,26 @@ public class ControlesJuego {
 
     public void Bloquear() {
         Hacer_peque();
-        switch (quienSoy) {
-            case 1:
-                ControlTV.setBackgroundResource(R.drawable.pagargris);
-                break;
-            case 2:
-                ControlTV.setBackgroundResource(R.drawable.jugargris);
-                break;
-            case 3:
-                ControlTV.setBackgroundResource(R.drawable.apostargris);
-                break;
-            case 4:
-                ControlTV.setBackgroundResource(R.drawable.retirarsegris);
-                break;
-        }
+        ControlTV.setBackgroundResource(R.drawable.fichagris);
         ControlTV.setEnabled(false);
         Seleccionado=false;
     }
     public void Habilitar(){
         Hacer_peque();
-    switch (quienSoy) {
-        case 1:
-            ControlTV.setBackgroundResource(R.drawable.pagar);
-            break;
-        case 2:
-            ControlTV.setBackgroundResource(R.drawable.jugar);
-            break;
-        case 3:
-            ControlTV.setBackgroundResource(R.drawable.apostar);
-            break;
-        case 4:
-            ControlTV.setBackgroundResource(R.drawable.retirarse);
-            break;
-    }
+        switch (quienSoy) {
+            case 1:
+                ControlTV.setBackgroundResource(R.drawable.fichapagar);
+                break;
+            case 2:
+                ControlTV.setBackgroundResource(R.drawable.fichajugar);
+                break;
+            case 3:
+                ControlTV.setBackgroundResource(R.drawable.fichaacreditar);
+                break;
+            case 4:
+                ControlTV.setBackgroundResource(R.drawable.ficharetirar);
+                break;
+        }
         ControlTV.setEnabled(true);
         Seleccionado=false;
     }
@@ -68,16 +55,16 @@ public class ControlesJuego {
         Hacer_grande();
         switch (quienSoy) {
             case 1:
-                ControlTV.setBackgroundResource(R.drawable.pagar);
+                ControlTV.setBackgroundResource(R.drawable.fichapagar);
                 break;
             case 2:
-                ControlTV.setBackgroundResource(R.drawable.jugar);
+                ControlTV.setBackgroundResource(R.drawable.fichajugar);
                 break;
             case 3:
-                ControlTV.setBackgroundResource(R.drawable.apostar);
+                ControlTV.setBackgroundResource(R.drawable.fichaacreditar);
                 break;
             case 4:
-                ControlTV.setBackgroundResource(R.drawable.retirarse);
+                ControlTV.setBackgroundResource(R.drawable.ficharetirar);
                 break;
         }
         ControlTV.setEnabled(true);

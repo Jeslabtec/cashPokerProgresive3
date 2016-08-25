@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        >
+        <shape android:shape="oval">
+            <gradient
+                android:startColor="@color/gris1"
+                android:centerColor="@color/gris2"
+                android:endColor="@color/gris3"
+                android:angle="0"/>
+        </shape>
+    </item>
+
+    <item android:top="@dimen/MarcoFichasCruz"
+        android:bottom="@dimen/MarcoFichasCruz"
+        >
+
+        <shape android:shape="rectangle"
+            >
+            <corners android:radius="2dp"
+                >
+            </corners>
+            <solid android:color="@color/gris4">
+
+            </solid>
+        </shape>
+    </item>
+    <item android:left="@dimen/MarcoFichasCruz"
+        android:right="@dimen/MarcoFichasCruz"
+        >
+        <shape android:shape="rectangle">
+            <corners android:radius="2dp"
+                >
+
+            </corners>
+            <solid android:color="@color/gris4">
+
+            </solid>
+        </shape>
+    </item>
+    <item
+        android:left="@dimen/MarcoFichasCruz"
+        android:right="@dimen/MarcoFichasCruz"
+        >
+        <rotate
+            android:fromDegrees="45"
+            >
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp"
+                    >
+
+            </corners>
+
+                <solid android:color="@color/gris4">
+
+                </solid>
+            </shape>
+        </rotate>
+    </item>
+    <item
+        android:left="@dimen/MarcoFichasCruz"
+        android:right="@dimen/MarcoFichasCruz"
+        >
+        <rotate
+            android:fromDegrees="135"
+            >
+            <shape android:shape="rectangle">
+                <corners android:radius="2dp"
+                    >
+
+                </corners>
+                <solid android:color="@color/gris4">
+
+                </solid>
+            </shape>
+        </rotate>
+    </item>
+    <item
+        android:top="@dimen/MarcoFichasCiculo1"
+        android:bottom="@dimen/MarcoFichasCiculo1"
+        android:left="@dimen/MarcoFichasCiculo1"
+        android:right="@dimen/MarcoFichasCiculo1"
+        >
+            <shape android:shape="oval">
+                <solid android:color="@color/gris4">
+
+                </solid>
+            </shape>
+    </item>
+    <item
+        android:top="@dimen/MarcoFichasCiculo3"
+        android:bottom="@dimen/MarcoFichasCiculo3"
+        android:left="@dimen/MarcoFichasCiculo3"
+        android:right="@dimen/MarcoFichasCiculo3"
+        >
+        <shape android:shape="oval">
+            <stroke
+                android:color="@color/gris2"
+                android:width="2dp"
+                android:dashGap="4dp"
+                android:dashWidth="7dp"
+                >
+            </stroke>
+
+        </shape>
+    </item>
+    <item
+        android:top="@dimen/MarcoFichasCiculo2"
+        android:bottom="@dimen/MarcoFichasCiculo2"
+        android:left="@dimen/MarcoFichasCiculo2"
+        android:right="@dimen/MarcoFichasCiculo2"
+        >
+        <shape android:shape="oval">
+            <stroke
+                android:color="@color/gris2"
+                android:width="1dp"
+                >
+            </stroke>
+
+        </shape>
+    </item>
+</layer-list>
+
+

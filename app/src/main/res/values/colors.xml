@@ -35,6 +35,15 @@
     <color name="Azul2">#e09298</color>
     <color name="Azul3">#0555ab</color>
 
+    <color name="FichaAcreditar">#3e4095</color>
+    <color name="Fichajugar">#FF2121</color>
+    <color name="FichaPagar">#0D902A</color>
+    <color name="FichaRetirar">#D7BB07</color>
+
+
+    <color name="FichaPremio1">#5A4514</color>
+    <color name="FichaPremio2">#666666</color>
+
 
 
 </resources>

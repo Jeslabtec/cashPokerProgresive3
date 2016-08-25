@@ -20,7 +20,7 @@
             <corners android:radius="2dp"
                 >
             </corners>
-            <solid android:color="@color/Azul3">
+            <solid android:color="@color/FichaPagar">
 
             </solid>
         </shape>
@@ -33,7 +33,7 @@
                 >
 
             </corners>
-            <solid android:color="@color/Azul3">
+            <solid android:color="@color/FichaPagar">
 
             </solid>
         </shape>
@@ -51,7 +51,7 @@
 
             </corners>
 
-                <solid android:color="@color/Azul3">
+                <solid android:color="@color/FichaPagar">
 
                 </solid>
             </shape>
@@ -69,7 +69,7 @@
                     >
 
                 </corners>
-                <solid android:color="@color/Azul3">
+                <solid android:color="@color/FichaPagar">
 
                 </solid>
             </shape>
@@ -82,7 +82,7 @@
         android:right="@dimen/MarcoFichasCiculo1"
         >
             <shape android:shape="oval">
-                <solid android:color="@color/Azul3">
+                <solid android:color="@color/FichaPagar">
 
                 </solid>
             </shape>

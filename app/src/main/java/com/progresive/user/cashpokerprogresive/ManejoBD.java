@@ -195,7 +195,7 @@ public class ManejoBD  {
         @Override
         protected String doInBackground (String... DatosPOST){
             HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost("http://www.maremarehotel.com/PruebaRestServidor/index.php"+DatosPOST[0]);
+            HttpPost post = new HttpPost("http://www.progresivocashpoker.com/CPPServices/index.php"+DatosPOST[0]);
             post.setHeader("Content-type", "application/json; charset=UTF-8");
             post.setHeader("Accept", "application/json");
             try {

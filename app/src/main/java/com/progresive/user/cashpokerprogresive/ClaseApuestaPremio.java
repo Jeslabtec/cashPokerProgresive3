@@ -51,22 +51,22 @@ public class ClaseApuestaPremio {
         ApuestaPremioTV.setVisibility(View.VISIBLE);
         switch (QuienSoy)
         {case 0:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.escalerareal);
+            ApuestaPremioTV.setBackgroundResource(R.drawable.premioescalerareal);
             break;
             case 1:
-                ApuestaPremioTV.setBackgroundResource(R.drawable.escaleracolor);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premioescaleracolor);
                 break;
             case 2:
-                ApuestaPremioTV.setBackgroundResource(R.drawable.poker);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premiopoker);
                 break;
             case 3:
-                ApuestaPremioTV.setBackgroundResource(R.drawable.full);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premiofull);
                 break;
             case 4:
-                ApuestaPremioTV.setBackgroundResource(R.drawable.color);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premiocolor);
                 break;
             case 5:
-                ApuestaPremioTV.setBackgroundResource(R.drawable.escalerasucia);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premioescalerasucia);
                 break;
         }
 

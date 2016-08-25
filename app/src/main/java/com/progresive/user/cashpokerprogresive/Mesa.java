@@ -281,7 +281,8 @@ public class Mesa {
         pagarTV.Bloquear();
         jugarTV.Bloquear();
         apostarTV.Bloquear();
-        AvisoTV.setBackgroundResource(R.drawable.bonus);
+        AvisoTV.setBackgroundResource(R.drawable.avisobonus);
+        AvisoTV.setText(R.string.Bonus);
         habilitarJugadores();
     }
 
@@ -326,7 +327,8 @@ public class Mesa {
             ApuestaPremio[i].BotonesApuesta();
         }
 
-        AvisoTV.setBackgroundResource(R.drawable.avisoapostar);
+        AvisoTV.setBackgroundResource(R.drawable.avisoacreditar);
+        AvisoTV.setText(R.string.Acreditar);
         habilitarJugadores();
         animaciondesplazamientoApuesta();
     }
@@ -342,6 +344,7 @@ public class Mesa {
            ApuestaPremio[i].BotonesPremio();
         }
         AvisoTV.setBackgroundResource(R.drawable.avisopagar);
+        AvisoTV.setText(R.string.Pagar);
         animaciondesplazamientoPremio();
     }
     //--------------------------------------------------------------------------------------------------//
@@ -358,6 +361,7 @@ public class Mesa {
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisojugar);
+        AvisoTV.setText(R.string.Jugar);
         animaciondesplazamientoPremio();
     }
     //---------------------------------------------------------------------------------------------------------------//
@@ -375,6 +379,7 @@ public class Mesa {
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisoretirarse);
+        AvisoTV.setText(R.string.Retirar);
         animaciondesplazamientoPremio();
     }
     //-------------------------------------------------------------------------------------------------------------------//
