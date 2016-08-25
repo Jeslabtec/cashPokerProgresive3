@@ -28,7 +28,7 @@ public class lTVClickControlesJuego implements View.OnClickListener {
                 case R.id.tvJugar:
                     tablero.mesaJuego.cambiarElEstadoDelJuego(2);
                     try {
-                        CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"entrada",tablero.mesaJuego.cuantosJugando(),CPPLogin.manip.idDealer);
+                        CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"entrada",tablero.mesaJuego.cuantosJugando());
                     } catch (ExecutionException e) {
                         Toast.makeText(tablero.dato,e.getMessage(),Toast.LENGTH_LONG).show();
                     } catch (InterruptedException e) {

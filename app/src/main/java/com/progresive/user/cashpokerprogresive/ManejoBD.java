@@ -42,17 +42,16 @@ public class ManejoBD  {
     private int minimoProgresivo;
     public Integer idTablet=-1;
     public Integer idSede=-1;
-    public Integer idDealer=-1;// aun falta solucionar el primer problema con el valor del dealer
+    public Integer idDealer=0;// aun falta solucionar el primer problema con el valor del dealer
     /*
     * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
     * */
-    public boolean Login(String Usuario, String pass, String passd) throws JSONException, ExecutionException, InterruptedException {
+    public boolean Login(String Usuario, String pass) throws JSONException, ExecutionException, InterruptedException {
         boolean activo=false;
         int resultactive=0;
         JSONObject json=new JSONObject();
         json.put("USR",Usuario);
         json.put("PW",pass);
-        json.put("DPW",passd);
         String[] parametros={"/isActive",json.toString()};
         String loggin = new ManejoPOST().execute(parametros).get();
         JSONObject jsonresponse=new JSONObject(loggin);
@@ -73,7 +72,6 @@ public class ManejoBD  {
                 for (int i=0;i<porcentajes.length();i++){
                     this.PorcentajePremios[i]=porcentajes.getDouble(i);
                     }
-                this.idDealer=Integer.parseInt(passd);
                 activo=true;
             }
         }
@@ -107,13 +105,12 @@ public class ManejoBD  {
     *Actualizaciones en el servidor para realizar tablas administrativas
     * */
 
-    public void EnviarMovimiento(int idTab,String oper,int value,int idEmpleado) throws ExecutionException, InterruptedException, JSONException {
+    public void EnviarMovimiento(int idTab,String oper,int value) throws ExecutionException, InterruptedException, JSONException {
         JSONObject json=new JSONObject(),jsonresp;
         boolean salida=false;
         json.put("TID",idTab);
         json.put("TOP",oper);
         json.put("VOP",value);
-        json.put("EID",idEmpleado);
         String[] parametros={"/setMovement",json.toString()};
         do {
             String respuesta = new ManejoPOST().execute(parametros).get();

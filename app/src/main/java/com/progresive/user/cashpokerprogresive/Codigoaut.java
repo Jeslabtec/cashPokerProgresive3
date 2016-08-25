@@ -140,7 +140,7 @@ public class Codigoaut extends AppCompatActivity {
                     try {
                         if (CPPLogin.manip.VerificarClave(AuxCoding,"supervisor")) {
                             int pago=tablero.mesaJuego.AccionesConfirmarPago();
-                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt(AuxCoding));
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago);
                             AuxCoding="";
                             finish();
                         }else{
@@ -159,7 +159,7 @@ public class Codigoaut extends AppCompatActivity {
                     try {
                         if (CPPLogin.manip.VerificarClave(AuxCoding,"dealer")) {
                             int pago=tablero.mesaJuego.AccionesConfirmarPago();
-                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago,Integer.parseInt(AuxCoding));
+                            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago);
                             AuxCoding="";
                             finish();
                         } else {

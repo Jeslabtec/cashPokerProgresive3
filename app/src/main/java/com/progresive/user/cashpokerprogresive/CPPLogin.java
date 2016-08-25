@@ -64,7 +64,7 @@ public class CPPLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if(manip.Login(Usuario.getText().toString(),Pw.getText().toString(),DPw.getText().toString())){
+                    if(manip.Login(Usuario.getText().toString(),Pw.getText().toString())){
                         Intent pTablero=new Intent(CPPLogin.this,tablero.class);
                         startActivity(pTablero);
                         finish();

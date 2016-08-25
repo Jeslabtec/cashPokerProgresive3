@@ -3,6 +3,7 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class Mesa {
 //variable que dice si se necesita el supervisor o no
     public boolean necesariosupervisor = false;
     private int ApuPreSeleccionado=-1;
+// por defecto se inicia en la etapa 3, acreditar
     private int EstadoJuego=3;
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)    {
@@ -202,6 +204,8 @@ public class Mesa {
         }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
+        //tareaPeriodica();
+        //timer.cancel();
     }
     //Bonus************************************************************************************************
     //variable que dice en que jugada va a haber un ganado
@@ -305,8 +309,22 @@ public class Mesa {
                     }
                 });
             }
-        }, 90);
+        }, 150);
     }
+
+
+    Timer timer = new Timer();
+    private void tareaPeriodica (){
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+              if (EstadoJuego==2){
+                  ProgresivoTV.aumentoAleatorio();
+              }
+            }
+        },0,150);
+    }
+
 //*************************************************************************************************************************
 
 //Funcion que cambia el estado de juego
@@ -358,6 +376,7 @@ public class Mesa {
         {
            ApuestaPremio[i].BotonesPremio();
         }
+
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisojugar);
@@ -375,7 +394,6 @@ public class Mesa {
         {
             ApuestaPremio[i].BotonesDesaparecer();
         }
-
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisoretirarse);
@@ -410,9 +428,9 @@ public class Mesa {
 
 
     public int AccionesConfirmarPago() {
-        double premio = ProgresivoTV.ValorDelPremio();
+        double premio = ProgresivoTV.ValorDelPremio();          // obtengo le valor maximo que se puede dar por premio
         double porcentaje = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
-        int pago=(porcentaje>=1)?((int) (porcentaje * premio/CPPLogin.manip.verValorFicha())):((int) porcentaje);
+        int pago=(porcentaje<=1)?((int) (porcentaje * premio/CPPLogin.manip.verValorFicha())):((int) (porcentaje/CPPLogin.manip.verValorFicha()));
         int nuevoProgresivo=Integer.parseInt((String) tablero.mesaJuego.ProgresivoTV.ProgresivoTV.getText())-pago*CPPLogin.manip.verValorFicha();
 
         CPPLogin.manip.setDineroEnProgresivo((nuevoProgresivo<CPPLogin.manip.verMinimoProgresivo())?(CPPLogin.manip.verMinimoProgresivo()):(nuevoProgresivo));
@@ -425,5 +443,14 @@ public class Mesa {
         restringirJugador(JugadorSeleccionado());
         return (pago);
     }
+
+    private class AnimacionesDeBotones extends AsyncTask <Integer,Integer,Integer>{
+        @Override
+        protected Integer doInBackground(Integer... etapa){
+            return(0);
+        }
+    }
+
+
 
 }
