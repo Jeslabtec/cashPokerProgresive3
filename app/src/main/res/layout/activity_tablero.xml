@@ -1,434 +1,431 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondo"
-    tools:context="com.progresive.user.cashpokerprogresive.tablero">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
 
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        tools:context="com.progresive.user.cashpokerprogresive.tablero"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@drawable/tablero"
-        android:layout_gravity="center">
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador7"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_1"
-            android:layout_toLeftOf="@+id/RLJugador6"
-            android:layout_toStartOf="@+id/RLJugador6"
-            >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador7"
-
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
-
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador7Down"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-                android:id="@+id/tvJugador7Circulo"
-
-                android:gravity="center_vertical|center_horizontal"
-
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="7"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador6"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_2"
-            android:layout_toLeftOf="@+id/RLJugador5"
-            android:layout_toStartOf="@+id/RLJugador5">
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador6"
-
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
-
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador6Down"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:id="@+id/tvJugador6Circulo"
-
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="6"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador5"
-            android:layout_toLeftOf="@+id/RLJugador4"
-            android:layout_toStartOf="@id/RLJugador4"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_3"
-            >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador5"
-
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
-
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador5Down"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-                android:id="@+id/tvJugador5Circulo"
-
-                android:gravity="center_vertical|center_horizontal"
-
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="5"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador4"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_4"
-            android:layout_centerHorizontal="true"
-            >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador4"
-
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
-
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador4Down"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-
-                android:gravity="center_vertical|center_horizontal"
-
-                android:id="@+id/tvJugador4Circulo"
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="4"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador3"
-            android:layout_toRightOf="@+id/RLJugador4"
-            android:layout_toEndOf="@+id/RLJugador4"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_3"
-            >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador3"
-
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
-
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador3Down"
-
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-
-                android:gravity="center_vertical|center_horizontal"
-
-                android:id="@+id/tvJugador3Circulo"
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="3"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador2"
-            android:layout_toRightOf="@+id/RLJugador3"
-            android:layout_toEndOf="@+id/RLJugador3"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/Distancia_jugadores_2"
-
+        android:layout_gravity="center"
         >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador2"
+        <!--Jugador4-->
 
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
 
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador2Down"
+            android:id="@+id/tvJugador4"
 
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
 
-                android:gravity="center_vertical|center_horizontal"
+            android:layout_above="@+id/tvJugador4Down"
+            android:layout_alignLeft="@+id/tvJugador4Down"
+            android:layout_alignStart="@+id/tvJugador4Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
 
-                android:id="@+id/tvJugador2Circulo"
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="2"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
-        </RelativeLayout>
+            android:id="@+id/tvJugador4Down"
 
-        <RelativeLayout
-            android:layout_width="@dimen/Tamano_jugadores_w"
-            android:layout_height="@dimen/Tamano_jugadores_h"
-            android:id="@+id/RLJugador1"
-            android:layout_toRightOf="@+id/RLJugador2"
-            android:layout_toEndOf="@+id/RLJugador2"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_4"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador4"
+            android:layout_alignLeft="@+id/tvJugador4"
+            android:layout_alignStart="@+id/tvJugador4"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador4Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="4"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+
+        <!--Jugador5-->
+
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
+
+            android:id="@+id/tvJugador5Down"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_3"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/Distancia_entre_jugadores"
+            android:layout_marginEnd="@dimen/Distancia_entre_jugadores"
+            android:layout_toLeftOf="@id/tvJugador4Down"
+            android:layout_toStartOf="@id/tvJugador4Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
+
+            android:id="@+id/tvJugador5"
+
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
+
+            android:layout_above="@+id/tvJugador5Down"
+            android:layout_alignLeft="@+id/tvJugador5Down"
+            android:layout_alignStart="@+id/tvJugador5Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador5"
+            android:layout_alignLeft="@+id/tvJugador5"
+            android:layout_alignStart="@+id/tvJugador5"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador5Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="5"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+        <!--Jugador6-->
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
+
+            android:id="@+id/tvJugador6Down"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/Distancia_entre_jugadores"
+            android:layout_marginEnd="@dimen/Distancia_entre_jugadores"
+            android:layout_toLeftOf="@id/tvJugador5Down"
+            android:layout_toStartOf="@id/tvJugador5Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
+
+            android:id="@+id/tvJugador6"
+
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
+
+            android:layout_above="@+id/tvJugador6Down"
+            android:layout_alignLeft="@+id/tvJugador6Down"
+            android:layout_alignStart="@+id/tvJugador6Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador6"
+            android:layout_alignLeft="@+id/tvJugador6"
+            android:layout_alignStart="@+id/tvJugador6"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador6Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="6"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+        <!--Jugador7-->
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
+
+            android:id="@+id/tvJugador7Down"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
             android:layout_marginBottom="@dimen/Distancia_jugadores_1"
-            >
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_toph"
-                android:background="@drawable/jugadorhabilitadotop"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/Distancia_entre_jugadores"
+            android:layout_marginEnd="@dimen/Distancia_entre_jugadores"
+            android:layout_toLeftOf="@id/tvJugador6Down"
+            android:layout_toStartOf="@id/tvJugador6Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
 
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/tvJugador1"
+            android:id="@+id/tvJugador7"
 
-                android:enabled="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresTop"
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
 
-                />
-            <TextView
-                android:layout_width="@dimen/Tamano_jugadores_topW"
-                android:layout_height="@dimen/Tamano_jugadores_downh"
-                android:background="@drawable/jugadorhabilitadodown"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/tvJugador1Down"
+            android:layout_above="@+id/tvJugador7Down"
+            android:layout_alignLeft="@+id/tvJugador7Down"
+            android:layout_alignStart="@+id/tvJugador7Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
 
-                android:gravity="center_vertical|center_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="@dimen/tamano_texto_jugadoresDown"
-                />
-            <TextView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:background="@drawable/jugadorhabilitadocirculo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
+            android:layout_above="@+id/tvJugador7"
+            android:layout_alignLeft="@+id/tvJugador7"
+            android:layout_alignStart="@+id/tvJugador7"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
 
-                android:gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
 
-                android:id="@+id/tvJugador1Circulo"
-                android:textColor="@color/Dorado3"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:text="1"
-                android:textSize="@dimen/tamano_texto_jugadoresCirculo"
-                />
+            android:id="@+id/tvJugador7Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="7"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
 
-        </RelativeLayout>
+        <!--Jugador3-->
 
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
 
+            android:id="@+id/tvJugador3"
 
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
 
+            android:layout_above="@+id/tvJugador3Down"
+            android:layout_alignLeft="@+id/tvJugador3Down"
+            android:layout_alignStart="@+id/tvJugador3Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
 
+            android:id="@+id/tvJugador3Down"
 
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_3"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/Distancia_entre_jugadores"
+            android:layout_marginStart="@dimen/Distancia_entre_jugadores"
+            android:layout_toRightOf="@id/tvJugador4Down"
+            android:layout_toEndOf="@id/tvJugador4Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador3"
+            android:layout_alignLeft="@+id/tvJugador3"
+            android:layout_alignStart="@+id/tvJugador3"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador3Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="3"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+        <!--Jugador2-->
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
+
+            android:id="@+id/tvJugador2"
+
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
+
+            android:layout_above="@+id/tvJugador2Down"
+            android:layout_alignLeft="@+id/tvJugador2Down"
+            android:layout_alignStart="@+id/tvJugador2Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
+
+            android:id="@+id/tvJugador2Down"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/Distancia_entre_jugadores"
+            android:layout_marginStart="@dimen/Distancia_entre_jugadores"
+            android:layout_toRightOf="@id/tvJugador3Down"
+            android:layout_toEndOf="@id/tvJugador3Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador2"
+            android:layout_alignLeft="@+id/tvJugador2"
+            android:layout_alignStart="@+id/tvJugador2"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador2Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="2"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+        <!--Jugador1-->
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_toph"
+            android:background="@drawable/jugadorhabilitadotop"
+
+            android:id="@+id/tvJugador1"
+
+            android:enabled="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresTop"
+
+            android:layout_above="@+id/tvJugador1Down"
+            android:layout_alignLeft="@+id/tvJugador1Down"
+            android:layout_alignStart="@+id/tvJugador1Down" />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_topW"
+            android:layout_height="@dimen/Tamano_jugadores_downh"
+            android:background="@drawable/jugadorhabilitadodown"
+
+            android:id="@+id/tvJugador1Down"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/tamano_texto_jugadoresDown"
+
+            android:layout_marginBottom="@dimen/Distancia_jugadores_1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/Distancia_entre_jugadores"
+            android:layout_marginStart="@dimen/Distancia_entre_jugadores"
+            android:layout_toRightOf="@id/tvJugador2Down"
+            android:layout_toEndOf="@id/tvJugador2Down"
+            />
+        <TextView
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
+            android:background="@drawable/jugadorhabilitadocirculo"
+
+            android:layout_above="@+id/tvJugador1"
+            android:layout_alignLeft="@+id/tvJugador1"
+            android:layout_alignStart="@+id/tvJugador1"
+            android:layout_marginLeft="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginStart="@dimen/Bordes_jugadores_circulo_w"
+            android:layout_marginBottom="@dimen/Bordes_jugadores_circulo_h"
+
+            android:gravity="center_vertical|center_horizontal"
+
+            android:id="@+id/tvJugador1Circulo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="1"
+            android:textSize="@dimen/tamano_texto_jugadoresCirculo"
+            />
+
+        <!--Progresivo-->
         <TextView
             android:layout_width="@dimen/Tamaño_progresivo_w"
             android:layout_height="@dimen/Tamaño_progresivo_h"
@@ -436,7 +433,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/tamano_texto_progresivo"
-android:text="100,000,000"
+            android:text="100,000,000"
 
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"
@@ -447,7 +444,7 @@ android:text="100,000,000"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/Bordes"
             />
-
+        <!--Aviso-->
         <TextView
             android:layout_width="@dimen/Tamaño_aviso_w"
             android:layout_height="@dimen/Tamaño_aviso_h"
@@ -461,11 +458,10 @@ android:text="100,000,000"
             android:background="@drawable/avisoacreditar"
             android:id="@+id/TextviewAviso"
 
-
             android:layout_marginBottom="@dimen/Distancia_Controles1"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"  />
-
+        <!--Apuesta6-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
@@ -474,22 +470,19 @@ android:text="100,000,000"
             android:gravity="center"
             android:layout_gravity="center"
 
-            android:background="@drawable/premioescalerareal"
+            android:background="@drawable/botonapuesta"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
-            android:text="HOLA"
+            android:textSize="@dimen/tamano_texto_Apuesta"
 
-
-            android:elegantTextHeight="true"
-
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@id/TextviewAviso"
             android:layout_toLeftOf="@id/TextviewAviso"
 
-            android:layout_marginBottom="@dimen/Distancia_ApuPre"
             />
+        <!--Apuesta5-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
@@ -498,16 +491,17 @@ android:text="100,000,000"
             android:gravity="center"
             android:layout_gravity="center"
 
-            android:background="@drawable/premioescaleracolor"
+            android:background="@drawable/botonapuesta"
 
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
-
-            android:layout_alignTop="@+id/tvPremioApuesta4"
-            android:layout_toLeftOf="@+id/tvPremioApuesta4"
-            android:layout_toStartOf="@+id/tvPremioApuesta4" />
+            android:textSize="@dimen/tamano_texto_Apuesta"
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"/>
+        <!--Apuesta4-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
@@ -516,17 +510,17 @@ android:text="100,000,000"
             android:gravity="center"
             android:layout_gravity="center"
 
-            android:background="@drawable/premiofull"
+            android:background="@drawable/botonapuesta"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:textSize="@dimen/tamano_texto_Apuesta"
 
-
-            android:layout_alignTop="@+id/tvPremioApuesta3"
-            android:layout_toLeftOf="@+id/tvPremioApuesta3"
-            android:layout_toStartOf="@+id/tvPremioApuesta3" />
-
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso" />
+        <!--Apuesta3-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
@@ -536,16 +530,17 @@ android:text="100,000,000"
             android:gravity="center"
             android:layout_gravity="center"
 
-            android:background="@drawable/premiopoker"
+            android:background="@drawable/botonapuesta"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:textSize="@dimen/tamano_texto_Apuesta"
 
-            android:layout_alignTop="@+id/tvPremioApuesta2"
-            android:layout_toLeftOf="@+id/tvPremioApuesta2"
-            android:layout_toStartOf="@+id/tvPremioApuesta2" />
-
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"/>
+        <!--Apuesta2-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
@@ -557,19 +552,19 @@ android:text="100,000,000"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:textSize="@dimen/tamano_texto_Apuesta"
 
 
-            android:background="@drawable/premioescalerasucia"
+            android:background="@drawable/botonapuesta"
 
-            android:layout_alignTop="@+id/tvPremioApuesta1"
-            android:layout_toLeftOf="@+id/tvPremioApuesta1"
-            android:layout_toStartOf="@+id/tvPremioApuesta1" />
-
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso" />
+        <!--Apuesta1-->
         <TextView
             android:layout_width="@dimen/TamañoApuesta"
             android:layout_height="@dimen/TamañoApuesta"
-
 
             android:id="@+id/tvPremioApuesta1"
 
@@ -579,15 +574,16 @@ android:text="100,000,000"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
-            android:textSize="@dimen/tamano_texto_Apuestapremio"
+            android:textSize="@dimen/tamano_texto_Apuesta"
+            android:text="20"
 
+            android:background="@drawable/botonapuesta"
 
-            android:background="@drawable/premiocolor"
-
-            android:layout_alignTop="@+id/tvPremioApuesta6"
-            android:layout_toLeftOf="@+id/tvPremioApuesta6"
-            android:layout_toStartOf="@+id/tvPremioApuesta6" />
-
+            android:layout_marginBottom="@dimen/Distancia_ApuPre"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@id/TextviewAviso"
+            android:layout_toLeftOf="@id/TextviewAviso"/>
+        <!--Acreditar-->
 
         <TextView
             android:gravity="center"
@@ -611,7 +607,7 @@ android:text="100,000,000"
             android:layout_marginStart="@dimen/Separacion_jugadores_1"
             android:layout_marginLeft="@dimen/Separacion_jugadores_1"
             />
-
+        <!--Jugar-->
         <TextView
             android:gravity="center"
             android:textStyle="italic|bold"
@@ -634,7 +630,7 @@ android:text="100,000,000"
             android:layout_marginLeft="@dimen/Separacion_jugadores_2"
 
             />
-
+        <!--Pagar-->
         <TextView
             android:gravity="center"
             android:textStyle="italic|bold"
@@ -658,7 +654,7 @@ android:text="100,000,000"
             android:layout_marginLeft="@dimen/Separacion_jugadores_3"
 
              />
-
+        <!--Retirar-->
         <TextView
             android:gravity="center"
             android:textStyle="bold"
@@ -683,4 +679,4 @@ android:text="100,000,000"
             />
     </RelativeLayout>
 
-</FrameLayout>
+
