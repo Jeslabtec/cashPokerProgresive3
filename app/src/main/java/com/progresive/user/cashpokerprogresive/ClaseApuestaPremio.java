@@ -20,6 +20,7 @@ import android.widget.TextView;
  */
 public class ClaseApuestaPremio {
     //Cada uno de los posibles valres que pueden tener las monedas (preguntar a lopez porque esta el valor 0.0
+
     private final int[] VectorValSuma = {1,2,5,10,20,0} ;
     // Objeto de la UI, en este caso un textview, ver como lo puedo retirar
     private TextView ApuestaPremioTV;
@@ -28,6 +29,7 @@ public class ClaseApuestaPremio {
     // double donde se termina guardando efectivamente el porcentaje por motivos de calculo
     //Double que guarda el valor de la suma
     private int valorSuma;
+
     //Solo se usa en el apuesta premio del mas.
     private boolean Restando=false;
 
@@ -43,6 +45,7 @@ public class ClaseApuestaPremio {
         QuienSoy=i;
         Premio=CPPLogin.manip.verPorcentajePremio(i);
         valorSuma=VectorValSuma[i];
+
 
     }
     //Pone los botones en forma de premio
