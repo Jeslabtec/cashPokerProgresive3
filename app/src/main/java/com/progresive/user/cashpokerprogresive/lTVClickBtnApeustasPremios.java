@@ -51,7 +51,7 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
            {//----------------------------------------------------------------------------------------------------//
                case 1: // fase pagar
 
-                   if (tablero.mesaJuego.ApuestaPremio[i].ValorNumerico()>0.09) {
+                   if (i==0 || i==1) {
                        tablero.mesaJuego.necesariosupervisor = true;}
                    else{
                        tablero.mesaJuego.necesariosupervisor = false;
@@ -77,9 +77,8 @@ public class lTVClickBtnApeustasPremios implements View.OnClickListener   {
                    int Apu=0;
 
                    if(i!=5) {
-                       Apu = (int) tablero.mesaJuego.ApuestaPremio[i].ValorNumerico();
+                       Apu = tablero.mesaJuego.ApuestaPremio[i].ValorNumerico();
                    }
-
                    if (jug>=0) {
                        if (tablero.mesaJuego.ApuestaPremio[5].verSiRestando()) {
                            tablero.mesaJuego.jugador[jug].cargarapuesta(-Apu);

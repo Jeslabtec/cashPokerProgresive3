@@ -3,18 +3,17 @@
 
     <integer name="ApuPreDist1">140</integer>
     <integer name="ApuPreDist2">98</integer>
-    <integer name="ApuPreDist3">63</integer>
-    <integer name="ApuPreDist4">38</integer>
+    <integer name="ApuPreDist3">70</integer>
+    <integer name="ApuPreDist4">40</integer>
     <integer name="ApuPreDist5">18</integer>
     <integer name="ApuPreDist6">0</integer>
 
-    <integer name="Dis_separa_1">400</integer>
-    <integer name="Dis_separa_2">318</integer>
-    <integer name="Dis_separa_3">248</integer>
-    <integer name="Dis_separa_4">176</integer>
-    <integer name="Dis_separa_5">100</integer>
-    <integer name="Dis_separa_6">22</integer>
-
+    <integer name="Dis_separaApuPre_1">430</integer>
+    <integer name="Dis_separaApuPre_2">348</integer>
+    <integer name="Dis_separaApuPre_3">268</integer>
+    <integer name="Dis_separaApuPre_4">185</integer>
+    <integer name="Dis_separaApuPre_5">100</integer>
+    <integer name="Dis_separaApuPre_6">10</integer>
 
     <!--  <dimen name="Distancia_ApuPre1">233dp</dimen>
   <dimen name="Distancia_ApuPre2">153dp</dimen>

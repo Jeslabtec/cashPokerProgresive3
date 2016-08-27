@@ -91,7 +91,7 @@ public class tablero extends AppCompatActivity {
     @Override
     protected void onPause(){
         try {
-            CPPLogin.manip.GuardarTabla(CPPLogin.manip.idTablet,Integer.parseInt((String) this.mesaJuego.ProgresivoTV.ProgresivoTV.getText()));
+            CPPLogin.manip.GuardarTabla(CPPLogin.manip.idTablet,(int)mesaJuego.ProgresivoTV.ValorDelProgresivo());
             super.onPause();
         } catch (ExecutionException e) {
             Toast.makeText(tablero.dato,e.getMessage(), Toast.LENGTH_LONG).show();
@@ -105,7 +105,7 @@ public class tablero extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         try {
-            CPPLogin.manip.GuardarTabla(CPPLogin.manip.idTablet,Integer.parseInt((String) this.mesaJuego.ProgresivoTV.ProgresivoTV.getText()));
+            CPPLogin.manip.GuardarTabla(CPPLogin.manip.idTablet,(int)mesaJuego.ProgresivoTV.ValorDelProgresivo());
             super.onDestroy();
         } catch (ExecutionException e) {
             Toast.makeText(tablero.dato,e.getMessage(), Toast.LENGTH_LONG).show();

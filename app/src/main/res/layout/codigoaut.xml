@@ -13,7 +13,7 @@
             android:id="@+id/EncargadoTV"
             android:textSize="60dp"
             android:textIsSelectable="false"
-            android:textColor="#f1dbdb"
+            android:textColor="@color/FichaPremio2"
             android:clickable="false"
             android:textAlignment="center" />
 
@@ -23,7 +23,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/coding"
             android:textSize="60dp"
-            android:background="#f1eaea"
+            android:background="@color/FichaPremio2"
             android:textAlignment="center"
             android:textColor="#171616" />
 
@@ -135,12 +135,12 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:text="◄"
+            android:text="BORRAR"
             android:id="@+id/BorrarTV"
             android:textSize="50dp"
             android:textAlignment="center"
             android:background="#d9221f"
-            android:textColor="#726d6d" />
+            android:textColor="@color/abc_background_cache_hint_selector_material_light" />
         <TextView
             android:layout_width="300dp"
             android:layout_height="100dp"
@@ -153,7 +153,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:text="►"
+            android:text="CONFIRMAR"
             android:id="@+id/okTV"
             android:textSize="50dp"
             android:textAlignment="center"
@@ -161,7 +161,7 @@
             android:layout_alignLeft="@+id/num9"
             android:layout_alignStart="@+id/num9"
             android:background="#07f18d"
-            android:textColor="#726d6d" />
+            android:textColor="@color/abc_background_cache_hint_selector_material_light" />
 
 
     </GridLayout>

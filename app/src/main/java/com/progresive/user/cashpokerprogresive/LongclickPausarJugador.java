@@ -9,7 +9,7 @@ public class LongclickPausarJugador implements View.OnLongClickListener {
 
     @Override
     public boolean onLongClick(View v) {
-        if(tablero.mesaJuego.verElEstadoDelJuego()==3) {
+        if(tablero.mesaJuego.verElEstadoDelJuego()==3 || tablero.mesaJuego.verElEstadoDelJuego()==2) {
             switch (v.getId()) {
                 case R.id.tvJugador1:     // fase de pago
                     tablero.mesaJuego.jugador[0].ponerPausado();

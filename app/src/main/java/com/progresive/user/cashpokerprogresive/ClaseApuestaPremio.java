@@ -19,35 +19,36 @@ import android.widget.TextView;
  * del porcentaje y los valores de apuesta
  */
 public class ClaseApuestaPremio {
-
-    private double[] VectorValSuma = {1.0,2.0,5.0,10.0,20.0,0.0} ;
+    //Cada uno de los posibles valres que pueden tener las monedas (preguntar a lopez porque esta el valor 0.0
+    private final int[] VectorValSuma = {1,2,5,10,20,0} ;
+    // Objeto de la UI, en este caso un textview, ver como lo puedo retirar
     private TextView ApuestaPremioTV;
-    //String que guarda el porcentaje
-    private String Porcentaje;
-    private double Porcentajed;
-    //String que guarda el valor de la suma
-    private double valoresSuma;
-    private int valsuma;
+    //String que guarda el porcentaje para mostrarlo en el textview
+    private int Premio;
+    // double donde se termina guardando efectivamente el porcentaje por motivos de calculo
+    //Double que guarda el valor de la suma
+    private int valorSuma;
     //Solo se usa en el apuesta premio del mas.
     private boolean Restando=false;
+
+
     //Permite saber al objeto cual boton es
     private int QuienSoy;
 
     public  ClaseApuestaPremio(TextView v,int i){
         //i es un valor que indica cual es el numero del boton
         //configuracion del textview
-
         ApuestaPremioTV=v;
         ApuestaPremioTV.setOnClickListener(new lTVClickBtnApeustasPremios());
         QuienSoy=i;
-        Porcentajed=CPPLogin.manip.verPorcentajePremio(i);
-        Porcentaje=Integer.toString((int)(Porcentajed*100))+"%";
-        valoresSuma=VectorValSuma[i];
+        Premio=CPPLogin.manip.verPorcentajePremio(i);
+        valorSuma=VectorValSuma[i];
 
     }
     //Pone los botones en forma de premio
     public void BotonesPremio(){
-        ApuestaPremioTV.setText(Porcentaje);
+
+        ApuestaPremioTV.setText(String.valueOf(Premio));
         ApuestaPremioTV.setVisibility(View.VISIBLE);
         switch (QuienSoy)
         {case 0:
@@ -78,7 +79,7 @@ public class ClaseApuestaPremio {
             ApuestaPremioTV.setText("+");
         }else{
 
-            ApuestaPremioTV.setText(Integer.toString((int)valoresSuma));
+            ApuestaPremioTV.setText(String.valueOf(valorSuma));
         }
         ApuestaPremioTV.setBackgroundResource(R.drawable.botonapuesta);
     }
@@ -112,11 +113,11 @@ public class ClaseApuestaPremio {
     }
     //me devuelve el valor numerico del icono
 
-    public double ValorNumerico(){
+    public int ValorNumerico(){
         if(tablero.mesaJuego.verElEstadoDelJuego()==3){
-            return valoresSuma;
+            return valorSuma;
         }else if(tablero.mesaJuego.verElEstadoDelJuego()==1){
-            return  Porcentajed;
+            return  Premio;
         }
         return 0;
     }

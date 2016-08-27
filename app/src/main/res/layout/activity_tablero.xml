@@ -1,5 +1,3 @@
-
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -463,8 +461,8 @@
             android:layout_centerHorizontal="true"  />
         <!--Apuesta6-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvPremioApuesta6"
             android:gravity="center"
@@ -484,8 +482,8 @@
             />
         <!--Apuesta5-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvPremioApuesta5"
             android:gravity="center"
@@ -503,8 +501,8 @@
             android:layout_toLeftOf="@id/TextviewAviso"/>
         <!--Apuesta4-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvPremioApuesta4"
             android:gravity="center"
@@ -522,8 +520,8 @@
             android:layout_toLeftOf="@id/TextviewAviso" />
         <!--Apuesta3-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
 
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvPremioApuesta3"
@@ -542,8 +540,8 @@
             android:layout_toLeftOf="@id/TextviewAviso"/>
         <!--Apuesta2-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
 
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvPremioApuesta2"
@@ -563,8 +561,8 @@
             android:layout_toLeftOf="@id/TextviewAviso" />
         <!--Apuesta1-->
         <TextView
-            android:layout_width="@dimen/TamañoApuesta"
-            android:layout_height="@dimen/TamañoApuesta"
+            android:layout_width="@dimen/Tamano_jugadores_circulo"
+            android:layout_height="@dimen/Tamano_jugadores_circulo"
 
             android:id="@+id/tvPremioApuesta1"
 
@@ -575,7 +573,6 @@
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"
             android:textSize="@dimen/tamano_texto_Apuesta"
-            android:text="20"
 
             android:background="@drawable/botonapuesta"
 

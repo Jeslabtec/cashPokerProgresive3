@@ -1,7 +1,11 @@
 package com.progresive.user.cashpokerprogresive;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by JuanEsteban on 25/04/2016.
@@ -31,16 +35,16 @@ public class Jugador {
         jugadortv.setOnClickListener(new lTVClickJugadores());
         jugadortv.setOnLongClickListener(new LongclickPausarJugador());
         jugadortv.setText("0");
-        jugadortvdown.setText("X "+Integer.toString(CPPLogin.manip.verValorFicha()));
+        jugadortvdown.setText("X "+String.valueOf(CPPLogin.manip.verValorFicha()));
     }
-//cargar la apuesta en el textview
+//cargar la apuesta en el textvie
     public void cargarapuesta(int fichas){
         if(Enmesa) {
             Apuesta += fichas;
             if (Apuesta < SuperApuesta) {
                 Apuesta = SuperApuesta;
             }
-            jugadortv.setText(Integer.toString(Apuesta));
+            jugadortv.setText(String.valueOf(Apuesta));
         }
     }
     //Se llama cuando se inicia el juego
@@ -48,7 +52,7 @@ public class Jugador {
         if(Enmesa) {
             Apuesta--;
             SuperApuesta--;
-            jugadortv.setText(Integer.toString(Apuesta));
+            jugadortv.setText(String.valueOf(Apuesta));
         }
     }//Permite igualar la superapuesta a la apuesta cada vez que se juega
     public void cargarSuperApuesta(){
@@ -62,7 +66,7 @@ public class Jugador {
         SuperApuesta=0;
         Enmesa=true;
         seleccionado=false;
-        jugadortv.setText(Integer.toString(Apuesta));
+        jugadortv.setText(String.valueOf(Apuesta));
     }
     //pregunta si la persona esta en la mesa o no
     public boolean verSiPausado()
@@ -82,12 +86,38 @@ public class Jugador {
             }
         }
     }
-    //  Despausa la mesa
+   //Aviso para el jugador que se queda sin crédito
+    final Handler handler = new Handler();
+    Timer t = new Timer();
+    int ConteoAlerta=0;
+    boolean Aviso=true;
+
     public void avisoApuestaAcabada(){
-
-
+        t.schedule(new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        if (ConteoAlerta<6) {
+                            ConteoAlerta++;
+                            avisoApuestaAcabada();
+                            if(Aviso){
+                              Habilitar();
+                                Aviso=false;
+                            }else{
+                                Seleccionar();
+                                Aviso=true;
+                            }
+                        }else{
+                            Habilitar();
+                            ConteoAlerta=0;
+                        }
+                    }
+                });
+            }
+        }, 200);
     }
 
+    //  Despausa la mesa
 //Retorna la apuesta
     public int verapuesta()
     {

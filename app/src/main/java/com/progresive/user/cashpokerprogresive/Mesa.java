@@ -3,6 +3,7 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class Mesa {
 //variable que dice si se necesita el supervisor o no
     public boolean necesariosupervisor = false;
     private int ApuPreSeleccionado=-1;
+// por defecto se inicia en la etapa 3, acreditar
     private int EstadoJuego=3;
 // constructor de la clase Mesa:  el programa
     public Mesa(TextView[] v)    {
@@ -69,12 +71,12 @@ public class Mesa {
        int Y5=tablero.dato.getResources().getInteger(R.integer.ApuPreDist5);
        int Y6=tablero.dato.getResources().getInteger(R.integer.ApuPreDist6);
 
-       int X1=tablero.dato.getResources().getInteger(R.integer.Dis_separa_1);
-       int X2=tablero.dato.getResources().getInteger(R.integer.Dis_separa_2);
-       int X3=tablero.dato.getResources().getInteger(R.integer.Dis_separa_3);
-       int X4=tablero.dato.getResources().getInteger(R.integer.Dis_separa_4);
-       int X5=tablero.dato.getResources().getInteger(R.integer.Dis_separa_5);
-       int X6=tablero.dato.getResources().getInteger(R.integer.Dis_separa_6);
+       int X1=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_1);
+       int X2=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_2);
+       int X3=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_3);
+       int X4=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_4);
+       int X5=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_5);
+       int X6=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_6);
 
        ApuestaPremio[0].Movimientopremio(-X1,-Y1);
        ApuestaPremio[1].Movimientopremio(-X2,-Y2);
@@ -92,12 +94,12 @@ public class Mesa {
         int Y5=tablero.dato.getResources().getInteger(R.integer.ApuPreDist5);
         int Y6=tablero.dato.getResources().getInteger(R.integer.ApuPreDist6);
 
-        int X1=tablero.dato.getResources().getInteger(R.integer.Dis_separa_1);
-        int X2=tablero.dato.getResources().getInteger(R.integer.Dis_separa_2);
-        int X3=tablero.dato.getResources().getInteger(R.integer.Dis_separa_3);
-        int X4=tablero.dato.getResources().getInteger(R.integer.Dis_separa_4);
-        int X5=tablero.dato.getResources().getInteger(R.integer.Dis_separa_5);
-        int X6=tablero.dato.getResources().getInteger(R.integer.Dis_separa_6);
+        int X1=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_1);
+        int X2=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_2);
+        int X3=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_3);
+        int X4=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_4);
+        int X5=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_5);
+        int X6=tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_6);
 
         ApuestaPremio[0].Movimientoapuesta(-X1,-Y1);
         ApuestaPremio[1].Movimientoapuesta(-X2,-Y2);
@@ -190,7 +192,7 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
-        if(ProgresivoTV.ValorDelPremio()>1.01*CPPLogin.manip.verMinimoProgresivo()){
+        if(ProgresivoTV.ValorDelProgresivo()>1.01*CPPLogin.manip.verMinimoProgresivo()){
             jugadaActual++;
             if(jugadaActual==jugadasBonus){
                 ganadorBonus=(int) Math.floor(Math.random()*7);
@@ -202,6 +204,7 @@ public class Mesa {
         }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
+
     }
     //Bonus************************************************************************************************
     //variable que dice en que jugada va a haber un ganado
@@ -305,8 +308,22 @@ public class Mesa {
                     }
                 });
             }
-        }, 90);
+        }, 150);
     }
+
+
+    Timer timer = new Timer();
+    private void tareaPeriodica (){
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+              if (EstadoJuego==2){
+                  ProgresivoTV.aumentoAleatorio();
+              }
+            }
+        },0,150);
+    }
+
 //*************************************************************************************************************************
 
 //Funcion que cambia el estado de juego
@@ -336,7 +353,7 @@ public class Mesa {
     private void BotonesdePago(){
         retirarseTV.Bloquear();
         pagarTV.Seleccionar();
-        jugarTV.Bloquear();
+        jugarTV.Habilitar();
         apostarTV.Habilitar();
 
         for (int i=0; i<ApuestaPremio.length; i++)
@@ -358,6 +375,7 @@ public class Mesa {
         {
            ApuestaPremio[i].BotonesPremio();
         }
+
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisojugar);
@@ -375,7 +393,6 @@ public class Mesa {
         {
             ApuestaPremio[i].BotonesDesaparecer();
         }
-
         SeleccionarJugador(-1);
         restringirJugadores();
         AvisoTV.setBackgroundResource(R.drawable.avisoretirarse);
@@ -406,24 +423,22 @@ public class Mesa {
     }
 
     //Acciones que permiten confirmar el pago, es valida cuando el codigo ingresado en codigoaut pertenece a un dealer o supervisor
-
-
-
     public int AccionesConfirmarPago() {
-        double premio = ProgresivoTV.ValorDelPremio();
-        double porcentaje = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
-        int pago=(porcentaje>=1)?((int) (porcentaje * premio/CPPLogin.manip.verValorFicha())):((int) porcentaje);
-        int nuevoProgresivo=Integer.parseInt((String) tablero.mesaJuego.ProgresivoTV.ProgresivoTV.getText())-pago*CPPLogin.manip.verValorFicha();
+        double Progresivo= (int)ProgresivoTV.ValorDelProgresivo();
+        double Premio = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
+        double pago;
 
-        CPPLogin.manip.setDineroEnProgresivo((nuevoProgresivo<CPPLogin.manip.verMinimoProgresivo())?(CPPLogin.manip.verMinimoProgresivo()):(nuevoProgresivo));
+        if(ApuPreSeleccionado<2){
+            pago= Math.floor((double)(Progresivo*(Premio/100))/CPPLogin.manip.verValorFicha());
 
+        }else{
+            pago=Premio;
+        }
 
-
-        tablero.mesaJuego.ProgresivoTV.ProgresivoTV.setText(Integer.toString(CPPLogin.manip.verDineroProgresivo())); // hacer cambio aqui e ingresar nueva columna llamada valorMinimoProgresivo
-        jugador[JugadorSeleccionado()].cargarapuesta(pago);
+        ProgresivoTV.PagarProgresivo((int)pago);
+        jugador[JugadorSeleccionado()].cargarapuesta((int)pago);
         jugador[JugadorSeleccionado()].cargarSuperApuesta();
         restringirJugador(JugadorSeleccionado());
-        return (pago);
+        return (int)pago;
     }
-
 }
