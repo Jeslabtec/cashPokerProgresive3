@@ -200,7 +200,6 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
-        if (ProgresivoTV.ValorDelProgresivo() > 1.01 * CPPLogin.manip.verMinimoProgresivo()) {
             jugadaActual++;
             if (jugadaActual == jugadasBonus) {
                 ganadorBonus = (int) Math.floor(Math.random() * 7);
@@ -209,7 +208,7 @@ public class Mesa {
                 EstadoBonusOn();
                 BonusCambio(ganadorBonus);
             }
-        }
+
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
 
@@ -287,7 +286,8 @@ public class Mesa {
 
     private void pagarBonus() {
         if (tablero.mesaJuego.jugador[ganadorBonus].verapuesta() > 0 && tablero.mesaJuego.jugador[ganadorBonus].verSiPausado()) {
-            tablero.mesaJuego.jugador[ganadorBonus].cargarapuesta(1);
+            tablero.mesaJuego.jugador[ganadorBonus].cargarapuesta(30);
+            ProgresivoTV.PagarProgresivo(30);
         }
 
     }
@@ -323,19 +323,6 @@ public class Mesa {
         }, 150);
     }
 
-
-    Timer timer = new Timer();
-
-    private void tareaPeriodica() {
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                if (EstadoJuego == 2) {
-                    ProgresivoTV.aumentoAleatorio();
-                }
-            }
-        }, 0, 150);
-    }
 
 //*************************************************************************************************************************
 
