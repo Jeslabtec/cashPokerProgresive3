@@ -91,22 +91,24 @@ public class Jugador {
     Timer t = new Timer();
     int ConteoAlerta=0;
     boolean Aviso=true;
-
+//Funcion que avisa al dealer cuando un jugador ya no tiene mas fichas
     public void avisoApuestaAcabada(){
         t.schedule(new TimerTask() {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        if (ConteoAlerta<6) {
+                        if (ConteoAlerta<8) {
                             ConteoAlerta++;
-                            avisoApuestaAcabada();
+
                             if(Aviso){
                               Habilitar();
                                 Aviso=false;
                             }else{
                                 Seleccionar();
+                                tablero.mesaJuego.reproducirSonido(2);
                                 Aviso=true;
                             }
+                            avisoApuestaAcabada();
                         }else{
                             Habilitar();
                             ConteoAlerta=0;
@@ -193,6 +195,7 @@ public class Jugador {
     public boolean EstoySeleccionado(){
         return seleccionado;
     }
+public  void soloseleccion(){seleccionado=true;}
     //
     public boolean EstoyBloqueado(){
         return bloqueado;

@@ -8,8 +8,11 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by JuanEsteban on 28/04/2016.
@@ -27,8 +30,11 @@ public class Mesa {
     ControlesJuego retirarseTV;
     ClaseDelProgresivo ProgresivoTV;
     MensajesAlerta mensaje;
-
-
+//Variables necesarias para el sonido
+    administradorDeSonido sonido;
+    int clic;
+    int aviso;
+    int winner;
     //variable que dice si se necesita el supervisor o no
     public boolean necesariosupervisor = false;
     private int ApuPreSeleccionado = -1;
@@ -36,7 +42,7 @@ public class Mesa {
     private int EstadoJuego = 3;
 
     // constructor de la clase Mesa:  el programa
-    public Mesa(TextView[] v) {
+    public Mesa(TextView[] v,administradorDeSonido w) {
 //Creacion de los objetos jugadores que son 7
         for (int i = 0; i < jugador.length; i++) {
             jugador[i] = new Jugador(v[i], v[i + 19], v[i + 26]);
@@ -50,7 +56,11 @@ public class Mesa {
         jugarTV = new ControlesJuego(v[14], 2);
         apostarTV = new ControlesJuego(v[15], 3);
         retirarseTV = new ControlesJuego(v[16], 4);
-
+       //conficguracion del sonido
+        sonido=w;
+        clic = sonido.load(R.raw.clic);
+        aviso=sonido.load(R.raw.aviso);
+        winner=sonido.load(R.raw.winner);
         //Seteo del long click listener de la configuracion
         AvisoTV = v[17];
 
@@ -189,7 +199,11 @@ public class Mesa {
     public int verElEstadoDelJuego() {
         return (EstadoJuego);
     }
-
+    //*************************************************************************************************************************
+    //Funcion que cambia el estado de juego
+    public void cambiarElEstadoDelJuego(int NuevoEstado) {
+        EstadoJuego = NuevoEstado;
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------
     //Funcion para iniciar el juego
     public void PonerAJugar() {
@@ -200,16 +214,7 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
-        if (ProgresivoTV.ValorDelProgresivo() > 1.01 * CPPLogin.manip.verMinimoProgresivo()) {
-            jugadaActual++;
-            if (jugadaActual == jugadasBonus) {
-                ganadorBonus = (int) Math.floor(Math.random() * 7);
-                jugadaActual = 0;
-                jugadasBonus = getBinomial(16, 0.5);
-                EstadoBonusOn();
-                BonusCambio(ganadorBonus);
-            }
-        }
+        jugadaActual++;
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
 
@@ -217,18 +222,18 @@ public class Mesa {
 
     //Bonus************************************************************************************************
     //variable que dice en que jugada va a haber un ganado
-    private int jugadasBonus = getBinomial(16, 0.5);
+    private int jugadasBonus = getBinomial(4, 0.5);
     //conteo de las jugadas que se reinicia cuando hay un ganador
-    private int jugadaActual = 0;
-    //
+    private int jugadaActual = 0;    //
     private int iteracionesBonus = -1;
     private int jugadorBonus = -1;
-    private int tiempoBonus = 200;
+    private int tiempoBonus = 300;
     private int ganadorBonus = -1;
     Timer t1 = new Timer();
     final Handler handler1 = new Handler();
-
-
+    private int bonus1,bonus2;
+    private boolean Bonusactive=true;
+//Parte estadistica
     public int getBinomial(int n, double p) {
         int x = 0;
         for (int i = 0; i < n; i++) {
@@ -237,28 +242,31 @@ public class Mesa {
         }
         return x;
     }
-
+//Timer que ejecuta las acciones visuales en el momento del bonus
     private void BonusTimer() {
         t1.schedule(new TimerTask() {
             public void run() {
                 handler1.post(new Runnable() {
                     public void run() {
-                        SeleccionarJugadorBonus();
+                        if(bonus1>bonus2) {
+                            SeleccionarJugadorBonus();
+                        }else{
+                            Bonustodos();
+                        }
+                        reproducirSonido(2);
                     }
                 });
             }
         }, tiempoBonus);
     }
-
+//Permite rotar la ubicacion de cada jugador
     private void BonusCambio(int jugadorGanador) {
         jugadorBonus = 11 + jugadorGanador;
         for (int i = 0; i < jugador.length; i++) {
             jugador[i].bonusScreen(false);
         }
-        SeleccionarJugadorBonus();
-    }
-    //Sirve para ir pasando el jugador hasta que llegue al ganador
-
+        SeleccionarJugadorBonus();    }
+    //Sirve ara ir pasando el jugador hasta que llegue al ganador
     public void SeleccionarJugadorBonus() {
         if (iteracionesBonus == -1) {
             jugador[iteracionesBonus + 1].bonusScreen(true);
@@ -284,12 +292,76 @@ public class Mesa {
             pagarBonus();
         }
     }
-
+//Funcion que paga a un jugador el bonus
     private void pagarBonus() {
-        if (tablero.mesaJuego.jugador[ganadorBonus].verapuesta() > 0 && tablero.mesaJuego.jugador[ganadorBonus].verSiPausado()) {
-            tablero.mesaJuego.jugador[ganadorBonus].cargarapuesta(1);
-        }
+        if (jugador[ganadorBonus].verapuesta() > 0 && jugador[ganadorBonus].verSiPausado()) {
+            DineroPagoConEstilo = 30;
+            jugador[ganadorBonus].soloseleccion();
+            pagarConEstilo();
+            try {
+                CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", 30);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+        }
+        for(int i=0;i<jugador.length;i++){
+            if (!jugador[i].verSiPausado()) {
+                jugador[i].ponerPausado();
+            }
+        }
+        cambiarBotones();
+    }
+    private void Bonustodos(){
+        for(int i=0;i<jugador.length;i++){
+            jugador[i].bonusScreen(Bonusactive);
+        }
+        Bonusactive=!Bonusactive;
+        if(iteracionesBonus<8) {
+            iteracionesBonus++;
+            for(int i=0;i<jugador.length;i++){
+                if (jugador[i].verapuesta() > 0 && jugador[i].verSiPausado()) {
+                    ProgresivoTV.PagarProgresivo(1);
+                    jugador[i].cargarapuesta(1);
+                    jugador[i].cargarSuperApuesta();
+                }
+            }
+            BonusTimer();
+        }else{
+            iteracionesBonus=-1;
+            PagarBonusTodos();
+            Bonusactive=true;
+        }
+    }
+    private void PagarBonusTodos(){
+        int contganadores=0;
+        for(int i=0;i<jugador.length;i++){
+            if (jugador[i].verapuesta() > 0 && jugador[i].verSiPausado()) {
+                ProgresivoTV.PagarProgresivo(1);
+                jugador[i].cargarapuesta(1);
+                jugador[i].cargarSuperApuesta();
+                contganadores++;
+            }
+        }
+        try {
+            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",10*contganadores);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        for(int i=0;i<jugador.length;i++){
+            if (!jugador[i].verSiPausado()) {
+                jugador[i].ponerPausado();
+            }
+        }
+        cambiarBotones();
     }
 
     private void EstadoBonusOn() {
@@ -307,42 +379,43 @@ public class Mesa {
     //Funcion que se realiza iterativamente durante toda la fase de juego
     final Handler handler = new Handler();
     Timer t = new Timer();
+    private int iteracionesProgresivoLoco=0;
 
     public void progresivoLoco() {
         t.schedule(new TimerTask() {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        if (EstadoJuego == 2) {
+                        if (iteracionesProgresivoLoco<20) {
+                            iteracionesProgresivoLoco++;
                             ProgresivoTV.aumentoAleatorio();
                             progresivoLoco();
+                        }else{
+                            if (jugadaActual == jugadasBonus) {
+                                jugadaActual = 0;
+                                jugadasBonus = getBinomial(4, 0.5);
+                                //bonus1=getBinomial(16,0.0625);
+                                //bonus2=getBinomial(160,0.1875);
+                                bonus1=getBinomial(16,0.5);
+                                bonus2=getBinomial(16,0.5);
+                                if (bonus1>bonus2) {
+                                    ganadorBonus = (int) Math.floor(Math.random() * 7);
+                                    EstadoBonusOn();
+                                    BonusCambio(ganadorBonus);
+                                }
+                                else{
+                                    EstadoBonusOn();
+                                    Bonustodos();
+                                }
+                            }
+                            iteracionesProgresivoLoco=0;
                         }
                     }
                 });
             }
-        }, 150);
+        }, 200);
     }
 
-
-    Timer timer = new Timer();
-
-    private void tareaPeriodica() {
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                if (EstadoJuego == 2) {
-                    ProgresivoTV.aumentoAleatorio();
-                }
-            }
-        }, 0, 150);
-    }
-
-//*************************************************************************************************************************
-
-    //Funcion que cambia el estado de juego
-    public void cambiarElEstadoDelJuego(int NuevoEstado) {
-        EstadoJuego = NuevoEstado;
-    }
 
     //*********************************************************************************************************************
     //Que pasa con los textview cuando se une cualquiera de los controles//
@@ -367,7 +440,7 @@ public class Mesa {
     private void BotonesdePago() {
         retirarseTV.Bloquear();
         pagarTV.Seleccionar();
-        jugarTV.Habilitar();
+        jugarTV.Bloquear();
         apostarTV.Habilitar();
 
         for (int i = 0; i < ApuestaPremio.length; i++) {
@@ -440,20 +513,108 @@ public class Mesa {
         double Progresivo = (int) ProgresivoTV.ValorDelProgresivo();
         double Premio = ApuestaPremio[ApuPreSeleccionado()].ValorNumerico();
         double pago;
-
-
         if (ApuPreSeleccionado < 2) {
             pago = Math.floor((double) (Progresivo * (Premio / 100)) / CPPLogin.manip.verValorFicha());
 
         } else {
             pago = Premio;
         }
-
-        ProgresivoTV.PagarProgresivo((int) pago);
-        jugador[JugadorSeleccionado()].cargarapuesta((int) pago);
-        jugador[JugadorSeleccionado()].cargarSuperApuesta();
-        restringirJugador(JugadorSeleccionado());
+        DineroPagoConEstilo=(int)pago;
+        pagarConEstilograndes();
         return (int) pago;
     }
-}
 
+
+//pago con estilo---------------------------------------------------------------------------------------------------------------------------
+    final Handler handler3 = new Handler();
+    Timer t2 = new Timer();
+    private int DineroPagoConEstilo=0;
+    private int conteoPagoestilo=0;
+    private int cuantosubir=0;
+    private int sobrante=0;
+
+
+    private void pagarConEstilograndes(){
+        t1.schedule(new TimerTask() {
+            public void run() {
+                handler3.post(new Runnable() {
+                    public void run() {
+                        if (conteoPagoestilo == 0) {
+                            cuantosubir = DineroPagoConEstilo / 20;
+                            sobrante = DineroPagoConEstilo % 20;
+                        }
+                        if (conteoPagoestilo < 20) {
+                            conteoPagoestilo++;
+                            ProgresivoTV.PagarProgresivo(cuantosubir);
+                            jugador[JugadorSeleccionado()].cargarapuesta(cuantosubir);
+                            reproducirSonido(1);
+                            pagarConEstilograndes();
+
+                        }else if(conteoPagoestilo>=20 && conteoPagoestilo<20+sobrante){
+                            conteoPagoestilo++;
+                            ProgresivoTV.PagarProgresivo(1);
+                            jugador[JugadorSeleccionado()].cargarapuesta(1);
+                            reproducirSonido(1);
+                            pagarConEstilograndes();
+
+                        }else {
+                            jugador[JugadorSeleccionado()].cargarSuperApuesta();
+                            cambiarBotones();
+                            restringirJugador(JugadorSeleccionado());
+                            conteoPagoestilo=0;
+                            DineroPagoConEstilo=0;
+                            cuantosubir=0;
+                            sobrante=0;
+                        }
+                    }
+                });
+            }
+        }, 200);
+    }
+    private void pagarConEstilo(){
+        t1.schedule(new TimerTask() {
+            public void run() {
+                handler3.post(new Runnable() {
+                    public void run() {
+                         if(conteoPagoestilo<DineroPagoConEstilo){
+                            conteoPagoestilo++;
+                            ProgresivoTV.PagarProgresivo(1);
+                            jugador[JugadorSeleccionado()].cargarapuesta(1);
+                            reproducirSonido(1);
+                            pagarConEstilograndes();
+
+                        }else {
+                            jugador[JugadorSeleccionado()].cargarSuperApuesta();
+                            cambiarBotones();
+                            restringirJugador(JugadorSeleccionado());
+                            conteoPagoestilo=0;
+                            DineroPagoConEstilo=0;
+                        }
+                    }
+                });
+            }
+        }, 200);
+    }
+
+
+    //Admini sonido
+
+    public void reproducirSonido(int position)
+    {
+        //Obtenemos el id del sonido
+        switch (position){
+            case 1:
+                sonido.play(clic);
+                break;
+            case 2:
+                sonido.play(aviso);
+                break;
+            case 3:
+                sonido.play(winner);
+            default:
+                break;
+        }
+
+    }
+
+}

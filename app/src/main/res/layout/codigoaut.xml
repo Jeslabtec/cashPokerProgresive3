@@ -6,17 +6,21 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     android:gravity="center"
-    android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/EncargadoTV"
-            android:textSize="60dp"
-            android:textIsSelectable="false"
-            android:textColor="@color/FichaPremio2"
-            android:clickable="false"
-            android:textAlignment="center" />
+    android:orientation="vertical"
+    android:background="@drawable/fondo">
 
+    <EditText
+        android:id="@+id/EncargadoTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese Clave"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:background="@color/common_action_bar_splitter"
+        android:textColor="@color/black_overlay"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

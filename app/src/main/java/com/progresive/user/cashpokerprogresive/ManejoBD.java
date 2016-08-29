@@ -144,12 +144,8 @@ public class ManejoBD  {
 
     public void setDineroEnProgresivo(int nuevoValor){this.DineroEnProgresivo=nuevoValor;}
 
-    public double verAumentoPremio(){
-        return PorcentajeAumento;
-    }
-    public int verMinimoProgresivo(){
-        return minimoProgresivo;
-    }
+    public double verPorcentajeProgresivo(){return PorcentajeAumento;} // esta funcion determina cuanto en total debe subir el progresivo
+    public int verMinimoProgresivo(){return minimoProgresivo;} // esta funcion determina cuanto es el minimo del progresivo
 
 
 

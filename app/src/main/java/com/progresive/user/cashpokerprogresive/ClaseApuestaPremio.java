@@ -2,8 +2,10 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.os.Build;
 import android.renderscript.Double2;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
@@ -54,8 +56,9 @@ public class ClaseApuestaPremio {
         ApuestaPremioTV.setText(String.valueOf(Premio));
         ApuestaPremioTV.setVisibility(View.VISIBLE);
         switch (QuienSoy)
+
         {case 0:
-            ApuestaPremioTV.setBackgroundResource(R.drawable.premioescalerareal);
+                ApuestaPremioTV.setBackgroundResource(R.drawable.premioescalerareal);
             break;
             case 1:
                 ApuestaPremioTV.setBackgroundResource(R.drawable.premioescaleracolor);

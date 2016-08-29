@@ -584,7 +584,7 @@
 
         <TextView
             android:gravity="center"
-            android:textStyle="italic|bold"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/gris3"
             android:textSize="@dimen/tamano_texto_fichasFaseAcre"
@@ -607,7 +607,7 @@
         <!--Jugar-->
         <TextView
             android:gravity="center"
-            android:textStyle="italic|bold"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/gris3"
             android:textSize="@dimen/tamano_texto_fichasFase"
@@ -630,7 +630,7 @@
         <!--Pagar-->
         <TextView
             android:gravity="center"
-            android:textStyle="italic|bold"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/gris3"
             android:textSize="@dimen/tamano_texto_fichasFase"

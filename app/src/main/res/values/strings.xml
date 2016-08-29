@@ -30,7 +30,7 @@
     <string name="progressive">Progressive</string>
     <string name="BaseProgresivo">$1200</string>
     <string name="title_activity_codeaut">codeaut</string>
-    <string name="title_activity_cpplogin">Sign in</string>
+    <string name="title_activity_cpplogin">Cash Poker Progressive</string>
     <string name="CodigoInvalido">Código Invalido</string>
     <string name="PagoAprobado">Pago Aprobado</string>
     <string name="Paracontinuar">Para continuar necesita mínimo una apuesta.</string>
