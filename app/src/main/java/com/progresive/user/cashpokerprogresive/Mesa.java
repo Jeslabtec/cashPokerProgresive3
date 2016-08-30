@@ -214,10 +214,11 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
-
         jugadaActual++;
         if(jugadaActual==jugadasBonus){
             unGanadorBonus=true;
+        }else if(jugadaActual>jugadasBonus){
+            jugadaActual=0;
         }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
@@ -292,15 +293,13 @@ public class Mesa {
         } else {
             iteracionesBonus = -1;
             jugadorBonus = -1;
-            tiempoBonus = 200;
-            cambiarBotones();
+            tiempoBonus = 300;
             pagarBonus();
         }
     }
 //Funcion que paga a un jugador el bonus
     private void pagarBonus() {
-
-        if (jugador[ganadorBonus].verapuesta() > 0 && jugador[ganadorBonus].verSiPausado()) {
+        if (jugador[ganadorBonus].verSiPausado() && jugador[ganadorBonus].jugadortv.isEnabled()) {
             DineroPagoConEstilo = 30;
             pagarConEstilo();
             try {
@@ -312,8 +311,8 @@ public class Mesa {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
+        }else{
+            cambiarBotones();
         }
         for(int i=0;i<jugador.length;i++){
             if (!jugador[i].verSiPausado()) {
@@ -321,7 +320,6 @@ public class Mesa {
                 jugador[i].ponerPausado();
             }
         }
-        cambiarBotones();
     }
     private void Bonustodos(){
         for(int i=0;i<jugador.length;i++){
@@ -347,7 +345,7 @@ public class Mesa {
     private void PagarBonusTodos(){
         int contganadores=0;
         for(int i=0;i<jugador.length;i++){
-            if (jugador[i].verapuesta() > 0 && jugador[i].verSiPausado()) {
+            if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
                 ProgresivoTV.PagarProgresivo(1);
                 jugador[i].cargarapuesta(1);
                 jugador[i].cargarSuperApuesta();
@@ -595,15 +593,15 @@ public class Mesa {
                             pagarConEstilo();
 
                         }else {
-                            jugador[ganadorBonus].cargarSuperApuesta();
-                            cambiarBotones();
-                            conteoPagoestilo=0;
-                            DineroPagoConEstilo=0;
+                             jugador[ganadorBonus].cargarSuperApuesta();
+                             conteoPagoestilo=0;
+                             DineroPagoConEstilo=0;
+                             cambiarBotones();
                         }
                     }
                 });
             }
-        }, 50);
+        }, 200);
     }
 
 

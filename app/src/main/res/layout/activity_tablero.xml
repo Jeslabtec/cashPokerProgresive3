@@ -435,6 +435,7 @@
 
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"
+            android:textColor="@color/Negro1"
 
 
 

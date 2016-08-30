@@ -20,8 +20,6 @@ public class ClaseDelProgresivo {
     private double Dinero;
     NumberFormat format = NumberFormat.getCurrencyInstance();
 
-
-
     // construtctor de la clase del progresivo
     public ClaseDelProgresivo(TextView v) {
         ProgresivoTV = v;

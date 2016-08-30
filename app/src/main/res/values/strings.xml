@@ -35,7 +35,9 @@
     <string name="PagoAprobado">Pago Aprobado</string>
     <string name="Paracontinuar">Para continuar necesita mínimo una apuesta.</string>
     <string name="DebSelJug">Antes debe Seleccionar un Jugador.</string>
-
+    <string name="Ingrclave">Ingrese clave</string>
+    <string name="Supervisor">Supervisor</string>
+    <string name="Dealer">Dealer</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>
