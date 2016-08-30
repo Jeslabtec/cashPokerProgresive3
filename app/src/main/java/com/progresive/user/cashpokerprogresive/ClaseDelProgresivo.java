@@ -33,10 +33,16 @@ public class ClaseDelProgresivo {
         ProgresivoTV.setText(String.valueOf(format.format(CPPLogin.manip.verDineroProgresivo())));
     }
 
+
+
+
+
     public void cambiePremio(int nuevoValor)
     {
         AumentoPremio=nuevoValor;
     }
+
+
 
     public void setAumentoPremio(){
         AumentoPremio+=Math.round((double)tablero.mesaJuego.cuantosJugando())*ValorFicha*(Rand1)*CPPLogin.manip.verPorcentajeProgresivo()+AumentoPremioAnterior;
@@ -44,6 +50,7 @@ public class ClaseDelProgresivo {
         AumentoPremioAnterior=Math.round((double)tablero.mesaJuego.cuantosJugando())*ValorFicha*(Rand2)*CPPLogin.manip.verPorcentajeProgresivo();
         Rand1=Math.random();
     }
+
 
     public void aumentoAleatorio(){
         Dinero=(1-0.86071) *  (AumentoPremio) + (0.86071) * (Dinero);

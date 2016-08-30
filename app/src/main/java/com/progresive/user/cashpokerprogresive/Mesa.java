@@ -214,6 +214,7 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
+
         jugadaActual++;
         if(jugadaActual==jugadasBonus){
             unGanadorBonus=true;
@@ -298,6 +299,7 @@ public class Mesa {
     }
 //Funcion que paga a un jugador el bonus
     private void pagarBonus() {
+
         if (jugador[ganadorBonus].verapuesta() > 0 && jugador[ganadorBonus].verSiPausado()) {
             DineroPagoConEstilo = 30;
             pagarConEstilo();
@@ -310,6 +312,7 @@ public class Mesa {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
 
         }
         for(int i=0;i<jugador.length;i++){
@@ -419,8 +422,10 @@ public class Mesa {
                     }
                 });
             }
+
         }, 100);
     }
+
 
 
     //*********************************************************************************************************************
