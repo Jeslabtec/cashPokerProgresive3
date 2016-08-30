@@ -215,6 +215,9 @@ public class Mesa {
             }
         }
         jugadaActual++;
+        if(jugadaActual==jugadasBonus){
+            unGanadorBonus=true;
+        }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
 
@@ -233,6 +236,7 @@ public class Mesa {
     final Handler handler1 = new Handler();
     private int bonus1,bonus2;
     private boolean Bonusactive=true;
+    private boolean unGanadorBonus=false;
 //Parte estadistica
     public int getBinomial(int n, double p) {
         int x = 0;
@@ -296,7 +300,6 @@ public class Mesa {
     private void pagarBonus() {
         if (jugador[ganadorBonus].verapuesta() > 0 && jugador[ganadorBonus].verSiPausado()) {
             DineroPagoConEstilo = 30;
-            jugador[ganadorBonus].soloseleccion();
             pagarConEstilo();
             try {
                 CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", 30);
@@ -311,6 +314,7 @@ public class Mesa {
         }
         for(int i=0;i<jugador.length;i++){
             if (!jugador[i].verSiPausado()) {
+                jugador[i].ponerPausado();
                 jugador[i].ponerPausado();
             }
         }
@@ -359,6 +363,7 @@ public class Mesa {
         for(int i=0;i<jugador.length;i++){
             if (!jugador[i].verSiPausado()) {
                 jugador[i].ponerPausado();
+                jugador[i].ponerPausado();
             }
         }
         cambiarBotones();
@@ -386,12 +391,13 @@ public class Mesa {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        if (iteracionesProgresivoLoco<20) {
+                        if (iteracionesProgresivoLoco<36) {
                             iteracionesProgresivoLoco++;
                             ProgresivoTV.aumentoAleatorio();
                             progresivoLoco();
                         }else{
-                            if (jugadaActual == jugadasBonus) {
+                            if (unGanadorBonus) {
+                                unGanadorBonus=false;
                                 jugadaActual = 0;
                                 jugadasBonus = getBinomial(4, 0.5);
                                 //bonus1=getBinomial(16,0.0625);
@@ -413,7 +419,7 @@ public class Mesa {
                     }
                 });
             }
-        }, 200);
+        }, 100);
     }
 
 
@@ -579,21 +585,20 @@ public class Mesa {
                          if(conteoPagoestilo<DineroPagoConEstilo){
                             conteoPagoestilo++;
                             ProgresivoTV.PagarProgresivo(1);
-                            jugador[JugadorSeleccionado()].cargarapuesta(1);
+                            jugador[ganadorBonus].cargarapuesta(1);
                             reproducirSonido(1);
-                            pagarConEstilograndes();
+                            pagarConEstilo();
 
                         }else {
-                            jugador[JugadorSeleccionado()].cargarSuperApuesta();
+                            jugador[ganadorBonus].cargarSuperApuesta();
                             cambiarBotones();
-                            restringirJugador(JugadorSeleccionado());
                             conteoPagoestilo=0;
                             DineroPagoConEstilo=0;
                         }
                     }
                 });
             }
-        }, 200);
+        }, 50);
     }
 
 
