@@ -1,9 +1,7 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

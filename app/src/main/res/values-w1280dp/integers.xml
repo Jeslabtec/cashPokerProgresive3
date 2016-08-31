@@ -15,10 +15,5 @@
     <integer name="Dis_separaApuPre_5">98</integer>
     <integer name="Dis_separaApuPre_6">10</integer>
 
-    <!--  <dimen name="Distancia_ApuPre1">233dp</dimen>
-  <dimen name="Distancia_ApuPre2">153dp</dimen>
-  <dimen name="Distancia_ApuPre3">100dp</dimen>
-  <dimen name="Distancia_ApuPre4">60dp</dimen>
-  <dimen name="Distancia_ApuPre5">27dp</dimen>
-  <dimen name="Distancia_ApuPre6">0dp</dimen>-->
+
 </resources>

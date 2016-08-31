@@ -1,7 +1,6 @@
 package com.progresive.user.cashpokerprogresive;
 
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Created by JuanEsteban on 02/05/2016.

@@ -31,7 +31,59 @@ public class Codigoaut extends AppCompatActivity {
         final TextView[] CodeTV = {
                 (TextView) findViewById(R.id.okTV),
                 (TextView) findViewById(R.id.coding),
-                (TextView) findViewById(R.id.EncargadoTV)};
+                (TextView) findViewById(R.id.EncargadoTV),
+                (TextView) findViewById(R.id.PremioCodigo),
+                (TextView) findViewById(R.id.Jugador1Codigo)};
+
+        switch (tablero.mesaJuego.ApuPreSeleccionado())
+        {case 0:
+                CodeTV[3].setBackgroundResource(R.drawable.premioescalerarealgrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(0)));
+            break;
+            case 1:
+                CodeTV[3].setBackgroundResource(R.drawable.premioescaleracolorgrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(1)));
+                break;
+            case 2:
+                CodeTV[3].setBackgroundResource(R.drawable.premiopokergrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(2)));
+                break;
+            case 3:
+                CodeTV[3].setBackgroundResource(R.drawable.premiofullgrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(3)));
+                break;
+            case 4:
+                CodeTV[3].setBackgroundResource(R.drawable.premiocolorgrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(4)));
+                break;
+            case 5:
+                CodeTV[3].setBackgroundResource(R.drawable.premioescalerasuciagrande);
+                CodeTV[3].setText(String.valueOf(CPPLogin.manip.verPorcentajePremio(5)));
+                break;
+        }
+        switch (tablero.mesaJuego.JugadorSeleccionado())
+        {   case 0:
+                CodeTV[4].setText(String.valueOf(1));
+            break;
+            case 1:
+                CodeTV[4].setText(String.valueOf(2));
+                break;
+            case 2:
+                CodeTV[4].setText(String.valueOf(3));
+                break;
+            case 3:
+                CodeTV[4].setText(String.valueOf(4));
+                break;
+            case 4:
+                CodeTV[4].setText(String.valueOf(5));
+                break;
+            case 5:
+                CodeTV[4].setText(String.valueOf(6));
+                break;
+            case 6:
+                CodeTV[4].setText(String.valueOf(7));
+                break;
+        }
 
         if(tablero.mesaJuego.necesariosupervisor) {
             CodeTV[2].setText(R.string.Supervisor);

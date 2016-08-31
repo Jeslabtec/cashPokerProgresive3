@@ -1,39 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Example customization of dimensions originally defined in res/values/dimens.xml
-         (such as screen margins) for screens with more than 820dp of available width. This
-         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
+    <dimen name="tamano_texto_jugadoresTop">45sp</dimen>
+    <dimen name="tamano_texto_jugadoresDown">16sp</dimen>
+    <dimen name="tamano_texto_jugadoresCirculo">32sp</dimen>
+    <dimen name="tamano_texto_progresivo">58sp</dimen>
+    <dimen name="tamano_texto_Apuesta">19sp</dimen>
+    <dimen name="tamano_texto_Premio">19sp</dimen>
+    <dimen name="tamano_texto_fichasFase">18sp</dimen>
+    <dimen name="tamano_texto_fichasFaseAcre">13sp</dimen>
+    <dimen name="tamano_texto_aviso">32sp</dimen>
+    <dimen name="tamano_texto_Codigoaut1">256sp</dimen>
+    <dimen name="tamano_texto_Codigoaut2">128sp</dimen>
 
-    <dimen name="tamano_texto_jugadores">50sp</dimen>
-    <dimen name="tamano_texto_progresivo">70sp</dimen>
+    <dimen name="Tamano_jugadores_topW">90dp</dimen>
+    <dimen name="Tamano_jugadores_toph">115dp</dimen>
+    <dimen name="Tamano_jugadores_downh">22dp</dimen>
+    <dimen name="Tamano_jugadores_circulo">45dp</dimen>
 
-    <dimen name="Tamano_jugadores_w">99dp</dimen>
-    <dimen name="Tamano_jugadores_h">135dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_w">22dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_h">-22dp</dimen>
 
-    <dimen name="Distancia_jugadores_1">268dp</dimen>
-    <dimen name="Distancia_jugadores_2">194dp</dimen>
-    <dimen name="Distancia_jugadores_3">151dp</dimen>
-    <dimen name="Distancia_jugadores_4">112dp</dimen>
+    <dimen name="BordesJugadorestopWNEG">85dp</dimen>
+    <dimen name="BordesJugadorestopHNEG">110dp</dimen>
+    <dimen name="BordesJugadoresDownHNEG">17dp</dimen>
 
-    <dimen name="TamañoApuesta">43dp</dimen>
-    <dimen name="TamañoControles">56dp</dimen>
+    <dimen name="BordesJugadorestopW">87dp</dimen>
+    <dimen name="BordesJugadorestopH">113dp</dimen>
+    <dimen name="BordesJugadoresDownH">20dp</dimen>
+    <dimen name="BordesJugadorCirculo">29dp</dimen>
 
-    <dimen name="Bordes">9dp</dimen>
 
-    <dimen name="Distancia_ApuPre1">151dp</dimen>
-    <dimen name="Distancia_ApuPre2">99dp</dimen>
-    <dimen name="Distancia_ApuPre3">65dp</dimen>
-    <dimen name="Distancia_ApuPre4">39dp</dimen>
-    <dimen name="Distancia_ApuPre5">17dp</dimen>
-    <dimen name="Distancia_ApuPre6">10dp</dimen>
+    <dimen name="Distancia_jugadores_1">265dp</dimen>
+    <dimen name="Distancia_jugadores_2">186dp</dimen>
+    <dimen name="Distancia_jugadores_3">160dp</dimen>
+    <dimen name="Distancia_jugadores_4">147dp</dimen>
 
-    <dimen name="Distancia_Controles1">0dp</dimen>
-    <dimen name="Distancia_Controles2">22dp</dimen>
-    <dimen name="Distancia_Controles3">60dp</dimen>
-    <dimen name="Distancia_Controles4">117dp</dimen>
+    <dimen name="Distancia_entre_jugadores">8dp</dimen>
 
-    <dimen name="Tamaño_progresivo_w">324dp</dimen>
-    <dimen name="Tamaño_progresivo_h">60dp</dimen>
+    <dimen name="TamañoApuesta">38dp</dimen>
 
-    <dimen name="Tamaño_aviso_w">160dp</dimen>
+    <dimen name="TamañoControles">70dp</dimen>
+
+    <dimen name="Distancia_Controles1">13dp</dimen>
+    <dimen name="Distancia_Controles2">38dp</dimen>
+    <dimen name="Distancia_Controles3">70dp</dimen>
+    <dimen name="Distancia_Controles4">103dp</dimen>
+
+    <dimen name="Separacion_jugadores_1">11dp</dimen>
+    <dimen name="Separacion_jugadores_2">6dp</dimen>
+    <dimen name="Separacion_jugadores_3">5dp</dimen>
+    <dimen name="Separacion_jugadores_4">5dp</dimen>
+
+    <dimen name="Bordes">8dp</dimen>
+    <dimen name="Distancia_ApuPre">21dp</dimen>
+
+    <dimen name="Tamaño_progresivo_w">448dp</dimen>
+    <dimen name="Tamaño_progresivo_h">70dp</dimen>
+    <dimen name="Tamaño_progresivo_wInt">416dp</dimen>
+    <dimen name="Tamaño_progresivo_hInt">64dp</dimen>
+    <dimen name="Borde_progresivo">2dp</dimen>
+
+    <dimen name="Tamaño_aviso_w">158dp</dimen>
     <dimen name="Tamaño_aviso_h">43dp</dimen>
+    <dimen name="Tamaño_aviso_wInt">147dp</dimen>
+    <dimen name="Tamaño_aviso_hInt">32dp</dimen>
+    <dimen name="Borde_aviso">2dp</dimen>
+
+    <dimen name="TamanoPremiosCodigoaut">352dp</dimen>
+    <dimen name="TamanoPremiosCodigoautBordes">288dp</dimen>
+
+
+
 </resources>

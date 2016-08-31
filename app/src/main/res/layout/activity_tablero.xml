@@ -431,7 +431,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/tamano_texto_progresivo"
-            android:text="100,000,000"
+
 
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"

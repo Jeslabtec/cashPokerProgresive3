@@ -4,21 +4,21 @@
     android:orientation="vertical"
 >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/EncargadoTV"
-            android:textSize="@dimen/tamano_texto_jugadoresDown"
-            android:background="@color/common_action_bar_splitter"
-            android:textColor="@color/black_overlay"
-            android:layout_marginTop="@dimen/Bordes"
-            android:layout_marginEnd="@dimen/Bordes"
-            android:layout_marginLeft="@dimen/Bordes"
-            android:layout_marginStart="@dimen/Bordes"
-            android:layout_marginRight="@dimen/Bordes"
-            android:gravity="center"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EncargadoTV"
+        android:textSize="@dimen/tamano_texto_jugadoresDown"
+        android:background="@color/common_action_bar_splitter"
+        android:textColor="@color/black_overlay"
+        android:layout_marginTop="@dimen/Bordes"
+        android:layout_marginEnd="@dimen/Bordes"
+        android:layout_marginLeft="@dimen/Bordes"
+        android:layout_marginStart="@dimen/Bordes"
+        android:layout_marginRight="@dimen/Bordes"
+        android:gravity="center"
 
-            />
+        />
 
     <EditText
         android:id="@+id/coding"
@@ -57,5 +57,47 @@
             android:layout_marginRight="@dimen/Bordes"
             android:gravity="center"
  />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:layout_width="@dimen/TamanoPremiosCodigoaut"
+            android:layout_height="@dimen/TamanoPremiosCodigoaut"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/PremioCodigo"
+            android:gravity="center"
+            android:layout_gravity="center"
+
+            android:background="@drawable/premioescaleracolorgrande"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/Dorado1"
+            android:textSize="@dimen/tamano_texto_Codigoaut2"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            />
+        <TextView
+            android:layout_width="@dimen/TamanoPremiosCodigoaut"
+            android:layout_height="@dimen/TamanoPremiosCodigoaut"
+            android:background="@drawable/codigoautcirculo"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/Jugador1Codigo"
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/tamano_texto_Codigoaut1"
+
+            />
+    </RelativeLayout>
 
 </LinearLayout>

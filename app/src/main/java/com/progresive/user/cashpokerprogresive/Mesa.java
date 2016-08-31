@@ -1,15 +1,10 @@
 package com.progresive.user.cashpokerprogresive;
 
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
+
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
-
 import org.json.JSONException;
-
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
@@ -214,7 +209,6 @@ public class Mesa {
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
-        jugadaActual++;
         if(jugadaActual==jugadasBonus){
             unGanadorBonus=true;
         }else if(jugadaActual>jugadasBonus){
@@ -222,12 +216,12 @@ public class Mesa {
         }
         ProgresivoTV.setAumentoPremio();
         progresivoLoco();
-
+        jugadaActual++;
     }
 
     //Bonus************************************************************************************************
     //variable que dice en que jugada va a haber un ganado
-    private int jugadasBonus = getBinomial(4, 0.5);
+    private int jugadasBonus = getBinomial(160, 0.1);
     //conteo de las jugadas que se reinicia cuando hay un ganador
     private int jugadaActual = 0;    //
     private int iteracionesBonus = -1;
@@ -266,8 +260,8 @@ public class Mesa {
         }, tiempoBonus);
     }
 //Permite rotar la ubicacion de cada jugador
-    private void BonusCambio(int jugadorGanador) {
-        jugadorBonus = 11 + jugadorGanador;
+    private void BonusCambio() {
+        jugadorBonus = 11 + ganadorBonus;
         for (int i = 0; i < jugador.length; i++) {
             jugador[i].bonusScreen(false);
         }
@@ -312,13 +306,7 @@ public class Mesa {
                 e.printStackTrace();
             }
         }else{
-            cambiarBotones();
-        }
-        for(int i=0;i<jugador.length;i++){
-            if (!jugador[i].verSiPausado()) {
-                jugador[i].ponerPausado();
-                jugador[i].ponerPausado();
-            }
+            EstadoBonusOff();
         }
     }
     private void Bonustodos(){
@@ -329,7 +317,7 @@ public class Mesa {
         if(iteracionesBonus<8) {
             iteracionesBonus++;
             for(int i=0;i<jugador.length;i++){
-                if (jugador[i].verapuesta() > 0 && jugador[i].verSiPausado()) {
+                if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
                     ProgresivoTV.PagarProgresivo(1);
                     jugador[i].cargarapuesta(1);
                     jugador[i].cargarSuperApuesta();
@@ -352,6 +340,7 @@ public class Mesa {
                 contganadores++;
             }
         }
+        EstadoBonusOff();
         try {
             CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",10*contganadores);
         } catch (ExecutionException e) {
@@ -360,14 +349,26 @@ public class Mesa {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }       ;
+    }
+    private void EstadoBonusOff(){
         for(int i=0;i<jugador.length;i++){
             if (!jugador[i].verSiPausado()) {
                 jugador[i].ponerPausado();
                 jugador[i].ponerPausado();
+            }else if(jugador[i].jugadortv.isEnabled()){
+                jugador[i].Habilitar();
+            }else{
+                jugador[i].Bloquear();
             }
         }
-        cambiarBotones();
+        retirarseTV.Bloquear();
+        pagarTV.Habilitar();
+        jugarTV.Seleccionar();
+        apostarTV.Habilitar();
+        AvisoTV.setBackgroundResource(R.drawable.avisojugar);
+        AvisoTV.setText(R.string.Jugar);
+        animaciondesplazamientoPremio();
     }
 
     private void EstadoBonusOn() {
@@ -377,7 +378,6 @@ public class Mesa {
         apostarTV.Bloquear();
         AvisoTV.setBackgroundResource(R.drawable.avisobonus);
         AvisoTV.setText(R.string.Bonus);
-        habilitarJugadores();
     }
 
 
@@ -392,7 +392,7 @@ public class Mesa {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        if (iteracionesProgresivoLoco<36) {
+                        if (iteracionesProgresivoLoco<50) {
                             iteracionesProgresivoLoco++;
                             ProgresivoTV.aumentoAleatorio();
                             progresivoLoco();
@@ -400,15 +400,15 @@ public class Mesa {
                             if (unGanadorBonus) {
                                 unGanadorBonus=false;
                                 jugadaActual = 0;
-                                jugadasBonus = getBinomial(4, 0.5);
+                                jugadasBonus = getBinomial(160, 0.1);
                                 //bonus1=getBinomial(16,0.0625);
                                 //bonus2=getBinomial(160,0.1875);
-                                bonus1=getBinomial(16,0.5);
-                                bonus2=getBinomial(16,0.5);
+                                bonus1=getBinomial(160,3/4);
+                                bonus2=getBinomial(160,1/4);
                                 if (bonus1>bonus2) {
                                     ganadorBonus = (int) Math.floor(Math.random() * 7);
                                     EstadoBonusOn();
-                                    BonusCambio(ganadorBonus);
+                                    BonusCambio();
                                 }
                                 else{
                                     EstadoBonusOn();
@@ -416,7 +416,12 @@ public class Mesa {
                                 }
                             }
                             iteracionesProgresivoLoco=0;
+                            retirarseTV.Habilitar();
+                            pagarTV.Habilitar();
+                            jugarTV.Seleccionar();
+                            apostarTV.Habilitar();
                         }
+
                     }
                 });
             }
@@ -463,9 +468,9 @@ public class Mesa {
     //--------------------------------------------------------------------------------------------------//
     private void BotonesdeJuego() {
         retirarseTV.Bloquear();
-        pagarTV.Habilitar();
-        jugarTV.Seleccionar();
-        apostarTV.Habilitar();
+        pagarTV.Bloquear();
+        jugarTV.Bloquear();
+        apostarTV.Bloquear();
 
         for (int i = 0; i < ApuestaPremio.length; i++) {
             ApuestaPremio[i].BotonesPremio();
@@ -578,7 +583,7 @@ public class Mesa {
                     }
                 });
             }
-        }, 200);
+        }, 100);
     }
     private void pagarConEstilo(){
         t1.schedule(new TimerTask() {
@@ -596,12 +601,12 @@ public class Mesa {
                              jugador[ganadorBonus].cargarSuperApuesta();
                              conteoPagoestilo=0;
                              DineroPagoConEstilo=0;
-                             cambiarBotones();
+                             EstadoBonusOff();
                         }
                     }
                 });
             }
-        }, 200);
+        }, 100);
     }
 
 
