@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name="ApuPreDist1">145</integer>
-    <integer name="ApuPreDist2">101</integer>
-    <integer name="ApuPreDist3">70</integer>
-    <integer name="ApuPreDist4">40</integer>
-    <integer name="ApuPreDist5">18</integer>
+    <integer name="ApuPreDist1">210</integer>
+    <integer name="ApuPreDist2">146</integer>
+    <integer name="ApuPreDist3">101</integer>
+    <integer name="ApuPreDist4">58</integer>
+    <integer name="ApuPreDist5">26</integer>
     <integer name="ApuPreDist6">0</integer>
 
-    <integer name="Dis_separaApuPre_1">433</integer>
-    <integer name="Dis_separaApuPre_2">351</integer>
-    <integer name="Dis_separaApuPre_3">266</integer>
-    <integer name="Dis_separaApuPre_4">183</integer>
-    <integer name="Dis_separaApuPre_5">98</integer>
-    <integer name="Dis_separaApuPre_6">10</integer>
+    <integer name="Dis_separaApuPre_1">626</integer>
+    <integer name="Dis_separaApuPre_2">507</integer>
+    <integer name="Dis_separaApuPre_3">384</integer>
+    <integer name="Dis_separaApuPre_4">264</integer>
+    <integer name="Dis_separaApuPre_5">142</integer>
+    <integer name="Dis_separaApuPre_6">14</integer>
 
 
 </resources>

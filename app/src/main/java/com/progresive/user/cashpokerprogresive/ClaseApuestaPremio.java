@@ -8,6 +8,7 @@ import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AnticipateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
@@ -90,24 +91,24 @@ public class ClaseApuestaPremio {
         ApuestaPremioTV.setBackgroundResource(R.drawable.botonapuesta);
     }
     public void Movimientopremio(int finX,int finY){
-        ObjectAnimator animacionX= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_X,0,finX);
-        ObjectAnimator animacionY= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_Y,0,finY);
+        ObjectAnimator animacionX= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_X,0f,(float)finX);
+        ObjectAnimator animacionY= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_Y,0f,(float)finY);
         ObjectAnimator Agrandadorx = ObjectAnimator.ofFloat(ApuestaPremioTV, View.SCALE_X, 1.3f);
         ObjectAnimator Agrandadory = ObjectAnimator.ofFloat(ApuestaPremioTV, View.SCALE_Y, 1.3f);
         AnimatorSet conjunto = new AnimatorSet();
         conjunto.playTogether(animacionX,animacionY,Agrandadorx,Agrandadory);
-        conjunto.setInterpolator(new FastOutLinearInInterpolator());
+        conjunto.setInterpolator(new AccelerateInterpolator());
         conjunto.setDuration(1000);
         conjunto.start();
     }
     public void Movimientoapuesta(int finX,int finY){
-        ObjectAnimator animacionX= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_X,0,finX);
-        ObjectAnimator animacionY= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_Y,0,finY);
+        ObjectAnimator animacionX= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_X,0f,(float)finX);
+        ObjectAnimator animacionY= ObjectAnimator.ofFloat(ApuestaPremioTV,View.TRANSLATION_Y,0f,(float)finY);
         ObjectAnimator Agrandadorx = ObjectAnimator.ofFloat(ApuestaPremioTV, View.SCALE_X, 1f);
         ObjectAnimator Agrandadory = ObjectAnimator.ofFloat(ApuestaPremioTV, View.SCALE_Y, 1f);
         AnimatorSet conjunto = new AnimatorSet();
         conjunto.playTogether(animacionX,animacionY,Agrandadorx,Agrandadory);
-        conjunto.setInterpolator(new FastOutLinearInInterpolator());
+        conjunto.setInterpolator(new AccelerateInterpolator());
         conjunto.setDuration(1000);
         conjunto.start();
 

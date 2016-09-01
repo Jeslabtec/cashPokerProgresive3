@@ -69,7 +69,6 @@
             android:gravity="center"
             android:layout_gravity="center"
 
-            android:background="@drawable/premioescaleracolorgrande"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/Dorado1"

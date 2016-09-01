@@ -9,9 +9,12 @@
             android:angle="45"/>
     </shape>
     </item>
-    <item android:gravity="center"
-        android:height="@dimen/TamanoPremiosCodigoautBordes"
-        android:width="@dimen/TamanoPremiosCodigoautBordes">
+    <item android:top="@dimen/TamanoPremiosCodigoautBordes"
+        android:left="@dimen/TamanoPremiosCodigoautBordes"
+        android:start="@dimen/TamanoPremiosCodigoautBordes"
+        android:bottom="@dimen/TamanoPremiosCodigoautBordes"
+        android:end="@dimen/TamanoPremiosCodigoautBordes"
+        android:right="@dimen/TamanoPremiosCodigoautBordes">
         <shape android:shape="oval"
             >
             <solid android:color="#000" />

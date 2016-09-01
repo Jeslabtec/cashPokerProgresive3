@@ -405,15 +405,15 @@ public class Mesa {
                                 //bonus2=getBinomial(160,0.1875);
                                 bonus1=getBinomial(160,3/4);
                                 bonus2=getBinomial(160,1/4);
+                                EstadoBonusOn();
                                 if (bonus1>bonus2) {
                                     ganadorBonus = (int) Math.floor(Math.random() * 7);
-                                    EstadoBonusOn();
                                     BonusCambio();
                                 }
                                 else{
-                                    EstadoBonusOn();
                                     Bonustodos();
                                 }
+
                             }
                             iteracionesProgresivoLoco=0;
                             retirarseTV.Habilitar();
@@ -534,6 +534,10 @@ public class Mesa {
             pago = Premio;
         }
         DineroPagoConEstilo=(int)pago;
+        retirarseTV.Bloquear();
+        pagarTV.Bloquear();
+        jugarTV.Bloquear();
+        apostarTV.Bloquear();
         pagarConEstilograndes();
         return (int) pago;
     }
