@@ -397,6 +397,11 @@ public class Mesa {
                             ProgresivoTV.aumentoAleatorio();
                             progresivoLoco();
                         }else{
+                            iteracionesProgresivoLoco=0;
+                            retirarseTV.Habilitar();
+                            pagarTV.Habilitar();
+                            jugarTV.Seleccionar();
+                            apostarTV.Habilitar();
                             if (unGanadorBonus) {
                                 unGanadorBonus=false;
                                 jugadaActual = 0;
@@ -415,11 +420,7 @@ public class Mesa {
                                 }
 
                             }
-                            iteracionesProgresivoLoco=0;
-                            retirarseTV.Habilitar();
-                            pagarTV.Habilitar();
-                            jugarTV.Seleccionar();
-                            apostarTV.Habilitar();
+
                         }
 
                     }
