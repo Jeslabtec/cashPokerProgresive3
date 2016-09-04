@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-
     <dimen name="Tamano_jugadores_topW">140dp</dimen>
     <dimen name="Tamano_jugadores_circulo">70dp</dimen>
     <dimen name="PaddingJugadorCirculo">10dp</dimen>
@@ -11,7 +8,6 @@
 
     <dimen name="BordesJugadorestopWNEG">132dp</dimen>
     <dimen name="BordesJugadorestopW">136dp</dimen>
-
 
     <dimen name="Distancia_entre_jugadores">13dp</dimen>
 
@@ -25,7 +21,6 @@
     <dimen name="Distancia_ApuPre">32dp</dimen>
 
     <dimen name="Tamaño_progresivo_w">700dp</dimen>
-
 
     <dimen name="Tamaño_progresivo_PaddingW">25dp</dimen>
     <dimen name="Borde_progresivo">3dp</dimen>
