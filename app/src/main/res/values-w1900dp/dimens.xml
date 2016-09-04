@@ -2,72 +2,33 @@
 
 
 <resources>
-    <dimen name="tamano_texto_jugadoresTop">104sp</dimen>
-    <dimen name="tamano_texto_jugadoresDown">37sp</dimen>
-    <dimen name="tamano_texto_jugadoresCirculo">74sp</dimen>
-    <dimen name="tamano_texto_progresivo">134sp</dimen>
-    <dimen name="tamano_texto_Apuesta">45sp</dimen>
-    <dimen name="tamano_texto_Premio">45sp</dimen>
-    <dimen name="tamano_texto_fichasFase">42sp</dimen>
-    <dimen name="tamano_texto_fichasFaseAcre">30sp</dimen>
-    <dimen name="tamano_texto_aviso">74sp</dimen>
-    <dimen name="tamano_texto_Codigoaut1">594sp</dimen>
-    <dimen name="tamano_texto_Codigoaut2">297sp</dimen>
+    <dimen name="Tamano_jugadores_topW">140dp</dimen>
+    <dimen name="Tamano_jugadores_circulo">70dp</dimen>
+    <dimen name="PaddingJugadorCirculo">10dp</dimen>
 
-    <dimen name="Tamano_jugadores_topW">208dp</dimen>
-    <dimen name="Tamano_jugadores_toph">267dp</dimen>
-    <dimen name="Tamano_jugadores_downh">52dp</dimen>
-    <dimen name="Tamano_jugadores_circulo">104dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_w">35dp</dimen>
 
-    <dimen name="Bordes_jugadores_circulo_w">52dp</dimen>
-    <dimen name="Bordes_jugadores_circulo_h">-52dp</dimen>
+    <dimen name="BordesJugadorestopWNEG">132dp</dimen>
+    <dimen name="BordesJugadorestopW">136dp</dimen>
+    <dimen name="Distancia_entre_jugadores">13dp</dimen>
 
-    <dimen name="BordesJugadorestopWNEG">196dp</dimen>
-    <dimen name="BordesJugadorestopHNEG">255dp</dimen>
-    <dimen name="BordesJugadoresDownHNEG">40dp</dimen>
+    <dimen name="TamañoControles">110dp</dimen>
+    <dimen name="Separacion_controles_1">17dp</dimen>
+    <dimen name="Separacion_controles_2">10dp</dimen>
+    <dimen name="Separacion_controles_3">8dp</dimen>
+    <dimen name="Separacion_controles_4">8dp</dimen>
 
-    <dimen name="BordesJugadorestopW">202dp</dimen>
-    <dimen name="BordesJugadorestopH">261dp</dimen>
-    <dimen name="BordesJugadoresDownH">46dp</dimen>
-    <dimen name="BordesJugadorCirculo">67dp</dimen>
+    <dimen name="Bordes">13dp</dimen>
+    <dimen name="Distancia_ApuPre">32dp</dimen>
 
+    <dimen name="Tamaño_progresivo_w">700dp</dimen>
+    <dimen name="Tamaño_progresivo_PaddingW">25dp</dimen>
+    <dimen name="Borde_progresivo">3dp</dimen>
 
-    <dimen name="Distancia_jugadores_1">613dp</dimen>
-    <dimen name="Distancia_jugadores_2">430dp</dimen>
-    <dimen name="Distancia_jugadores_3">349dp</dimen>
-    <dimen name="Distancia_jugadores_4">310dp</dimen>
+    <dimen name="Tamaño_aviso_w">247dp</dimen>
+    <dimen name="Tamaño_aviso_PaddingW">10dp</dimen>
+    <dimen name="Borde_aviso">3dp</dimen>
 
-    <dimen name="Distancia_entre_jugadores">19dp</dimen>
-
-    <dimen name="TamañoApuesta">89dp</dimen>
-
-    <dimen name="TamañoControles">163dp</dimen>
-
-    <dimen name="Distancia_Controles1">30dp</dimen>
-    <dimen name="Distancia_Controles2">89dp</dimen>
-    <dimen name="Distancia_Controles3">163dp</dimen>
-    <dimen name="Distancia_Controles4">238dp</dimen>
-
-    <dimen name="Separacion_jugadores_1">25dp</dimen>
-    <dimen name="Separacion_jugadores_2">15dp</dimen>
-    <dimen name="Separacion_jugadores_3">12dp</dimen>
-    <dimen name="Separacion_jugadores_4">12dp</dimen>
-
-    <dimen name="Bordes">19dp</dimen>
-    <dimen name="Distancia_ApuPre">48dp</dimen>
-
-    <dimen name="Tamaño_progresivo_w">1039dp</dimen>
-    <dimen name="Tamaño_progresivo_h">163dp</dimen>
-    <dimen name="Tamaño_progresivo_wInt">965dp</dimen>
-    <dimen name="Tamaño_progresivo_hInt">148dp</dimen>
-    <dimen name="Borde_progresivo">4dp</dimen>
-
-    <dimen name="Tamaño_aviso_w">367dp</dimen>
-    <dimen name="Tamaño_aviso_h">99dp</dimen>
-    <dimen name="Tamaño_aviso_wInt">341dp</dimen>
-    <dimen name="Tamaño_aviso_hInt">74dp</dimen>
-    <dimen name="Borde_aviso">4dp</dimen>
-
-    <dimen name="TamanoPremiosCodigoaut">816dp</dimen>
-    <dimen name="TamanoPremiosCodigoautBordes">668dp</dimen>
+    <dimen name="TamanoPremiosCodigoaut">550dp</dimen>
+    <dimen name="TamanoPremiosCodigoautBordes">50dp</dimen>
 </resources>

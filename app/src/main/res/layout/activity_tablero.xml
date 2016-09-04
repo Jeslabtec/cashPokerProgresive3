@@ -602,8 +602,8 @@
             android:layout_toEndOf="@+id/TextviewAviso"
 
             android:layout_marginBottom="@dimen/Distancia_Controles1"
-            android:layout_marginStart="@dimen/Separacion_jugadores_1"
-            android:layout_marginLeft="@dimen/Separacion_jugadores_1"
+            android:layout_marginStart="@dimen/Separacion_controles_1"
+            android:layout_marginLeft="@dimen/Separacion_controles_1"
             />
         <!--Jugar-->
         <TextView
@@ -624,8 +624,8 @@
             android:layout_toEndOf="@+id/tvApostar"
 
             android:layout_marginBottom="@dimen/Distancia_Controles2"
-            android:layout_marginStart="@dimen/Separacion_jugadores_2"
-            android:layout_marginLeft="@dimen/Separacion_jugadores_2"
+            android:layout_marginStart="@dimen/Separacion_controles_2"
+            android:layout_marginLeft="@dimen/Separacion_controles_2"
 
             />
         <!--Pagar-->
@@ -648,8 +648,8 @@
 
 
             android:layout_marginBottom="@dimen/Distancia_Controles3"
-            android:layout_marginStart="@dimen/Separacion_jugadores_3"
-            android:layout_marginLeft="@dimen/Separacion_jugadores_3"
+            android:layout_marginStart="@dimen/Separacion_controles_3"
+            android:layout_marginLeft="@dimen/Separacion_controles_3"
 
              />
         <!--Retirar-->
@@ -672,8 +672,8 @@
 
 
             android:layout_marginBottom="@dimen/Distancia_Controles4"
-            android:layout_marginStart="@dimen/Separacion_jugadores_4"
-            android:layout_marginLeft="@dimen/Separacion_jugadores_4"
+            android:layout_marginStart="@dimen/Separacion_controles_4"
+            android:layout_marginLeft="@dimen/Separacion_controles_4"
             />
     </RelativeLayout>
 

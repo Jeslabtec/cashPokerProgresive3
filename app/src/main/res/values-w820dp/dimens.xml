@@ -1,74 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tamano_texto_jugadoresTop">45sp</dimen>
-    <dimen name="tamano_texto_jugadoresDown">16sp</dimen>
-    <dimen name="tamano_texto_jugadoresCirculo">32sp</dimen>
-    <dimen name="tamano_texto_progresivo">58sp</dimen>
-    <dimen name="tamano_texto_Apuesta">19sp</dimen>
-    <dimen name="tamano_texto_Premio">19sp</dimen>
-    <dimen name="tamano_texto_fichasFase">18sp</dimen>
-    <dimen name="tamano_texto_fichasFaseAcre">13sp</dimen>
-    <dimen name="tamano_texto_aviso">32sp</dimen>
-    <dimen name="tamano_texto_Codigoaut1">256sp</dimen>
-    <dimen name="tamano_texto_Codigoaut2">128sp</dimen>
+    <dimen name="Tamano_jugadores_topW">140dp</dimen>
+    <dimen name="Tamano_jugadores_circulo">70dp</dimen>
+    <dimen name="PaddingJugadorCirculo">10dp</dimen>
 
-    <dimen name="Tamano_jugadores_topW">90dp</dimen>
-    <dimen name="Tamano_jugadores_toph">115dp</dimen>
-    <dimen name="Tamano_jugadores_downh">22dp</dimen>
-    <dimen name="Tamano_jugadores_circulo">45dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_w">35dp</dimen>
 
-    <dimen name="Bordes_jugadores_circulo_w">22dp</dimen>
-    <dimen name="Bordes_jugadores_circulo_h">-22dp</dimen>
+    <dimen name="BordesJugadorestopWNEG">132dp</dimen>
+    <dimen name="BordesJugadorestopW">136dp</dimen>
+    <dimen name="Distancia_entre_jugadores">13dp</dimen>
 
-    <dimen name="BordesJugadorestopWNEG">85dp</dimen>
-    <dimen name="BordesJugadorestopHNEG">110dp</dimen>
-    <dimen name="BordesJugadoresDownHNEG">17dp</dimen>
+    <dimen name="TamañoControles">110dp</dimen>
+    <dimen name="Separacion_controles_1">17dp</dimen>
+    <dimen name="Separacion_controles_2">10dp</dimen>
+    <dimen name="Separacion_controles_3">8dp</dimen>
+    <dimen name="Separacion_controles_4">8dp</dimen>
 
-    <dimen name="BordesJugadorestopW">87dp</dimen>
-    <dimen name="BordesJugadorestopH">113dp</dimen>
-    <dimen name="BordesJugadoresDownH">20dp</dimen>
-    <dimen name="BordesJugadorCirculo">29dp</dimen>
+    <dimen name="Bordes">13dp</dimen>
+    <dimen name="Distancia_ApuPre">32dp</dimen>
 
+    <dimen name="Tamaño_progresivo_w">700dp</dimen>
+    <dimen name="Tamaño_progresivo_PaddingW">25dp</dimen>
+    <dimen name="Borde_progresivo">3dp</dimen>
 
-    <dimen name="Distancia_jugadores_1">265dp</dimen>
-    <dimen name="Distancia_jugadores_2">186dp</dimen>
-    <dimen name="Distancia_jugadores_3">160dp</dimen>
-    <dimen name="Distancia_jugadores_4">147dp</dimen>
+    <dimen name="Tamaño_aviso_w">247dp</dimen>
+    <dimen name="Tamaño_aviso_PaddingW">10dp</dimen>
+    <dimen name="Borde_aviso">3dp</dimen>
 
-    <dimen name="Distancia_entre_jugadores">8dp</dimen>
-
-    <dimen name="TamañoApuesta">38dp</dimen>
-
-    <dimen name="TamañoControles">70dp</dimen>
-
-    <dimen name="Distancia_Controles1">13dp</dimen>
-    <dimen name="Distancia_Controles2">38dp</dimen>
-    <dimen name="Distancia_Controles3">70dp</dimen>
-    <dimen name="Distancia_Controles4">103dp</dimen>
-
-    <dimen name="Separacion_jugadores_1">11dp</dimen>
-    <dimen name="Separacion_jugadores_2">6dp</dimen>
-    <dimen name="Separacion_jugadores_3">5dp</dimen>
-    <dimen name="Separacion_jugadores_4">5dp</dimen>
-
-    <dimen name="Bordes">8dp</dimen>
-    <dimen name="Distancia_ApuPre">21dp</dimen>
-
-    <dimen name="Tamaño_progresivo_w">448dp</dimen>
-    <dimen name="Tamaño_progresivo_h">70dp</dimen>
-    <dimen name="Tamaño_progresivo_wInt">416dp</dimen>
-    <dimen name="Tamaño_progresivo_hInt">64dp</dimen>
-    <dimen name="Borde_progresivo">2dp</dimen>
-
-    <dimen name="Tamaño_aviso_w">158dp</dimen>
-    <dimen name="Tamaño_aviso_h">43dp</dimen>
-    <dimen name="Tamaño_aviso_wInt">147dp</dimen>
-    <dimen name="Tamaño_aviso_hInt">32dp</dimen>
-    <dimen name="Borde_aviso">2dp</dimen>
-
-    <dimen name="TamanoPremiosCodigoaut">352dp</dimen>
-    <dimen name="TamanoPremiosCodigoautBordes">288dp</dimen>
-
+    <dimen name="TamanoPremiosCodigoaut">550dp</dimen>
+    <dimen name="TamanoPremiosCodigoautBordes">50dp</dimen>
 
 
 </resources>
