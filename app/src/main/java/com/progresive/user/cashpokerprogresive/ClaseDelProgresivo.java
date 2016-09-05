@@ -2,7 +2,9 @@ package com.progresive.user.cashpokerprogresive;
 
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Created by user on 02/06/2016.
@@ -18,7 +20,9 @@ public class ClaseDelProgresivo {
     private double AumentoPremio;
     private double AumentoPremioAnterior=0;
     private double Dinero;
-    NumberFormat format = NumberFormat.getCurrencyInstance();
+    private DecimalFormat formato=new DecimalFormat("###,###,###");
+    private Locale local= new Locale("lat","CO");
+    NumberFormat format = NumberFormat.getCurrencyInstance(local);
 
     // construtctor de la clase del progresivo
     public ClaseDelProgresivo(TextView v) {
@@ -28,7 +32,7 @@ public class ClaseDelProgresivo {
         Rand2 = 0;
         Dinero =(double) CPPLogin.manip.verDineroProgresivo();
         AumentoPremio = Dinero;
-        ProgresivoTV.setText(String.valueOf(format.format(CPPLogin.manip.verDineroProgresivo())));
+        ProgresivoTV.setText(String.valueOf(formato.format(CPPLogin.manip.verDineroProgresivo())));
     }
 
     public void cambiePremio(int nuevoValor)
@@ -46,7 +50,7 @@ public class ClaseDelProgresivo {
 
     public void aumentoAleatorio(){
         Dinero=(1-0.86071) *  (AumentoPremio) + (0.86071) * (Dinero);
-        ProgresivoTV.setText(format.format(Math.round(Dinero)));
+        ProgresivoTV.setText(formato.format(Math.round(Dinero)));
     }
 
 
@@ -60,10 +64,10 @@ public class ClaseDelProgresivo {
             CPPLogin.manip.setDineroEnProgresivo(CPPLogin.manip.verMinimoProgresivo());
             Dinero=(double) CPPLogin.manip.verMinimoProgresivo();
             AumentoPremio=Dinero;
-            ProgresivoTV.setText(format.format(CPPLogin.manip.verMinimoProgresivo()));
+            ProgresivoTV.setText(formato.format(CPPLogin.manip.verMinimoProgresivo()));
         }else{
             CPPLogin.manip.setDineroEnProgresivo((int)Dinero);
-            ProgresivoTV.setText(format.format(Dinero));
+            ProgresivoTV.setText(formato.format(Dinero));
         }
     }
 }

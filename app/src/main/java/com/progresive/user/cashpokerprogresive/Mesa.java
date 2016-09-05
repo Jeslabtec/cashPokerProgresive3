@@ -279,7 +279,8 @@ public class Mesa {
     //INDICA EL TIEMPO QUE VA A DEMORARSE EL TEMPORIZADOR DEL BONUS EN MILISEGUNDOS
     private int tiempoBonus = 500;
     //INDICA CUAL FUE EL JUGADOR QUE GANO EL BONUS INDIVIDUAL
-    private int ganadorBonus = -1;
+    private int ganadorBonus = (int) Math.floor(Math.random() * 7);
+    private int pago;
     Timer t1 = new Timer();
     final Handler handler1 = new Handler();
     private int bonus1,bonus2;
@@ -301,7 +302,7 @@ public class Mesa {
             public void run() {
                 handler1.post(new Runnable() {
                     public void run() {
-                        if(bonus1>=2) {
+                        if(bonus1>=5) {
                             SeleccionarJugadorBonus();
                         }else{
                             Bonustodos();
@@ -345,10 +346,11 @@ public class Mesa {
 //Funcion que paga a un jugador el bonus
     private void pagarBonus() {
         if (jugador[ganadorBonus].verSiPausado() && jugador[ganadorBonus].jugadortv.isEnabled()) {
-            DineroPagoConEstilo = 30;
+            DineroPagoConEstilo = getBinomial(9,0.4444)+20;
+            pago=DineroPagoConEstilo;
             pagarConEstilo();
             try {
-                CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", 30);
+                CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", pago);
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -365,7 +367,7 @@ public class Mesa {
             jugador[i].bonusScreen(Bonusactive);
         }
         Bonusactive=!Bonusactive;
-        if(iteracionesBonus<8) {
+        if(iteracionesBonus<pago) {
             iteracionesBonus++;
             for(int i=0;i<jugador.length;i++){
                 if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
@@ -393,7 +395,7 @@ public class Mesa {
         }
         EstadoBonusOff();
         try {
-            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",10*contganadores);
+            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago*contganadores);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -459,13 +461,14 @@ public class Mesa {
                                 jugadasBonus = getBinomial(4, 0.5);
                                 //bonus1=getBinomial(16,0.0625);
                                 //bonus2=getBinomial(160,0.1875);
-                                bonus1=getBinomial(4,0.5);
+                                bonus1=getBinomial(10,0.5);
                                 EstadoBonusOn();
-                                if (bonus1>=2) {
+                                if (bonus1>=5) {
                                     ganadorBonus = (int) Math.floor(Math.random() * 7);
                                     BonusCambio();
                                 }
                                 else{
+                                    pago=getBinomial(9,0.4444);
                                     Bonustodos();
                                 }
 
