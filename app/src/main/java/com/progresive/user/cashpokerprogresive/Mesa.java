@@ -19,21 +19,31 @@ public class Mesa {
     ClaseApuestaPremio[] ApuestaPremio = new ClaseApuestaPremio[6];
     //Textview que me dice en que fase esta el juego
     TextView AvisoTV;
+    //OBJETOS TEXTVIEW DE LOS CONTROLES DEL JUEGO
     ControlesJuego pagarTV;
     ControlesJuego jugarTV;
     ControlesJuego apostarTV;
     ControlesJuego retirarseTV;
+    //CLASE QUE CONTROLA EL PROGRESIVO
     ClaseDelProgresivo ProgresivoTV;
+    //CLASE QUE CONTROLA LOS MENSAJES DE ALERTA
     MensajesAlerta mensaje;
 //Variables necesarias para el sonido
     administradorDeSonido sonido;
+    //SONIDOS QUE SE GUARDAN EN EL SOUNDPOOL
     int clic;
     int aviso;
     int winner;
-    //variable que dice si se necesita el supervisor o no
+    //variable que dice si se necesita el supervisor o no ES PUBLICA POR QUE ES LLAMADA EN CODIGOAUT
     public boolean necesariosupervisor = false;
+    //VARIABLE QUE INDICA QUE BOTON DE APUESTAPREMIO ESTA AHORA SELECCIONADO, SI NO HAY NINGUNO SELECCIONADO EL VALOR ES -1
     private int ApuPreSeleccionado = -1;
     // por defecto se inicia en la etapa 3, acreditar
+    //VARIABLE QUE INDICA EN QUE ESTADO DEL JUEGO SE ESTA, HAY 4 ESTADOS
+    //1=PAGAR
+    //2=JUGAR
+    //3=ACREDITAR
+    //4=RETIRAR
     private int EstadoJuego = 3;
 
     // constructor de la clase Mesa:  el programa
@@ -56,18 +66,19 @@ public class Mesa {
         clic = sonido.load(R.raw.clic);
         aviso=sonido.load(R.raw.aviso);
         winner=sonido.load(R.raw.winner);
-        //Seteo del long click listener de la configuracion
+        //ASIGNACION DEL TEXTVIEW DE AVISO A SU OBJETO CONTROLADOR
         AvisoTV = v[17];
 
         //Creacion del objeto progresivo
         ProgresivoTV = new ClaseDelProgresivo(v[18]);
-        cambiarBotones();
         //Objeto que contiene los mensajes de alerta
         mensaje = new MensajesAlerta();
+        //FUNCION QUE PERMITE UBICAR TODOS LOS TEXTVIEW EN SU PRIMER ESTADO
+        cambiarBotones();
     }
 
     //---------------------------------------------------------------------------------
-    //Animaciones de los botones de apuestaPremio llamados desde abajo
+    //ANIMACION QUE PERMITE UBICAR LOS BOTONES DE PREMIO EN SU POSICION CORRECTA, COMPRENDE MOVIMIENTO EN X Y Y
     private void animaciondesplazamientoPremio() {
         int Y1 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist1);
         int Y2 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist2);
@@ -96,7 +107,7 @@ public class Mesa {
         ApuestaPremio[4].Movimientopremio(-2*X5, -2*Y5);
         ApuestaPremio[5].Movimientopremio(-2*X6, -2*Y6);*/
     }
-
+    //ANIMACION QUE PERMITE UBICAR LOS BOTONES DE APUESTA EN SU POSICION CORRECTA, COMPRENDE MOVIMIENTO EN X Y Y
     private void animaciondesplazamientoApuesta() {
         int Y1 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist1);
         int Y2 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist2);
@@ -126,22 +137,25 @@ public class Mesa {
         ApuestaPremio[4].Movimientoapuesta(-X5, -Y5);
         ApuestaPremio[5].Movimientoapuesta(-X6, -Y6);
     }
-
-    //funcion que cambia el textview mientras es undido
-    //Funcion que pregunta quienes estan en cero y los bloquea
+    //ESTA FUNCION ES LLAMADA DESDE BOTONES DE JUEGO Y ASIGNA A CADA JUGADOR LA
+    // CARACTERISTICA QUE DEBE TENER DEPENDIENDO DE SU CANTIIDAD APOSTADA
     public void restringirJugadoresjuego() {
         for (int i = 0; i < jugador.length; i++) {
             if (jugador[i].verapuesta() == 0) {
                 jugador[i].SwitchAvisoApuestaAcabada(false);
                 jugador[i].Bloquear();
-            }
-            if (jugador[i].verapuesta() == 1) {
+                //CUANDO UN JUGADOR SOLO TIENE UN CREDITO EL JUEGO DEBE AVISAR AL DEALER
+            }else if (jugador[i].verapuesta() == 1) {
+                //PERMITE RESETEAR EL SONIDO DEL AVISO SONORO
                 jugador[i].ResetearAvisoApuestaAcabada();
+                //PERMITE PRENDER EL AVISO DE APUESTA ACABADA
                 jugador[i].SwitchAvisoApuestaAcabada(true);
+                //PRENDE EL AVISO APUESTA ACABADA
                 jugador[i].avisoApuestaAcabada();
             }
         }
     }
+    //FUNCION QUE ES LLAMADA CUANDO SE PRESIONA RETIRAR, SIMPLEMENTE BLOQUEA LOS JUGADORES SIN CREDITO
     public void restringirJugadoresretiro() {
         for (int i = 0; i < jugador.length; i++) {
             if (jugador[i].verapuesta() == 0) {
@@ -149,12 +163,12 @@ public class Mesa {
             }
         }
     }
-
+//FUNCION QUE BLOQUEA UN JUGADOR ESPECÍFICO
     public void restringirJugador(int i) {
         jugador[i].Bloquear();
     }
 
-    //Funcion que habilita a los jugadores en la fase de apuesta
+    //Funcion que habilita a los jugadores en la fase de apuesta, LOS HABILITA A TODOS
     public void habilitarJugadores() {
         {
             for (int i = 0; i < jugador.length; i++) {
@@ -163,7 +177,8 @@ public class Mesa {
         }
     }
 
-    //Funcion que pregunta si hay alguien jugando si lo hay responde con true
+    //Funcion que pregunta si hay alguien jugando si lo hay responde con true SINO FALSE
+
     public boolean hayAlguienJugando() {
         for (int i = 0; i < jugador.length; i++) {
             if (jugador[i].jugadortv.isEnabled() && jugador[i].verSiPausado()) {
@@ -173,10 +188,11 @@ public class Mesa {
         return false;
     }
 
-    //Funcion que me dice cuantos jugadores hay en mesa
+    //Funcion que me dice cuantos jugadores hay en mesa PARA SABER CUANTO DINERO ENTRO AL JUEGO
     public int cuantosJugando() {
         int jugadores = 0;
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
+            //ESTA FUNCION SOLO FUNCIONA CUANDO YA SE HA BLOQUEADO LOS  JUGADORES QUE TIENEN 0 CREDITOS
             if (tablero.mesaJuego.jugador[i].jugadortv.isEnabled() && tablero.mesaJuego.jugador[i].verSiPausado()) {
                 jugadores++;
             }
@@ -184,7 +200,8 @@ public class Mesa {
         return jugadores;
     }
 
-    //Funcion que permite saber que jugadro esta seleccionado
+    //Funcion que permite saber que jugadoR esta seleccionado
+    // SI NO HAY NINGUN JUGADOR SELECCIONADO ENTONCES RETORNA UN -1
     public int JugadorSeleccionado() {
         for (int i = 0; i < jugador.length; i++) {
             if (jugador[i].EstoySeleccionado()) {
@@ -195,6 +212,7 @@ public class Mesa {
     }
 
     //funcion que permite seleccionar un jugador
+    //Y HABILITAR LOS DEMAS, SE UTILIZA EN FASES COMO ACREDITAR PAGAR Y RETIRAR
     public void SeleccionarJugador(int j) {
         for (int i = 0; i < jugador.length; i++) {
             if (i == j) {
@@ -204,11 +222,12 @@ public class Mesa {
             }
         }
     }
-
+//FUNCION QUE SIRVE PARA SABER QUE BOTON DE APUESTA PREMIO SELECCIONADO
+    //ESTO PERMITE SABER QUE CREDITO VOY AA AGREGAR O QUE PREMIO VOY A PAGAR
     public int ApuPreSeleccionado() {
         return ApuPreSeleccionado;
     }
-
+//FUNCION QUE SIRVE PARA SELECCIONAR UN BOTON DE APUESTA PREMIO
     public void SeleccionarApuPre(int i) {
         ApuPreSeleccionado = i;
     }
@@ -225,31 +244,41 @@ public class Mesa {
     //-------------------------------------------------------------------------------------------------------------------------------------------
     //Funcion para iniciar el juego
     public void PonerAJugar() {
-
+        //1. LUEGO DE INHHABILITAR LOS JUGADORES SIN CREDITO CARGO LA SUPERAPUESTA
+        //DE LOS QUE SI TIENEN CREDITO Y LUEGO LES QUITO DE A 1 CREDITO CON APOSTEMOS
         for (int i = 0; i < tablero.mesaJuego.jugador.length; i++) {
             if (tablero.mesaJuego.jugador[i].verapuesta() > 0) {
                 tablero.mesaJuego.jugador[i].cargarSuperApuesta();
                 tablero.mesaJuego.jugador[i].apostemos();
             }
         }
+        //CONDICIONAL QUE PREGUNTA SI HAY BONUS EN LA ESTA PARTIDA
         if(jugadaActual==jugadasBonus){
             unGanadorBonus=true;
+        //CONDICIONAL QUE ASEGURA QUE JUGADA ACTUAL NO SOBREASE JUGADA BONUS
         }else if(jugadaActual>jugadasBonus){
             jugadaActual=0;
         }
+        //DE ACUERDO AL NUMERO DE JUGADORES EN LA PARTIDA ACTUAL SE SETEA UN AUMENTO DEL PREMIO EN EL
+        //PROGRESIVO
         ProgresivoTV.setAumentoPremio();
+        //INICIO DE LA FUNCION TEMPORIZADA DEL ESTADO DE JUEGO, ENTRE OTRAS COSAS PERMITE QUE SE VEA LENTAMENTE
+        //EL AUMENTO DEL PROGRESIVO
         progresivoLoco();
+        //VARIABLE QUE AL IGUALARSE CON BONUS HABILITA CUALQUIERA DE LOS DOS BONUS
         jugadaActual++;
     }
 
     //Bonus************************************************************************************************
-    //variable que dice en que jugada va a haber un ganado
+    //variable que dice en que jugada va a haber un ganadoR
     private int jugadasBonus = getBinomial(4, 0.5);
     //conteo de las jugadas que se reinicia cuando hay un ganador
     private int jugadaActual = 0;    //
+    //PERMITE CONTAR LAS ITERACIONES EN CADA BONUS
     private int iteracionesBonus = -1;
-    private int jugadorBonus = -1;
+    //INDICA EL TIEMPO QUE VA A DEMORARSE EL TEMPORIZADOR DEL BONUS EN MILISEGUNDOS
     private int tiempoBonus = 500;
+    //INDICA CUAL FUE EL JUGADOR QUE GANO EL BONUS INDIVIDUAL
     private int ganadorBonus = -1;
     Timer t1 = new Timer();
     final Handler handler1 = new Handler();
@@ -285,7 +314,6 @@ public class Mesa {
     }
 //Permite rotar la ubicacion de cada jugador
     private void BonusCambio() {
-        jugadorBonus = 11 + ganadorBonus;
         for (int i = 0; i < jugador.length; i++) {
             jugador[i].bonusScreen(false);
         }
@@ -304,13 +332,12 @@ public class Mesa {
             jugador[iteracionesBonus - 12].bonusScreen(false);
             jugador[iteracionesBonus - 11].bonusScreen(true);
         }
-        if (iteracionesBonus < jugadorBonus) {
+        if (iteracionesBonus < 11 + ganadorBonus) {
             iteracionesBonus++;
             tiempoBonus += 20;
             BonusTimer();
         } else {
             iteracionesBonus = -1;
-            jugadorBonus = -1;
             tiempoBonus = 500;
             pagarBonus();
         }

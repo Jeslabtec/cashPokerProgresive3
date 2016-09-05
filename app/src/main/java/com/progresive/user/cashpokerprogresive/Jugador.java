@@ -18,7 +18,7 @@ public class Jugador {
     private int SuperApuesta=0;
     //Es un valor que dice si la persona esta en la mesa o pidio una pausa
     private boolean Enmesa=true;
-
+    //VARIABLES QUE GUARDAN LOS TEXTVIEW DE LOS JUGADORES
     public TextView jugadortv,jugadortvdown,jugadortvcirculo;
     //Variable que dice si el jugador fue seleccionado
     private boolean seleccionado=false;
