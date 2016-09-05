@@ -87,29 +87,43 @@ public class Jugador {
    //Aviso para el jugador que se queda sin crédito
     final Handler handler = new Handler();
     Timer t = new Timer();
-    int ConteoAlerta=0;
-    boolean Aviso=true;
+    private int ConteoAlerta=0;
+    private boolean Aviso=true;
+    private boolean SwitchAviso=false;
+    public void ResetearAvisoApuestaAcabada(){
+        ConteoAlerta=0;
+    }
+    public void SwitchAvisoApuestaAcabada(boolean Avi){
+        SwitchAviso=Avi;
+    }
+
+
 //Funcion que avisa al dealer cuando un jugador ya no tiene mas fichas
     public void avisoApuestaAcabada(){
         t.schedule(new TimerTask() {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        if (ConteoAlerta<8) {
-                            ConteoAlerta++;
-
+                        if (tablero.mesaJuego.verElEstadoDelJuego()==2 && !tablero.mesaJuego.GanaronBonus && SwitchAviso) {
                             if(Aviso){
-                              Habilitar();
+                                ConteoAlerta++;
+                                Seleccionar();
+                                if(ConteoAlerta<6) {
+                                    tablero.mesaJuego.reproducirSonido(2);
+                                }
                                 Aviso=false;
                             }else{
-                                Seleccionar();
-                                tablero.mesaJuego.reproducirSonido(2);
+                                Habilitar();
                                 Aviso=true;
                             }
                             avisoApuestaAcabada();
                         }else{
-                            Habilitar();
-                            ConteoAlerta=0;
+                            if(SwitchAviso) {
+                                Habilitar();
+                            }else{
+                                Bloquear();
+                            }
+
                         }
                     }
                 });
@@ -133,6 +147,7 @@ public class Jugador {
             jugadortvcirculo.setBackgroundResource(R.drawable.jugadorbloqueadocirculo);
 
             jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
+            jugadortvdown.setText("X "+String.valueOf(CPPLogin.manip.verValorFicha()));
             jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
             jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.gris4));
             jugadortv.setEnabled(false);
@@ -145,10 +160,13 @@ public class Jugador {
         if(seleccionado) {
             jugadortv.setBackgroundResource(R.drawable.jugadorbonusonup);
             jugadortvdown.setBackgroundResource(R.drawable.jugadorbonusondown);
+            jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortvdown.setText("BONUS");
         }else {
             jugadortv.setBackgroundResource(R.drawable.jugadorbonusoffup);
             jugadortvdown.setBackgroundResource(R.drawable.jugadorbonusoffdown);
-
+            jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortvdown.setText("BONUS");
         }
     }
 //Se llama cuando habilito a los jugadores para poner nuevas apuestas
@@ -159,6 +177,7 @@ public class Jugador {
             jugadortvcirculo.setBackgroundResource(R.drawable.jugadorhabilitadocirculo);
             jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Dorado3));
             jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortvdown.setText("X "+String.valueOf(CPPLogin.manip.verValorFicha()));
             jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
             jugadortv.setEnabled(true);
             seleccionado = false;
@@ -173,6 +192,7 @@ public class Jugador {
             jugadortvcirculo.setBackgroundResource(R.drawable.jugadorseleccionadocirculo);
             jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Dorado3));
             jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+            jugadortvdown.setText("X "+String.valueOf(CPPLogin.manip.verValorFicha()));
             jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
             jugadortv.setEnabled(true);
             seleccionado = true;
@@ -185,6 +205,7 @@ public class Jugador {
         jugadortvcirculo.setBackgroundResource(R.drawable.jugadorpausadocirculo);
         jugadortvcirculo.setTextColor(tablero.dato.getResources().getColor(R.color.Rojo1));
         jugadortvdown.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
+        jugadortvdown.setText("X "+String.valueOf(CPPLogin.manip.verValorFicha()));
         jugadortv.setTextColor(tablero.dato.getResources().getColor(R.color.Negro1));
         jugadortv.setEnabled(true);
         seleccionado=false;

@@ -19,7 +19,7 @@ public class lTVClickControlesJuego implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (tablero.mesaJuego.hayAlguienJugando() || tablero.mesaJuego.verElEstadoDelJuego()==2) {
+        if (tablero.mesaJuego.hayAlguienJugando()) {
             switch (v.getId()) {
                 case R.id.tvPagar:
                     tablero.mesaJuego.cambiarElEstadoDelJuego(1);

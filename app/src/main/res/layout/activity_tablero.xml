@@ -20,7 +20,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -36,8 +36,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_4"
@@ -64,9 +64,7 @@
             android:text="4"
             android:textSize="@dimen/tamano_texto_jugadoresCirculo"
             />
-
         <!--Jugador5-->
-
         <TextView
             android:layout_width="@dimen/Tamano_jugadores_topW"
             android:layout_height="@dimen/Tamano_jugadores_downh"
@@ -76,8 +74,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_3"
@@ -97,7 +95,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -135,8 +133,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_2"
@@ -156,7 +154,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -194,8 +192,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_1"
@@ -215,7 +213,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -243,7 +241,6 @@
             android:text="7"
             android:textSize="@dimen/tamano_texto_jugadoresCirculo"
             />
-
         <!--Jugador3-->
 
         <TextView
@@ -256,7 +253,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -272,8 +269,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_3"
@@ -315,7 +312,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -331,8 +328,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_2"
@@ -374,7 +371,7 @@
             android:enabled="true"
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textSize="@dimen/tamano_texto_jugadoresTop"
 
@@ -390,8 +387,8 @@
 
             android:gravity="center_vertical|center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="normal"
-            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
             android:textSize="@dimen/tamano_texto_jugadoresDown"
 
             android:layout_marginBottom="@dimen/Distancia_jugadores_1"
@@ -435,9 +432,9 @@
 
             android:background="@drawable/progresivo"
             android:id="@+id/TVprogresivo"
-            android:textColor="@color/Negro1"
-
-
+            android:textColor="@color/Dorado3"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
 
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -448,7 +445,7 @@
             android:layout_width="@dimen/Tamaño_aviso_w"
             android:layout_height="@dimen/Tamaño_aviso_h"
             android:gravity="center"
-            android:textStyle="italic|bold"
+            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/gris3"
             android:textSize="@dimen/tamano_texto_aviso"
