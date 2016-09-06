@@ -33,6 +33,6 @@
     <dimen name="Tamaño_progresivo_h">99dp</dimen>
     <dimen name="Tamaño_progresivo_PaddingH">9dp</dimen>
 
-    <dimen name="Tamaño_aviso_h">60dp</dimen>
+    <dimen name="Tamaño_aviso_h">80dp</dimen>
     <dimen name="Tamaño_aviso_PaddingH">5dp</dimen>
 </resources>

@@ -280,7 +280,7 @@ public class Mesa {
     private int tiempoBonus = 500;
     //INDICA CUAL FUE EL JUGADOR QUE GANO EL BONUS INDIVIDUAL
     private int ganadorBonus = (int) Math.floor(Math.random() * 7);
-    private int pago;
+    private int pagoBonus;
     Timer t1 = new Timer();
     final Handler handler1 = new Handler();
     private int bonus1,bonus2;
@@ -346,11 +346,9 @@ public class Mesa {
 //Funcion que paga a un jugador el bonus
     private void pagarBonus() {
         if (jugador[ganadorBonus].verSiPausado() && jugador[ganadorBonus].jugadortv.isEnabled()) {
-            DineroPagoConEstilo = getBinomial(9,0.4444)+20;
-            pago=DineroPagoConEstilo;
             pagarConEstilo();
             try {
-                CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", pago);
+                CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", pagoBonus);
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -367,7 +365,7 @@ public class Mesa {
             jugador[i].bonusScreen(Bonusactive);
         }
         Bonusactive=!Bonusactive;
-        if(iteracionesBonus<pago) {
+        if(iteracionesBonus<pagoBonus) {
             iteracionesBonus++;
             for(int i=0;i<jugador.length;i++){
                 if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
@@ -395,7 +393,7 @@ public class Mesa {
         }
         EstadoBonusOff();
         try {
-            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pago*contganadores);
+            CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet,"salida",pagoBonus*contganadores);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -434,7 +432,13 @@ public class Mesa {
         jugarTV.Bloquear();
         apostarTV.Bloquear();
         AvisoTV.setBackgroundResource(R.drawable.avisobonus);
-        AvisoTV.setText(R.string.Bonus);
+        if(bonus1>=5) {
+            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" UNICO");
+        }else{
+            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" TODOS");
+        }
+
+
     }
 
 
@@ -462,13 +466,17 @@ public class Mesa {
                                 //bonus1=getBinomial(16,0.0625);
                                 //bonus2=getBinomial(160,0.1875);
                                 bonus1=getBinomial(10,0.5);
-                                EstadoBonusOn();
                                 if (bonus1>=5) {
                                     ganadorBonus = (int) Math.floor(Math.random() * 7);
+                                    pagoBonus= getBinomial(9,0.4444)+20;
+                                    tiempoBonus=500;
+                                    EstadoBonusOn();
                                     BonusCambio();
                                 }
                                 else{
-                                    pago=getBinomial(9,0.4444);
+                                    pagoBonus=getBinomial(9,0.4444);
+                                    EstadoBonusOn();
+                                    tiempoBonus=Math.round(5500/pagoBonus);
                                     Bonustodos();
                                 }
 
@@ -654,7 +662,7 @@ public class Mesa {
             public void run() {
                 handler3.post(new Runnable() {
                     public void run() {
-                         if(conteoPagoestilo<DineroPagoConEstilo){
+                         if(conteoPagoestilo<pagoBonus){
                             conteoPagoestilo++;
                             ProgresivoTV.PagarProgresivo(1);
                             jugador[ganadorBonus].cargarapuesta(1);
@@ -664,7 +672,6 @@ public class Mesa {
                         }else {
                              jugador[ganadorBonus].cargarSuperApuesta();
                              conteoPagoestilo=0;
-                             DineroPagoConEstilo=0;
                              EstadoBonusOff();
                         }
                     }
