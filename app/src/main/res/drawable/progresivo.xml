@@ -7,7 +7,7 @@
             android:width="@dimen/Borde_progresivo"
             />
         <corners android:radius="30dp"/>
-
+        <solid android:color="@color/Verde_fantasma"/>
     </shape>
 </item>
 <item

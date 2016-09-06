@@ -11,7 +11,7 @@ public class MensajesAlerta {
 
     AlertDialog msgConfirmarPago() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("¿Confirma el pago de este premio?");
+        creaMensajes.setMessage(R.string.ConfirmaPago);
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
@@ -36,7 +36,7 @@ public class MensajesAlerta {
     AlertDialog msgConfirmarRetiro() {
 
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
-        creaMensajes.setMessage("¿Seguro qué desea retirarse?");
+        creaMensajes.setMessage(R.string.DeseaRetirarse);
         creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
@@ -77,10 +77,13 @@ public class MensajesAlerta {
     AlertDialog msgConfirmarDinero() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
 
-        creaMensajes.setMessage("Pagar al Jugador " +
-        tablero.mesaJuego.jugador[tablero.mesaJuego.JugadorSeleccionado()].verapuesta() + " fichas");
+       /* creaMensajes.setMessage(R.string.pagarAlJugador +
+                String.valueOf(tablero.mesaJuego.jugador[tablero.mesaJuego.JugadorSeleccionado()].verapuesta())+
+                R.string.fichas);*/
+        creaMensajes.setMessage(R.string.pagarAlJugador);
 
-        creaMensajes.setCancelable(true);
+
+                creaMensajes.setCancelable(true);
         creaMensajes.setPositiveButton(R.string.Confirmar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

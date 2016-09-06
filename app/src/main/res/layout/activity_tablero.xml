@@ -64,7 +64,9 @@
             android:text="4"
             android:textSize="@dimen/tamano_texto_jugadoresCirculo"
             />
+
         <!--Jugador5-->
+
         <TextView
             android:layout_width="@dimen/Tamano_jugadores_topW"
             android:layout_height="@dimen/Tamano_jugadores_downh"
@@ -241,6 +243,7 @@
             android:text="7"
             android:textSize="@dimen/tamano_texto_jugadoresCirculo"
             />
+
         <!--Jugador3-->
 
         <TextView

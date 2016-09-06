@@ -23,7 +23,7 @@
     <dimen name="Tamaño_progresivo_w">700dp</dimen>
 
     <dimen name="Tamaño_progresivo_PaddingW">25dp</dimen>
-    <dimen name="Borde_progresivo">3dp</dimen>
+    <dimen name="Borde_progresivo">6dp</dimen>
 
     <dimen name="Tamaño_aviso_w">247dp</dimen>
     <dimen name="Tamaño_aviso_PaddingW">10dp</dimen>

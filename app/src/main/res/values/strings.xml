@@ -38,6 +38,10 @@
     <string name="Ingrclave">Ingrese clave</string>
     <string name="Supervisor">Supervisor</string>
     <string name="Dealer">Dealer</string>
+    <string name="DeseaRetirarse">¿Seguro qué desea retirarse?</string>
+    <string name="ConfirmaPago">¿Confirma el pago de este premio?</string>
+    <string name="pagarAlJugador">Pagar al Jugador </string>
+    <string name="fichas"> fichas</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contraseña</string>

@@ -476,7 +476,7 @@ public class Mesa {
                                 else{
                                     pagoBonus=getBinomial(9,0.4444);
                                     EstadoBonusOn();
-                                    tiempoBonus=Math.round(5500/pagoBonus);
+                                    tiempoBonus=Math.round(6500/pagoBonus);
                                     Bonustodos();
                                 }
 
