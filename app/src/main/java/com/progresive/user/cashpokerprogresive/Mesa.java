@@ -80,19 +80,19 @@ public class Mesa {
     //---------------------------------------------------------------------------------
     //ANIMACION QUE PERMITE UBICAR LOS BOTONES DE PREMIO EN SU POSICION CORRECTA, COMPRENDE MOVIMIENTO EN X Y Y
     private void animaciondesplazamientoPremio() {
-        int Y1 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist1);
-        int Y2 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist2);
-        int Y3 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist3);
-        int Y4 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist4);
-        int Y5 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist5);
-        int Y6 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist6);
+        float Y1 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist1);
+        float Y2 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist2);
+        float Y3 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist3);
+        float Y4 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist4);
+        float Y5 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist5);
+        float Y6 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist6);
 
-        int X1 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_1);
-        int X2 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_2);
-        int X3 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_3);
-        int X4 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_4);
-        int X5 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_5);
-        int X6 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_6);
+        float X1 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_1);
+        float X2 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_2);
+        float X3 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_3);
+        float X4 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_4);
+        float X5 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_5);
+        float X6 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_6);
         ApuestaPremio[0].Movimientopremio(-X1, -Y1);
         ApuestaPremio[1].Movimientopremio(-X2, -Y2);
         ApuestaPremio[2].Movimientopremio(-X3, -Y3);
@@ -100,7 +100,7 @@ public class Mesa {
         ApuestaPremio[4].Movimientopremio(-X5, -Y5);
         ApuestaPremio[5].Movimientopremio(-X6, -Y6);
 
-   /*     ApuestaPremio[0].Movimientopremio(-2*X1, -2*Y1);
+   /*   ApuestaPremio[0].Movimientopremio(-2*X1, -2*Y1);
         ApuestaPremio[1].Movimientopremio(-2*X2, -2*Y2);
         ApuestaPremio[2].Movimientopremio(-2*X3, -2*Y3);
         ApuestaPremio[3].Movimientopremio(-2*X4, -2*Y4);
@@ -109,21 +109,21 @@ public class Mesa {
     }
     //ANIMACION QUE PERMITE UBICAR LOS BOTONES DE APUESTA EN SU POSICION CORRECTA, COMPRENDE MOVIMIENTO EN X Y Y
     private void animaciondesplazamientoApuesta() {
-        int Y1 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist1);
-        int Y2 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist2);
-        int Y3 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist3);
-        int Y4 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist4);
-        int Y5 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist5);
-        int Y6 = tablero.dato.getResources().getInteger(R.integer.ApuPreDist6);
+        float Y1 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist1);
+        float Y2 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist2);
+        float Y3 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist3);
+        float Y4 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist4);
+        float Y5 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist5);
+        float Y6 = tablero.dato.getResources().getDimension(R.dimen.ApuPreDist6);
 
-        int X1 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_1);
-        int X2 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_2);
-        int X3 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_3);
-        int X4 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_4);
-        int X5 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_5);
-        int X6 = tablero.dato.getResources().getInteger(R.integer.Dis_separaApuPre_6);
+        float X1 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_1);
+        float X2 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_2);
+        float X3 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_3);
+        float X4 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_4);
+        float X5 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_5);
+        float X6 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_6);
 
-   /*     ApuestaPremio[0].Movimientoapuesta(-2*X1, -2*Y1);
+   /*   ApuestaPremio[0].Movimientoapuesta(-2*X1, -2*Y1);
         ApuestaPremio[1].Movimientoapuesta(-2*X2, -2*Y2);
         ApuestaPremio[2].Movimientoapuesta(-2*X3, -2*Y3);
         ApuestaPremio[3].Movimientoapuesta(-2*X4, -2*Y4);
@@ -181,7 +181,7 @@ public class Mesa {
 
     public boolean hayAlguienJugando() {
         for (int i = 0; i < jugador.length; i++) {
-            if (jugador[i].jugadortv.isEnabled() && jugador[i].verSiPausado()) {
+            if (jugador[i].verapuesta()>0 && jugador[i].verSiPausado()) {
                 return true;
             }
         }
@@ -302,7 +302,7 @@ public class Mesa {
             public void run() {
                 handler1.post(new Runnable() {
                     public void run() {
-                        if(bonus1>=5) {
+                        if(bonus1>0) {
                             SeleccionarJugadorBonus();
                         }else{
                             Bonustodos();
@@ -365,7 +365,7 @@ public class Mesa {
             jugador[i].bonusScreen(Bonusactive);
         }
         Bonusactive=!Bonusactive;
-        if(iteracionesBonus<pagoBonus) {
+        if(iteracionesBonus<pagoBonus-2) {
             iteracionesBonus++;
             for(int i=0;i<jugador.length;i++){
                 if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
@@ -432,7 +432,7 @@ public class Mesa {
         jugarTV.Bloquear();
         apostarTV.Bloquear();
         AvisoTV.setBackgroundResource(R.drawable.avisobonus);
-        if(bonus1>=5) {
+        if(bonus1>0) {
             AvisoTV.setText("+"+String.valueOf(pagoBonus)+" UNICO");
         }else{
             AvisoTV.setText("+"+String.valueOf(pagoBonus)+" TODOS");
@@ -462,19 +462,19 @@ public class Mesa {
                                 GanaronBonus=true;
                                 unGanadorBonus=false;
                                 jugadaActual = 0;
-                                jugadasBonus = getBinomial(4, 0.5);
+                                jugadasBonus = 3;
                                 //bonus1=getBinomial(16,0.0625);
                                 //bonus2=getBinomial(160,0.1875);
-                                bonus1=getBinomial(10,0.5);
-                                if (bonus1>=5) {
+                                bonus1=(bonus1==0)?(1):(0);
+                                if (bonus1>0) {
                                     ganadorBonus = (int) Math.floor(Math.random() * 7);
-                                    pagoBonus= getBinomial(9,0.4444)+20;
+                                    pagoBonus= getBinomial(5,0.2)+5;
                                     tiempoBonus=500;
                                     EstadoBonusOn();
                                     BonusCambio();
                                 }
                                 else{
-                                    pagoBonus=getBinomial(9,0.4444);
+                                    pagoBonus=getBinomial(8,0.0909)+2;
                                     EstadoBonusOn();
                                     tiempoBonus=Math.round(6500/pagoBonus);
                                     Bonustodos();

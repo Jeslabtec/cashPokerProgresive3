@@ -32,4 +32,18 @@
     <dimen name="TamanoPremiosCodigoaut">550dp</dimen>
     <dimen name="TamanoPremiosCodigoautBordes">50dp</dimen>
 
+    <dimen name="ApuPreDist1">145dp</dimen>
+    <dimen name="ApuPreDist2">101dp</dimen>
+    <dimen name="ApuPreDist3">70dp</dimen>
+    <dimen name="ApuPreDist4">40dp</dimen>
+    <dimen name="ApuPreDist5">18dp</dimen>
+    <dimen name="ApuPreDist6">0dp</dimen>
+
+    <dimen name="Dis_separaApuPre_1">440dp</dimen>
+    <dimen name="Dis_separaApuPre_2">351dp</dimen>
+    <dimen name="Dis_separaApuPre_3">266dp</dimen>
+    <dimen name="Dis_separaApuPre_4">183dp</dimen>
+    <dimen name="Dis_separaApuPre_5">98dp</dimen>
+    <dimen name="Dis_separaApuPre_6">10dp</dimen>
+
 </resources>

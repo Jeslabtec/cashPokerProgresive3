@@ -35,7 +35,7 @@ import java.util.concurrent.ExecutionException;
  * servicios API, similares a los servicios API de Facebook y Google utilizando php
  */
 public class ManejoBD  {
-    private int DineroEnProgresivo=0;
+    private double DineroEnProgresivo=0;
     private int ValorFicha=0;
     private double[] PorcentajePremios=new double[6];
     private double PorcentajeAumento;
@@ -43,6 +43,8 @@ public class ManejoBD  {
     public Integer idTablet=-1;
     public Integer idSede=-1;
     public Integer idDealer=0;// aun falta solucionar el primer problema con el valor del dealer
+    private int primo1=35923;
+    private int primo2=40433;
     /*
     * Funcion login: revisa si las contraseñas suministradas son iguales a las reales
     * */
@@ -62,15 +64,15 @@ public class ManejoBD  {
             }
             else{
                 Toast.makeText(CPPLogin.ContextoLogin,"Iniciando la Aplicacion",Toast.LENGTH_SHORT).show();
-                this.idTablet=jsonresponse.getInt("idTablet");        //poner en rest para devolver idTablet
-                this.idSede=jsonresponse.getInt("idSede");
-                this.DineroEnProgresivo=jsonresponse.getInt("valorProgresivo");
-                this.ValorFicha=jsonresponse.getInt("valorFichas");
-                this.PorcentajeAumento=jsonresponse.getDouble("pAumento");
-                this.minimoProgresivo= jsonresponse.getInt("minimoProgresivo");
+                this.idTablet=(jsonresponse.getInt("idTablet")-primo2)/primo1;        //poner en rest para devolver idTablet
+                this.idSede=(jsonresponse.getInt("idSede")-primo2)/primo1;
+                this.DineroEnProgresivo=(jsonresponse.getDouble("valorProgresivo")-primo2)/primo1;
+                this.ValorFicha=(jsonresponse.getInt("valorFichas")-primo2)/primo1;
+                this.PorcentajeAumento=(jsonresponse.getDouble("pAumento")-primo2)/primo1;
+                this.minimoProgresivo=(int) ((jsonresponse.getLong("minimoProgresivo")-primo2)/primo1);
                 JSONArray porcentajes = jsonresponse.getJSONArray("porcentajes");
                 for (int i=0;i<porcentajes.length();i++){
-                    this.PorcentajePremios[i]=porcentajes.getDouble(i);
+                    this.PorcentajePremios[i]=(porcentajes.getDouble(i)-primo2)/primo1;
                     }
                 activo=true;
             }
@@ -134,7 +136,7 @@ public class ManejoBD  {
         // Toast.makeText(tablero.dato,"hecho",Toast.LENGTH_SHORT).show();
     }
 
-    public int verDineroProgresivo(){return DineroEnProgresivo;}
+    public int verDineroProgresivo(){return (int)DineroEnProgresivo;}
     public int verValorFicha(){
         return ValorFicha;
     }

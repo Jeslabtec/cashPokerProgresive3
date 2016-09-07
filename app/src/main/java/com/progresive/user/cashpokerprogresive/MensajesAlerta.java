@@ -77,10 +77,10 @@ public class MensajesAlerta {
     AlertDialog msgConfirmarDinero() {
         AlertDialog.Builder creaMensajes = new AlertDialog.Builder(tablero.dato);
 
-       /* creaMensajes.setMessage(R.string.pagarAlJugador +
-                String.valueOf(tablero.mesaJuego.jugador[tablero.mesaJuego.JugadorSeleccionado()].verapuesta())+
-                R.string.fichas);*/
-        creaMensajes.setMessage(R.string.pagarAlJugador);
+        creaMensajes.setMessage(tablero.dato.getResources().getString(R.string.pagarAlJugador) + " "+
+                tablero.mesaJuego.jugador[tablero.mesaJuego.JugadorSeleccionado()].verapuesta()+ " "+
+                tablero.dato.getResources().getString(R.string.fichas));
+        //creaMensajes.setMessage(R.string.pagarAlJugador);
 
 
                 creaMensajes.setCancelable(true);
