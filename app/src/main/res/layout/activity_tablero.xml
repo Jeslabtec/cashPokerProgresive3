@@ -8,6 +8,24 @@
         android:background="@drawable/tablero"
         android:layout_gravity="center"
         >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/tvPrueba"
+                android:gravity="center"
+                android:layout_gravity="center"
+
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/Negro1"
+                android:textSize="50sp"
+
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
         <!--Jugador4-->
 
         <TextView

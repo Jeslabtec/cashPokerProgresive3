@@ -65,6 +65,16 @@ public class tablero extends AppCompatActivity {
         // Set volume rocker mode to media volume
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         // Lee los sonidos que figuran en res/raw
+        float width=this.getResources().getDisplayMetrics().widthPixels;
+        float height=this.getResources().getDisplayMetrics().heightPixels;
+        float density=this.getResources().getDisplayMetrics().density;
+
+
+
+        TextView PruebaTV= (TextView) findViewById(R.id.tvPrueba);
+
+        PruebaTV.setText(String.valueOf(width)+" "+String.valueOf(height)+" "+String.valueOf(density));
+
 
         mesaJuego = new Mesa(datos,sound);
         // sección de Alert Dialgos, en esta sección se colocará el valor de cada Alert dialog para la confirmacion de  el pago de premios

@@ -1,0 +1,94 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 141 ciObject found
+ciMethod java/lang/System arraycopy (Ljava/lang/Object;ILjava/lang/Object;II)V 5121 1 640 0 -1
+ciMethod com/android/dx/util/MutabilityControl throwIfImmutable ()V 2073 1 59835 0 64
+ciMethod com/android/dx/util/FixedSizeList getOrNull0 (I)Ljava/lang/Object; 3129 1 6387 0 0
+ciMethod com/android/dx/util/FixedSizeList set0 (ILjava/lang/Object;)V 4097 1 26911 0 224
+ciMethod com/android/dx/util/FixedSizeList throwIndex (I)Ljava/lang/Object; 0 0 1 0 -1
+ciMethodData com/android/dx/util/MutabilityControl throwIfImmutable ()V 2 59835 orig 264 216 160 219 105 0 0 0 0 16 120 97 20 0 0 0 0 80 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 1 0 0 193 69 7 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 5 0 2 0 0 0 48 0 0 0 255 255 255 255 7 0 4 0 0 0 0 0 data 6 0x40007 0xe8b7 0x30 0x0 0xd0002 0x0 oops 0
+ciMethodData com/android/dx/util/FixedSizeList set0 (ILjava/lang/Object;)V 2 26911 orig 264 216 160 219 105 0 0 0 0 64 53 98 20 0 0 0 0 224 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 249 56 3 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 11 0 2 0 0 0 136 0 0 0 255 255 255 255 5 0 1 0 0 0 0 0 data 17 0x10005 0x632e 0x167ef6e0 0x3ca 0x167ef790 0x2c 0xa0104 0x0 0x167ef840 0x3d7 0x167ef8f0 0x34 0xb0003 0x6725 0x28 0x110002 0x0 oops 4 2 com/android/dx/rop/type/StdTypeList 4 com/android/dx/cf/iface/StdFieldList 8 com/android/dx/rop/type/Type 10 com/android/dx/cf/iface/StdMethod
+ciMethod com/android/dx/util/IntList size ()I 1185 1 148 0 0
+ciMethod com/android/dx/util/IntList set (II)V 4097 1 9681 0 192
+ciMethod com/android/dx/util/IntList add (I)V 2553 1 5547 0 832
+ciMethod com/android/dx/util/IntList growIfNeeded ()V 2265 1 5551 0 576
+ciMethod com/android/dx/util/LabeledItem getLabel ()I 0 0 1 0 -1
+ciMethod com/android/dx/cf/code/ByteBlock getLabel ()I 1081 1 135 0 0
+ciMethod com/android/dx/util/LabeledList removeLabel (I)V 0 0 4 0 0
+ciMethod com/android/dx/util/LabeledList addLabelIndex (II)V 4097 12737 5378 0 1280
+ciMethod com/android/dx/util/LabeledList set (ILcom/android/dx/util/LabeledItem;)V 4097 1 5659 0 -1
+ciMethod com/android/dx/rop/code/BasicBlock getLabel ()I 1273 1 159 0 0
+ciMethodData com/android/dx/util/IntList growIfNeeded ()V 2 5551 orig 264 216 160 219 105 0 0 0 0 56 20 104 20 0 0 0 0 120 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 27 1 0 0 161 164 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 6 0 2 0 0 0 48 0 0 0 255 255 255 255 7 0 9 0 0 0 0 0 data 6 0x90007 0x1402 0x30 0x94 0x250002 0x94 oops 0
+ciMethodData com/android/dx/util/IntList add (I)V 2 5547 orig 264 216 160 219 105 0 0 0 0 232 16 104 20 0 0 0 0 8 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 63 1 0 0 97 163 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 14 0 2 0 0 0 184 0 0 0 255 255 255 255 5 0 1 0 0 0 0 0 data 23 0x10005 0x94 0x1779ea30 0x13db 0x0 0x0 0x50002 0x1470 0x1d0007 0x720 0x78 0xd51 0x250007 0x748 0x58 0x60a 0x350007 0x1c 0x38 0x5ed 0x390003 0x5ed 0x18 oops 1 2 com/android/dx/util/IntList
+ciMethodData com/android/dx/util/FixedSizeList getOrNull0 (I)Ljava/lang/Object; 2 6387 orig 264 216 160 219 105 0 0 0 0 88 52 98 20 0 0 0 0 40 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 135 1 0 0 97 187 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 1 0 0 0 0 0 0 0 255 255 255 255 0 0 0 0 0 0 0 0 data 0 oops 0
+ciMethodData com/android/dx/util/IntList set (II)V 2 9681 orig 264 216 160 219 105 0 0 0 0 224 15 104 20 0 0 0 0 0 2 0 0 80 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 137 30 1 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 13 0 2 0 0 0 168 0 0 0 255 255 255 255 5 0 1 0 0 0 0 0 data 21 0x10005 0x101 0x1779ea30 0x22d1 0x0 0x0 0x90007 0x23d3 0x30 0x0 0x120002 0x0 0x220003 0x23d3 0x48 0x270007 0x0 0x30 0x0 0x300002 0x0 oops 1 2 com/android/dx/util/IntList
+ciMethodData com/android/dx/util/LabeledList set (ILcom/android/dx/util/LabeledItem;)V 2 5660 orig 264 216 160 219 105 0 0 0 0 176 228 104 20 0 0 0 0 168 2 0 0 224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 217 160 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 18 0 2 0 0 0 80 1 0 0 255 255 255 255 5 0 2 0 0 0 0 0 data 42 0x20005 0x155 0x167e9f10 0xe8e 0x167e9fc0 0x438 0x50104 0x0 0x167ea070 0x4 0x0 0x0 0xc0005 0x155 0x167e9f10 0xe8e 0x167e9fc0 0x438 0x100007 0x1417 0x60 0x4 0x150005 0x0 0x167ea070 0x4 0x0 0x0 0x1a0002 0x4 0x1e0007 0x2 0x60 0x1419 0x230005 0x0 0x167ea120 0x484 0x167ea070 0xf95 0x290002 0x1419 oops 8 2 com/android/dx/rop/code/BasicBlockList 4 com/android/dx/cf/code/ByteBlockList 8 com/android/dx/rop/code/BasicBlock 14 com/android/dx/rop/code/BasicBlockList 16 com/android/dx/cf/code/ByteBlockList 24 com/android/dx/rop/code/BasicBlock 36 com/android/dx/cf/code/ByteBlock 38 com/android/dx/rop/code/BasicBlock
+ciMethodData com/android/dx/util/LabeledList addLabelIndex (II)V 2 18335 orig 264 216 160 219 105 0 0 0 0 200 223 104 20 0 0 0 0 32 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 56 6 0 0 17 152 0 0 57 11 2 0 0 0 0 0 0 0 0 0 2 0 0 0 1 0 6 0 2 0 0 0 200 0 0 0 255 255 255 255 5 0 4 0 0 0 0 0 data 25 0x40005 0x14c 0x1779ea30 0x11b6 0x0 0x0 0x100007 0x1303 0x68 0x4166 0x180005 0x3de 0x1779ea30 0x3d89 0x0 0x0 0x1e0003 0x4166 0xffffffffffffffb0 0x270005 0x14c 0x1779ea30 0x11b7 0x0 0x0 oops 3 2 com/android/dx/util/IntList 12 com/android/dx/util/IntList 21 com/android/dx/util/IntList
+ciMethodData com/android/dx/util/LabeledList removeLabel (I)V 1 4 orig 264 216 160 219 105 0 0 0 0 200 222 104 20 0 0 0 0 128 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 48 0 0 0 255 255 255 255 5 0 6 0 0 0 0 0 data 6 0x60005 0x0 0x1779ea30 0x4 0x0 0x0 oops 1 2 com/android/dx/util/IntList
+instanceKlass com/android/dx/cf/direct/AnnotationParser
+instanceKlass com/android/dx/cf/code/Ropper$ExceptionHandlerSetup
+instanceKlass java/util/ArrayList$1
+instanceKlass com/android/dx/dex/file/MethodAnnotationStruct
+instanceKlass java/util/DualPivotQuicksort
+instanceKlass com/android/dx/dex/code/DalvCode
+instanceKlass com/android/dx/dex/code/StdCatchBuilder
+instanceKlass com/android/dx/dex/code/RopToDop
+instanceKlass com/android/dx/dex/code/OutputFinisher
+instanceKlass com/android/dx/dex/code/OutputCollector
+instanceKlass com/android/dx/rop/code/Insn$BaseVisitor
+instanceKlass com/android/dx/io/Opcodes
+instanceKlass com/android/dx/dex/code/InsnFormat
+instanceKlass com/android/dx/dex/code/Dop
+instanceKlass com/android/dx/dex/code/Dops
+instanceKlass com/android/dx/dex/code/BlockAddresses
+instanceKlass com/android/dx/dex/code/CatchBuilder
+instanceKlass com/android/dx/dex/code/DalvInsn
+instanceKlass com/android/dx/dex/code/RopTranslator$TranslationVisitor
+instanceKlass com/android/dx/dex/code/RopTranslator
+instanceKlass com/android/dx/rop/code/LocalVariableExtractor
+instanceKlass com/android/dx/ssa/back/IdenticalBlockCombiner
+instanceKlass com/android/dx/ssa/back/SsaToRop$1
+instanceKlass com/android/dx/ssa/back/SsaToRop$PhiVisitor
+instanceKlass com/android/dx/ssa/back/FirstFitLocalCombiningAllocator$Multiset
+instanceKlass com/android/dx/ssa/back/FirstFitLocalCombiningAllocator$1
+instanceKlass com/android/dx/ssa/back/LivenessAnalyzer$1
+instanceKlass com/android/dx/ssa/back/InterferenceGraph
+instanceKlass com/android/dx/ssa/back/LivenessAnalyzer
+instanceKlass com/android/dx/ssa/back/RegisterAllocator
+instanceKlass com/android/dx/ssa/back/SsaToRop
+instanceKlass com/android/dx/ssa/PhiTypeResolver
+instanceKlass com/android/dx/ssa/ConstCollector$1
+instanceKlass com/android/dx/ssa/ConstCollector
+instanceKlass com/android/dx/ssa/LiteralOpUpgrader$1
+instanceKlass com/android/dx/ssa/LiteralOpUpgrader
+instanceKlass com/android/dx/ssa/DeadCodeRemover$NoSideEffectVisitor
+instanceKlass com/android/dx/ssa/SsaMethod$1
+instanceKlass com/android/dx/ssa/DeadCodeRemover
+instanceKlass com/android/dx/ssa/SsaMethod$2
+instanceKlass com/android/dx/ssa/SCCP
+instanceKlass com/android/dx/ssa/MoveParamCombiner$1
+instanceKlass com/android/dx/ssa/PhiInsn$Operand
+instanceKlass com/android/dx/ssa/MoveParamCombiner
+instanceKlass com/android/dx/ssa/SsaRenamer$BlockRenamer$1
+instanceKlass com/android/dx/ssa/PhiInsn$Visitor
+instanceKlass com/android/dx/ssa/RegisterMapper
+instanceKlass com/android/dx/ssa/SsaRenamer$BlockRenamer
+instanceKlass com/android/dx/ssa/SsaRenamer$1
+instanceKlass com/android/dx/ssa/SsaRenamer
+instanceKlass com/android/dx/util/BitIntSet$1
+instanceKlass com/android/dx/util/IntIterator
+instanceKlass com/android/dx/util/BitIntSet
+instanceKlass com/android/dx/util/IntSet
+instanceKlass com/android/dx/ssa/SetFactory
+instanceKlass com/android/dx/ssa/Dominators$DfsWalker
+instanceKlass com/android/dx/ssa/Dominators$DFSInfo
+instanceKlass com/android/dx/ssa/SsaBasicBlock$Visitor
+instanceKlass com/android/dx/ssa/Dominators
+instanceKlass com/android/dx/ssa/DomFront$DomInfo
+instanceKlass com/android/dx/ssa/DomFront
+instanceKlass com/android/dx/ssa/LocalVariableExtractor
+instanceKlass com/android/dx/ssa/SsaBasicBlock$LabelComparator
+instanceKlass com/android/dx/ssa/SsaBasicBlock
+instanceKlass com/android/dx/rop/code/BasicBlockList$RegCountVisitor
+instanceKlass com/android/dx/ssa/SsaInsn$Visitor

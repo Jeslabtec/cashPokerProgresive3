@@ -100,12 +100,6 @@ public class Mesa {
         ApuestaPremio[4].Movimientopremio(-X5, -Y5);
         ApuestaPremio[5].Movimientopremio(-X6, -Y6);
 
-   /*   ApuestaPremio[0].Movimientopremio(-2*X1, -2*Y1);
-        ApuestaPremio[1].Movimientopremio(-2*X2, -2*Y2);
-        ApuestaPremio[2].Movimientopremio(-2*X3, -2*Y3);
-        ApuestaPremio[3].Movimientopremio(-2*X4, -2*Y4);
-        ApuestaPremio[4].Movimientopremio(-2*X5, -2*Y5);
-        ApuestaPremio[5].Movimientopremio(-2*X6, -2*Y6);*/
     }
     //ANIMACION QUE PERMITE UBICAR LOS BOTONES DE APUESTA EN SU POSICION CORRECTA, COMPRENDE MOVIMIENTO EN X Y Y
     private void animaciondesplazamientoApuesta() {
@@ -122,13 +116,6 @@ public class Mesa {
         float X4 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_4);
         float X5 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_5);
         float X6 = tablero.dato.getResources().getDimension(R.dimen.Dis_separaApuPre_6);
-
-   /*   ApuestaPremio[0].Movimientoapuesta(-2*X1, -2*Y1);
-        ApuestaPremio[1].Movimientoapuesta(-2*X2, -2*Y2);
-        ApuestaPremio[2].Movimientoapuesta(-2*X3, -2*Y3);
-        ApuestaPremio[3].Movimientoapuesta(-2*X4, -2*Y4);
-        ApuestaPremio[4].Movimientoapuesta(-2*X5, -2*Y5);
-        ApuestaPremio[5].Movimientoapuesta(-2*X6, -2*Y6);*/
         
         ApuestaPremio[0].Movimientoapuesta(-X1, -Y1);
         ApuestaPremio[1].Movimientoapuesta(-X2, -Y2);
@@ -210,7 +197,6 @@ public class Mesa {
         }
         return -1;
     }
-
     //funcion que permite seleccionar un jugador
     //Y HABILITAR LOS DEMAS, SE UTILIZA EN FASES COMO ACREDITAR PAGAR Y RETIRAR
     public void SeleccionarJugador(int j) {
@@ -302,12 +288,13 @@ public class Mesa {
             public void run() {
                 handler1.post(new Runnable() {
                     public void run() {
+                        reproducirSonido(2);
                         if(bonus1>0) {
                             SeleccionarJugadorBonus();
                         }else{
                             Bonustodos();
                         }
-                        reproducirSonido(2);
+
                     }
                 });
             }
@@ -339,14 +326,13 @@ public class Mesa {
             BonusTimer();
         } else {
             iteracionesBonus = -1;
-            tiempoBonus = 500;
             pagarBonus();
         }
     }
 //Funcion que paga a un jugador el bonus
     private void pagarBonus() {
         if (jugador[ganadorBonus].verSiPausado() && jugador[ganadorBonus].jugadortv.isEnabled()) {
-            pagarConEstilo();
+            pagarConEstiloBonus();
             try {
                 CPPLogin.manip.EnviarMovimiento(CPPLogin.manip.idTablet, "salida", pagoBonus);
             } catch (ExecutionException e) {
@@ -361,19 +347,18 @@ public class Mesa {
         }
     }
     private void Bonustodos(){
-        for(int i=0;i<jugador.length;i++){
-            jugador[i].bonusScreen(Bonusactive);
-        }
-        Bonusactive=!Bonusactive;
-        if(iteracionesBonus<pagoBonus-2) {
-            iteracionesBonus++;
+        if(iteracionesBonus<2*pagoBonus-2){
             for(int i=0;i<jugador.length;i++){
-                if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
+                jugador[i].bonusScreen(Bonusactive);
+                if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled() && Bonusactive) {
                     ProgresivoTV.PagarProgresivo(1);
                     jugador[i].cargarapuesta(1);
                     jugador[i].cargarSuperApuesta();
+                    ;
                 }
             }
+            iteracionesBonus++;
+            Bonusactive=!Bonusactive;
             BonusTimer();
         }else{
             iteracionesBonus=-1;
@@ -385,8 +370,6 @@ public class Mesa {
         int contganadores=0;
         for(int i=0;i<jugador.length;i++){
             if (jugador[i].verSiPausado() && jugador[i].jugadortv.isEnabled()) {
-                ProgresivoTV.PagarProgresivo(1);
-                jugador[i].cargarapuesta(1);
                 jugador[i].cargarSuperApuesta();
                 contganadores++;
             }
@@ -474,9 +457,9 @@ public class Mesa {
                                     BonusCambio();
                                 }
                                 else{
-                                    pagoBonus=getBinomial(8,0.0909)+2;
+                                    pagoBonus= getBinomial(5,0.2)+5;
                                     EstadoBonusOn();
-                                    tiempoBonus=Math.round(6500/pagoBonus);
+                                    tiempoBonus=Math.round(3000/pagoBonus);
                                     Bonustodos();
                                 }
 
@@ -485,11 +468,9 @@ public class Mesa {
                                 pagarTV.Habilitar();
                                 jugarTV.Seleccionar();
                                 apostarTV.Habilitar();
-
                             }
                             iteracionesProgresivoLoco=0;
                         }
-
                     }
                 });
             }
@@ -576,7 +557,6 @@ public class Mesa {
             case 1:
                 BotonesdePago();
                 break;
-            //-------------------------------------------------------------------------------------------------------------------//
             case 2:
                 BotonesdeJuego();
                 break;
@@ -601,12 +581,17 @@ public class Mesa {
         } else {
             pago = Premio;
         }
+        //Configurar el pago con estilo
         DineroPagoConEstilo=(int)pago;
+        cuantosubir = DineroPagoConEstilo / 20;
+        sobrante = DineroPagoConEstilo % 20;
+        conteoPagoestilo=(cuantosubir==0)?(20):(0);
+
         retirarseTV.Bloquear();
         pagarTV.Bloquear();
         jugarTV.Bloquear();
         apostarTV.Bloquear();
-        pagarConEstilograndes();
+        pagarConEstilo();
         return (int) pago;
     }
 
@@ -620,28 +605,25 @@ public class Mesa {
     private int sobrante=0;
 
 
-    private void pagarConEstilograndes(){
+
+    private void pagarConEstilo(){
         t1.schedule(new TimerTask() {
             public void run() {
                 handler3.post(new Runnable() {
                     public void run() {
-                        if (conteoPagoestilo == 0) {
-                            cuantosubir = DineroPagoConEstilo / 20;
-                            sobrante = DineroPagoConEstilo % 20;
-                        }
                         if (conteoPagoestilo < 20) {
                             conteoPagoestilo++;
                             ProgresivoTV.PagarProgresivo(cuantosubir);
                             jugador[JugadorSeleccionado()].cargarapuesta(cuantosubir);
                             reproducirSonido(1);
-                            pagarConEstilograndes();
+                            pagarConEstilo();
 
                         }else if(conteoPagoestilo>=20 && conteoPagoestilo<20+sobrante){
                             conteoPagoestilo++;
                             ProgresivoTV.PagarProgresivo(1);
                             jugador[JugadorSeleccionado()].cargarapuesta(1);
                             reproducirSonido(1);
-                            pagarConEstilograndes();
+                            pagarConEstilo();
 
                         }else {
                             jugador[JugadorSeleccionado()].cargarSuperApuesta();
@@ -657,7 +639,7 @@ public class Mesa {
             }
         }, 100);
     }
-    private void pagarConEstilo(){
+    private void pagarConEstiloBonus(){
         t1.schedule(new TimerTask() {
             public void run() {
                 handler3.post(new Runnable() {
@@ -667,8 +649,7 @@ public class Mesa {
                             ProgresivoTV.PagarProgresivo(1);
                             jugador[ganadorBonus].cargarapuesta(1);
                             reproducirSonido(1);
-                            pagarConEstilo();
-
+                            pagarConEstiloBonus();
                         }else {
                              jugador[ganadorBonus].cargarSuperApuesta();
                              conteoPagoestilo=0;
@@ -677,7 +658,7 @@ public class Mesa {
                     }
                 });
             }
-        }, 100);
+        }, 500);
     }
 
 

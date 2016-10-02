@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <dimen name="Tamano_jugadores_topW">62dp</dimen>
+    <dimen name="BordesJugadorestopWNEG">59dp</dimen>
+    <dimen name="BordesJugadorestopW">60dp</dimen>
+    <dimen name="Tamano_jugadores_circulo">31dp</dimen>
+    <dimen name="PaddingJugadorCirculo">4dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_w">16dp</dimen>
+    <dimen name="Distancia_entre_jugadores">6dp</dimen>
+    <dimen name="TamañoControles">49dp</dimen>
+    <dimen name="Separacion_controles_1">8dp</dimen>
+    <dimen name="Separacion_controles_2">4dp</dimen>
+    <dimen name="Separacion_controles_3">4dp</dimen>
+    <dimen name="Separacion_controles_4">4dp</dimen>
+    <dimen name="Bordes">6dp</dimen>
+    <dimen name="Tamaño_progresivo_w">311dp</dimen>
+    <dimen name="Tamaño_progresivo_PaddingW">11dp</dimen>
+    <dimen name="Borde_progresivo">3dp</dimen>
+    <dimen name="Tamaño_aviso_w">110dp</dimen>
+    <dimen name="Tamaño_aviso_PaddingW">4dp</dimen>
+    <dimen name="Borde_aviso">1dp</dimen>
+    <dimen name="TamanoPremiosCodigoaut">244dp</dimen>
+    <dimen name="TamanoPremiosCodigoautBordes">22dp</dimen>
+    <dimen name="Distancia_ApuPre">14dp</dimen>
+    <dimen name="Dis_separaApuPre_1">196dp</dimen>
+    <dimen name="Dis_separaApuPre_2">158dp</dimen>
+    <dimen name="Dis_separaApuPre_3">120dp</dimen>
+    <dimen name="Dis_separaApuPre_4">83dp</dimen>
+    <dimen name="Dis_separaApuPre_5">44dp</dimen>
+    <dimen name="Dis_separaApuPre_6">4dp</dimen>
+</resources>

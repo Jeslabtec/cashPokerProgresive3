@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="Tamano_jugadores_topW">140dp</dimen>
-    <dimen name="Tamano_jugadores_circulo">70dp</dimen>
-    <dimen name="PaddingJugadorCirculo">10dp</dimen>
-
-    <dimen name="Bordes_jugadores_circulo_w">35dp</dimen>
-
     <dimen name="BordesJugadorestopWNEG">132dp</dimen>
     <dimen name="BordesJugadorestopW">136dp</dimen>
-
+    <dimen name="Tamano_jugadores_circulo">70dp</dimen>
+    <dimen name="PaddingJugadorCirculo">10dp</dimen>
+    <dimen name="Bordes_jugadores_circulo_w">35dp</dimen>
     <dimen name="Distancia_entre_jugadores">13dp</dimen>
-
     <dimen name="TamañoControles">110dp</dimen>
     <dimen name="Separacion_controles_1">17dp</dimen>
     <dimen name="Separacion_controles_2">10dp</dimen>
     <dimen name="Separacion_controles_3">8dp</dimen>
     <dimen name="Separacion_controles_4">8dp</dimen>
-
     <dimen name="Bordes">13dp</dimen>
-    <dimen name="Distancia_ApuPre">32dp</dimen>
-
     <dimen name="Tamaño_progresivo_w">700dp</dimen>
-
     <dimen name="Tamaño_progresivo_PaddingW">25dp</dimen>
     <dimen name="Borde_progresivo">6dp</dimen>
-
     <dimen name="Tamaño_aviso_w">247dp</dimen>
     <dimen name="Tamaño_aviso_PaddingW">10dp</dimen>
     <dimen name="Borde_aviso">3dp</dimen>
-
     <dimen name="TamanoPremiosCodigoaut">550dp</dimen>
     <dimen name="TamanoPremiosCodigoautBordes">50dp</dimen>
-
-    <dimen name="ApuPreDist1">145dp</dimen>
-    <dimen name="ApuPreDist2">101dp</dimen>
-    <dimen name="ApuPreDist3">70dp</dimen>
-    <dimen name="ApuPreDist4">40dp</dimen>
-    <dimen name="ApuPreDist5">18dp</dimen>
-    <dimen name="ApuPreDist6">0dp</dimen>
-
+    <dimen name="Distancia_ApuPre">32dp</dimen>
     <dimen name="Dis_separaApuPre_1">440dp</dimen>
-    <dimen name="Dis_separaApuPre_2">351dp</dimen>
-    <dimen name="Dis_separaApuPre_3">266dp</dimen>
-    <dimen name="Dis_separaApuPre_4">183dp</dimen>
-    <dimen name="Dis_separaApuPre_5">98dp</dimen>
+    <dimen name="Dis_separaApuPre_2">355dp</dimen>
+    <dimen name="Dis_separaApuPre_3">270dp</dimen>
+    <dimen name="Dis_separaApuPre_4">187dp</dimen>
+    <dimen name="Dis_separaApuPre_5">100dp</dimen>
     <dimen name="Dis_separaApuPre_6">10dp</dimen>
-
 </resources>
