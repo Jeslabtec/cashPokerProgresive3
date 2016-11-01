@@ -65,7 +65,7 @@ public class tablero extends AppCompatActivity {
         // Set volume rocker mode to media volume
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         // Lee los sonidos que figuran en res/raw
-        float width=this.getResources().getDisplayMetrics().widthPixels;
+        /*float width=this.getResources().getDisplayMetrics().widthPixels;
         float height=this.getResources().getDisplayMetrics().heightPixels;
         float density=this.getResources().getDisplayMetrics().density;
 
@@ -73,7 +73,7 @@ public class tablero extends AppCompatActivity {
 
         TextView PruebaTV= (TextView) findViewById(R.id.tvPrueba);
 
-        PruebaTV.setText(String.valueOf(width)+" "+String.valueOf(height)+" "+String.valueOf(density));
+        PruebaTV.setText(String.valueOf(width)+" "+String.valueOf(height)+" "+String.valueOf(density));*/
 
 
         mesaJuego = new Mesa(datos,sound);

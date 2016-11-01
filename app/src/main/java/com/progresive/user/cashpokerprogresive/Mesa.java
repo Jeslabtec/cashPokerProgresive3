@@ -416,9 +416,9 @@ public class Mesa {
         apostarTV.Bloquear();
         AvisoTV.setBackgroundResource(R.drawable.avisobonus);
         if(bonus1>0) {
-            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" UNICO");
+            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" JUGADOR");
         }else{
-            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" TODOS");
+            AvisoTV.setText("+"+String.valueOf(pagoBonus)+" JUGADORES");
         }
 
 
